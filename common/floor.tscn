@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://blqjs6prqtn6s"]
+
+[ext_resource type="Material" uid="uid://br2vy14cw0nw1" path="res://assets/materials/floor.tres" id="1_cc2nj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cc2nj"]
+material = ExtResource("1_cc2nj")
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xe8b4"]
+
+[node name="Floor" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_cc2nj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_xe8b4")
+debug_fill = false

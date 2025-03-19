@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://xbue1n4rtifu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mfcp"]
+size = Vector3(20, 4, 0.5)
+
+[node name="Wall" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_4mfcp")
+debug_color = Color(0, 0.0215158, 0.488649, 0.968627)

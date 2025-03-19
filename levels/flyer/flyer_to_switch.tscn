@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dhjwtdcgx7tpx"]
+
+[node name="FlyerToSwitch" type="Node3D"]
