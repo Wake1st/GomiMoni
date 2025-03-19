@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://do10ibmdg7mgj"]
+[gd_scene load_steps=5 format=3 uid="uid://do10ibmdg7mgj"]
+
+[ext_resource type="PackedScene" uid="uid://bgytpimcoomse" path="res://vehicles/heavy.tscn" id="1_t4ej8"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_pb2jq"]
+[ext_resource type="PackedScene" uid="uid://xbue1n4rtifu" path="res://common/wall.tscn" id="3_1fjey"]
+
+[sub_resource type="Environment" id="Environment_t4ej8"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
 
 [node name="TestHeavy" type="Node3D"]
+
+[node name="Heavy" parent="." instance=ExtResource("1_t4ej8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64386, 0)
+strength = 110.0
+
+[node name="Floor" parent="." instance=ExtResource("2_pb2jq")]
+
+[node name="Wall" parent="Floor" instance=ExtResource("3_1fjey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Wall2" parent="Floor" instance=ExtResource("3_1fjey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Wall3" parent="Floor" instance=ExtResource("3_1fjey")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, 0)
+
+[node name="Wall4" parent="Floor" instance=ExtResource("3_1fjey")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t4ej8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7, 7)
+projection = 1
+size = 17.0
