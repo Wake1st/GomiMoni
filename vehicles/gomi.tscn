@@ -13,6 +13,7 @@ points = PackedVector3Array(-0.0268873, -0.487145, -0.0151637, 0.00348619, 0.030
 [node name="Gomi" type="RigidBody3D"]
 can_sleep = false
 script = ExtResource("1_fint7")
+strength = 130.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_16wge")

@@ -1,24 +1,17 @@
-class_name Vehicle
-extends RigidBody3D
-
-enum VEHICLE_TYPE {
-	GOMI,
-	HEAVY,
-	FLYER
-}
+class_name Flyer
+extends Vehicle
 
 
-@export var strength: float = 80.0
+@export var updraft_strength: float = 100
+@export var updraft_rate: float = 0.2
 
 
-var currentType: VEHICLE_TYPE
-
-
-func _init():
-	can_sleep = false
+var draft_time: float
 
 
 func _physics_process(delta):
+	draft_time += delta
+	
 	if VehicleController.get_menu_select():
 		get_tree().paused = true
 		
@@ -38,4 +31,5 @@ func _physics_process(delta):
 
 
 func move(normal_force: Vector3) -> void:
-		apply_force(normal_force * strength, Vector3.UP)
+	var upward_force = Vector3.UP * updraft_strength * sin(updraft_rate * draft_time)
+	apply_force(normal_force * strength + upward_force)
