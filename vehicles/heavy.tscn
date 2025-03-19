@@ -17,6 +17,7 @@ points = PackedVector3Array(-0.114202, -0.693733, -0.741804, 0.0508949, 0.362918
 can_sleep = false
 script = ExtResource("1_kgtkd")
 strength = 65.0
+currentType = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_kgtkd")

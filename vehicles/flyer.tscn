@@ -15,6 +15,7 @@ points = PackedVector3Array(-0.509524, -0.00952381, -0.609524, 0.519048, 0.00952
 [node name="Flyer" type="RigidBody3D"]
 can_sleep = false
 script = ExtResource("1_fgsca")
+currentType = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_o44sm")
