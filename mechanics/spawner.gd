@@ -4,22 +4,19 @@ extends Node3D
 
 const GOMI_HEIGHT: float = 3.2
 const HEAVY_HEIGHT: float = 2.8
-const FLYER_HEIGHT: float = 0.8
-
+const FLYER_HEIGHT: float = 0.4
 
 @export var type: Vehicle.VEHICLE_TYPE
-
 
 @onready var gomiScene: PackedScene = preload("res://vehicles/gomi.tscn")
 @onready var heavyScene: PackedScene = preload("res://vehicles/heavy.tscn")
 @onready var flyerScene: PackedScene = preload("res://vehicles/flyer.tscn")
 
-
 var spawn_height: float = GOMI_HEIGHT
 var vehicle: Vehicle
 
 
-func spawn() -> void:
+func spawn() -> Vehicle:
 	if vehicle != null:
 		remove_child(vehicle)
 		vehicle = null
@@ -37,3 +34,5 @@ func spawn() -> void:
 	
 	add_child(vehicle)
 	vehicle.position = Vector3(0.0, spawn_height, 0.0)
+	
+	return vehicle
