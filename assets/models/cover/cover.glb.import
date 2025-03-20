@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://v26byq07xto8"
-path="res://.godot/imported/hole.gltf-ea24bfb1cfb9739b85cedcb51ef5a9ad.scn"
+uid="uid://dqltueaq00mnh"
+path="res://.godot/imported/cover.glb-58faca6011eafb043792f93e349cd618.scn"
 
 [deps]
 
-source_file="res://assets/models/hole/hole.gltf"
-dest_files=["res://.godot/imported/hole.gltf-ea24bfb1cfb9739b85cedcb51ef5a9ad.scn"]
+source_file="res://assets/models/cover/cover.glb"
+dest_files=["res://.godot/imported/cover.glb-58faca6011eafb043792f93e349cd618.scn"]
 
 [params]
 

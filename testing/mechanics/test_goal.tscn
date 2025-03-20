@@ -15,6 +15,7 @@ script = ExtResource("1_n4eta")
 [node name="Goal" parent="." instance=ExtResource("1_1dwem")]
 
 [node name="Spawner" parent="." instance=ExtResource("3_n4eta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421549, 0, -0.46528)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g6i1v")

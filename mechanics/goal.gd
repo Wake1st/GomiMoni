@@ -4,7 +4,6 @@ extends Node3D
 
 signal goal_entered
 
-
 @onready var trigger = $Trigger
 
 

@@ -1,9 +1,9 @@
 extends Node3D
 
 
-@onready var spawner_gomi = $SpawnerGomi
-@onready var spawner_heavy = $SpawnerHeavy
-@onready var spawner_flyer = $SpawnerFlyer
+@onready var spawner_gomi: Spawner = $SpawnerGomi
+@onready var spawner_heavy: Spawner = $SpawnerHeavy
+@onready var spawner_flyer: Spawner = $SpawnerFlyer
 
 
 func _input(_event):

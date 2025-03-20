@@ -2,7 +2,7 @@ extends Node3D
 
 
 @onready var goal: Goal = $Goal
-@onready var spawner = $Spawner
+@onready var spawner: Spawner = $Spawner
 
 
 func _ready():
