@@ -10,6 +10,7 @@ size = Vector3(0.04, 0.54, 0.04)
 script = ExtResource("1_5u0kh")
 
 [node name="model" parent="." instance=ExtResource("1_3geji")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="TurnOnArea" type="Area3D" parent="model/switch/bone_001/cylinder" index="1"]
 unique_name_in_owner = true

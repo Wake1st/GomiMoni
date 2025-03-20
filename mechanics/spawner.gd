@@ -4,7 +4,7 @@ extends Node3D
 
 const GOMI_HEIGHT: float = 3.2
 const HEAVY_HEIGHT: float = 2.8
-const FLYER_HEIGHT: float = 0.4
+const FLYER_HEIGHT: float = 0.8
 
 @export var type: Vehicle.VEHICLE_TYPE
 
