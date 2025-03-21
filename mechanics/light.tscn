@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2bvpfjq28i71"]
+
+[ext_resource type="Script" uid="uid://cdpl333vtgj1k" path="res://mechanics/light.gd" id="1_eern7"]
+[ext_resource type="PackedScene" uid="uid://bxj1rv8hbqund" path="res://assets/models/light/light.glb" id="1_tlxvp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlxvp"]
+albedo_color = Color(0.537255, 0.360784, 0.207843, 1)
+metallic_specular = 0.0
+emission = Color(0.717647, 0.560784, 0.262745, 1)
+
+[node name="Light" type="Node3D"]
+script = ExtResource("1_eern7")
+
+[node name="light" parent="." instance=ExtResource("1_tlxvp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="bulb" parent="light/model" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tlxvp")
+
+[editable path="light"]
