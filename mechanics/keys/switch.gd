@@ -1,14 +1,22 @@
 class_name Switch
-extends Node3D
+extends Key
 
 
-signal switch_thrown(isOn: bool)
-
-@onready var animation_player = $model/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $model/AnimationPlayer
 
 var isThrown: bool = false
 var isSwitching: bool = false
 var sensedFlyer: Flyer
+
+
+func check() -> bool:
+	return isThrown
+
+
+func reset() -> void:
+	if isThrown:
+		animation_player.stop()
+		isThrown = false
 
 
 func throw() -> void:
@@ -28,7 +36,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "flip-switch":
 		isThrown = !isThrown
 		isSwitching = false
-		emit_signal("switch_thrown", isThrown)
+		emit_signal("triggered")
 
 
 ## Used to connect the flyer to this switch

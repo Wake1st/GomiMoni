@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://3bbbx17m4iuh"]
 
-[ext_resource type="Script" uid="uid://dsu22i5ek20jc" path="res://mechanics/basket.gd" id="1_luos7"]
+[ext_resource type="Script" uid="uid://dsu22i5ek20jc" path="res://mechanics/keys/basket.gd" id="1_luos7"]
 [ext_resource type="PackedScene" uid="uid://dkg1183dpuhh0" path="res://assets/models/basket/basket.glb" id="1_tjce1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_luos7"]

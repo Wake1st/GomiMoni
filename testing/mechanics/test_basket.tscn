@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://whl5x37uv6b7"]
 
-[ext_resource type="PackedScene" uid="uid://3bbbx17m4iuh" path="res://mechanics/basket.tscn" id="1_5i643"]
+[ext_resource type="PackedScene" uid="uid://3bbbx17m4iuh" path="res://mechanics/keys/basket.tscn" id="1_5i643"]
 [ext_resource type="Script" uid="uid://3uvqw36xgt2t" path="res://testing/mechanics/test_basket.gd" id="1_l43p0"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="2_l43p0"]
 

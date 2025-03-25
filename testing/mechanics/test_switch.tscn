@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://2gssydqo1e3"]
 
 [ext_resource type="Script" uid="uid://bo2bvjalg140d" path="res://testing/mechanics/test_switch.gd" id="1_3nvtv"]
-[ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/switch.tscn" id="1_3xme3"]
+[ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/keys/switch.tscn" id="1_3xme3"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="2_3nvtv"]
 
 [sub_resource type="Environment" id="Environment_6dm4v"]

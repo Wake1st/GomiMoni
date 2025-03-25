@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxhx1ok7qr7ke"]
 
 [ext_resource type="PackedScene" uid="uid://dtvn037had7j4" path="res://assets/models/switch/switch.glb" id="1_3geji"]
-[ext_resource type="Script" uid="uid://mwva8f2w80sj" path="res://mechanics/switch.gd" id="1_5u0kh"]
+[ext_resource type="Script" uid="uid://mwva8f2w80sj" path="res://mechanics/keys/switch.gd" id="1_5u0kh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5u0kh"]
 size = Vector3(0.04, 0.54, 0.04)

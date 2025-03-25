@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bahvg5kmwr68v"]
+
+[ext_resource type="Script" uid="uid://bpn0dn85f7c2a" path="res://systems/puzzle_system.gd" id="1_57q0r"]
+
+[node name="PuzzleSystem" type="Node"]
+script = ExtResource("1_57q0r")

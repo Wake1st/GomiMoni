@@ -12,7 +12,7 @@ var switchThrown: bool = false
 
 
 func _ready():
-	switch.switch_thrown.connect(handle_switch_thrown)
+	switch.triggered.connect(handle_switch_thrown)
 
 
 func _input(_event):

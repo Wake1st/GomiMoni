@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d24022uxxoqv2"]
 
 [ext_resource type="Script" uid="uid://bjxl7iqhisi1o" path="res://testing/mechanics/test_cover.gd" id="1_nk1v7"]
-[ext_resource type="PackedScene" uid="uid://daks76jwh20pg" path="res://mechanics/cover.tscn" id="1_vvwqr"]
+[ext_resource type="PackedScene" uid="uid://daks76jwh20pg" path="res://mechanics/locks/cover.tscn" id="1_vvwqr"]
 [ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="2_nk1v7"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_rit08"]
 

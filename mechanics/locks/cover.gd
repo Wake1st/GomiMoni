@@ -1,5 +1,5 @@
 class_name Cover
-extends Node3D
+extends Lock
 
 
 const OPEN_ROTATION: float = -PI/2
@@ -12,13 +12,13 @@ var tween: Tween
 var isOpened: bool = false
 
 
-func close() -> void:
+func lock() -> void:
 	isOpened = false
 	tween = null
 	pivot.rotation.x = 0
 
 
-func open() -> void:
+func unlock() -> void:
 	isOpened = true
 	tween = create_tween()
 	tween.tween_property(pivot, "rotation:x", OPEN_ROTATION, pivot_duration)

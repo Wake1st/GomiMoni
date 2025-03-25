@@ -6,7 +6,7 @@ extends Node3D
 
 
 func _ready():
-	basket.basket_triggered.connect(handle_basket_triggered)
+	basket.triggered.connect(handle_basket_triggered)
 
 
 func _input(_event):
