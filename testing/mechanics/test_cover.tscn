@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://d24022uxxoqv2"]
+[gd_scene load_steps=6 format=3 uid="uid://d24022uxxoqv2"]
+
+[ext_resource type="Script" uid="uid://bjxl7iqhisi1o" path="res://testing/mechanics/test_cover.gd" id="1_nk1v7"]
+[ext_resource type="PackedScene" uid="uid://daks76jwh20pg" path="res://mechanics/cover.tscn" id="1_vvwqr"]
+[ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="2_nk1v7"]
+[ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_rit08"]
+
+[sub_resource type="Environment" id="Environment_nk1v7"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
 
 [node name="TestCover" type="Node3D"]
+script = ExtResource("1_nk1v7")
+
+[node name="Cover" parent="." instance=ExtResource("1_vvwqr")]
+
+[node name="Spawner" parent="." instance=ExtResource("3_rit08")]
+
+[node name="Goal" parent="." instance=ExtResource("2_nk1v7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nk1v7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7, 7)
+projection = 1
+size = 6.0

@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://2gssydqo1e3"]
+[gd_scene load_steps=5 format=3 uid="uid://2gssydqo1e3"]
+
+[ext_resource type="Script" uid="uid://bo2bvjalg140d" path="res://testing/mechanics/test_switch.gd" id="1_3nvtv"]
+[ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/switch.tscn" id="1_3xme3"]
+[ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="2_3nvtv"]
+
+[sub_resource type="Environment" id="Environment_6dm4v"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
 
 [node name="TestSwitch" type="Node3D"]
+script = ExtResource("1_3nvtv")
+
+[node name="Switch" parent="." instance=ExtResource("1_3xme3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="OnSpawner" parent="." instance=ExtResource("2_3nvtv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+type = 2
+
+[node name="OffSpawner" parent="." instance=ExtResource("2_3nvtv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+type = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6dm4v")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 2)
+projection = 1
+size = 5.22737

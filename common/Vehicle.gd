@@ -9,9 +9,7 @@ enum VEHICLE_TYPE {
 
 
 @export var strength: float = 80.0
-
-
-var currentType: VEHICLE_TYPE
+@export var currentType: VEHICLE_TYPE
 
 
 func _init():

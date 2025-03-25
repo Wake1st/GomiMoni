@@ -5,7 +5,6 @@ extends Vehicle
 @export var updraft_strength: float = 100
 @export var updraft_rate: float = 0.2
 
-
 var draft_time: float
 
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwsx32dpeak2k"]
+
+[ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="1_bpi51"]
+[ext_resource type="Script" uid="uid://co6j0b32k8jye" path="res://testing/mechanics/test_light.gd" id="1_kdwb0"]
+
+[sub_resource type="Environment" id="Environment_kdwb0"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestLight" type="Node3D"]
+script = ExtResource("1_kdwb0")
+
+[node name="Light" parent="." instance=ExtResource("1_bpi51")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kdwb0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 2)
+projection = 1
+size = 2.0
