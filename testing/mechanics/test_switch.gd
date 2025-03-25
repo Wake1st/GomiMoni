@@ -29,8 +29,8 @@ func _input(_event):
 			flyer.apply_impulse(Vector3.RIGHT * flyer_strength)
 
 
-func handle_switch_thrown(isOn: bool) -> void:
-	switchThrown = isOn
+func handle_switch_thrown() -> void:
+	switchThrown = !switchThrown
 	
-	var switch_position: String = "on" if isOn else "off"
+	var switch_position: String = "on" if switchThrown else "off"
 	print("Switch is %s" % switch_position)
