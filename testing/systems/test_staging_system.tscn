@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cposioj4pnysu"]
+
+[ext_resource type="Script" uid="uid://bjnvjfiuude0b" path="res://testing/systems/test_staging_system.gd" id="1_vlbab"]
+[ext_resource type="PackedScene" uid="uid://c2hl4snhbybv0" path="res://systems/staging_system.tscn" id="2_fdifp"]
+
+[sub_resource type="Environment" id="Environment_vlbab"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestStagingSystem" type="Node3D"]
+script = ExtResource("1_vlbab")
+
+[node name="StagingSystem" parent="." instance=ExtResource("2_fdifp")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vlbab")
