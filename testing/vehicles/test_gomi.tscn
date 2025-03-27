@@ -12,7 +12,7 @@ ambient_light_energy = 1.32
 [node name="TestGomi" type="Node3D"]
 
 [node name="Gomi" parent="." instance=ExtResource("2_0k0ak")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97682, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14559, 2.97682, -0.462933)
 
 [node name="Floor" parent="." instance=ExtResource("1_ng5os")]
 

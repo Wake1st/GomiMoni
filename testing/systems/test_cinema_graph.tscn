@@ -19,7 +19,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_lu3ks"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, 14.6204, -12.9325, 4.76333),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, -8.13199, -2.01537, 10.8042),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -66,14 +66,14 @@ transform = Transform3D(0.866025, 0.353553, -0.353553, 0, 0.707107, 0.707107, 0.
 size = 5.0
 
 [node name="SelectionCamera" type="Camera3D" parent="CinemaGraph"]
-transform = Transform3D(-0.830508, 0.393863, -0.393863, 0, 0.707107, 0.707107, 0.557006, 0.587258, -0.587258, 14.6204, -12.9325, 4.76333)
+transform = Transform3D(0.377065, -0.654913, 0.654913, 6.58651e-08, 0.707107, 0.707107, -0.926187, -0.266625, 0.266625, -8.2729, -2.15994, 10.646)
 size = 3.73155
 
 [node name="RootCreditPath" type="Path3D" parent="CinemaGraph"]
 curve = SubResource("Curve3D_rwq63")
 
 [node name="CameraBase" type="PathFollow3D" parent="CinemaGraph/RootCreditPath"]
-transform = Transform3D(0.341179, 0.593738, 0.728744, 0, 0.77526, -0.631638, -0.939995, 0.215502, 0.264503, 1.07045, 0.870932, 1.69541)
+transform = Transform3D(0.341178, 0.593738, 0.728744, 2.98022e-08, 0.77526, -0.631638, -0.939995, 0.215502, 0.264503, 1.07045, 0.870932, 1.69541)
 
 [node name="LiveCamera" type="Camera3D" parent="CinemaGraph/RootCreditPath/CameraBase"]
 transform = Transform3D(0.973154, 0.028825, -0.228347, 0.154546, 0.653351, 0.741115, 0.170552, -0.756507, 0.631355, 0, 0, 0)
@@ -100,9 +100,9 @@ transform = Transform3D(0.166631, 0, 0.986019, 0, 1, 0, -0.986019, 0, 0.166631, 
 mesh = SubResource("QuadMesh_rwq63")
 
 [node name="SettingsMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -7, -36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1716, -7, -38.4089)
 mesh = SubResource("CapsuleMesh_5m4jb")
 
 [node name="SelectionMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -14.8286, 6)
+transform = Transform3D(-0.532847, 0, 0.846212, 0, 1, 0, -0.846212, 0, -0.532847, -11.1312, -5.20202, 10.3466)
 mesh = SubResource("PrismMesh_n5hxk")

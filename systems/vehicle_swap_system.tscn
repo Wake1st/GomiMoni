@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfchsfb8lw0dr"]
+
+[ext_resource type="Script" uid="uid://ba3ix4ahjcgs5" path="res://systems/vehicle_swap_system.gd" id="1_63b87"]
+
+[node name="VehicleSwapSystem" type="Node"]
+script = ExtResource("1_63b87")

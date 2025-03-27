@@ -9,6 +9,8 @@ enum STILLS {
 	SELECTION
 }
 
+const CURVE_MAGNITUDE: float = 2.9
+
 @export var transitionDuration = 1.4
 @export var lookDuration = 0.4
 
@@ -25,9 +27,7 @@ enum STILLS {
 @onready var live_camera: Camera3D = $RootCreditPath/CameraBase/LiveCamera
 
 var currentShot: CinemaGraph.STILLS
-var tweenFollower: Tween
-var tweenSize: Tween
-var tweenBasis: Tween
+var tween: Tween
 
 
 #region SETUP
@@ -67,22 +67,22 @@ func align_positions() -> void:
 	)
 
 func align_directions() -> void:
-	var rootDirection = -rootShot.global_basis.z
+	var rootDirection = -rootShot.global_basis.z * CURVE_MAGNITUDE
 	rootCreditPath.curve.set_point_out(0, rootDirection)
 	rootSettingsPath.curve.set_point_out(0, rootDirection)
 	rootSelectionPath.curve.set_point_out(0, rootDirection)
 	
 	rootCreditPath.curve.set_point_in(
 		rootCreditPath.curve.point_count-1, 
-		creditShot.global_basis.z
+		creditShot.global_basis.z * CURVE_MAGNITUDE
 	)
 	rootSettingsPath.curve.set_point_in(
 		rootSettingsPath.curve.point_count-1, 
-		settingsShot.global_basis.z
+		settingsShot.global_basis.z * CURVE_MAGNITUDE
 	)
 	rootSelectionPath.curve.set_point_in(
 		rootSelectionPath.curve.point_count-1, 
-		selectionShot.global_basis.z
+		selectionShot.global_basis.z * CURVE_MAGNITUDE
 	)
 
 #endregion
@@ -96,14 +96,21 @@ func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null) -> void:
 		camera_base.get_parent().remove_child(camera_base)
 		parent.add_child(camera_base)
 	
-	var endRatio = 1.0 if forward else 0.0
-	tweenFollower = create_tween()
-	tweenFollower.tween_property(camera_base, "progress_ratio", endRatio, transitionDuration)
+	# setup tween
+	tween = create_tween()
+	tween.set_parallel()
 	
+	# move camera sled / base
+	var endRatio = 1.0 if forward else 0.0
+	tween.tween_property(camera_base, "progress_ratio", endRatio, transitionDuration)
+	
+	# look at target
 	var currentLook = live_camera.global_position - live_camera.global_basis.z
 	var finalLook = endShot.global_position - endShot.basis.z
-	tweenSize = create_tween()
-	tweenSize.tween_method(live_camera.look_at, currentLook, finalLook, lookDuration)
+	tween.tween_method(live_camera.look_at, currentLook, finalLook, lookDuration)
 	
-	tweenBasis = create_tween()
-	tweenBasis.tween_property(live_camera, "global_basis", endShot.global_basis, transitionDuration)
+	# ensure the final basis is correct
+	tween.tween_property(live_camera, "global_basis", endShot.global_basis, transitionDuration)
+	
+	# reset to series
+	tween.set_parallel(false)

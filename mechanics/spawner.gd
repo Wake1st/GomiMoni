@@ -2,6 +2,8 @@ class_name Spawner
 extends Node3D
 
 
+signal vehicle_spawned(spawner: Spawner)
+
 const GOMI_HEIGHT: float = 3.2
 const HEAVY_HEIGHT: float = 2.8
 const FLYER_HEIGHT: float = 0.8
@@ -19,7 +21,7 @@ var vehicle: Vehicle
 func spawn() -> Vehicle:
 	if vehicle != null:
 		remove_child(vehicle)
-		vehicle = null
+		vehicle.queue_free()
 	
 	match type:
 		Vehicle.VEHICLE_TYPE.GOMI: 
@@ -35,4 +37,5 @@ func spawn() -> Vehicle:
 	add_child(vehicle)
 	vehicle.position = Vector3(0.0, spawn_height, 0.0)
 	
+	emit_signal("vehicle_spawned", self)
 	return vehicle
