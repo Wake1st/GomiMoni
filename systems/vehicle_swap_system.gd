@@ -35,14 +35,15 @@ func _process(_delta) -> void:
 		if vehicles[nextIndex] == null:
 			return
 		else:
+			# set new current
 			currentIndex = nextIndex
-		
-		# swap vehicle controls
-		currentVehicle.isActive = false
-		currentVehicle = vehicles[currentIndex]
-		currentVehicle.isActive = true
-		
-		print("vehicle swaped: %s", currentVehicle.name)
+			
+			# swap vehicle controls
+			currentVehicle.isActive = false
+			currentVehicle = vehicles[currentIndex]
+			currentVehicle.isActive = true
+			
+			print("vehicle swaped: %s", currentVehicle.name)
 
 
 func handle_vehicle_spawned(spawner: Spawner) -> void:
@@ -55,6 +56,7 @@ func handle_vehicle_spawned(spawner: Spawner) -> void:
 		spawnedVehicles[spawner] = lastIndex
 		vehicles.push_back(spawner.vehicle)
 	
-	if currentVehicle == null:
+	if currentVehicle == null or !vehicles.has(currentVehicle):
+		currentIndex = spawnedVehicles[spawner]
 		currentVehicle = spawner.vehicle
-		currentVehicle.isActive
+		currentVehicle.isActive = true

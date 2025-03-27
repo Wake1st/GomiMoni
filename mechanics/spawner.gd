@@ -6,7 +6,7 @@ signal vehicle_spawned(spawner: Spawner)
 
 const GOMI_HEIGHT: float = 3.2
 const HEAVY_HEIGHT: float = 2.8
-const FLYER_HEIGHT: float = 0.8
+const FLYER_HEIGHT: float = 1.4
 
 @export var type: Vehicle.VEHICLE_TYPE
 
