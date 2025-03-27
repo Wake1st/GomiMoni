@@ -2,6 +2,8 @@ class_name VehicleSwapSystem
 extends Node
 
 
+signal vehicle_activated(vehicle: Vehicle)
+
 @export var spawners: Array[Spawner]
 
 var spawnedVehicles: Dictionary = {}
@@ -43,20 +45,23 @@ func _process(_delta) -> void:
 			currentVehicle = vehicles[currentIndex]
 			currentVehicle.isActive = true
 			
-			print("vehicle swaped: %s", currentVehicle.name)
+			emit_signal("vehicle_activated", currentVehicle)
 
 
 func handle_vehicle_spawned(spawner: Spawner) -> void:
 	# if we have a vehicle, then swap it
+	var vehicle = spawner.vehicle
 	if spawnedVehicles.has(spawner):
 		var index = spawnedVehicles.get(spawner)
-		vehicles[index] = spawner.vehicle
+		vehicles[index] = vehicle
 	else:
 		lastIndex += 1
 		spawnedVehicles[spawner] = lastIndex
-		vehicles.push_back(spawner.vehicle)
+		vehicles.push_back(vehicle)
 	
 	if currentVehicle == null or !vehicles.has(currentVehicle):
 		currentIndex = spawnedVehicles[spawner]
-		currentVehicle = spawner.vehicle
+		currentVehicle = vehicle
 		currentVehicle.isActive = true
+		
+		emit_signal("vehicle_activated", vehicle)
