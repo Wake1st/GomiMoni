@@ -12,6 +12,10 @@ ambient_light_energy = 1.32
 script = ExtResource("1_vlbab")
 
 [node name="StagingSystem" parent="." instance=ExtResource("2_fdifp")]
+shrinkTime = 1.6
+flipTime = 0.4
+shiftTime = 0.2
+growTime = 1.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vlbab")

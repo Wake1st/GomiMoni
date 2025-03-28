@@ -4,13 +4,14 @@
 
 [node name="StagingSystem" type="Node3D"]
 script = ExtResource("1_6eqpc")
+shrinkTime = null
+flipTime = null
+shiftTime = null
+growTime = null
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 11, 20)
 projection = 1
 size = 22.0
 
-[node name="CurrentHolder" type="Node3D" parent="."]
-
-[node name="NextHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -11)
+[node name="LevelHolder" type="Node3D" parent="."]
