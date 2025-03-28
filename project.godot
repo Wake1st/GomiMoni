@@ -12,6 +12,9 @@ config_version=5
 
 config/name="gomi-moni"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.109804, 0.121569, 0.168627, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://cs28764e3nxnu"
 config/icon="res://assets/images/icon.svg"
 
 [input]

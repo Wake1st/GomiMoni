@@ -3,6 +3,7 @@ extends Node3D
 
 
 const SLOTS_PER_ROW: int = 4
+const BUMP_TIME: float = 0.2
 
 @onready var trashScene = preload("res://ui/shop/trash.tscn")
 @onready var slotsParent: Node = $ShopSlots
@@ -12,6 +13,7 @@ var shopSlots: Array[ShopSlot] = []
 
 var focusedIndex: int = 0
 var focusedSlot: ShopSlot
+var bumpTimer: float = BUMP_TIME
 
 
 func _ready():
@@ -27,9 +29,10 @@ func _ready():
 	
 	# set initial focus
 	focusedSlot = shopSlots[0]
+	focusedSlot.focus()
 
 
-func _process(_delta):
+func _process(delta):
 	var ui_selection = UIController.get_selection()
 	if ui_selection == UIController.SELECTION.ACCEPT:
 		# do acceptance
@@ -38,9 +41,13 @@ func _process(_delta):
 		# do cancel
 		pass
 	
+	# reduce bump time
+	if bumpTimer > 0.0:
+		bumpTimer -= delta
+	
 	# check focus
 	var ui_direction = UIController.get_direction()
-	if ui_direction != Vector2.ZERO:
+	if ui_direction != Vector2.ZERO and bumpTimer < 0.0:
 		# set new index
 		focusedIndex += ui_direction.x
 		focusedIndex -= ui_direction.y * SLOTS_PER_ROW
@@ -50,3 +57,6 @@ func _process(_delta):
 		focusedSlot.unfocus()
 		focusedSlot = shopSlots[focusedIndex]
 		focusedSlot.focus()
+		
+		# reset the bump timer
+		bumpTimer = BUMP_TIME
