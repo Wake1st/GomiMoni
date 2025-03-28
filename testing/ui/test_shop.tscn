@@ -15,6 +15,6 @@ ambient_light_energy = 1.32
 environment = SubResource("Environment_6525u")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.986332, 0.164772, 0, -0.164772, 0.986332, 0, 2.27354, 2.76477)
+transform = Transform3D(1, 0, 0, 0, 0.989394, 0.145254, 0, -0.145254, 0.989394, 0, 2.35546, 2.97583)
 fov = 40.0
 size = 2.25709
