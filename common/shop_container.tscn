@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=3 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://common/shop_container.gd" id="1_0wdwb"]
+[ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
 
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
+
+[node name="Shop" parent="." instance=ExtResource("2_nf1p8")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
