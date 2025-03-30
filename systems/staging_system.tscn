@@ -29,5 +29,4 @@ transform = Transform3D(1, 0, 0, 0, 0.986392, 0.164399, 0, -0.164399, 0.986392, 
 [node name="Camera" type="Camera3D" parent="TransitionPath/Follower"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.936442, 0.350824, 0, -0.350824, 0.936442, 0, 0, 0)
-projection = 1
-size = 22.0
+size = 0.2
