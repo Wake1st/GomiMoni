@@ -1,15 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2hl4snhbybv0"]
+[gd_scene load_steps=4 format=3 uid="uid://c2hl4snhbybv0"]
 
 [ext_resource type="Script" uid="uid://cu4omvjf0ib8i" path="res://systems/staging_system.gd" id="1_6eqpc"]
 [ext_resource type="PackedScene" uid="uid://cihrsgpa8npn3" path="res://common/level_container.tscn" id="2_q865c"]
 [ext_resource type="PackedScene" uid="uid://dayffnlewvx3w" path="res://common/shop_container.tscn" id="3_6sjan"]
-
-[sub_resource type="Curve3D" id="Curve3D_q865c"]
-_data = {
-"points": PackedVector3Array(0, 1, 6, 0, -1, -6, 0, 11, 20, 0, 8, 0, 0, -8, 0, 0, 3.00364, 0.0681191, 0, 0, 0, 0, -4, 0, 0, -8.16478, 0.0681191, 0, 0, -8, 0, 0, 8, 0, -12.6321, 16.1506),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
 
 [node name="StagingSystem" type="Node3D"]
 script = ExtResource("1_6eqpc")
@@ -18,15 +11,3 @@ script = ExtResource("1_6eqpc")
 
 [node name="ShopContainer" parent="." instance=ExtResource("3_6sjan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
-
-[node name="TransitionPath" type="Path3D" parent="."]
-curve = SubResource("Curve3D_q865c")
-
-[node name="Follower" type="PathFollow3D" parent="TransitionPath"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.986392, 0.164399, 0, -0.164399, 0.986392, 0, 11, 20)
-
-[node name="Camera" type="Camera3D" parent="TransitionPath/Follower"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.936442, 0.350824, 0, -0.350824, 0.936442, 0, 0, 0)
-size = 0.2

@@ -4,26 +4,18 @@ extends Node3D
 @onready var levelScene: PackedScene = preload("res://mechanics/goal.tscn")
 @onready var staging_system: StagingSystem = $StagingSystem
 
-var activeLevel
-var nextLevel
+var isAtShop: bool = false
 
 
 func _ready():
-	activeLevel = levelScene.instantiate()
-	nextLevel = levelScene.instantiate()
-	staging_system.setup(activeLevel)
-	staging_system.transition_finished.connect(handle_transition_finished)
+	staging_system.setup()
 
 
 func _input(_event):
-	if Input.is_action_just_pressed("ui_accept"):
-		staging_system.transition(nextLevel)
-
-
-func handle_transition_finished(oldLevel: Node3D) -> void:
-	print("Transition finished!")
-	
-	oldLevel.queue_free()
-	
-	activeLevel = nextLevel
-	nextLevel = levelScene.instantiate()
+	if Input.is_key_pressed(KEY_1):
+		if isAtShop:
+			staging_system.shopContainer.close()
+			isAtShop = false
+		else:
+			staging_system.levelContainer.leave()
+			isAtShop = true
