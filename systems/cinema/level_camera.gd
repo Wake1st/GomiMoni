@@ -4,17 +4,19 @@ extends Node3D
 
 signal transition_finished(isOpen: bool)
 
-const CAMERA_LOOK: Vector3 = Vector3(0,0,-0.1)
+const CAMERA_CENTER_OFFSET: float = 0.5
+const CAMERA_LOOK: Vector3 = Vector3(0,0,CAMERA_CENTER_OFFSET)
 const OPENED_SIZE: float = 22.
 const CLOSED_SIZE: float = 0.6
 const OPENED_POSITION_Z: float = 20.0
-const CLOSED_POSITION_Z: float = 0.0
-const SLIDE_DURATION: float = 1.2
-const ZOOM_DURATION: float = 0.8
+const CLOSED_POSITION_Z: float = CAMERA_CENTER_OFFSET
+const SLIDE_DURATION: float = 0.8
+const ZOOM_DURATION: float = 1.2
 
-@onready var camera = $Camera
+@onready var camera: Camera3D = $Camera
 
-var levelTween: Tween
+var zoomTween: Tween
+var slideTween: Tween
 var isSliding: bool = false
 
 
@@ -26,7 +28,7 @@ func _ready() -> void:
 
 func _process(_delta):
 	if isSliding:
-		camera.look_at(CAMERA_LOOK)
+		camera.look_at(CAMERA_LOOK, Vector3.FORWARD)
 
 
 func open_transition() -> void:
@@ -34,13 +36,15 @@ func open_transition() -> void:
 	camera.current = true
 	
 	# zoom out of the goal 
-	levelTween = create_tween()
-	levelTween.tween_property(camera, "size", OPENED_SIZE, ZOOM_DURATION)
-	levelTween.tween_callback(func(): isSliding = true)
+	zoomTween = create_tween()
+	zoomTween.tween_property(camera, "size", OPENED_SIZE, ZOOM_DURATION)
 	
 	# move camera away from the goal
-	levelTween.tween_property(camera, "position:z", OPENED_POSITION_Z, SLIDE_DURATION)
-	levelTween.tween_callback(handle_transition_ended.bind(true))
+	slideTween = create_tween()
+	slideTween.tween_interval(ZOOM_DURATION - SLIDE_DURATION)
+	slideTween.tween_callback(func(): isSliding = true)
+	slideTween.tween_property(camera, "position:z", OPENED_POSITION_Z, SLIDE_DURATION)
+	slideTween.tween_callback(handle_transition_ended.bind(true))
 
 
 func close_transition() -> void:
@@ -49,13 +53,14 @@ func close_transition() -> void:
 	isSliding = true
 	
 	# move camera over the goal
-	levelTween = create_tween()
-	levelTween.tween_property(camera, "position:z", CLOSED_POSITION_Z, SLIDE_DURATION)
-	levelTween.tween_callback(func(): isSliding = false)
+	slideTween = create_tween()
+	slideTween.tween_property(camera, "position:z", CLOSED_POSITION_Z, SLIDE_DURATION)
+	slideTween.tween_callback(func(): isSliding = false)
 	
-	# zoom in on the goal 
-	levelTween.tween_property(camera, "size", CLOSED_SIZE, ZOOM_DURATION)
-	levelTween.tween_callback(handle_transition_ended.bind(false))
+	# zoom in on the goal
+	zoomTween = create_tween()
+	zoomTween.tween_property(camera, "size", CLOSED_SIZE, ZOOM_DURATION)
+	zoomTween.tween_callback(handle_transition_ended.bind(false))
 
 
 func handle_transition_ended(isOpen) -> void:
