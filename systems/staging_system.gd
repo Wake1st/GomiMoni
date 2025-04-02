@@ -18,8 +18,11 @@ func setup(levelNumber: int = -1) -> void:
 
 
 func handle_level_closed() -> void:
-	print("level closed!")
+	# run the shop
 	shopContainer.open()
+	
+	# while shop is running, swap for next level
+	levelContainer.swap()
 
 
 func handle_shop_closed() -> void:

@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://b1ralg8ig4c6n"]
+[gd_scene load_steps=5 format=3 uid="uid://b1ralg8ig4c6n"]
 
-[node name="GomiToHole" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="1_0jpbx"]
+[ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_yso5g"]
+[ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="2_yso5g"]
+[ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_auof0"]
+
+[node name="GomiToHole" type="Node3D" node_paths=PackedStringArray("spawners", "goal")]
+script = ExtResource("1_yso5g")
+moni = 13.84
+spawners = [NodePath("Spawner")]
+goal = NodePath("Goal")
+
+[node name="Floor" parent="." instance=ExtResource("1_0jpbx")]
+
+[node name="Goal" parent="." instance=ExtResource("2_yso5g")]
+
+[node name="Spawner" parent="." instance=ExtResource("3_auof0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
