@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://b1ralg8ig4c6n" path="res://levels/basics/gomi_to_hole.tscn" id="2_d217e"]
 
 [sub_resource type="Environment" id="Environment_2oh4n"]
+background_color = Color(0.109804, 0.121569, 0.168627, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
-ambient_light_energy = 1.32
+ambient_light_energy = 3.0
 
 [node name="TestLevel" type="Node3D"]
 script = ExtResource("1_2oh4n")
@@ -20,3 +21,7 @@ environment = SubResource("Environment_2oh4n")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 18, 16)
 projection = 1
 size = 18.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, 0.5, 0, -0.707107, 0.707107, 0.707107, -0.5, -0.5, 0, 0, 0)
+light_energy = 3.0

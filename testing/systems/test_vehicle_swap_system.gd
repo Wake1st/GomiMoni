@@ -1,10 +1,10 @@
 extends Node3D
 
 
-@onready var vehicle_swap_system = $VehicleSwapSystem
-@onready var gomi_spawner = $GomiSpawner
-@onready var flyer_spawner = $FlyerSpawner
-@onready var heavy_spawner = $HeavySpawner
+@onready var vehicle_swap_system: VehicleSwapSystem = $VehicleSwapSystem
+@onready var gomi_spawner: Spawner = $GomiSpawner
+@onready var flyer_spawner: Spawner = $FlyerSpawner
+@onready var heavy_spawner: Spawner = $HeavySpawner
 
 
 func _ready():
@@ -13,9 +13,7 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_accept"):
-		gomi_spawner.spawn()
-		flyer_spawner.spawn()
-		heavy_spawner.spawn()
+		vehicle_swap_system.spawn_all()
 
 
 func handle_vehicle_activated(vehicle: Vehicle) -> void:

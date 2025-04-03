@@ -1,5 +1,7 @@
 class_name LevelList
 
+
+static var highestLevel: int = 0
 static var items: Dictionary = {
 	0: preload("res://levels/basics/gomi_to_hole.tscn"),
 	1: preload('res://levels/basics/slopes.tscn'),
@@ -13,3 +15,16 @@ static var items: Dictionary = {
 	9: preload("res://levels/combined/flyer_help_heavy.tscn"),
 	10: preload("res://levels/combined/heavy_help_flyer.tscn")
 }
+
+
+static func increment_level() -> void:
+	if highestLevel + 1 < items.size():
+		highestLevel += 1
+
+
+## Return the level asked for; defaults to the highest level
+static func get_level(number: int = -1) -> PackedScene:
+	if number < 0:
+		number = highestLevel
+	
+	return items[number]

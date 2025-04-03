@@ -5,7 +5,7 @@ extends Node3D
 signal completed(moni: float)
 
 @export var moni: float = 1
-@export var spawners: Array[Spawner] = []
+@export var swapSystem: VehicleSwapSystem
 @export var goal: Goal
 
 var isActive: bool = false
@@ -13,6 +13,7 @@ var isActive: bool = false
 
 func _ready() -> void:
 	goal.goal_entered.connect(handle_goal_entered)
+	swapSystem.vehicle_activated.connect(handle_vehicle_activated)
 
 
 func run() -> void:
@@ -20,15 +21,16 @@ func run() -> void:
 	VehicleController.isActive = true
 	
 	# spawn the vehicles
-	for spawner in spawners:
-		spawner.spawn()
+	swapSystem.spawn_all()
 
 
 func reset() -> void:
-	# cleanup
-	
 	# re-run
 	run()
+
+
+func handle_vehicle_activated(vehicle: Vehicle) -> void:
+	print("vehicle activated: %s" % vehicle.name)
 
 
 func handle_goal_entered() -> void:

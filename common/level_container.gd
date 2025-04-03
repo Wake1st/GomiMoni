@@ -8,7 +8,6 @@ signal main_selected
 @onready var camera: LevelCamera = $LevelCamera
 
 var level: Level
-var highestLevelFinished: int = 0
 
 
 func _ready() -> void:
@@ -16,11 +15,8 @@ func _ready() -> void:
 
 
 func setup(levelNumber: int = -1) -> void:
-	# if no number is given, play the next level
-	if levelNumber < 0:
-		levelNumber = highestLevelFinished + 1
-	
-	var scene: PackedScene = LevelList.items[levelNumber]
+	# if no number is given, it plays the next level
+	var scene: PackedScene = LevelList.get_level(levelNumber)
 	level = scene.instantiate()
 	add_child(level)
 	level.completed.connect(leave)
@@ -36,7 +32,7 @@ func run(levelNumber: int = -1) -> void:
 
 func leave() -> void:
 	# increment level number
-	highestLevelFinished += 1
+	LevelList.increment_level()
 	
 	# start the goodbye
 	camera.close_transition()

@@ -13,6 +13,11 @@ var currentIndex: int = 0
 var lastIndex
 
 
+func spawn_all() -> void:
+	for spawner in spawners:
+		spawner.spawn()
+
+
 func _ready():
 	lastIndex = vehicles.size() - 1
 	

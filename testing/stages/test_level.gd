@@ -14,5 +14,5 @@ func _input(_event):
 		gomi_to_hole.reset()
 
 
-func handle_level_completed() -> void:
-	print("level complete!")
+func handle_level_completed(moni: float) -> void:
+	print("level complete! Moni = %s" % moni)

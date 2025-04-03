@@ -1,19 +1,87 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1ralg8ig4c6n"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ralg8ig4c6n"]
 
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="1_0jpbx"]
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_yso5g"]
 [ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="2_yso5g"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_auof0"]
+[ext_resource type="PackedScene" uid="uid://bfchsfb8lw0dr" path="res://systems/vehicle_swap_system.tscn" id="5_auof0"]
+[ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="6_fhmyb"]
 
-[node name="GomiToHole" type="Node3D" node_paths=PackedStringArray("spawners", "goal")]
+[node name="GomiToHole" type="Node3D" node_paths=PackedStringArray("swapSystem", "goal")]
 script = ExtResource("1_yso5g")
 moni = 13.84
-spawners = [NodePath("Spawner")]
+swapSystem = NodePath("VehicleSwapSystem")
 goal = NodePath("Goal")
 
 [node name="Floor" parent="." instance=ExtResource("1_0jpbx")]
 
 [node name="Goal" parent="." instance=ExtResource("2_yso5g")]
 
-[node name="Spawner" parent="." instance=ExtResource("3_auof0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+[node name="GomiSpawner" parent="." instance=ExtResource("3_auof0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23035, 0, 3.05497)
+
+[node name="VehicleSwapSystem" parent="." node_paths=PackedStringArray("spawners") instance=ExtResource("5_auof0")]
+spawners = [NodePath("../GomiSpawner")]
+
+[node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09669, 0, 1.7083)
+
+[node name="trash-bag" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.79431, -0.567698, 0.160913)
+
+[node name="trash-bag2" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(2.80903, -1.05327, 0, 0.996858, 2.65858, -0.968631, 0.340077, 0.906969, 2.83932, -7.1094, -0.567698, -2.06702)
+
+[node name="trash-bag3" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(2.95219, 0.533285, -0.014067, 0, -0.0791066, -2.99896, -0.53347, 2.95116, -0.0778459, -6.72558, 0.968364, 3.28634)
+
+[node name="trash-bag4" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(1.97785, 0.0431282, -2.25527, 1.80921, 1.76105, 1.62033, 1.34718, -2.42834, 1.13502, -6.96424, -0.0733781, -3.45343)
+
+[node name="trash-bag5" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-0.697842, -0.768837, 2.81459, 1.22589, 2.54888, 1.0002, -2.64768, 1.38279, -0.278736, -7.34714, -0.567698, 1.79816)
+
+[node name="trash-bag6" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(2.53276, 0, -1.60783, 0, 3, 0, 1.60783, 0, 2.53276, 5.52972, -0.567698, -4.8787)
+
+[node name="trash-bag7" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(0.00492012, -0.614551, -2.93638, 2.90481, 0.734795, -0.148917, 0.749717, -2.84296, 0.596255, 7.46455, 0.140107, -1.92578)
+
+[node name="trash-bag8" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(1.99433, -2.16427, -0.581858, 1.1909, 1.68323, -2.1791, 1.89852, 1.21764, 1.97812, 8.28379, 0.201862, 1.29683)
+
+[node name="trash-bag9" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(1.97785, 0.0431281, -2.25527, 0.59384, 2.88369, 0.575937, 2.17611, -0.826129, 1.89263, 7.53925, -0.567698, -0.358979)
+
+[node name="trash-bag10" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-0.188598, 1.2734, -2.70978, -0.158813, 2.70707, 1.28318, 2.98985, 0.224117, -0.102772, 5.99843, -0.567699, 4.02903)
+
+[node name="trash-bag11" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-1.29277e-07, -0.503094, -2.95752, 2.6419, 1.40126, -0.238364, 1.42139, -2.60449, 0.443042, 0.171647, -0.00483012, -6.10715)
+
+[node name="trash-bag12" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-2.80754, 0.801537, -0.689394, 0.996858, 2.65858, -0.968631, 0.352138, -1.13557, -2.75436, 1.73897, -0.53066, -7.09785)
+
+[node name="trash-bag13" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(0.730032, -2.61137, -1.28366, -0.368574, 1.2298, -2.71141, 2.88638, 0.817514, -0.0215644, -3.72748, 0.138213, -6.38046)
+
+[node name="trash-bag14" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-1.77263, 1.88464, -1.51853, 1.39496, 2.33373, 1.26799, 1.97785, 0.0431283, -2.25527, 3.71431, -0.567698, -6.95269)
+
+[node name="trash-bag15" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-0.407529, 1.25351, -2.69493, 1.22589, 2.54888, 1.0002, 2.7076, -0.965359, -0.85847, -2.80686, -0.567698, -6.68624)
+
+[node name="trash-bag16" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-0.300989, 0.821488, 2.86959, 0.194472, 2.88341, -0.805047, -2.97852, 0.105248, -0.342544, -0.141588, -0.206481, 7.64173)
+
+[node name="trash-bag17" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(2.75849, -1.14181, -0.295016, 0.996858, 2.65858, -0.968631, 0.630103, 0.792622, 2.82395, -1.94948, -0.567698, 6.63451)
+
+[node name="trash-bag18" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(-0.580526, 2.28977, 1.84931, -0.478889, 1.78634, -2.36213, -2.90408, -0.752298, 0.0198441, 3.81178, 0.375256, 6.57327)
+
+[node name="trash-bag19" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(2.17962, -1.77529, 1.04766, 1.3215, 2.37356, 1.27273, -1.58205, -0.463196, 2.5065, -4.04194, -0.567698, 6.39993)
+
+[node name="trash-bag20" parent="Walls" instance=ExtResource("6_fhmyb")]
+transform = Transform3D(1.61128, -1.23388, 2.20937, -0.353549, 2.48377, 1.64496, -2.50575, -1.14387, 1.1886, 2.90337, 0.127231, 7.36429)
