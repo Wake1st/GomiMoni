@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2hl4snhbybv0"]
+[gd_scene load_steps=6 format=3 uid="uid://c2hl4snhbybv0"]
 
 [ext_resource type="Script" uid="uid://cu4omvjf0ib8i" path="res://systems/staging_system.gd" id="1_6eqpc"]
 [ext_resource type="PackedScene" uid="uid://cihrsgpa8npn3" path="res://common/level_container.tscn" id="2_q865c"]
 [ext_resource type="PackedScene" uid="uid://dayffnlewvx3w" path="res://common/shop_container.tscn" id="3_6sjan"]
+[ext_resource type="PackedScene" uid="uid://bm3368pcaul5a" path="res://common/main_container.tscn" id="4_6sjan"]
 
 [sub_resource type="Environment" id="Environment_q865c"]
 background_color = Color(0.109804, 0.121569, 0.168627, 1)
@@ -17,6 +18,9 @@ script = ExtResource("1_6eqpc")
 
 [node name="ShopContainer" parent="." instance=ExtResource("3_6sjan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="MainContainer" parent="." instance=ExtResource("4_6sjan")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0, -14, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q865c")

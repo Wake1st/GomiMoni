@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://dkmnjmuh17rpn" path="res://systems/cinema/cinema_graph.gd" id="1_mmui2"]
 
-[node name="CinemaGraph" type="Node"]
+[node name="CinemaGraph" type="Node3D"]
 script = ExtResource("1_mmui2")

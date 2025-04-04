@@ -1,5 +1,5 @@
 class_name CinemaGraph
-extends Node
+extends Node3D
 
 
 enum STILLS {
@@ -31,6 +31,7 @@ var tween: Tween
 
 
 #region SETUP
+
 func _ready():
 	align_positions()
 	align_directions()
@@ -45,6 +46,7 @@ func _ready():
 	live_camera.position = rootShot.position
 	live_camera.size = rootShot.size
 	live_camera.global_basis = rootShot.global_basis
+
 
 ## connect the end path nodes to the camera transforms
 func align_positions() -> void:
@@ -65,6 +67,7 @@ func align_positions() -> void:
 		rootSelectionPath.curve.point_count-1, 
 		selectionShot.position
 	)
+
 
 func align_directions() -> void:
 	var rootDirection = -rootShot.global_basis.z * CURVE_MAGNITUDE
