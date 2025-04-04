@@ -1,13 +1,19 @@
-class_name LevelOption
+class_name MainOption
 extends StaticBody3D
 
 
-signal selected(number: int)
+enum OPTIONS {
+	LEVELS,
+	SETTINGS,
+	CREDITS
+}
 
-const HOVER_SHIFT: float = 0.4
-const HOVER_DURATION: float = 0.1
+signal selected(option: OPTIONS)
 
-@export_range(0, 5) var number: int = 0
+const HOVER_SHIFT: float = 0.6
+const HOVER_DURATION: float = 0.12
+
+@export var option: OPTIONS
 @export var image: Texture2D
 
 @onready var mesh = $Mesh
@@ -20,9 +26,9 @@ var tween: Tween
 
 func _ready() -> void:
 	# set the level image
-	var material: StandardMaterial3D = StandardMaterial3D.new()
-	material.albedo_texture = image
-	mesh.set_surface_override_material(0, material)
+	#var material: StandardMaterial3D = StandardMaterial3D.new()
+	#material.albedo_texture = image
+	#mesh.set_surface_override_material(0, material)
 	
 	# set animation values
 	basePosition = position
@@ -35,7 +41,7 @@ func setup(camera_position: Vector3) -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_accept") && hasFocus:
-		emit_signal("selected", number)
+		emit_signal("selected", option)
 		
 		# animate selection
 		tween = create_tween()

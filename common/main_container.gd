@@ -8,11 +8,29 @@ signal level_selection(number: int)
 @onready var levelSelector: LevelSelector = $LevelSelector
 @onready var selectorCamera: SelectorCamera = $SelectorCamera
 @onready var selectionCamera: Camera3D = %SelectionCamera
+@onready var mainSelector: MainSelector = $MainSelector
+@onready var cinemaGraph = $CinemaGraph
 
 
 func _ready():
 	levelSelector.setup(handle_level_selected)
+	mainSelector.setup(handle_main_selection)
 	selectorCamera.setup(selectionCamera)
+
+
+func run() -> void:
+	# enable controls
+	UIController.isActive = true
+
+
+func handle_main_selection(option: MainOption.OPTIONS) -> void:
+	match option:
+		MainOption.OPTIONS.LEVELS:
+			cinemaGraph.send_camera(CinemaGraph.STILLS.SELECTION)
+		MainOption.OPTIONS.SETTINGS:
+			cinemaGraph.send_camera(CinemaGraph.STILLS.SETTINGS)
+		MainOption.OPTIONS.CREDITS:
+			cinemaGraph.send_camera(CinemaGraph.STILLS.CREDITS)
 
 
 func handle_level_selected(number: int) -> void:

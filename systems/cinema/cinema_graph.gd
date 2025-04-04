@@ -43,29 +43,29 @@ func _ready():
 	selectionShot.visible = false
 	
 	# match the live camera to the root camera
-	live_camera.position = rootShot.position
-	live_camera.size = rootShot.size
+	live_camera.global_position = rootShot.global_position
+	live_camera.fov = rootShot.fov
 	live_camera.global_basis = rootShot.global_basis
 
 
 ## connect the end path nodes to the camera transforms
 func align_positions() -> void:
-	var rootPosition = rootShot.position
+	var rootPosition = rootShot.global_position
 	rootCreditPath.curve.set_point_position(0, rootPosition)
 	rootSettingsPath.curve.set_point_position(0, rootPosition)
 	rootSelectionPath.curve.set_point_position(0, rootPosition)
 	
 	rootCreditPath.curve.set_point_position(
 		rootCreditPath.curve.point_count-1, 
-		creditShot.position
+		creditShot.global_position
 	)
 	rootSettingsPath.curve.set_point_position(
 		rootSettingsPath.curve.point_count-1, 
-		settingsShot.position
+		settingsShot.global_position
 	)
 	rootSelectionPath.curve.set_point_position(
 		rootSelectionPath.curve.point_count-1, 
-		selectionShot.position
+		selectionShot.global_position
 	)
 
 
@@ -89,6 +89,18 @@ func align_directions() -> void:
 	)
 
 #endregion
+
+
+func send_camera(shot: STILLS) -> void:
+	match shot:
+		STILLS.ROOT:
+			traverse(rootShot, false)
+		STILLS.SELECTION:
+			traverse(selectionShot, true, rootSelectionPath)
+		STILLS.SETTINGS:
+			traverse(settingsShot, true, rootSettingsPath)
+		STILLS.CREDITS:
+			traverse(creditShot, true, rootCreditPath)
 
 
 func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null) -> void:

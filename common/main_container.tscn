@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm3368pcaul5a"]
+[gd_scene load_steps=9 format=3 uid="uid://bm3368pcaul5a"]
 
 [ext_resource type="Script" uid="uid://bdne33el3fdj8" path="res://common/main_container.gd" id="1_qk1cq"]
 [ext_resource type="PackedScene" uid="uid://kg0m54kenbg3" path="res://ui/level selection/level_selector.tscn" id="2_p1hlh"]
 [ext_resource type="PackedScene" uid="uid://c5kie8hxxn1og" path="res://systems/cinema/selector_camera.tscn" id="3_75d4h"]
 [ext_resource type="PackedScene" uid="uid://m480ad3c2gi1" path="res://systems/cinema/cinema_graph.tscn" id="3_p1hlh"]
+[ext_resource type="PackedScene" uid="uid://c3ocnr7g6di37" path="res://ui/main selection/main_selector.tscn" id="4_xjbkh"]
 
 [sub_resource type="Curve3D" id="Curve3D_75d4h"]
 _data = {
@@ -35,6 +36,9 @@ transform = Transform3D(-0.247405, -0.250773, 0.935897, 9.93977e-09, 0.965926, 0
 [node name="SelectorCamera" parent="." instance=ExtResource("3_75d4h")]
 transform = Transform3D(1, -2.98023e-08, -2.98023e-08, 0, 1, 0, 0, -7.45058e-09, 1, -8.85441, 2.38419e-07, 3.37923)
 
+[node name="MainSelector" parent="." instance=ExtResource("4_xjbkh")]
+transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -0.810041, -0.0276219, 0.585721, -3.7813, 2.24657, -2.10447)
+
 [node name="CinemaGraph" parent="." node_paths=PackedStringArray("rootShot", "creditShot", "settingsShot", "selectionShot", "rootCreditPath", "rootSettingsPath", "rootSelectionPath") instance=ExtResource("3_p1hlh")]
 rootShot = NodePath("RootCamera")
 creditShot = NodePath("CreditsCamera")
@@ -45,7 +49,7 @@ rootSettingsPath = NodePath("RootSettingsPath")
 rootSelectionPath = NodePath("RootSelectionPath")
 
 [node name="RootCamera" type="Camera3D" parent="CinemaGraph"]
-transform = Transform3D(0.602846, -0.303074, 0.738054, 0, 0.925044, 0.37986, -0.797858, -0.228997, 0.557659, 1.07045, 3.11834, 1.69541)
+transform = Transform3D(0.593208, -0.10664, 0.797955, 4.42676e-09, 0.991188, 0.132464, -0.805049, -0.0785787, 0.587981, 1.46704, 3.11834, 1.69597)
 fov = 40.0
 
 [node name="CreditsCamera" type="Camera3D" parent="CinemaGraph"]
