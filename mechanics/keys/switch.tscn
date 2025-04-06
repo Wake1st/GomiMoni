@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxhx1ok7qr7ke"]
+
+[ext_resource type="PackedScene" uid="uid://dtvn037had7j4" path="res://assets/models/switch/switch.glb" id="1_3geji"]
+[ext_resource type="Script" uid="uid://mwva8f2w80sj" path="res://mechanics/keys/switch.gd" id="1_5u0kh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5u0kh"]
+size = Vector3(0.04, 0.54, 0.04)
+
+[node name="Switch" type="Node3D"]
+script = ExtResource("1_5u0kh")
+
+[node name="model" parent="." instance=ExtResource("1_3geji")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="TurnOnArea" type="Area3D" parent="model/switch/bone_001/cylinder" index="1"]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="model/switch/bone_001/cylinder/TurnOnArea"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 6.39488e-14, -6.39488e-14, 0.999999, -0.07, 0.4, 0)
+shape = SubResource("BoxShape3D_5u0kh")
+
+[node name="TurnOffArea" type="Area3D" parent="model/switch/bone_001/cylinder" index="2"]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="model/switch/bone_001/cylinder/TurnOffArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.4, 0)
+shape = SubResource("BoxShape3D_5u0kh")
+
+[connection signal="body_entered" from="model/switch/bone_001/cylinder/TurnOnArea" to="." method="_on_turn_on_area_body_entered"]
+[connection signal="body_exited" from="model/switch/bone_001/cylinder/TurnOnArea" to="." method="_on_turn_on_area_body_exited"]
+[connection signal="body_entered" from="model/switch/bone_001/cylinder/TurnOffArea" to="." method="_on_turn_off_area_body_entered"]
+[connection signal="body_exited" from="model/switch/bone_001/cylinder/TurnOffArea" to="." method="_on_turn_off_area_body_exited"]
+[connection signal="animation_finished" from="model/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="model"]

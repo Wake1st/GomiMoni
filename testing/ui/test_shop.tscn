@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8j38u4mokv17"]
+
+[ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="1_6525u"]
+
+[sub_resource type="Environment" id="Environment_6525u"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestShop" type="Node3D"]
+
+[node name="Shop" parent="." instance=ExtResource("1_6525u")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6525u")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.989394, 0.145254, 0, -0.145254, 0.989394, 0, 2.35546, 2.97583)
+fov = 40.0
+size = 2.25709

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://3bk1bstllqwq"]
+
+[ext_resource type="PackedScene" uid="uid://bahvg5kmwr68v" path="res://systems/puzzle_system.tscn" id="1_ak6t2"]
+[ext_resource type="Script" uid="uid://vrgyq5f3pq8g" path="res://testing/systems/test_puzzle_system.gd" id="1_s25je"]
+[ext_resource type="PackedScene" uid="uid://daks76jwh20pg" path="res://mechanics/locks/cover.tscn" id="2_s25je"]
+[ext_resource type="PackedScene" uid="uid://3bbbx17m4iuh" path="res://mechanics/keys/basket.tscn" id="3_3a7lr"]
+[ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/keys/switch.tscn" id="4_g6qak"]
+
+[sub_resource type="Environment" id="Environment_efcbv"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestPuzzleSystem" type="Node3D"]
+script = ExtResource("1_s25je")
+
+[node name="PuzzleSystem" parent="." node_paths=PackedStringArray("lock", "keys") instance=ExtResource("1_ak6t2")]
+lock = NodePath("../Cover")
+keys = [NodePath("../Basket"), NodePath("../Switch")]
+
+[node name="Cover" parent="." instance=ExtResource("2_s25je")]
+
+[node name="Basket" parent="." instance=ExtResource("3_3a7lr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Switch" parent="." instance=ExtResource("4_g6qak")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_efcbv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 2)
+projection = 1
+size = 8.0

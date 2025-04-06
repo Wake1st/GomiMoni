@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn2yu3j7ummxe"]
+
+[ext_resource type="Script" uid="uid://c1btwp515alhh" path="res://ui/shop/shop_option.gd" id="1_rk1iw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gnkyh"]
+size = Vector2(3, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rk1iw"]
+data = PackedVector3Array(1.5, -0.5, 0, -1.5, -0.5, 0, 1.5, 0.5, 0, -1.5, -0.5, 0, -1.5, 0.5, 0, 1.5, 0.5, 0)
+
+[node name="ShopOption" type="StaticBody3D"]
+script = ExtResource("1_rk1iw")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_gnkyh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_rk1iw")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5kie8hxxn1og"]
+
+[ext_resource type="Script" uid="uid://tbaef8bxajmu" path="res://systems/cinema/selector_camera.gd" id="1_7dhoe"]
+
+[node name="SelectorCamera" type="Node3D"]
+script = ExtResource("1_7dhoe")
+
+[node name="Camera" type="Camera3D" parent="."]
+fov = 40.0

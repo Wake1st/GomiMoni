@@ -8,9 +8,9 @@ extends Node3D
 func _input(_event):
 	if Input.is_action_just_pressed("ui_accept"):
 		if cover.isOpened:
-			cover.close()
+			cover.lock()
 		else:
-			cover.open()
+			cover.unlock()
 	
 	if Input.is_key_pressed(KEY_S):
 		spawner.spawn()

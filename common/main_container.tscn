@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://bm3368pcaul5a"]
+
+[ext_resource type="Script" uid="uid://bdne33el3fdj8" path="res://common/main_container.gd" id="1_qk1cq"]
+[ext_resource type="PackedScene" uid="uid://kg0m54kenbg3" path="res://ui/level selection/level_selector.tscn" id="2_p1hlh"]
+[ext_resource type="PackedScene" uid="uid://m480ad3c2gi1" path="res://systems/cinema/cinema_graph.tscn" id="3_p1hlh"]
+[ext_resource type="PackedScene" uid="uid://c3ocnr7g6di37" path="res://ui/main selection/main_selector.tscn" id="4_xjbkh"]
+[ext_resource type="PackedScene" uid="uid://dqxnxeaax2nlv" path="res://systems/cinema/live_camera.tscn" id="5_xjbkh"]
+
+[sub_resource type="Curve3D" id="Curve3D_75d4h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, -7.5504, 8.34305, -1.43359),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_xjbkh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, 12.0341, 2, -33.2381),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_7tjkh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, -8.13199, -2.01537, 10.8042),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="MainContainer" type="Node3D"]
+script = ExtResource("1_qk1cq")
+
+[node name="LevelSelector" parent="." instance=ExtResource("2_p1hlh")]
+transform = Transform3D(-0.247405, -0.250773, 0.935897, 9.93977e-09, 0.965926, 0.258819, -0.968912, 0.0640331, -0.238975, -11.042, 1.35486, 4.93904)
+
+[node name="MainSelector" parent="." instance=ExtResource("4_xjbkh")]
+transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -0.810041, -0.0276219, 0.585721, -3.7813, 2.24657, -2.10447)
+
+[node name="CinemaGraph" parent="." node_paths=PackedStringArray("rootShot", "creditShot", "settingsShot", "selectionShot", "rootCreditPath", "rootSettingsPath", "rootSelectionPath", "cameraBase", "liveCamera") instance=ExtResource("3_p1hlh")]
+rootShot = NodePath("RootCamera")
+creditShot = NodePath("CreditsCamera")
+settingsShot = NodePath("SettingsCamera")
+selectionShot = NodePath("SelectionCamera")
+rootCreditPath = NodePath("RootCreditPath")
+rootSettingsPath = NodePath("RootSettingsPath")
+rootSelectionPath = NodePath("RootSelectionPath")
+cameraBase = NodePath("RootCreditPath/CameraBase")
+liveCamera = NodePath("RootCreditPath/CameraBase/LiveCamera")
+
+[node name="RootCamera" type="Camera3D" parent="CinemaGraph"]
+unique_name_in_owner = true
+transform = Transform3D(0.593208, -0.10664, 0.797955, 4.42676e-09, 0.991188, 0.132464, -0.805049, -0.0785787, 0.587981, 1.46704, 3.11834, 1.69597)
+fov = 40.0
+
+[node name="CreditsCamera" type="Camera3D" parent="CinemaGraph"]
+transform = Transform3D(0.0333949, 0.469811, 0.882135, -0.0177728, 0.882767, -0.469475, -0.999284, 5.03273e-08, 0.0378298, -5.16564, 5.04659, -1.43359)
+fov = 40.0
+size = 8.0
+
+[node name="SettingsCamera" type="Camera3D" parent="CinemaGraph"]
+transform = Transform3D(0.866025, 0.353553, -0.353554, 0, 0.707107, 0.707106, 0.5, -0.612372, 0.612373, 0.277883, 2, -8.0528)
+fov = 40.0
+size = 5.0
+
+[node name="SelectionCamera" type="Camera3D" parent="CinemaGraph"]
+unique_name_in_owner = true
+transform = Transform3D(-0.191734, -0.243379, 0.950792, 0, 0.968765, 0.24798, -0.981447, 0.0475462, -0.185745, -7.42717, 2.25339, 3.92385)
+fov = 40.0
+size = 3.73155
+
+[node name="RootCreditPath" type="Path3D" parent="CinemaGraph"]
+curve = SubResource("Curve3D_75d4h")
+
+[node name="CameraBase" type="PathFollow3D" parent="CinemaGraph/RootCreditPath"]
+transform = Transform3D(0.341178, 0.593738, 0.728744, 2.98022e-08, 0.77526, -0.631638, -0.939995, 0.215502, 0.264503, 1.07045, 0.870932, 1.69541)
+
+[node name="LiveCamera" parent="CinemaGraph/RootCreditPath/CameraBase" instance=ExtResource("5_xjbkh")]
+unique_name_in_owner = true
+current = true
+fov = 40.0
+
+[node name="RootSettingsPath" type="Path3D" parent="CinemaGraph"]
+curve = SubResource("Curve3D_xjbkh")
+
+[node name="RootSelectionPath" type="Path3D" parent="CinemaGraph"]
+curve = SubResource("Curve3D_7tjkh")

@@ -1,15 +1,17 @@
 class_name Vehicle
 extends RigidBody3D
 
+
 enum VEHICLE_TYPE {
 	GOMI,
 	HEAVY,
 	FLYER
 }
 
-
 @export var strength: float = 80.0
 @export var currentType: VEHICLE_TYPE
+
+var isActive:bool = false
 
 
 func _init():
@@ -17,6 +19,9 @@ func _init():
 
 
 func _physics_process(delta):
+	if !isActive:
+		return
+	
 	if VehicleController.get_menu_select():
 		get_tree().paused = true
 		

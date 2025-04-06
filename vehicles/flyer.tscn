@@ -9,19 +9,24 @@ material = ExtResource("1_6scl3")
 size = Vector2(1, 1.2)
 orientation = 1
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6scl3"]
-points = PackedVector3Array(-0.509524, -0.00952381, -0.609524, 0.519048, 0.00952381, 0.609524, 0.519048, -0.00952381, 0.609524, 0.519048, 0.00952381, -0.609524, -0.509524, 0.00952381, 0.609524, -0.509524, -0.00952381, 0.609524, 0.519048, -0.00952381, -0.609524, -0.509524, 0.00952381, -0.609524)
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgsca"]
+size = Vector3(1, 0.1, 1.2)
 
 [node name="Flyer" type="RigidBody3D"]
+mass = 0.2
+gravity_scale = 0.1
 can_sleep = false
 script = ExtResource("1_fgsca")
 currentType = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="TopMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_o44sm")
+
+[node name="BottomMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
 mesh = SubResource("QuadMesh_o44sm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0146357, 0)
-shape = SubResource("ConvexPolygonShape3D_6scl3")
+shape = SubResource("BoxShape3D_fgsca")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

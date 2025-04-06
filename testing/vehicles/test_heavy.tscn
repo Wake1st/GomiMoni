@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://do10ibmdg7mgj"]
+
+[ext_resource type="Script" uid="uid://8ydm7yfgrfcp" path="res://testing/vehicles/test_heavy.gd" id="1_5or4q"]
+[ext_resource type="PackedScene" uid="uid://bgytpimcoomse" path="res://vehicles/heavy.tscn" id="1_t4ej8"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_pb2jq"]
+[ext_resource type="PackedScene" uid="uid://bpsc4lrchqsyh" path="res://common/fake_cover.tscn" id="4_5or4q"]
+
+[sub_resource type="Environment" id="Environment_t4ej8"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestHeavy" type="Node3D"]
+script = ExtResource("1_5or4q")
+
+[node name="Heavy" parent="." instance=ExtResource("1_t4ej8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87411, 0)
+strength = 110.0
+
+[node name="Floor" parent="." instance=ExtResource("2_pb2jq")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t4ej8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 7, 7)
+projection = 1
+size = 17.0
+
+[node name="FakeCover" parent="." instance=ExtResource("4_5or4q")]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://uf1d7buxy3qx"]
+
+[ext_resource type="Script" uid="uid://cnty2bra6h8h6" path="res://ui/level selection/level_option.gd" id="1_8xwg7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7hcnf"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q1tkq"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[node name="LevelOption" type="StaticBody3D"]
+script = ExtResource("1_8xwg7")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_7hcnf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_q1tkq")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

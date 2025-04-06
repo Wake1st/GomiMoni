@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://daks76jwh20pg"]
+
+[ext_resource type="Script" uid="uid://b3yt2tebgrs4o" path="res://mechanics/locks/cover.gd" id="1_c7860"]
+[ext_resource type="PackedScene" uid="uid://dqltueaq00mnh" path="res://assets/models/cover/cover.glb" id="2_c7860"]
+
+[node name="Cover" type="Node3D"]
+script = ExtResource("1_c7860")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.93864)
+
+[node name="cover" parent="pivot" instance=ExtResource("2_c7860")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.189607, 0.93864)

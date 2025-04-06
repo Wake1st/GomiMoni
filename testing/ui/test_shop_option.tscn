@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://blrv717lyx8ut"]
+
+[ext_resource type="Script" uid="uid://bhbh1nvoekfdu" path="res://testing/ui/test_shop_option.gd" id="1_nncy4"]
+[ext_resource type="PackedScene" uid="uid://dn2yu3j7ummxe" path="res://ui/shop/shop_option.tscn" id="1_uvbn6"]
+[ext_resource type="Texture2D" uid="uid://kvgajfdovndp" path="res://assets/images/shop icons/Next_Level.png" id="2_nncy4"]
+
+[sub_resource type="Environment" id="Environment_c3sog"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestShopOption" type="Node3D"]
+script = ExtResource("1_nncy4")
+
+[node name="ShopOption" parent="." instance=ExtResource("1_uvbn6")]
+image = ExtResource("2_nncy4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c3sog")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.56565)
+fov = 40.0
+size = 2.25709
