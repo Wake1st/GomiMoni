@@ -2,7 +2,7 @@ class_name Level
 extends Node3D
 
 
-signal completed(moni: float)
+signal completed
 
 @export var moni: float = 1
 @export var swapSystem: VehicleSwapSystem
@@ -38,4 +38,4 @@ func handle_goal_entered() -> void:
 	VehicleController.isActive = false
 	
 	# notify container
-	emit_signal("completed", moni)
+	emit_signal("completed")

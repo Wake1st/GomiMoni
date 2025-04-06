@@ -1,7 +1,7 @@
 class_name LevelList
 
 
-static var highestLevel: int = 0
+static var highestLevel: int = -1
 static var items: Dictionary = {
 	0: preload("res://levels/basics/gomi_to_hole.tscn"),
 	1: preload('res://levels/basics/slopes.tscn'),

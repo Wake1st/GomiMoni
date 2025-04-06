@@ -2,8 +2,8 @@ class_name LevelContainer
 extends Node3D
 
 
+signal level_ready
 signal level_closed
-signal main_selected
 
 @onready var camera: LevelCamera = $LevelCamera
 
@@ -20,13 +20,14 @@ func setup(levelNumber: int = -1) -> void:
 	level = scene.instantiate()
 	add_child(level)
 	level.completed.connect(leave)
+	emit_signal("level_ready")
 
 
 func open() -> void:
 	camera.open_transition()
 
 
-func run(levelNumber: int = -1) -> void:
+func run() -> void:
 	level.run()
 
 

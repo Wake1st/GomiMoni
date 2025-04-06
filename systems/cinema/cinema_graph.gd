@@ -23,8 +23,8 @@ const CURVE_MAGNITUDE: float = 2.9
 @export var rootSettingsPath: Path3D
 @export var rootSelectionPath: Path3D
 
-@onready var camera_base: PathFollow3D = $RootCreditPath/CameraBase
-@onready var live_camera: Camera3D = $RootCreditPath/CameraBase/LiveCamera
+@export var cameraBase: PathFollow3D
+@export var liveCamera: LiveCamera
 
 var currentShot: CinemaGraph.STILLS
 var tween: Tween
@@ -43,9 +43,9 @@ func _ready():
 	selectionShot.visible = false
 	
 	# match the live camera to the root camera
-	live_camera.global_position = rootShot.global_position
-	live_camera.fov = rootShot.fov
-	live_camera.global_basis = rootShot.global_basis
+	liveCamera.global_position = rootShot.global_position
+	liveCamera.fov = rootShot.fov
+	liveCamera.global_basis = rootShot.global_basis
 
 
 ## connect the end path nodes to the camera transforms
@@ -105,27 +105,27 @@ func send_camera(shot: STILLS) -> void:
 
 func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null) -> void:
 	if parent == null:
-		parent = camera_base.get_parent()
+		parent = cameraBase.get_parent()
 	
-	if forward and parent != camera_base.get_parent():
-		camera_base.get_parent().remove_child(camera_base)
-		parent.add_child(camera_base)
+	if forward and parent != cameraBase.get_parent():
+		cameraBase.get_parent().remove_child(cameraBase)
+		parent.add_child(cameraBase)
 	
 	# setup tween
 	tween = create_tween()
-	tween.set_parallel()
+	tween.set_parallel(true)
 	
 	# move camera sled / base
 	var endRatio = 1.0 if forward else 0.0
-	tween.tween_property(camera_base, "progress_ratio", endRatio, transitionDuration)
+	tween.tween_property(cameraBase, "progress_ratio", endRatio, transitionDuration)
 	
 	# look at target
-	var currentLook = live_camera.global_position - live_camera.global_basis.z
+	var currentLook = liveCamera.global_position - liveCamera.global_basis.z
 	var finalLook = endShot.global_position - endShot.basis.z
-	tween.tween_method(live_camera.look_at, currentLook, finalLook, lookDuration)
+	tween.tween_method(liveCamera.look_at, currentLook, finalLook, lookDuration)
 	
 	# ensure the final basis is correct
-	tween.tween_property(live_camera, "global_basis", endShot.global_basis, transitionDuration)
+	tween.tween_property(liveCamera, "global_basis", endShot.global_basis, transitionDuration)
 	
 	# reset to series
 	tween.set_parallel(false)

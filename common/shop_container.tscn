@@ -1,13 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=7 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://common/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
 [ext_resource type="PackedScene" uid="uid://cj2o4yxu4n0fa" path="res://systems/cinema/shop_camera.tscn" id="3_3lbrx"]
+[ext_resource type="PackedScene" uid="uid://dn2yu3j7ummxe" path="res://ui/shop/shop_option.tscn" id="4_aot4u"]
+[ext_resource type="Texture2D" uid="uid://bvidioliq7y01" path="res://assets/images/shop icons/Main_Menu.png" id="5_1fphk"]
+[ext_resource type="Texture2D" uid="uid://kvgajfdovndp" path="res://assets/images/shop icons/Next_Level.png" id="6_cyou0"]
 
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
 
 [node name="Shop" parent="." instance=ExtResource("2_nf1p8")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -10)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -12.0754)
 
 [node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]
+
+[node name="MainOption" parent="." instance=ExtResource("4_aot4u")]
+transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, -2, 3.292, -8.567)
+option = 1
+image = ExtResource("5_1fphk")
+
+[node name="NextOption" parent="." instance=ExtResource("4_aot4u")]
+transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, 2, 3.292, -8.567)
+image = ExtResource("6_cyou0")

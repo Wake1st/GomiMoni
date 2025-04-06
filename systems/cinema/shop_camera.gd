@@ -28,7 +28,6 @@ func open_transition() -> void:
 
 
 func close_transition() -> void:
-	print("closing shop...")
 	# tween where the camera looks
 	rotationTween = create_tween()
 	rotationTween.tween_property(camera, "rotation:x", CLOSED_ROTATION_X, ROTATION_DURATION)

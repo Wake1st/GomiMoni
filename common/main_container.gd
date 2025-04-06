@@ -6,16 +6,21 @@ signal main_closed
 signal level_selection(number: int)
 
 @onready var levelSelector: LevelSelector = $LevelSelector
-@onready var selectorCamera: SelectorCamera = $SelectorCamera
-@onready var selectionCamera: Camera3D = %SelectionCamera
 @onready var mainSelector: MainSelector = $MainSelector
-@onready var cinemaGraph = $CinemaGraph
+@onready var cinemaGraph: CinemaGraph = $CinemaGraph
+@onready var liveCamera: LiveCamera = %LiveCamera
+@onready var rootCamera: Camera3D = %RootCamera
 
 
 func _ready():
 	levelSelector.setup(handle_level_selected)
 	mainSelector.setup(handle_main_selection)
-	selectorCamera.setup(selectionCamera)
+	liveCamera.setup(rootCamera)
+	liveCamera.transition_finished.connect(handle_transition_ended)
+
+
+func open() -> void:
+	liveCamera.open_transition()
 
 
 func run() -> void:
@@ -35,12 +40,17 @@ func handle_main_selection(option: MainOption.OPTIONS) -> void:
 
 func handle_level_selected(number: int) -> void:
 	# animate camera through tube
-	selectorCamera.close_transition()
+	liveCamera.close_transition()
+	
+	# turn off the ui controls
+	UIController.isActive = false
 	
 	# notify staging system for level loading
 	emit_signal("level_selection", number)
 
 
-func handle_transition_ended(_isOpen: bool) -> void:
-	if !_isOpen:
+func handle_transition_ended(isOpen: bool) -> void:
+	if isOpen:
+		run()
+	else:
 		emit_signal("main_closed")

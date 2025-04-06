@@ -21,9 +21,8 @@ var isSliding: bool = false
 
 
 func _ready() -> void:
-	camera.current = true
-	camera.size = OPENED_SIZE
-	camera.position.z = OPENED_POSITION_Z
+	camera.size = CLOSED_SIZE
+	camera.position.z = CLOSED_POSITION_Z
 
 
 func _process(_delta):

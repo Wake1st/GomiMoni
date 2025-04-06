@@ -5,22 +5,35 @@ extends Node3D
 @onready var shopContainer: ShopContainer = $ShopContainer
 @onready var mainContainer: MainContainer = $MainContainer
 
+var isMainClosed: bool = false
+var isLevelReady: bool = false
+
 
 func _ready() -> void:
 	# connect container signals
+	mainContainer.level_selection.connect(handle_level_selection)
+	mainContainer.main_closed.connect(handle_main_closed)
+	levelContainer.level_ready.connect(handle_level_ready)
 	levelContainer.level_closed.connect(handle_level_closed)
 	shopContainer.shop_closed.connect(handle_shop_closed)
-	levelContainer.main_selected.connect(handle_main_selected)
-	shopContainer.main_selected.connect(handle_main_selected)
-	mainContainer.level_selection.connect(handle_level_selection)
 
 
-func setup(levelNumber: int = -1) -> void:
-	levelContainer.run(levelNumber)
+func setup() -> void:
+	mainContainer.open()
 
 
 func handle_level_selection(number: int) -> void:
 	levelContainer.setup(number)
+
+
+func handle_level_ready() -> void:
+	isLevelReady = true
+	check_to_launch_level()
+
+
+func handle_main_closed() -> void:
+	isMainClosed = true
+	check_to_launch_level()
 
 
 func handle_level_closed() -> void:
@@ -31,10 +44,18 @@ func handle_level_closed() -> void:
 	levelContainer.swap()
 
 
-func handle_shop_closed() -> void:
-	print("shop closed!")
-	levelContainer.open()
+func handle_shop_closed(option: ShopOption.OPTIONS) -> void:
+	match option:
+		ShopOption.OPTIONS.NEXT:
+			levelContainer.open()
+		ShopOption.OPTIONS.MAIN:
+			mainContainer.open()
 
 
-func handle_main_selected() -> void:
-	print("main selected")
+func check_to_launch_level() -> void:
+	if isLevelReady && isMainClosed:
+		levelContainer.open()
+		
+		# reset checking values
+		isLevelReady = false
+		isMainClosed = false

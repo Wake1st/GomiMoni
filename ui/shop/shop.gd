@@ -43,6 +43,10 @@ func _ready():
 
 
 func _process(delta):
+	# ensure the player cannot interact when inactive
+	if !UIController.isActive:
+		return
+	
 	var uiSelection = UIController.get_selection()
 	if uiSelection == UIController.SELECTION.CANCEL:
 		# do cancel
