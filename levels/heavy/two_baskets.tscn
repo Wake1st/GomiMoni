@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bujqilubbymkh"]
+[gd_scene load_steps=12 format=3 uid="uid://bujqilubbymkh"]
 
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="1_8h0fo"]
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_einca"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="5_qgebk"]
 [ext_resource type="PackedScene" uid="uid://bahvg5kmwr68v" path="res://systems/puzzle_system.tscn" id="6_p4fp4"]
 [ext_resource type="PackedScene" uid="uid://3bbbx17m4iuh" path="res://mechanics/keys/basket.tscn" id="7_p1w47"]
+[ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="9_shqg2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l851f"]
 size = Vector3(3.74, 2, 3.74)
@@ -61,5 +62,86 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5)
 
 [node name="Basket2" parent="PuzzleSystem" instance=ExtResource("7_p1w47")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+
+[node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09669, 0, 1.7083)
+
+[node name="trash-bag" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.53517, -0.567698, 3.218)
+
+[node name="trash-bag2" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.80903, -1.05327, 0, 0.996858, 2.65858, -0.968631, 0.340077, 0.906969, 2.83932, -8.6182, -0.567698, -6.74466)
+
+[node name="trash-bag3" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.95219, 0.533285, -0.014067, 0, -0.0791066, -2.99896, -0.53347, 2.95116, -0.0778459, -7.22539, 0.968364, -0.606938)
+
+[node name="trash-bag4" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(1.97785, 0.0431282, -2.25527, 1.80921, 1.76105, 1.62033, 1.34718, -2.42834, 1.13502, -6.96424, -0.0733781, -9.20794)
+
+[node name="trash-bag5" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-0.697842, -0.768837, 2.81459, 1.54439, 2.35798, 1.02702, -2.47545, 1.68785, -0.152704, -8.12933, -0.567698, -2.25058)
+
+[node name="trash-bag6" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.53276, 0, -1.60783, 0, 3, 0, 1.60783, 0, 2.53276, 11.8401, -0.567698, -10.8165)
+
+[node name="trash-bag7" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(0.00492012, -0.614551, -2.93638, 2.90481, 0.734795, -0.148917, 0.749717, -2.84296, 0.596255, 13.8923, 0.140107, -7.59504)
+
+[node name="trash-bag8" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.12135, -2.07449, -0.443087, 1.1909, 1.68323, -2.1791, 1.75544, 1.36499, 2.01375, 13.0554, 0.201862, -3.83746)
+
+[node name="trash-bag9" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.12419, -0.0143449, -2.1184, 0.59384, 2.88369, 0.575937, 2.03351, -0.82713, 2.04467, 12.8914, -0.567698, -5.48587)
+
+[node name="trash-bag10" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-2.98109, -0.269944, 0.200536, -0.0388335, 2.05338, 2.18681, -0.334031, 2.17043, -2.04394, 11.2699, -0.187119, -1.82963)
+
+[node name="trash-bag11" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-1.29277e-07, -0.503094, -2.95752, 2.6419, 1.40126, -0.238364, 1.42139, -2.60449, 0.443042, 9.90963, -0.00483012, -10.9822)
+
+[node name="trash-bag12" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-2.80754, 0.801537, -0.689394, 0.996858, 2.65858, -0.968631, 0.352138, -1.13557, -2.75436, 1.73897, -0.53066, -11.4656)
+
+[node name="trash-bag13" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(0.730032, -2.61137, -1.28366, -0.368574, 1.2298, -2.71141, 2.88638, 0.817514, -0.0215644, -3.82693, 0.138213, -11.5954)
+
+[node name="trash-bag14" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-1.77263, 1.88464, -1.51853, 1.39496, 2.33373, 1.26799, 1.97785, 0.0431283, -2.25527, 3.71431, -0.567698, -12.4143)
+
+[node name="trash-bag15" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-0.407529, 1.25351, -2.69493, 1.22589, 2.54888, 1.0002, 2.7076, -0.965359, -0.85847, -3.04709, -0.567698, -11.3919)
+
+[node name="trash-bag21" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(0.682666, -2.39869, 1.66741, 1.16312, 1.79394, 2.10451, -2.67976, 0.167578, 1.33821, 4.51891, -0.00483012, 6.55145)
+
+[node name="trash-bag22" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-2.17886, 1.42864, 1.48714, 1.15346, 2.63768, -0.843926, -1.70941, -0.0411505, -2.465, 5.50923, -0.53066, 5.29802)
+
+[node name="trash-bag23" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.72334, -1.24865, -0.155827, 1.22589, 2.54888, 1.0002, -0.283904, -0.971637, 2.82406, 1.59305, -0.567698, 7.32417)
+
+[node name="trash-bag16" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(0.0173816, 0.805643, 2.88974, 1.8138, 2.29896, -0.651846, -2.38952, 1.75092, -0.473772, -4.17124, -0.206481, 4.69133)
+
+[node name="trash-bag17" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.69333, -1.20634, -0.53919, 0.842615, 2.51099, -1.40888, 1.01783, 1.11342, 2.59312, 8.47931, -0.567698, 2.927)
+
+[node name="trash-bag18" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-1.66139, 1.82196, 1.70887, -0.465422, 1.79061, -2.36159, -2.45422, -1.57296, -0.708968, 8.82912, 0.375256, 1.95214)
+
+[node name="trash-bag26" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-2.45082, 0.56133, -1.63659, 1.71735, 1.13417, -2.18275, 0.210306, -2.72004, -1.24787, -9.2831, 0.375256, -7.86134)
+
+[node name="trash-bag19" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(0.609764, -1.64455, 2.43385, 2.03817, 2.02685, 0.858907, -2.11519, 1.47896, 1.52926, -8.12298, -0.567698, -4.54001)
+
+[node name="trash-bag24" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-2.40113, -1.79787, 0.0474243, -1.79638e-08, -0.0791066, -2.99896, 1.7985, -2.40029, 0.0633151, 7.93206, 0.968364, -10.712)
+
+[node name="trash-bag25" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(-1.24091, 1.79484, -2.0588, 1.3215, 2.37356, 1.27273, 2.39035, -0.380452, -1.77242, -0.996617, -0.567698, -11.7126)
+
+[node name="trash-bag20" parent="Walls" instance=ExtResource("9_shqg2")]
+transform = Transform3D(2.45685, -1.4412, -0.941715, 1.62567, 2.48223, 0.442403, 0.566657, -0.872612, 2.81379, -0.849388, -0.151961, 6.63762)
 
 [editable path="Floor"]

@@ -42,7 +42,9 @@ func handle_level_closed(passed: bool) -> void:
 		shopContainer.open()
 		
 		# while shop is running, swap for next level
-		levelContainer.swap()
+		# unless we have beaten all levels
+		if !LevelList.all_levels_complete():
+			levelContainer.swap()
 	else:
 		# return to menu if not passed
 		mainContainer.open()

@@ -19,6 +19,7 @@ static func increment_level() -> void:
 
 ## Return the level asked for; defaults to the highest level
 static func get_level(number: int = -1) -> PackedScene:
+	# autoplay the highest if no specific level is supplied
 	if number < 0:
 		number = highestLevel + 1
 	
