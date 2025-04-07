@@ -3,12 +3,14 @@ extends Node3D
 
 
 signal level_ready
-signal level_closed
+signal level_closed(passed: bool)
 
 @onready var camera: LevelCamera = $LevelCamera
 @onready var pauseSelector: PauseSelector = $PauseSelector
+@onready var instructions: Instructions = $Instructions
 
 var level: Level
+var passedLevel: bool = false
 
 
 func _ready() -> void:
@@ -39,10 +41,17 @@ func run() -> void:
 
 
 func exit() -> void:
+	# marked for failure
+	passedLevel = false
+	
+	# start the goodbye
 	camera.close_transition()
 
 
 func success() -> void:
+	# marked for success
+	passedLevel = true
+	
 	# increment level number
 	LevelList.increment_level()
 	
@@ -65,12 +74,19 @@ func swap() -> void:
 
 
 func handle_pause_selection(option: PauseOption.OPTIONS) -> void:
+	# regardless of what we choose, we must close the menu
+	pauseSelector.toggle_menu()
+	instructions.toggle_menu()
+	
+	# choose what to do based on the selected option
 	match option:
 		PauseOption.OPTIONS.RETURN:
-			pauseSelector.toggle_menu()
+			# play sfx?
+			pass
 		PauseOption.OPTIONS.RESET:
 			level.reset()
-		PauseOption.OPTIONS.QUIT:
+		PauseOption.OPTIONS.LEAVE:
+			# leave the area
 			exit()
 
 
@@ -78,4 +94,4 @@ func handle_camera_transition_finished(isOpen: bool) -> void:
 	if isOpen:
 		run()
 	else:
-		emit_signal("level_closed")
+		emit_signal("level_closed", passedLevel)

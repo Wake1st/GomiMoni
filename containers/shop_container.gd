@@ -23,23 +23,28 @@ func open() -> void:
 
 
 func run() -> void:
-	UIController.isActive = true
-
 	# if there are no more levels, disable the next button
 	if LevelList.all_levels_complete():
 		nextOption.visible = false
+	
+	# allow user to buy stuff
+	UIController.isActive = true
 
 
 
 func close() -> void:
+	# dont allow user to buy
 	UIController.isActive = false
 	
+	# start goodbye
 	camera.close_transition()
 
 
 func handle_option_selection(option: ShopOption.OPTIONS) -> void:
+	# store option
 	nextOption = option
 	
+	# close shop either way
 	close()
 
 

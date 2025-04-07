@@ -15,6 +15,7 @@ collision_layer = 2
 collision_mask = 5
 can_sleep = false
 script = ExtResource("1_fint7")
+strength = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_16wge")

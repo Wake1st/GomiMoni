@@ -14,4 +14,4 @@ script = ExtResource("1_6eqpc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -4.26171)
 
 [node name="MainContainer" parent="." instance=ExtResource("4_6sjan")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -6.6672, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -10, 0)

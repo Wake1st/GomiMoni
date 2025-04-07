@@ -12,6 +12,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 [node name="ResetOption" parent="." instance=ExtResource("2_ff2pr")]
 option = 1
 
-[node name="QuitOption" parent="." instance=ExtResource("2_ff2pr")]
+[node name="LeaveOption" parent="." instance=ExtResource("2_ff2pr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 option = 2

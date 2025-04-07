@@ -1,9 +1,9 @@
-class_name PauseSelector
+class_name Instructions
 extends Node3D
 
 
-const CLOSED_POSITION_Z: float = 26
-const OPENED_POSITION_Z: float = 6
+const CLOSED_POSITION_X: float = -20
+const OPENED_POSITION_X: float = -10
 const TWEEN_DURATION: float = 0.2
 
 var isOpen: bool = false
@@ -11,12 +11,7 @@ var tween: Tween
 
 
 func _ready() -> void:
-	position.z = CLOSED_POSITION_Z
-
-
-func setup(callback: Callable) -> void:
-	for child: PauseOption in get_children():
-		child.selected.connect(callback)
+	position.x = CLOSED_POSITION_X
 
 
 func _input(event: InputEvent) -> void:
@@ -31,14 +26,14 @@ func toggle_menu() -> void:
 		UIController.isActive = false
 		
 		# animate the pause menu
-		tween.tween_property(self, "position:z", CLOSED_POSITION_Z, TWEEN_DURATION)
+		tween.tween_property(self, "position:x", CLOSED_POSITION_X, TWEEN_DURATION)
 		tween.tween_callback(handle_transition_ended.bind(false))
 	else:
 		# turn off the vehicle controls
 		VehicleController.isActive = false
 		
 		# animate the pause menu
-		tween.tween_property(self, "position:z", OPENED_POSITION_Z, TWEEN_DURATION)
+		tween.tween_property(self, "position:x", OPENED_POSITION_X, TWEEN_DURATION)
 		tween.tween_callback(handle_transition_ended.bind(true))
 
 

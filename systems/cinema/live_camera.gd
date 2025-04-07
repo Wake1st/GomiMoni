@@ -7,14 +7,16 @@ signal transition_finished(isOpen: bool)
 const CLOSE_ROTATION: Vector3 = Vector3(-PI/2, 0, 0)
 const DURATION: float = 1.2
 
+var startPosition: Vector3
+var startRotation: Vector3
 var openRotation: Vector3
 var rotationTween: Tween
 
 
 func setup(node: Node3D) -> void:
 	# match the live camera with it's setup
-	global_position = node.global_position
-	global_rotation = node.global_rotation
+	startPosition = node.global_position
+	startRotation = node.global_rotation
 	openRotation = rotation
 	
 	# ready the camera to be opened
@@ -25,6 +27,11 @@ func open_transition() -> void:
 	# first, ensure this is the live camera
 	current = true
 	
+	# ready the camera to be opened
+	global_position = startPosition
+	global_rotation = startRotation
+	rotation.x = CLOSE_ROTATION.x
+	
 	# tween where the camera looks
 	rotationTween = create_tween()
 	rotationTween.tween_property(self, "rotation:x", openRotation.x, DURATION)
@@ -32,9 +39,6 @@ func open_transition() -> void:
 
 
 func close_transition() -> void:
-	# first, store the camera rotation for later
-	openRotation = rotation
-	
 	# tween where the camera looks
 	rotationTween = create_tween()
 	rotationTween.tween_property(self, "rotation:x", CLOSE_ROTATION.x, DURATION)

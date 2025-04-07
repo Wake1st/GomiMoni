@@ -5,7 +5,7 @@ extends StaticBody3D
 enum OPTIONS {
 	RETURN,
 	RESET,
-	QUIT
+	LEAVE
 }
 
 signal selected(option: OPTIONS)
