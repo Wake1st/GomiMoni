@@ -7,7 +7,7 @@ const DROP_DISTANCE: float = 0.8
 
 @export var drop_duration: float = 0.6
 
-@onready var trigger = $trigger
+@onready var trigger: Area3D = $trigger
 @onready var basket = $basket
 
 var tween: Tween
@@ -35,8 +35,6 @@ func handle_drop_callback() -> void:
 	emit_signal("triggered")
 
 
-func _on_trigger_body_entered(body):
-	if body is Vehicle:
-		var vehicle = body as Vehicle
-		if vehicle.currentType == Vehicle.VEHICLE_TYPE.HEAVY:
-			toggleOn()
+func _on_trigger_body_entered(_body):
+	# only the heavy layer is checked
+	toggleOn()

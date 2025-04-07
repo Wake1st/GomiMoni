@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgytpimcoomse"]
 
 [ext_resource type="Material" uid="uid://bjfcuq1pjjse8" path="res://assets/materials/heavy.tres" id="1_dljfe"]
-[ext_resource type="Script" uid="uid://cc6c7k3vb6i2n" path="res://common/Vehicle.gd" id="1_kgtkd"]
+[ext_resource type="Script" uid="uid://cc6c7k3vb6i2n" path="res://vehicles/vehicle.gd" id="1_kgtkd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kgtkd"]
 material = ExtResource("1_dljfe")
@@ -14,9 +14,13 @@ rings = 4
 points = PackedVector3Array(-0.114202, -0.693733, -0.741804, 0.0508949, 0.362918, 1.00839, 0.385503, 0.333869, 0.886464, -0.0487649, 0.903632, -0.584138, -1.00776, 0.363715, 0.0510089, -0.44605, -0.861917, 0.482149, 1.00918, -0.363415, -0.0481016, 0.71162, 0.396295, -0.708594, 0.42115, 0.906464, 0.421157, -0.716165, -0.333709, -0.749452, 0.448472, -0.861134, 0.481712, -0.418467, 0.906778, 0.421302, -0.74539, -0.364969, 0.682011, 0.449524, -0.86316, -0.479806, -0.0482206, 0.364045, -1.00868, 0.0508948, -0.362917, 1.00839, 1.00827, 0.363084, 0.0508947, 0.746587, -0.364171, 0.680525, -0.646023, -0.863237, -0.0481552, -0.710347, 0.397162, -0.710147, 0.681852, -0.364994, -0.74544, -0.678042, 0.364467, 0.747399, -0.0490598, -1.07748, -0.0488539, -1.00874, -0.364068, -0.0480212, 0.482175, 0.861977, -0.445881, -0.646022, 0.863234, -0.0481551, 0.0510037, -0.363715, -1.00777, -0.0490598, 1.07748, -0.0488539, 0.746586, 0.364171, 0.680524, -0.447101, -0.863941, -0.480241, 0.646809, -0.860514, 0.0510347, -0.048246, 0.861288, 0.647398)
 
 [node name="Heavy" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 17
+mass = 0.8
+gravity_scale = 0.9
 can_sleep = false
 script = ExtResource("1_kgtkd")
-strength = 75.0
+strength = 95.0
 currentType = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
