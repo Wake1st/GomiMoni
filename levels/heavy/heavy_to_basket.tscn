@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bl7jwxvg4qljc"]
 
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_48p10"]
-[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_8vyoi"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="2_8vyoi"]
 [ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="3_vkxr1"]
 [ext_resource type="PackedScene" uid="uid://bfchsfb8lw0dr" path="res://systems/vehicle_swap_system.tscn" id="4_knpra"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="5_3wl6h"]

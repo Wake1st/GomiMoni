@@ -11,12 +11,19 @@ signal level_selection(number: int)
 @onready var liveCamera: LiveCamera = %LiveCamera
 @onready var rootCamera: Camera3D = %RootCamera
 
+var atSubMenu: bool = false
+
 
 func _ready():
 	levelSelector.setup(handle_level_selected)
 	mainSelector.setup(handle_main_selection)
 	liveCamera.setup(rootCamera)
 	liveCamera.transition_finished.connect(handle_transition_ended)
+
+
+func _input(_event: InputEvent) -> void:
+	if atSubMenu && Input.is_action_just_pressed("ui_cancel"):
+		cinemaGraph.send_camera(CinemaGraph.STILLS.ROOT)
 
 
 func open() -> void:
@@ -32,6 +39,10 @@ func run() -> void:
 
 
 func handle_main_selection(option: MainOption.OPTIONS) -> void:
+	# first, ensure we know we're away from the main menu
+	atSubMenu = true
+
+	# next, send the camera to the sub menu
 	match option:
 		MainOption.OPTIONS.LEVELS:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.SELECTION)

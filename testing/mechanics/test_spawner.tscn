@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="1_33wer"]
 [ext_resource type="Script" uid="uid://fmstr1rsawsy" path="res://testing/mechanics/test_spawner.gd" id="1_ldr1y"]
-[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_ldr1y"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="2_ldr1y"]
 
 [sub_resource type="Environment" id="Environment_oml2j"]
 ambient_light_source = 2

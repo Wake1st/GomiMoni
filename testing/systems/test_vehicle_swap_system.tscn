@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cavmpeo8if0ic" path="res://testing/systems/test_vehicle_swap_system.gd" id="1_jt27f"]
 [ext_resource type="PackedScene" uid="uid://bfchsfb8lw0dr" path="res://systems/vehicle_swap_system.tscn" id="1_ueehh"]
-[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_b5hfp"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="2_b5hfp"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_8c4oo"]
-[ext_resource type="PackedScene" uid="uid://bpsc4lrchqsyh" path="res://common/fake_cover.tscn" id="5_x5grb"]
+[ext_resource type="PackedScene" uid="uid://bpsc4lrchqsyh" path="res://boundaries/fake_cover.tscn" id="5_x5grb"]
 
 [sub_resource type="Environment" id="Environment_jt27f"]
 ambient_light_source = 2

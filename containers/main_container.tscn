@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm3368pcaul5a"]
+[gd_scene load_steps=11 format=3 uid="uid://bm3368pcaul5a"]
 
-[ext_resource type="Script" uid="uid://bdne33el3fdj8" path="res://common/main_container.gd" id="1_qk1cq"]
+[ext_resource type="Script" uid="uid://bdne33el3fdj8" path="res://containers/main_container.gd" id="1_qk1cq"]
 [ext_resource type="PackedScene" uid="uid://kg0m54kenbg3" path="res://ui/level selection/level_selector.tscn" id="2_p1hlh"]
 [ext_resource type="PackedScene" uid="uid://m480ad3c2gi1" path="res://systems/cinema/cinema_graph.tscn" id="3_p1hlh"]
+[ext_resource type="PackedScene" uid="uid://d2gnke7wsxplx" path="res://ui/settings.tscn" id="4_vvqpg"]
 [ext_resource type="PackedScene" uid="uid://c3ocnr7g6di37" path="res://ui/main selection/main_selector.tscn" id="4_xjbkh"]
+[ext_resource type="PackedScene" uid="uid://nlfc3hq02dvq" path="res://ui/credits.tscn" id="5_kt8qv"]
 [ext_resource type="PackedScene" uid="uid://dqxnxeaax2nlv" path="res://systems/cinema/live_camera.tscn" id="5_xjbkh"]
 
 [sub_resource type="Curve3D" id="Curve3D_75d4h"]
@@ -30,11 +32,17 @@ point_count = 2
 [node name="MainContainer" type="Node3D"]
 script = ExtResource("1_qk1cq")
 
+[node name="MainSelector" parent="." instance=ExtResource("4_xjbkh")]
+transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -0.810041, -0.0276219, 0.585721, -3.7813, 2.24657, -2.10447)
+
 [node name="LevelSelector" parent="." instance=ExtResource("2_p1hlh")]
 transform = Transform3D(-0.247405, -0.250773, 0.935897, 9.93977e-09, 0.965926, 0.258819, -0.968912, 0.0640331, -0.238975, -11.042, 1.35486, 4.93904)
 
-[node name="MainSelector" parent="." instance=ExtResource("4_xjbkh")]
-transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -0.810041, -0.0276219, 0.585721, -3.7813, 2.24657, -2.10447)
+[node name="Settings" parent="." instance=ExtResource("4_vvqpg")]
+transform = Transform3D(0.870201, 0, -0.492697, 0, 1, 0, 0.492697, 0, 0.870201, 1.30817, 2.38419e-07, -9.916)
+
+[node name="Credits" parent="." instance=ExtResource("5_kt8qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03255, 7.26611, -1.8199)
 
 [node name="CinemaGraph" parent="." node_paths=PackedStringArray("rootShot", "creditShot", "settingsShot", "selectionShot", "rootCreditPath", "rootSettingsPath", "rootSelectionPath", "cameraBase", "liveCamera") instance=ExtResource("3_p1hlh")]
 rootShot = NodePath("RootCamera")

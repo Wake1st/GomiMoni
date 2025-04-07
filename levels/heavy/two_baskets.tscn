@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bujqilubbymkh"]
 
-[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="1_8h0fo"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="1_8h0fo"]
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_einca"]
 [ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="2_einca"]
 [ext_resource type="PackedScene" uid="uid://daks76jwh20pg" path="res://mechanics/locks/cover.tscn" id="3_shqg2"]

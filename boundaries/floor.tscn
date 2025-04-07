@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://blqjs6prqtn6s"]
 
 [ext_resource type="Material" uid="uid://br2vy14cw0nw1" path="res://assets/materials/floor.tres" id="1_cc2nj"]
-[ext_resource type="PackedScene" uid="uid://xbue1n4rtifu" path="res://common/wall.tscn" id="2_xe8b4"]
-[ext_resource type="PackedScene" uid="uid://debpqxjf74ekm" path="res://common/ceiling.tscn" id="3_301fb"]
+[ext_resource type="PackedScene" uid="uid://xbue1n4rtifu" path="res://boundaries/wall.tscn" id="2_xe8b4"]
+[ext_resource type="PackedScene" uid="uid://debpqxjf74ekm" path="res://boundaries/ceiling.tscn" id="3_301fb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cc2nj"]
 size = Vector3(40, 0.5, 40)
