@@ -21,6 +21,9 @@ func _ready():
 
 func open() -> void:
 	liveCamera.open_transition()
+	
+	# unlock new levels
+	levelSelector.check_available_options()
 
 
 func run() -> void:

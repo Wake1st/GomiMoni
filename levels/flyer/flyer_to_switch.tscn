@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://dhjwtdcgx7tpx"]
+[gd_scene load_steps=10 format=3 uid="uid://dhjwtdcgx7tpx"]
 
-[node name="FlyerToSwitch" type="Node3D"]
+[ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_hf23h"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_lhtbq"]
+[ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="3_keemi"]
+[ext_resource type="PackedScene" uid="uid://daks76jwh20pg" path="res://mechanics/locks/cover.tscn" id="4_1eyob"]
+[ext_resource type="PackedScene" uid="uid://bfchsfb8lw0dr" path="res://systems/vehicle_swap_system.tscn" id="5_koswl"]
+[ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="6_kti2n"]
+[ext_resource type="PackedScene" uid="uid://bahvg5kmwr68v" path="res://systems/puzzle_system.tscn" id="7_pysvi"]
+[ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/keys/switch.tscn" id="8_hf23h"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hf23h"]
+data = PackedVector3Array(20, 0.25, 20, 20, -0.25, 20, -20, -0.25, 20, -20, 0.25, 20, 20, 0.25, 20, -20, -0.25, 20, -20, 0.25, 20, -0.97082, 0.25, 0.705343, -0.37082, 0.25, 1.14127, -20, 0.25, 20, -0.37082, 0.25, 1.14127, 0.370821, 0.25, 1.14127, -20, -0.25, 20, -0.97082, -0.25, -0.705342, -20, -0.25, -20, 20, -0.25, -20, 0.37082, -0.25, -1.14127, 0.97082, -0.25, -0.705342, 20, -0.25, -20, 0.97082, -0.25, -0.705342, 1.2, -0.25, -5.24537e-08, 20, -0.25, -20, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, 0.25, -20, 20, -0.25, -20, 20, -0.25, 20, 0.370821, -0.25, 1.14127, -0.37082, -0.25, 1.14127, 20, -0.25, 20, 0.97082, -0.25, 0.705342, 0.370821, -0.25, 1.14127, -20, -0.25, -20, 0.37082, -0.25, -1.14127, 20, -0.25, -20, 20, -0.25, -20, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, -0.25, -20, 20, 0.25, -20, -20, 0.25, -20, 20, 0.25, -20, 0.37082, 0.25, -1.14127, -0.370821, 0.25, -1.14127, 20, 0.25, -20, 0.97082, 0.25, -0.705342, 0.37082, 0.25, -1.14127, 20, 0.25, 20, 0.97082, 0.25, -0.705342, 20, 0.25, -20, 20, 0.25, 20, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, -0.705342, 20, 0.25, 20, 0.370821, 0.25, 1.14127, 0.97082, 0.25, 0.705342, 20, 0.25, 20, 0.97082, 0.25, 0.705342, 1.2, 0.25, -5.24537e-08, -20, 0.25, 20, 0.370821, 0.25, 1.14127, 20, 0.25, 20, 20, 0.25, 20, 20, 0.25, -20, 20, -0.25, 20, -20, -0.25, -20, -0.97082, -0.25, -0.705342, -0.370821, -0.25, -1.14127, -20, -0.25, 20, -0.37082, -0.25, 1.14127, -0.97082, -0.25, 0.705343, 20, -0.25, 20, -0.37082, -0.25, 1.14127, -20, -0.25, 20, -20, 0.25, -20, -0.97082, 0.25, 0.705343, -20, 0.25, 20, -20, -0.25, 20, -0.97082, -0.25, 0.705343, -1.2, -0.25, 5.24537e-08, -20, -0.25, 20, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, -0.705342, -20, -0.25, -20, -20, 0.25, 20, -20, -0.25, 20, -20, 0.25, -20, -20, 0.25, 20, -20, -0.25, -20, -20, 0.25, -20, -20, -0.25, -20, 20, -0.25, -20, 20, 0.25, -20, -0.370821, 0.25, -1.14127, -20, 0.25, -20, -20, 0.25, -20, -0.97082, 0.25, -0.705342, -1.2, 0.25, 5.24537e-08, -20, 0.25, -20, -0.370821, 0.25, -1.14127, -0.97082, 0.25, -0.705342, -20, 0.25, -20, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, 0.705343, -20, -0.25, -20, -0.370821, -0.25, -1.14127, 0.37082, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -0.370821, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.370821, 0.25, -1.14127, 0.97082, -0.25, 0.705342, 0.97082, 0.25, 0.705342, 0.370821, 0.25, 1.14127, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.370821, 0.25, 1.14127, -0.37082, 0.25, 1.14127, 0.370821, -0.25, 1.14127, 0.97082, 0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.97082, -0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 0.37082, 0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, 0.705343, -1.2, 0.25, 5.24537e-08, 0.370821, -0.25, 1.14127, 0.97082, -0.25, 0.705342, 0.370821, 0.25, 1.14127, -0.97082, -0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, 0.370821, -0.25, 1.14127, -0.37082, 0.25, 1.14127, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.37082, -0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -0.370821, -0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.97082, 0.25, -0.705342, -0.370821, 0.25, -1.14127, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.370821, 0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.370821, -0.25, -1.14127, -0.37082, 0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -1.2, 0.25, 5.24537e-08, -0.97082, -0.25, 0.705343)
+
+[node name="FlyerToSwitch" type="Node3D" node_paths=PackedStringArray("swapSystem", "puzzleSystem", "goal")]
+script = ExtResource("1_hf23h")
+moni = 52.63
+swapSystem = NodePath("VehicleSwapSystem")
+puzzleSystem = NodePath("PuzzleSystem")
+goal = NodePath("Goal")
+
+[node name="Floor" parent="." instance=ExtResource("2_lhtbq")]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.263468, 0)
+shape = SubResource("ConcavePolygonShape3D_hf23h")
+
+[node name="Goal" parent="." instance=ExtResource("3_keemi")]
+
+[node name="Cover" parent="Goal" instance=ExtResource("4_1eyob")]
+
+[node name="VehicleSwapSystem" parent="." node_paths=PackedStringArray("spawners") instance=ExtResource("5_koswl")]
+spawners = [NodePath("GomiSpawner"), NodePath("FlyerSpawner")]
+
+[node name="GomiSpawner" parent="VehicleSwapSystem" instance=ExtResource("6_kti2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="FlyerSpawner" parent="VehicleSwapSystem" instance=ExtResource("6_kti2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+type = 2
+
+[node name="PuzzleSystem" parent="." node_paths=PackedStringArray("lock", "keys") instance=ExtResource("7_pysvi")]
+lock = NodePath("../Goal/Cover")
+keys = [NodePath("Switch")]
+
+[node name="Switch" parent="PuzzleSystem" instance=ExtResource("8_hf23h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -4)
+
+[editable path="Floor"]

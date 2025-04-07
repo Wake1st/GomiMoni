@@ -6,9 +6,17 @@ extends Node
 @export var keys: Array[Key]
 
 
-func _ready():
+func _ready() -> void:
 	for key in keys:
 		key.triggered.connect(check_keys)
+
+
+## Resets the puzzle to initial state
+func reset() -> void:
+	for key: Key in keys:
+		key.reset()
+	
+	lock.lock()
 
 
 ## Will unlock the lock when all keys are true

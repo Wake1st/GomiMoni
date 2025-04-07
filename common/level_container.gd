@@ -17,9 +17,14 @@ func _ready() -> void:
 func setup(levelNumber: int = -1) -> void:
 	# if no number is given, it plays the next level
 	var scene: PackedScene = LevelList.get_level(levelNumber)
+	
+	# setup the level
 	level = scene.instantiate()
 	add_child(level)
 	level.completed.connect(leave)
+	camera.opened_size = level.cameraSize
+	
+	# the level is ready to play
 	emit_signal("level_ready")
 
 
@@ -42,7 +47,7 @@ func leave() -> void:
 func teardown() -> void:
 	level.completed.disconnect(leave)
 	remove_child(level)
-	level = null
+	level.queue_free()
 
 
 func swap() -> void:

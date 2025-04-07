@@ -6,12 +6,13 @@ signal transition_finished(isOpen: bool)
 
 const CAMERA_CENTER_OFFSET: float = 0.5
 const CAMERA_LOOK: Vector3 = Vector3(0,0,CAMERA_CENTER_OFFSET)
-const OPENED_SIZE: float = 22.
 const CLOSED_SIZE: float = 0.6
-const OPENED_POSITION_Z: float = 20.0
+const OPENED_POSITION_Z: float = 12.0
 const CLOSED_POSITION_Z: float = CAMERA_CENTER_OFFSET
 const SLIDE_DURATION: float = 0.8
 const ZOOM_DURATION: float = 1.2
+
+@export var opened_size: float = 16
 
 @onready var camera: Camera3D = $Camera
 
@@ -36,7 +37,7 @@ func open_transition() -> void:
 	
 	# zoom out of the goal 
 	zoomTween = create_tween()
-	zoomTween.tween_property(camera, "size", OPENED_SIZE, ZOOM_DURATION)
+	zoomTween.tween_property(camera, "size", opened_size, ZOOM_DURATION)
 	
 	# move camera away from the goal
 	slideTween = create_tween()

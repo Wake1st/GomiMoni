@@ -52,6 +52,16 @@ select_menu={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Other"
+3d_physics/layer_2="Gomi"
+3d_physics/layer_3="Goal"
+3d_physics/layer_4="Heavy"
+3d_physics/layer_5="Basket"
+3d_physics/layer_6="Flyer"
+3d_physics/layer_7="Switch"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

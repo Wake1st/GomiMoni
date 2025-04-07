@@ -4,8 +4,13 @@ extends Node3D
 
 signal completed
 
+@export_category("Values")
 @export var moni: float = 1
+@export var cameraSize: float = 16
+
+@export_category("Systems")
 @export var swapSystem: VehicleSwapSystem
+@export var puzzleSystem: PuzzleSystem
 @export var goal: Goal
 
 var isActive: bool = false
@@ -22,6 +27,10 @@ func run() -> void:
 	
 	# spawn the vehicles
 	swapSystem.spawn_all()
+	
+	# ensure puzzles are set to unlocked
+	if puzzleSystem != null:
+		puzzleSystem.reset()
 
 
 func reset() -> void:
