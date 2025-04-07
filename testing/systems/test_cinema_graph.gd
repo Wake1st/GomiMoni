@@ -17,17 +17,17 @@ var isForward: bool = false
 
 func _input(_event):
 	if Input.is_key_pressed(KEY_1) and !isForward:
-		cinema_graph.traverse(creditsCamera, true, rootCreditPath)
+		cinema_graph.send_camera(CinemaGraph.STILLS.CREDITS)
 		isForward = true
 	
 	if Input.is_key_pressed(KEY_2) and !isForward:
-		cinema_graph.traverse(settingsCamera, true, rootSettingsPath)
+		cinema_graph.send_camera(CinemaGraph.STILLS.SETTINGS)
 		isForward = true
 		
 	if Input.is_key_pressed(KEY_3) and !isForward:
-		cinema_graph.traverse(selectionCamera, true, rootSelectionPath)
+		cinema_graph.send_camera(CinemaGraph.STILLS.SELECTION)
 		isForward = true
 	
 	if Input.is_action_just_pressed("ui_accept") and isForward:
-		cinema_graph.traverse(rootCamera, false)
+		cinema_graph.send_camera(CinemaGraph.STILLS.ROOT)
 		isForward = false

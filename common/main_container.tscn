@@ -8,21 +8,21 @@
 
 [sub_resource type="Curve3D" id="Curve3D_75d4h"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, -7.5504, 8.34305, -1.43359),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.46704, 3.11834, 1.69597, 0, 0, 0, 0, 0, 0, -5.16564, 5.04659, -1.43359),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_xjbkh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, 12.0341, 2, -33.2381),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.46704, 3.11834, 1.69597, 0, 0, 0, 0, 0, 0, 0.277883, 2, -8.0528),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_7tjkh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.07045, 0.870932, 1.69541, 0, 0, 0, 0, 0, 0, -8.13199, -2.01537, 10.8042),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.46704, 3.11834, 1.69597, 0, 0, 0, 0, 0, 0, -7.42717, 2.25339, 3.92385),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -72,7 +72,7 @@ size = 3.73155
 curve = SubResource("Curve3D_75d4h")
 
 [node name="CameraBase" type="PathFollow3D" parent="CinemaGraph/RootCreditPath"]
-transform = Transform3D(0.341178, 0.593738, 0.728744, 2.98022e-08, 0.77526, -0.631638, -0.939995, 0.215502, 0.264503, 1.07045, 0.870932, 1.69541)
+transform = Transform3D(0.426722, 0.229965, 0.874654, -2.98022e-08, 0.967128, -0.254279, -0.904379, 0.108507, 0.412696, 1.46704, 3.11834, 1.69597)
 
 [node name="LiveCamera" parent="CinemaGraph/RootCreditPath/CameraBase" instance=ExtResource("5_xjbkh")]
 unique_name_in_owner = true

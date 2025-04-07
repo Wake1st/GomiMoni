@@ -6,6 +6,7 @@ extends Node3D
 
 func _ready():
 	mainContainer.main_closed.connect(handle_main_closed)
+	mainContainer.open()
 
 
 func handle_main_closed() -> void:
