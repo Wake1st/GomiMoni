@@ -25,6 +25,11 @@ func open() -> void:
 func run() -> void:
 	UIController.isActive = true
 
+	# if there are no more levels, disable the next button
+	if LevelList.all_levels_complete():
+		nextOption.visible = false
+
+
 
 func close() -> void:
 	UIController.isActive = false

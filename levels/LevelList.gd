@@ -27,3 +27,7 @@ static func get_level(number: int = -1) -> PackedScene:
 
 static func size() -> int:
 	return items.size()
+
+
+static func all_levels_complete() -> bool:
+	return items.size() - 1 == highestLevel

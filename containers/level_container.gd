@@ -6,12 +6,14 @@ signal level_ready
 signal level_closed
 
 @onready var camera: LevelCamera = $LevelCamera
+@onready var pauseSelector: PauseSelector = $PauseSelector
 
 var level: Level
 
 
 func _ready() -> void:
 	camera.transition_finished.connect(handle_camera_transition_finished)
+	pauseSelector.setup(handle_pause_selection)
 
 
 func setup(levelNumber: int = -1) -> void:
@@ -21,7 +23,7 @@ func setup(levelNumber: int = -1) -> void:
 	# setup the level
 	level = scene.instantiate()
 	add_child(level)
-	level.completed.connect(leave)
+	level.completed.connect(success)
 	camera.opened_size = level.cameraSize
 	
 	# the level is ready to play
@@ -36,7 +38,11 @@ func run() -> void:
 	level.run()
 
 
-func leave() -> void:
+func exit() -> void:
+	camera.close_transition()
+
+
+func success() -> void:
 	# increment level number
 	LevelList.increment_level()
 	
@@ -45,7 +51,7 @@ func leave() -> void:
 
 
 func teardown() -> void:
-	level.completed.disconnect(leave)
+	level.completed.disconnect(success)
 	remove_child(level)
 	level.queue_free()
 
@@ -56,6 +62,16 @@ func swap() -> void:
 	
 	# setup the next level
 	setup()
+
+
+func handle_pause_selection(option: PauseOption.OPTIONS) -> void:
+	match option:
+		PauseOption.OPTIONS.RETURN:
+			pauseSelector.toggle_menu()
+		PauseOption.OPTIONS.RESET:
+			level.reset()
+		PauseOption.OPTIONS.QUIT:
+			exit()
 
 
 func handle_camera_transition_finished(isOpen: bool) -> void:

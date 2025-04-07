@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://caxcp0un455y1"]
+
+[ext_resource type="Script" uid="uid://cp3shqatg4oqj" path="res://ui/pause selection/pause_selector.gd" id="1_vxhcq"]
+[ext_resource type="PackedScene" uid="uid://bv4wm7c4ycjm2" path="res://ui/pause selection/pause_option.tscn" id="2_ff2pr"]
+
+[node name="PauseSelector" type="Node3D"]
+script = ExtResource("1_vxhcq")
+
+[node name="ReturnOption" parent="." instance=ExtResource("2_ff2pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="ResetOption" parent="." instance=ExtResource("2_ff2pr")]
+option = 1
+
+[node name="QuitOption" parent="." instance=ExtResource("2_ff2pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+option = 2

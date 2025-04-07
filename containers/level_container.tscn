@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cihrsgpa8npn3"]
+[gd_scene load_steps=4 format=3 uid="uid://cihrsgpa8npn3"]
 
 [ext_resource type="Script" uid="uid://clp47c1fgusu1" path="res://containers/level_container.gd" id="1_4etl1"]
+[ext_resource type="PackedScene" uid="uid://caxcp0un455y1" path="res://ui/pause selection/pause_selector.tscn" id="3_12sx8"]
 [ext_resource type="PackedScene" uid="uid://ndqlf6ku8fig" path="res://systems/cinema/level_camera.tscn" id="3_m56ld"]
 
 [node name="LevelContainer" type="Node3D"]
 script = ExtResource("1_4etl1")
 
 [node name="LevelCamera" parent="." instance=ExtResource("3_m56ld")]
+
+[node name="PauseSelector" parent="." instance=ExtResource("3_12sx8")]
+transform = Transform3D(3, 0, 0, 0, 0.972099, 2.83814, 0, -2.83814, 0.972099, 0, 8, 26)
