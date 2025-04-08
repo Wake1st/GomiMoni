@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://n5kbe7mrhuy6"]
+[gd_scene load_steps=8 format=3 uid="uid://n5kbe7mrhuy6"]
 
 [ext_resource type="Script" uid="uid://c5oqwykofpo00" path="res://ui/instructions.gd" id="1_q4e6u"]
+[ext_resource type="Texture2D" uid="uid://1430chshepbk" path="res://assets/images/pause icons/Instructions-movement_.png" id="2_byy8q"]
+[ext_resource type="Texture2D" uid="uid://gwc8sagi3kqg" path="res://assets/images/pause icons/Instructions-swapping_.png" id="3_22tfe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrofa"]
+albedo_texture = ExtResource("2_byy8q")
 
 [sub_resource type="QuadMesh" id="QuadMesh_h0dwk"]
+material = SubResource("StandardMaterial3D_jrofa")
 size = Vector2(2, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soo13"]
+albedo_texture = ExtResource("3_22tfe")
+
 [sub_resource type="QuadMesh" id="QuadMesh_vvihy"]
+material = SubResource("StandardMaterial3D_soo13")
 size = Vector2(2, 2)
 
 [node name="Instructions" type="Node3D"]

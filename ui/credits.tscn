@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://nlfc3hq02dvq"]
+[gd_scene load_steps=4 format=3 uid="uid://nlfc3hq02dvq"]
+
+[ext_resource type="Texture2D" uid="uid://c107wdelhmsbv" path="res://assets/images/menu icons/Credit_Billboard.png" id="1_ed0b0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orljq"]
+albedo_texture = ExtResource("1_ed0b0")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_06xqq"]
+material = SubResource("StandardMaterial3D_orljq")
 size = Vector2(4, 3)
 orientation = 0
 
