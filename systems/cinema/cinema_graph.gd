@@ -125,11 +125,11 @@ func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null, instant: 
 		# move camera sled / base
 		tween.tween_property(cameraBase, "progress_ratio", endRatio, transitionDuration)
 		
-		# ensure the final basis is correct
-		tween.tween_property(liveCamera, "global_basis", endShot.global_basis, transitionDuration)
-		
 		# look at target
 		tween.tween_method(liveCamera.look_at, currentLook, finalLook, lookDuration)
+		
+		# ensure the final basis is correct
+		tween.tween_property(liveCamera, "global_basis", endShot.global_basis, transitionDuration)
 		
 		# reset to series
 		tween.set_parallel(false)
