@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://cihnkfy24jp2c"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_1v7bo"]
+
+[resource]
+script = ExtResource("1_1v7bo")
+name = "Tower Toppler"
+cost = 54.27
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"

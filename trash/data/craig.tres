@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://bd7mhotddegfp"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_50yrl"]
+
+[resource]
+script = ExtResource("1_50yrl")
+name = "Craig"
+cost = 19.99
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"

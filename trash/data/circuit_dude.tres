@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://dgsucf2otqfu2"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_6mxfh"]
+
+[resource]
+script = ExtResource("1_6mxfh")
+name = "Circuit Dude"
+cost = 13.58
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"

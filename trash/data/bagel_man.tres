@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://c8yvh5wic0vsr"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_ptcsg"]
+
+[resource]
+script = ExtResource("1_ptcsg")
+name = "Bagel Man"
+cost = 43.91
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"
