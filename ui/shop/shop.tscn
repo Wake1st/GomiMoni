@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsknet41108fj"]
+[gd_scene load_steps=16 format=3 uid="uid://dsknet41108fj"]
 
 [ext_resource type="Script" uid="uid://djpfr82erssm1" path="res://ui/shop/shop.gd" id="1_mno6o"]
 [ext_resource type="Material" uid="uid://br2vy14cw0nw1" path="res://assets/materials/floor.tres" id="1_recjj"]
-[ext_resource type="PackedScene" uid="uid://bk8oqfaqpbtul" path="res://ui/shop/shop_slot.tscn" id="3_id86m"]
+[ext_resource type="PackedScene" uid="uid://bk8oqfaqpbtul" path="res://ui/shop/slots/shop_slot.tscn" id="3_id86m"]
+[ext_resource type="PackedScene" uid="uid://ci226unee4hgc" path="res://trash/items/bagel_man.tscn" id="4_5yxir"]
 [ext_resource type="Material" uid="uid://cldctws136eal" path="res://assets/materials/deep.tres" id="4_n5hkn"]
-[ext_resource type="PackedScene" uid="uid://bchrdmdj5c21d" path="res://ui/shop/bought_slot.tscn" id="5_fre4r"]
+[ext_resource type="PackedScene" uid="uid://bchrdmdj5c21d" path="res://ui/shop/slots/bought_slot.tscn" id="5_fre4r"]
+[ext_resource type="PackedScene" uid="uid://cv8bo6lorbdhv" path="res://trash/items/grombit.tscn" id="5_jr27e"]
+[ext_resource type="PackedScene" uid="uid://c1qfrlqbu8cwy" path="res://trash/items/salt_man.tscn" id="6_ii63a"]
+[ext_resource type="PackedScene" uid="uid://tmenckjoy566" path="res://trash/items/circuit_dude.tscn" id="7_5dmvb"]
+[ext_resource type="PackedScene" uid="uid://6rfdqmao7wq6" path="res://trash/items/craig.tscn" id="8_2usvx"]
+[ext_resource type="PackedScene" uid="uid://cx3yu23oqakck" path="res://trash/items/dragon.tscn" id="9_sl1tc"]
+[ext_resource type="PackedScene" uid="uid://ciedw4sq3ypyc" path="res://trash/items/tower_toppler.tscn" id="10_kl7pl"]
+[ext_resource type="PackedScene" uid="uid://bwd5lpjlxicxh" path="res://trash/items/peter_pumpkin.tscn" id="11_7nuxp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ln5ss"]
 size = Vector3(3, 1, 2)
@@ -22,36 +30,46 @@ mesh = SubResource("BoxMesh_ln5ss")
 surface_material_override/0 = ExtResource("4_n5hkn")
 
 [node name="ShopSlots" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0421079, 0)
 
-[node name="ShopSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
+[node name="BagelManSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.949815, 1.49886, 0.00815648)
+trashScene = ExtResource("4_5yxir")
 
-[node name="ShopSlot2" parent="ShopSlots" instance=ExtResource("3_id86m")]
+[node name="GrombitSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
 transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, -0.36261, 1.5581, -0.253876)
+trashScene = ExtResource("5_jr27e")
 
-[node name="ShopSlot3" parent="ShopSlots" instance=ExtResource("3_id86m")]
-transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, 0.361687, 1.53547, -0.166073)
+[node name="SaltManSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
+transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, 0.307302, 1.53547, -0.166073)
+trashScene = ExtResource("6_ii63a")
 
-[node name="ShopSlot4" parent="ShopSlots" instance=ExtResource("3_id86m")]
+[node name="CircuitManSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
 transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, 0.942353, 1.50421, -0.00217503)
+trashScene = ExtResource("7_5dmvb")
 
-[node name="ShopSlot5" parent="ShopSlots" instance=ExtResource("3_id86m")]
+[node name="CraigSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00444, 1.30481, 0.778506)
+trashScene = ExtResource("8_2usvx")
 
-[node name="ShopSlot6" parent="ShopSlots" instance=ExtResource("3_id86m")]
-transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, -0.305661, 1.33012, 0.642995)
+[node name="DragonSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
+transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, -0.37845, 1.33012, 0.642995)
+trashScene = ExtResource("9_sl1tc")
 
-[node name="ShopSlot7" parent="ShopSlots" instance=ExtResource("3_id86m")]
-transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, 0.389961, 1.36557, 0.591267)
+[node name="TowerTopplerSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
+transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, 0.408624, 1.36557, 0.623622)
+trashScene = ExtResource("10_kl7pl")
 
-[node name="ShopSlot8" parent="ShopSlots" instance=ExtResource("3_id86m")]
+[node name="PeterPumpkinSlot" parent="ShopSlots" instance=ExtResource("3_id86m")]
 transform = Transform3D(1, 0, 0, 0, 0.999969, -0.00790626, 0, 0.00790626, 0.999969, 1.07753, 1.32, 0.690328)
+trashScene = ExtResource("11_7nuxp")
 
 [node name="Lid" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44855, -0.86939)
 mesh = SubResource("BoxMesh_5wpfl")
 
 [node name="BoughtSlots" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0879657)
 
 [node name="BoughtSlot" parent="BoughtSlots" instance=ExtResource("5_fre4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999261, 2.79888, -0.795254)

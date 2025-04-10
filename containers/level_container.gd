@@ -48,15 +48,18 @@ func exit() -> void:
 	camera.close_transition()
 
 
-func success() -> void:
+func success(moni: float) -> void:
+	# start the goodbye
+	camera.close_transition()
+	
 	# marked for success
 	passedLevel = true
 	
 	# increment level number
 	LevelList.increment_level()
 	
-	# start the goodbye
-	camera.close_transition()
+	# give the player moni
+	TrashData.moni += moni
 
 
 func teardown() -> void:

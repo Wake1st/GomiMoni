@@ -2,7 +2,7 @@ class_name Level
 extends Node3D
 
 
-signal completed
+signal completed(m: float)
 
 @export_category("Values")
 @export var moni: float = 1
@@ -47,4 +47,4 @@ func handle_goal_entered() -> void:
 	VehicleController.isActive = false
 	
 	# notify container
-	emit_signal("completed")
+	emit_signal("completed", moni)

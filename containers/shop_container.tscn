@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=8 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://containers/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
@@ -6,14 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://dn2yu3j7ummxe" path="res://ui/shop/shop_option.tscn" id="4_aot4u"]
 [ext_resource type="Texture2D" uid="uid://bvidioliq7y01" path="res://assets/images/shop icons/Main_Menu.png" id="5_1fphk"]
 [ext_resource type="Texture2D" uid="uid://kvgajfdovndp" path="res://assets/images/shop icons/Next_Level.png" id="6_cyou0"]
+[ext_resource type="PackedScene" uid="uid://bxr3lw24v8tq0" path="res://ui/shop/moni sign/price_board.tscn" id="7_ml1eq"]
 
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
 
+[node name="CostBoard" parent="." instance=ExtResource("7_ml1eq")]
+transform = Transform3D(0.6, 0, 0, 0, 0.579556, -0.155291, 0, 0.155291, 0.579556, 2.2226, 10, -14)
+
+[node name="MoniBoard" parent="." instance=ExtResource("7_ml1eq")]
+transform = Transform3D(0.6, 0, 0, 0, 0.579556, -0.155291, 0, 0.155291, 0.579556, 2.2226, 10.6751, -14)
+
 [node name="Shop" parent="." instance=ExtResource("2_nf1p8")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -12.0754)
-
-[node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]
 
 [node name="MainOption" parent="." instance=ExtResource("4_aot4u")]
 transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, -2, 3.292, -8.567)
@@ -23,3 +28,11 @@ image = ExtResource("5_1fphk")
 [node name="NextOption" parent="." instance=ExtResource("4_aot4u")]
 transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, 2, 3.292, -8.567)
 image = ExtResource("6_cyou0")
+
+[node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48354)
+
+[node name="Camera" parent="ShopCamera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.982655, 0.185444, 0, -0.185444, 0.982655, 0, 8.5, 0.494504)
+
+[editable path="ShopCamera"]

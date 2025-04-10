@@ -2,14 +2,15 @@ class_name Shop
 extends Node3D
 
 
+signal item_focused(trash: Trash)
+signal item_purchased
+
 const SLOTS_PER_ROW: int = 4
 const FOCUS_TIME: float = 0.2
 
-@onready var trashScene = preload("res://ui/shop/trash.tscn")
 @onready var slotsParent: Node = $ShopSlots
 @onready var boughtParent = $BoughtSlots
 
-var trashItems: Array[Trash] = []
 var shopSlots: Array[ShopSlot] = []
 var boughtSlots: Array[BoughtSlot] = []
 
@@ -30,9 +31,8 @@ func _ready():
 	
 	# fill the slots with trash
 	for slot in shopSlots:
-		var trash: Trash = trashScene.instantiate()
-		trashItems.push_back(trash)
-		slot.add_trash(trash)
+		slot.mouse_focused.connect(handle_mouse_focused)
+		slot.attempt_purchase.connect(handle_attempt_purchase)
 	
 	# set initial focus
 	focusedSlot = shopSlots[0]
@@ -44,29 +44,9 @@ func _ready():
 
 func _process(delta):
 	# ensure the player cannot interact when inactive
-	if !UIController.isActive:
+	# or if all items are sold out
+	if !UIController.isActive || isSoldOut:
 		return
-	
-	var uiSelection = UIController.get_selection()
-	if uiSelection == UIController.SELECTION.CANCEL:
-		# do cancel
-		pass
-	
-	# before any interactions, check the store inventory
-	if isSoldOut:
-		return
-	
-	# attempt a trash purchase
-	if uiSelection == UIController.SELECTION.ACCEPT:
-		# TODO: validate Moni before purchase
-		
-		# move the bought item
-		var boughtSlot = boughtSlots[focusedIndex]
-		var relativePosition = focusedSlot.get_trash_position() - boughtSlot.global_position
-		boughtSlot.store_item(focusedSlot.remove_trash(), relativePosition)
-		
-		# shift to a new focus
-		refocus(Vector2(1,0), true)
 	
 	# reduce focus timer
 	if focusTimer > 0.0:
@@ -81,8 +61,50 @@ func _process(delta):
 		focusTimer = FOCUS_TIME
 
 
+func handle_mouse_focused(slot: ShopSlot) -> void:
+	# swap focus
+	focusedSlot.unfocus()
+	focusedSlot = slot
+	focusedSlot.focus()
+	
+	# set new index
+	focusedIndex = shopSlots.find(slot)
+	
+	# notify container of focused item
+	emit_signal("item_focused", slot.item.data)
+
+
+func handle_attempt_purchase(cost: float) -> void:
+	# validate Moni before purchase
+	if cost < TrashData.moni:
+		# charge user
+		TrashData.moni -= cost
+		
+		# move the bought item
+		var boughtSlot = boughtSlots[focusedIndex]
+		var relativePosition = focusedSlot.get_trash_position() - boughtSlot.global_position
+		var purchasedItem = focusedSlot.remove_item()
+		boughtSlot.store_item(purchasedItem, relativePosition)
+		
+		# store a record of purchased items
+		TrashData.purchased_items.push_back(purchasedItem.data)
+		
+		# notify container of purchase
+		emit_signal("item_purchased")
+		
+		# shift to a new focus
+		refocus(Vector2(1,0), true)
+
+
 func refocus(direction: Vector2, isPurchased: bool = false) -> void:
 	# iterate index
+	set_next_valid_index(direction)
+	
+	# swap focus
+	swap_index(isPurchased)
+
+
+func set_next_valid_index(direction: Vector2) -> void:
 	var slotsChecked: int = 0
 	while(true):
 		if slotsChecked < itemCount:
@@ -97,9 +119,13 @@ func refocus(direction: Vector2, isPurchased: bool = false) -> void:
 		
 		if !shopSlots[focusedIndex].is_empty():
 			break
-	
-	# swap focus
+
+
+func swap_index(isPurchased: bool) -> void:
 	if !isPurchased:
 		focusedSlot.unfocus()
 	focusedSlot = shopSlots[focusedIndex]
 	focusedSlot.focus()
+	
+	# notify container of focused item
+	emit_signal("item_focused", focusedSlot.item.data)
