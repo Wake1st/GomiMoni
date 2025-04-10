@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtksx0n0jxoye"
+path="res://.godot/imported/Basket Hit.wav-9c34da31b73d9d964b87fcf50b0dd5ef.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Basket Hit.wav"
+dest_files=["res://.godot/imported/Basket Hit.wav-9c34da31b73d9d964b87fcf50b0dd5ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
