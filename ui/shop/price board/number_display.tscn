@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://l3rib6551vwc"]
 
-[ext_resource type="Script" uid="uid://bpkfbwnktmsls" path="res://ui/shop/moni sign/number_display.gd" id="1_w05sw"]
+[ext_resource type="Script" uid="uid://bpkfbwnktmsls" path="res://ui/shop/price board/number_display.gd" id="1_w05sw"]
 
 [node name="NumberDisplay" type="MeshInstance3D"]
 script = ExtResource("1_w05sw")

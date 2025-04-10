@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn2yu3j7ummxe" path="res://ui/shop/shop_option.tscn" id="4_aot4u"]
 [ext_resource type="Texture2D" uid="uid://bvidioliq7y01" path="res://assets/images/shop icons/Main_Menu.png" id="5_1fphk"]
 [ext_resource type="Texture2D" uid="uid://kvgajfdovndp" path="res://assets/images/shop icons/Next_Level.png" id="6_cyou0"]
-[ext_resource type="PackedScene" uid="uid://bxr3lw24v8tq0" path="res://ui/shop/moni sign/price_board.tscn" id="7_ml1eq"]
+[ext_resource type="PackedScene" uid="uid://bxr3lw24v8tq0" path="res://ui/shop/price board/price_board.tscn" id="7_ml1eq"]
 
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
