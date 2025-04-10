@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://nlfc3hq02dvq"]
+[gd_scene load_steps=6 format=3 uid="uid://nlfc3hq02dvq"]
 
+[ext_resource type="Script" uid="uid://bqf1tj2hdo23j" path="res://ui/main menu/credits.gd" id="1_74u3g"]
 [ext_resource type="Texture2D" uid="uid://c107wdelhmsbv" path="res://assets/images/menu icons/Credit_Billboard.png" id="1_ed0b0"]
+[ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="3_1bagf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orljq"]
 albedo_texture = ExtResource("1_ed0b0")
@@ -11,6 +13,10 @@ size = Vector2(4, 3)
 orientation = 0
 
 [node name="Credits" type="Node3D"]
+script = ExtResource("1_74u3g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_06xqq")
+
+[node name="CancelOption" parent="." instance=ExtResource("3_1bagf")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0.025, -1.37816, 1.89348)

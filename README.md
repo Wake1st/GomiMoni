@@ -12,6 +12,7 @@ Role the **GOMI** (trash) into the **HOLE** to receive **MONI**; buy **TRASH** w
 - pop-ups: vehicle activation, instructions
 - UI: back button for the main menu
 - mechanics: connect light to keys
+- set dressing: backgrounds, lighting
 
 ## Credits
 

@@ -18,6 +18,10 @@ boot_splash/fullsize=false
 boot_splash/image="uid://cs28764e3nxnu"
 config/icon="res://assets/images/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://base/default_bus_layout.tres"
+
 [input]
 
 ui_accept={

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://uf1d7buxy3qx"]
 
-[ext_resource type="Script" uid="uid://cnty2bra6h8h6" path="res://ui/level selection/level_option.gd" id="1_8xwg7"]
+[ext_resource type="Script" uid="uid://cnty2bra6h8h6" path="res://ui/main menu/level selection/level_option.gd" id="1_8xwg7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_7hcnf"]
 

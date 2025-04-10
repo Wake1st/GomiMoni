@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2gnke7wsxplx"]
+
+[ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="1_7kwmf"]
+[ext_resource type="Script" uid="uid://o2mg2ulntf1t" path="res://ui/main menu/settings.gd" id="1_pcnwc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4u22a"]
+size = Vector2(2, 2)
+orientation = 1
+
+[node name="Settings" type="Node3D"]
+script = ExtResource("1_pcnwc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.955931, -0.29359, 0, 0.29359, 0.955931, 0, 0, 0)
+mesh = SubResource("QuadMesh_4u22a")
+
+[node name="CancelOption" parent="." instance=ExtResource("1_7kwmf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.140044, 0.374684, 0, -0.374684, 0.140044, 0.914948, 0.297555, -0.853973)

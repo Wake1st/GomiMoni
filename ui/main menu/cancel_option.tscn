@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://ej1hoit338ih"]
+
+[ext_resource type="Script" uid="uid://ccqotnwmjukmb" path="res://ui/main menu/cancel_option.gd" id="1_q77hc"]
+[ext_resource type="Texture2D" uid="uid://dkiqnivdwia6d" path="res://assets/images/menu icons/Cancel.png" id="2_8q2i3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f40a2"]
+albedo_texture = ExtResource("2_8q2i3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_stp4g"]
+material = SubResource("StandardMaterial3D_f40a2")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gfipp"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[node name="CancelOption" type="StaticBody3D"]
+script = ExtResource("1_q77hc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_stp4g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_gfipp")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
