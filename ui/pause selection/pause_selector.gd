@@ -25,6 +25,10 @@ func _input(event: InputEvent) -> void:
 
 
 func toggle_menu() -> void:
+	# only allow if in the level
+	if StageState.currentState != StageState.STAGES.LEVEL:
+		return
+	
 	tween = create_tween()
 	if isOpen:
 		# turn off the vehicle controls

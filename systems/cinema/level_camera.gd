@@ -4,7 +4,7 @@ extends Node3D
 
 signal transition_finished(isOpen: bool)
 
-const CAMERA_CENTER_OFFSET: float = 0.5
+const CAMERA_CENTER_OFFSET: float = 0.2
 const CAMERA_LOOK: Vector3 = Vector3(0,0,CAMERA_CENTER_OFFSET)
 const CLOSED_SIZE: float = 0.6
 const OPENED_POSITION_Z: float = 12.0

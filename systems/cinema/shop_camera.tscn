@@ -6,6 +6,6 @@
 script = ExtResource("1_wrdea")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.978466, 0.206409, 0, -0.206409, 0.978466, 0, 8.5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.984488, 0.175453, 0, -0.175453, 0.984488, 0, 8.5, 0)
 fov = 40.0
 size = 22.0

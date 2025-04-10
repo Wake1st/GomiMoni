@@ -15,10 +15,6 @@ var nextSelection: ShopOption.OPTIONS
 
 
 func _ready() -> void:
-	# set the starting moni
-	TrashData.moni = 92.01
-	moniBoard.set_cost(TrashData.moni)
-	
 	# connect signals
 	shop.item_focused.connect(handle_item_focused)
 	shop.item_purchased.connect(handle_item_purchased)
@@ -32,12 +28,21 @@ func open() -> void:
 
 
 func run() -> void:
+	# set the starting moni
+	moniBoard.set_cost(TrashData.moni)
+	
 	# if there are no more levels, disable the next button
 	if LevelList.all_levels_complete():
 		nextOption.visible = false
 	
 	# allow user to buy stuff
 	UIController.isActive = true
+	
+	# set the state
+	StageState.currentState = StageState.STAGES.SHOP
+	
+	# run the shop
+	shop.run()
 
 
 

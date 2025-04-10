@@ -2,7 +2,7 @@ class_name Instructions
 extends Node3D
 
 
-const CLOSED_POSITION_X: float = -20
+const CLOSED_POSITION_X: float = -24
 const OPENED_POSITION_X: float = -10
 const TWEEN_DURATION: float = 0.2
 

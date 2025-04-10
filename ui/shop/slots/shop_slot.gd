@@ -54,7 +54,8 @@ func unfocus() -> void:
 
 
 func _input(event) -> void:
-	if event.is_action_pressed("ui_accept") && isFocused && UIController.isActive:
+	var allowedToPurchase = UIController.isActive && StageState.currentState == StageState.STAGES.SHOP
+	if allowedToPurchase && isFocused && event.is_action_pressed("ui_accept"):
 		emit_signal("attempt_purchase", item.data.cost)
 
 

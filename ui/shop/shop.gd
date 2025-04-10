@@ -22,6 +22,12 @@ var itemCount: int
 var isSoldOut: bool = false
 
 
+func run() -> void:
+	# set initial focus
+	focusedSlot = shopSlots[focusedIndex]
+	emit_signal("item_focused", focusedSlot.item.data)
+
+
 func _ready():
 	# setup the slots for ui control
 	for child in slotsParent.get_children():

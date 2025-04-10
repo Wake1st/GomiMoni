@@ -30,9 +30,4 @@ transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, 
 image = ExtResource("6_cyou0")
 
 [node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48354)
-
-[node name="Camera" parent="ShopCamera" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.982655, 0.185444, 0, -0.185444, 0.982655, 0, 8.5, 0.494504)
-
-[editable path="ShopCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95643)

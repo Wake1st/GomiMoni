@@ -38,6 +38,9 @@ func open() -> void:
 
 func run() -> void:
 	level.run()
+	
+	# set the state
+	StageState.currentState = StageState.STAGES.LEVEL
 
 
 func exit() -> void:
@@ -49,9 +52,6 @@ func exit() -> void:
 
 
 func success(moni: float) -> void:
-	# start the goodbye
-	camera.close_transition()
-	
 	# marked for success
 	passedLevel = true
 	
@@ -60,6 +60,9 @@ func success(moni: float) -> void:
 	
 	# give the player moni
 	TrashData.moni += moni
+	
+	# start the goodbye
+	camera.close_transition()
 
 
 func teardown() -> void:

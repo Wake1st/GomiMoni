@@ -27,6 +27,10 @@ func _input(_event: InputEvent) -> void:
 
 
 func open() -> void:
+	# reset camera position to start of cinema-graph
+	cinemaGraph.send_camera(CinemaGraph.STILLS.ROOT, true)
+	
+	# open animation
 	liveCamera.open_transition()
 	
 	# unlock new levels
@@ -36,6 +40,9 @@ func open() -> void:
 func run() -> void:
 	# enable controls
 	UIController.isActive = true
+	
+	# set the state
+	StageState.currentState = StageState.STAGES.MAIN
 
 
 func handle_main_selection(option: MainOption.OPTIONS) -> void:
