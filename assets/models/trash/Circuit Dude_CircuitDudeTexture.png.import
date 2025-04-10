@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drsit3os0w8qg"
-path.s3tc="res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"
+uid="uid://bwl1aqbebqs30"
+path.s3tc="res://.godot/imported/Circuit Dude_CircuitDudeTexture.png-2e4bfa3d992858b69ce72382331c6b40.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "d0f1dde220f5432c47e6c2d0ab3e0b8a"
+}
 
 [deps]
 
-source_file="res://assets/images/currency textures/G_moni.png"
-dest_files=["res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"]
+source_file="res://assets/models/trash/Circuit Dude_CircuitDudeTexture.png"
+dest_files=["res://.godot/imported/Circuit Dude_CircuitDudeTexture.png-2e4bfa3d992858b69ce72382331c6b40.s3tc.ctex"]
 
 [params]
 

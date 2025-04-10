@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drsit3os0w8qg"
-path.s3tc="res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"
+uid="uid://f5kfspsd5a6s"
+path.s3tc="res://.godot/imported/Dragon_Dragon.png-2a3f6d0edd9e9ef5e415068c221f3f61.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "d595ea67f877e23825c9ec26681871c0"
+}
 
 [deps]
 
-source_file="res://assets/images/currency textures/G_moni.png"
-dest_files=["res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"]
+source_file="res://assets/models/trash/Dragon_Dragon.png"
+dest_files=["res://.godot/imported/Dragon_Dragon.png-2a3f6d0edd9e9ef5e415068c221f3f61.s3tc.ctex"]
 
 [params]
 

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drsit3os0w8qg"
-path.s3tc="res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"
+uid="uid://dn4gsektf5jh0"
+path.s3tc="res://.godot/imported/Grombit_Grombit.png-23bc9dd64d9734c3d8f8e78fc18df27c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "aba167537e80a885e9f14433d623ab2c"
+}
 
 [deps]
 
-source_file="res://assets/images/currency textures/G_moni.png"
-dest_files=["res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"]
+source_file="res://assets/models/trash/Grombit_Grombit.png"
+dest_files=["res://.godot/imported/Grombit_Grombit.png-23bc9dd64d9734c3d8f8e78fc18df27c.s3tc.ctex"]
 
 [params]
 

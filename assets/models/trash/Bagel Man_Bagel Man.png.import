@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drsit3os0w8qg"
-path.s3tc="res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"
+uid="uid://dyx7b4dcvhn85"
+path.s3tc="res://.godot/imported/Bagel Man_Bagel Man.png-44696775c5b25cf76d9c419a9387e8b8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "1278f156643e94160f4b9605f7bdc02c"
+}
 
 [deps]
 
-source_file="res://assets/images/currency textures/G_moni.png"
-dest_files=["res://.godot/imported/G_moni.png-0725dcbcaa01726cb8f0761d4b0e19f3.s3tc.ctex"]
+source_file="res://assets/models/trash/Bagel Man_Bagel Man.png"
+dest_files=["res://.godot/imported/Bagel Man_Bagel Man.png-44696775c5b25cf76d9c419a9387e8b8.s3tc.ctex"]
 
 [params]
 
