@@ -3,7 +3,7 @@ extends Node3D
 
 
 const CLOSED_POSITION_X: float = -24
-const OPENED_POSITION_X: float = -10
+const OPENED_POSITION_X: float = -9
 const TWEEN_DURATION: float = 0.2
 
 var isOpen: bool = false
@@ -20,6 +20,10 @@ func _input(event: InputEvent) -> void:
 
 
 func toggle_menu() -> void:
+		# only allow if in the level
+	if StageState.currentState != StageState.STAGES.LEVEL:
+		return
+	
 	tween = create_tween()
 	if isOpen:
 		# turn off the vehicle controls
