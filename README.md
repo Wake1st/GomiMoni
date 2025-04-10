@@ -4,10 +4,16 @@ A trash game, about trash, for the [Society of Play](https://societyofplay.itch.
 
 ## Description
 
-Role the **GOMI** (trash) into the **HOLE** to receive **MONI**; buy **SHIT** with **MONI** from the **SHIT SHOP**.
+Role the **GOMI** (trash) into the **HOLE** to receive **MONI**; buy **TRASH** with **MONI** from the **TRASH SHOP**.
+
+## Game Jam Wrapup Notes
+
+- SFX: made a purchase
+- pop-ups: vehicle activation, instructions
+- UI: back button for the main menu
+- mechanics: connect light to keys
 
 ## Credits
 
-- Joel Wakefield
 - Eli Wakefield
-  
+- Joel Wakefield
