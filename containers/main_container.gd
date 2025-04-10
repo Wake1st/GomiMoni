@@ -5,11 +5,14 @@ extends Node3D
 signal main_closed
 signal level_selection(number: int)
 
+const MUSIC_FADE_DURATION: float = 0.4
+
 @onready var levelSelector: LevelSelector = $LevelSelector
 @onready var mainSelector: MainSelector = $MainSelector
 @onready var cinemaGraph: CinemaGraph = $CinemaGraph
 @onready var liveCamera: LiveCamera = %LiveCamera
 @onready var rootCamera: Camera3D = %RootCamera
+@onready var musicPlayer: MusicPlayer = $MusicPlayer
 
 var atSubMenu: bool = false
 
@@ -32,6 +35,7 @@ func open() -> void:
 	
 	# open animation
 	liveCamera.open_transition()
+	musicPlayer.fade_in(MUSIC_FADE_DURATION)
 	
 	# unlock new levels
 	levelSelector.check_available_options()
@@ -62,6 +66,7 @@ func handle_main_selection(option: MainOption.OPTIONS) -> void:
 func handle_level_selected(number: int) -> void:
 	# animate camera through tube
 	liveCamera.close_transition()
+	musicPlayer.fade_out(MUSIC_FADE_DURATION)
 	
 	# turn off the ui controls
 	UIController.isActive = false

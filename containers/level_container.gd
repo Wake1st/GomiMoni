@@ -5,9 +5,12 @@ extends Node3D
 signal level_ready
 signal level_closed(passed: bool)
 
+const MUSIC_FADE_DURATION: float = 1.2
+
 @onready var camera: LevelCamera = $LevelCamera
 @onready var pauseSelector: PauseSelector = $PauseSelector
 @onready var instructions: Instructions = $Instructions
+@onready var musicPlayer: MusicPlayer = $MusicPlayer
 
 var level: Level
 var passedLevel: bool = false
@@ -33,7 +36,12 @@ func setup(levelNumber: int = -1) -> void:
 
 
 func open() -> void:
+	# reset passing check
+	passedLevel = false
+	
+	# say hello
 	camera.open_transition()
+	musicPlayer.fade_in(MUSIC_FADE_DURATION)
 
 
 func run() -> void:
@@ -44,11 +52,9 @@ func run() -> void:
 
 
 func exit() -> void:
-	# marked for failure
-	passedLevel = false
-	
 	# start the goodbye
 	camera.close_transition()
+	musicPlayer.fade_out(MUSIC_FADE_DURATION)
 
 
 func success(moni: float) -> void:
@@ -61,8 +67,8 @@ func success(moni: float) -> void:
 	# give the player moni
 	TrashData.moni += moni
 	
-	# start the goodbye
-	camera.close_transition()
+	# leave level
+	exit()
 
 
 func teardown() -> void:

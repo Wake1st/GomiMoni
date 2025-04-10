@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cihrsgpa8npn3"]
+[gd_scene load_steps=9 format=3 uid="uid://cihrsgpa8npn3"]
 
 [ext_resource type="Script" uid="uid://clp47c1fgusu1" path="res://containers/level_container.gd" id="1_4etl1"]
 [ext_resource type="PackedScene" uid="uid://caxcp0un455y1" path="res://ui/pause selection/pause_selector.tscn" id="3_12sx8"]
 [ext_resource type="PackedScene" uid="uid://ndqlf6ku8fig" path="res://systems/cinema/level_camera.tscn" id="3_m56ld"]
 [ext_resource type="PackedScene" uid="uid://n5kbe7mrhuy6" path="res://ui/instructions.tscn" id="4_o6702"]
+[ext_resource type="PackedScene" uid="uid://caxkta5pw6l7l" path="res://audio/music_player.tscn" id="5_euts4"]
+[ext_resource type="AudioStream" uid="uid://dtbdt2jibyy0c" path="res://assets/music/Rap.mp3" id="6_gmgi7"]
+[ext_resource type="AudioStream" uid="uid://cct1bdoh8j8tu" path="res://assets/music/Trash.mp3" id="7_dpcti"]
+[ext_resource type="AudioStream" uid="uid://dyb631h5je4gw" path="res://assets/music/Random.mp3" id="8_xpksn"]
 
 [node name="LevelContainer" type="Node3D"]
 script = ExtResource("1_4etl1")
@@ -15,3 +19,6 @@ transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, 0, 8
 
 [node name="Instructions" parent="." instance=ExtResource("4_o6702")]
 transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -20, 10, 8)
+
+[node name="MusicPlayer" parent="." instance=ExtResource("5_euts4")]
+songs = Array[AudioStreamMP3]([ExtResource("6_gmgi7"), ExtResource("7_dpcti"), ExtResource("8_xpksn")])

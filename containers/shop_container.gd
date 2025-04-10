@@ -4,12 +4,15 @@ extends Node3D
 
 signal shop_closed(option: ShopOption.OPTIONS)
 
+const MUSIC_FADE_DURATION: float = 0.6
+
 @onready var shop: Shop = $Shop
 @onready var camera: ShopCamera = $ShopCamera
 @onready var mainOption: ShopOption = $MainOption
 @onready var nextOption: ShopOption = $NextOption
 @onready var costBoard: PriceBoard = $CostBoard
 @onready var moniBoard: PriceBoard = $MoniBoard
+@onready var musicPlayer: MusicPlayer = $MusicPlayer
 
 var nextSelection: ShopOption.OPTIONS
 
@@ -24,7 +27,9 @@ func _ready() -> void:
 
 
 func open() -> void:
+	# start hello
 	camera.open_transition()
+	musicPlayer.fade_in(MUSIC_FADE_DURATION)
 
 
 func run() -> void:
@@ -52,6 +57,7 @@ func close() -> void:
 	
 	# start goodbye
 	camera.close_transition()
+	musicPlayer.fade_out(MUSIC_FADE_DURATION)
 
 
 func handle_item_focused(item: Trash) -> void:
