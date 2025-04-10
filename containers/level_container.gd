@@ -5,12 +5,17 @@ extends Node3D
 signal level_ready
 signal level_closed(passed: bool)
 
-const MUSIC_FADE_DURATION: float = 1.2
+const MUSIC_FADE_DURATION: float = 1.0
 
 @onready var camera: LevelCamera = $LevelCamera
+
 @onready var pauseSelector: PauseSelector = $PauseSelector
 @onready var instructions: Instructions = $Instructions
+
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
+@onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
+@onready var enterSFX: AudioStreamPlayer = $EnterSFX
+@onready var exitSFX: AudioStreamPlayer = $ExitSFX
 
 var level: Level
 var passedLevel: bool = false
@@ -42,6 +47,7 @@ func open() -> void:
 	# say hello
 	camera.open_transition()
 	musicPlayer.fade_in(MUSIC_FADE_DURATION)
+	enterSFX.play()
 
 
 func run() -> void:
@@ -55,6 +61,7 @@ func exit() -> void:
 	# start the goodbye
 	camera.close_transition()
 	musicPlayer.fade_out(MUSIC_FADE_DURATION)
+	exitSFX.play()
 
 
 func success(moni: float) -> void:
@@ -100,6 +107,9 @@ func handle_pause_selection(option: PauseOption.OPTIONS) -> void:
 		PauseOption.OPTIONS.LEAVE:
 			# leave the area
 			exit()
+	
+	# play the button sfx
+	buttonSFX.play()
 
 
 func handle_camera_transition_finished(isOpen: bool) -> void:

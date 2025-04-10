@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cihrsgpa8npn3"]
+[gd_scene load_steps=12 format=3 uid="uid://cihrsgpa8npn3"]
 
 [ext_resource type="Script" uid="uid://clp47c1fgusu1" path="res://containers/level_container.gd" id="1_4etl1"]
 [ext_resource type="PackedScene" uid="uid://caxcp0un455y1" path="res://ui/pause selection/pause_selector.tscn" id="3_12sx8"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://dtbdt2jibyy0c" path="res://assets/music/Rap.mp3" id="6_gmgi7"]
 [ext_resource type="AudioStream" uid="uid://cct1bdoh8j8tu" path="res://assets/music/Trash.mp3" id="7_dpcti"]
 [ext_resource type="AudioStream" uid="uid://dyb631h5je4gw" path="res://assets/music/Random.mp3" id="8_xpksn"]
+[ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="9_gmgi7"]
+[ext_resource type="AudioStream" uid="uid://ywqaux04jc8h" path="res://assets/sfx/Enter Level.wav" id="10_xpksn"]
+[ext_resource type="AudioStream" uid="uid://ce2kmn31ygn02" path="res://assets/sfx/Hole.wav" id="11_xpdeg"]
 
 [node name="LevelContainer" type="Node3D"]
 script = ExtResource("1_4etl1")
@@ -22,3 +25,18 @@ transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -20,
 
 [node name="MusicPlayer" parent="." instance=ExtResource("5_euts4")]
 songs = Array[AudioStreamMP3]([ExtResource("6_gmgi7"), ExtResource("7_dpcti"), ExtResource("8_xpksn")])
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gmgi7")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="EnterSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xpksn")
+bus = &"SFX"
+
+[node name="ExitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xpdeg")
+volume_db = 1.0
+pitch_scale = 0.74
+bus = &"SFX"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://3bbbx17m4iuh"]
+[gd_scene load_steps=5 format=3 uid="uid://3bbbx17m4iuh"]
 
 [ext_resource type="Script" uid="uid://dsu22i5ek20jc" path="res://mechanics/keys/basket.gd" id="1_luos7"]
 [ext_resource type="PackedScene" uid="uid://dkg1183dpuhh0" path="res://assets/models/basket/basket.glb" id="1_tjce1"]
+[ext_resource type="AudioStream" uid="uid://dtksx0n0jxoye" path="res://assets/sfx/Basket Hit.wav" id="3_0xpvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_luos7"]
 size = Vector3(2, 0.1, 2)
@@ -20,5 +21,10 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32422, 0)
 shape = SubResource("BoxShape3D_luos7")
+
+[node name="BasketSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0xpvs")
+volume_db = 2.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="trigger" to="." method="_on_trigger_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=12 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://containers/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bxr3lw24v8tq0" path="res://ui/shop/price board/price_board.tscn" id="7_ml1eq"]
 [ext_resource type="PackedScene" uid="uid://caxkta5pw6l7l" path="res://audio/music_player.tscn" id="8_3opd5"]
 [ext_resource type="AudioStream" uid="uid://x4nsc0daclsl" path="res://assets/music/Trash Shop Music.mp3" id="8_h650p"]
+[ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="10_4nkmx"]
+[ext_resource type="AudioStream" uid="uid://g1hr24mksww3" path="res://assets/sfx/Whoosh.wav" id="11_rjrgk"]
 
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
@@ -34,7 +36,16 @@ image = ExtResource("6_cyou0")
 [node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95643)
 
-[node name="PurchaseSFX" type="AudioStreamPlayer" parent="."]
-
 [node name="MusicPlayer" parent="." instance=ExtResource("8_3opd5")]
 songs = Array[AudioStreamMP3]([ExtResource("8_h650p")])
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4nkmx")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="PurchaseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rjrgk")
+volume_db = 1.0
+pitch_scale = 1.9
+bus = &"SFX"

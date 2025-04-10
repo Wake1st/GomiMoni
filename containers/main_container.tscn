@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm3368pcaul5a"]
+[gd_scene load_steps=14 format=3 uid="uid://bm3368pcaul5a"]
 
 [ext_resource type="Script" uid="uid://bdne33el3fdj8" path="res://containers/main_container.gd" id="1_qk1cq"]
 [ext_resource type="PackedScene" uid="uid://kg0m54kenbg3" path="res://ui/level selection/level_selector.tscn" id="2_p1hlh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqxnxeaax2nlv" path="res://systems/cinema/live_camera.tscn" id="5_xjbkh"]
 [ext_resource type="PackedScene" uid="uid://caxkta5pw6l7l" path="res://audio/music_player.tscn" id="8_4bici"]
 [ext_resource type="AudioStream" uid="uid://br7v3tvyyrjmv" path="res://assets/music/Trash Silly Song.mp3" id="9_1kaxq"]
+[ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="10_1kaxq"]
 
 [sub_resource type="Curve3D" id="Curve3D_75d4h"]
 _data = {
@@ -97,3 +98,8 @@ curve = SubResource("Curve3D_7tjkh")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("8_4bici")]
 songs = Array[AudioStreamMP3]([ExtResource("9_1kaxq")])
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_1kaxq")
+volume_db = 6.0
+bus = &"SFX"

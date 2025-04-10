@@ -9,6 +9,7 @@ const DROP_DISTANCE: float = 0.8
 
 @onready var trigger: Area3D = $trigger
 @onready var basket = $basket
+@onready var basketSFX: AudioStreamPlayer = $BasketSFX
 
 var tween: Tween
 var isTriggered: bool = false
@@ -25,10 +26,16 @@ func reset() -> void:
 
 
 func toggleOn() -> void:
+	# this key is solved
 	isTriggered = true
+	
+	# show the mechanism changing
 	tween = create_tween()
 	tween.tween_property(basket, "position:y", -DROP_DISTANCE, drop_duration)
 	tween.tween_callback(handle_drop_callback)
+	
+	# notify user with sound
+	basketSFX.play()
 
 
 func handle_drop_callback() -> void:

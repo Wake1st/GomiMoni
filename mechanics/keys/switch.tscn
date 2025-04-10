@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxhx1ok7qr7ke"]
+[gd_scene load_steps=5 format=3 uid="uid://dxhx1ok7qr7ke"]
 
 [ext_resource type="PackedScene" uid="uid://dtvn037had7j4" path="res://assets/models/switch/switch.glb" id="1_3geji"]
 [ext_resource type="Script" uid="uid://mwva8f2w80sj" path="res://mechanics/keys/switch.gd" id="1_5u0kh"]
+[ext_resource type="AudioStream" uid="uid://bv6ap15vwyjp8" path="res://assets/sfx/Switch.wav" id="3_mo1nl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5u0kh"]
 size = Vector3(0.04, 0.54, 0.04)
@@ -29,6 +30,12 @@ collision_mask = 32
 [node name="CollisionShape3D" type="CollisionShape3D" parent="model/switch/bone_001/cylinder/TurnOffArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.4, 0)
 shape = SubResource("BoxShape3D_5u0kh")
+
+[node name="SwitchSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mo1nl")
+volume_db = 2.0
+pitch_scale = 0.16
+bus = &"SFX"
 
 [connection signal="body_entered" from="model/switch/bone_001/cylinder/TurnOnArea" to="." method="_on_turn_on_area_body_entered"]
 [connection signal="body_exited" from="model/switch/bone_001/cylinder/TurnOnArea" to="." method="_on_turn_on_area_body_exited"]

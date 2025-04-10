@@ -9,10 +9,13 @@ const MUSIC_FADE_DURATION: float = 0.4
 
 @onready var levelSelector: LevelSelector = $LevelSelector
 @onready var mainSelector: MainSelector = $MainSelector
+
 @onready var cinemaGraph: CinemaGraph = $CinemaGraph
 @onready var liveCamera: LiveCamera = %LiveCamera
 @onready var rootCamera: Camera3D = %RootCamera
+
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
+@onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
 
 var atSubMenu: bool = false
 
@@ -61,6 +64,9 @@ func handle_main_selection(option: MainOption.OPTIONS) -> void:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.SETTINGS)
 		MainOption.OPTIONS.CREDITS:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.CREDITS)
+	
+	# play the button sfx
+	buttonSFX.play()
 
 
 func handle_level_selected(number: int) -> void:
@@ -73,6 +79,9 @@ func handle_level_selected(number: int) -> void:
 	
 	# notify staging system for level loading
 	emit_signal("level_selection", number)
+	
+	# play the button sfx
+	buttonSFX.play()
 
 
 func handle_transition_ended(isOpen: bool) -> void:

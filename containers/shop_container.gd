@@ -8,11 +8,15 @@ const MUSIC_FADE_DURATION: float = 0.6
 
 @onready var shop: Shop = $Shop
 @onready var camera: ShopCamera = $ShopCamera
+
 @onready var mainOption: ShopOption = $MainOption
 @onready var nextOption: ShopOption = $NextOption
 @onready var costBoard: PriceBoard = $CostBoard
 @onready var moniBoard: PriceBoard = $MoniBoard
+
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
+@onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
+@onready var purchaseSFX: AudioStreamPlayer = $PurchaseSFX
 
 var nextSelection: ShopOption.OPTIONS
 
@@ -66,6 +70,7 @@ func handle_item_focused(item: Trash) -> void:
 
 func handle_item_purchased() -> void:
 	moniBoard.set_cost(TrashData.moni)
+	purchaseSFX.play()
 
 
 func handle_option_selection(option: ShopOption.OPTIONS) -> void:
@@ -74,6 +79,9 @@ func handle_option_selection(option: ShopOption.OPTIONS) -> void:
 	
 	# close shop either way
 	close()
+	
+	# play the button sfx
+	buttonSFX.play()
 
 
 func handle_camera_transition_finished(isOpen: bool) -> void:
