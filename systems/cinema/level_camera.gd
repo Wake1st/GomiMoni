@@ -48,7 +48,6 @@ func open_transition() -> void:
 
 
 func close_transition() -> void:
-	print("closing level...")
 	# we need to look at the goal while we slide
 	isSliding = true
 	
