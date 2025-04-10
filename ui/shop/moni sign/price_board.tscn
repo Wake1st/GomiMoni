@@ -1,0 +1,53 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxr3lw24v8tq0"]
+
+[ext_resource type="Script" uid="uid://cnh4atjc7ktc5" path="res://ui/shop/moni sign/price_board.gd" id="1_pdj8b"]
+[ext_resource type="PackedScene" uid="uid://l3rib6551vwc" path="res://ui/shop/moni sign/number_display.tscn" id="2_kxs1p"]
+[ext_resource type="Texture2D" uid="uid://drsit3os0w8qg" path="res://assets/images/currency textures/G_moni.png" id="2_mxjnx"]
+[ext_resource type="Texture2D" uid="uid://c85bn2wqtalou" path="res://assets/images/currency textures/Decimal.png" id="4_mxjnx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj4qu"]
+albedo_texture = ExtResource("2_mxjnx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pdj8b"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mxjnx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gj4qu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0g7w"]
+albedo_texture = ExtResource("4_mxjnx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uke4h"]
+material = SubResource("StandardMaterial3D_m0g7w")
+
+[sub_resource type="QuadMesh" id="QuadMesh_m0g7w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lnoc5"]
+
+[node name="PriceBoard" type="Node3D"]
+script = ExtResource("1_pdj8b")
+
+[node name="MoniMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49967, 0, 0)
+material_override = SubResource("StandardMaterial3D_gj4qu")
+mesh = SubResource("QuadMesh_pdj8b")
+
+[node name="TensDisplay" parent="." instance=ExtResource("2_kxs1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49967, 0, 0)
+mesh = SubResource("QuadMesh_mxjnx")
+
+[node name="OnesDisplay" parent="." instance=ExtResource("2_kxs1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499667, 0, 0)
+mesh = SubResource("QuadMesh_gj4qu")
+
+[node name="DecimalMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500333, 0, 0)
+mesh = SubResource("QuadMesh_uke4h")
+
+[node name="TenthsDisplay" parent="." instance=ExtResource("2_kxs1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50033, 0, 0)
+mesh = SubResource("QuadMesh_m0g7w")
+
+[node name="HundredthsDisplay" parent="." instance=ExtResource("2_kxs1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50033, 0, 0)
+mesh = SubResource("QuadMesh_lnoc5")
