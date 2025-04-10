@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwd5lpjlxicxh"]
+
+[ext_resource type="Script" uid="uid://bkivpiqbsgyba" path="res://trash/items/trash_item.gd" id="1_k082u"]
+[ext_resource type="Resource" uid="uid://cbpxlu2u1ygch" path="res://trash/data/peter_pumpkin.tres" id="2_owwfp"]
+[ext_resource type="PackedScene" uid="uid://brylgvyr7a6p5" path="res://assets/models/trash/Peter Pumpkin.glb" id="3_owwfp"]
+
+[node name="PeterPumpkin" type="Node3D"]
+script = ExtResource("1_k082u")
+data = ExtResource("2_owwfp")
+metadata/_custom_type_script = "uid://bkivpiqbsgyba"
+
+[node name="Model" parent="." instance=ExtResource("3_owwfp")]
+transform = Transform3D(-0.212305, 0, -0.339008, 0, 0.4, 0, 0.339008, 0, -0.212305, 0, -0.225779, 0)

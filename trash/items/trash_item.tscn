@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc4da5u8ke8nk"]
 
-[ext_resource type="Script" uid="uid://cm5oxv7yku4as" path="res://ui/shop/trash.gd" id="1_o26ax"]
+[ext_resource type="Script" uid="uid://bkivpiqbsgyba" path="res://trash/items/trash_item.gd" id="1_o26ax"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5bo43"]
 radius = 0.2
-height = 0.8
+height = 0.4
 
-[node name="Trash" type="Node3D"]
+[node name="TrashItem" type="Node3D"]
 script = ExtResource("1_o26ax")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
