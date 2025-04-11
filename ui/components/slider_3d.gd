@@ -17,18 +17,17 @@ const PROGRESS_SIZE: float = 2.0
 var material: ShaderMaterial
 var isSelectable: bool = false
 var isSelected: bool = false
-var progressStart: float
-var progressEnd: float
+var progressStart: Vector3
+var progressEnd: Vector3
 
 
 func _ready() -> void:
 	# store the slider values
-	progressStart = position.x - PROGRESS_SIZE/2
-	progressEnd = position.x + PROGRESS_SIZE/2
+	progressStart = position - Vector3(PROGRESS_SIZE/2, 0, 0)
+	progressEnd = position + Vector3(PROGRESS_SIZE/2, 0, 0)
 	
 	# set the initial position
-	material = progressMesh.get_active_material(0)
-	material.set_shader_parameter("weight", initialValue)
+	progressMesh.set_instance_shader_parameter("weight", initialValue)
 	
 	# notify listener
 	emit_signal("value_changed", initialValue)
@@ -43,12 +42,13 @@ func _physics_process(_delta) -> void:
 		else:
 			# set the shader color relative to the mouse position
 			var relativeMouse = mousePos * global_basis
-			var clamped = clamp(relativeMouse.x, progressStart, progressEnd)
-			var weight = inverse_lerp(progressStart, progressEnd, clamped)
-			material.set_shader_parameter("weight", weight)
+			var clamped = clamp(relativeMouse, progressStart, progressEnd)
+			var weight = inverse_lerp(progressStart.x, progressEnd.x, clamped.x)
+			progressMesh.set_instance_shader_parameter("weight", weight)
 			
 			# slide the knob
-			knob.position.x = clamped
+			knob.position.x = (weight - 0.5) * PROGRESS_SIZE
+			print("clamped: %s\tweight: %s" % [clamped, weight])
 			
 			# notify listener
 			emit_signal("value_changed", weight)
