@@ -20,7 +20,7 @@ config/icon="res://assets/images/icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://base/default_bus_layout.tres"
+buses/default_bus_layout="uid://cb6qtcya6q1pd"
 
 [input]
 
@@ -105,6 +105,7 @@ select_menu={
 3d_physics/layer_5="Basket"
 3d_physics/layer_6="Flyer"
 3d_physics/layer_7="Switch"
+3d_physics/layer_8="UI"
 
 [rendering]
 

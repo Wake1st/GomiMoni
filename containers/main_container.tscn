@@ -43,7 +43,7 @@ transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -
 transform = Transform3D(-0.247405, -0.250773, 0.935897, 9.93977e-09, 0.965926, 0.258819, -0.968912, 0.0640331, -0.238975, -11.042, 1.35486, 4.93904)
 
 [node name="Settings" parent="." instance=ExtResource("4_vvqpg")]
-transform = Transform3D(0.870201, 0, -0.492697, 0, 1, 0, 0.492697, 0, 0.870201, 1.30817, 2.38419e-07, -9.916)
+transform = Transform3D(0.870356, -0.137382, -0.472871, 0, 0.960294, -0.278991, 0.492424, 0.242821, 0.835797, 1.30817, 2.38419e-07, -9.916)
 
 [node name="Credits" parent="." instance=ExtResource("5_kt8qv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03255, 7.26611, -1.8199)
@@ -109,3 +109,4 @@ bus = &"SFX"
 stream = ExtResource("11_plq0l")
 volume_db = 1.0
 pitch_scale = 1.36
+bus = &"SFX"

@@ -9,10 +9,11 @@ Role the **GOMI** (trash) into the **HOLE** to receive **MONI**; buy **TRASH** w
 ## Game Jam Wrapup Notes
 
 - SFX: made a purchase
+- settings: need them
 - pop-ups: vehicle activation, instructions
-- UI: back button for the main menu
 - mechanics: connect light to keys
 - set dressing: backgrounds, lighting
+- buttons: bug - previously selected options are still on hover when reloaded
 
 ## Credits
 

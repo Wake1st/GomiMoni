@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2gnke7wsxplx"]
+[gd_scene load_steps=6 format=3 uid="uid://d2gnke7wsxplx"]
 
 [ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="1_7kwmf"]
 [ext_resource type="Script" uid="uid://o2mg2ulntf1t" path="res://ui/main menu/settings.gd" id="1_pcnwc"]
+[ext_resource type="PackedScene" uid="uid://cbobjnevufop" path="res://ui/components/slider_3d.tscn" id="3_h36qy"]
+[ext_resource type="AudioStream" uid="uid://g1hr24mksww3" path="res://assets/sfx/Whoosh.wav" id="4_osbej"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4u22a"]
 size = Vector2(2, 2)
@@ -11,8 +13,22 @@ orientation = 1
 script = ExtResource("1_pcnwc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.955931, -0.29359, 0, 0.29359, 0.955931, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("QuadMesh_4u22a")
 
 [node name="CancelOption" parent="." instance=ExtResource("1_7kwmf")]
-transform = Transform3D(0.4, 0, 0, 0, 0.140044, 0.374684, 0, -0.374684, 0.140044, 0.914948, 0.297555, -0.853973)
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.400001, 0, -0.400001, -1.74846e-08, 0.85, 0.01, -0.85)
+
+[node name="MasterSlider" parent="." instance=ExtResource("3_h36qy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.234251)
+initialValue = 0.8
+
+[node name="MusicSlider" parent="." instance=ExtResource("3_h36qy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.281)
+
+[node name="SFXSlider" parent="." instance=ExtResource("3_h36qy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.797)
+
+[node name="SFXExample" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_osbej")
+bus = &"SFX"
