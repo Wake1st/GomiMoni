@@ -102,7 +102,7 @@ songs = Array[AudioStreamMP3]([ExtResource("9_1kaxq")])
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_1kaxq")
-volume_db = 6.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="CancelSFX" type="AudioStreamPlayer" parent="."]

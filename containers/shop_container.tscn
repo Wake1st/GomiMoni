@@ -41,7 +41,7 @@ songs = Array[AudioStreamMP3]([ExtResource("8_h650p")])
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_4nkmx")
-volume_db = 6.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="PurchaseSFX" type="AudioStreamPlayer" parent="."]

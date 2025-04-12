@@ -12,7 +12,6 @@ render_priority = 0
 shader = ExtResource("1_qyodx")
 shader_parameter/background_color = Color(0.109804, 0.121569, 0.168627, 1)
 shader_parameter/foreground_color = Color(0.87451, 0.803922, 0.427451, 1)
-shader_parameter/weight = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_vu2fb"]
 material = SubResource("ShaderMaterial_ervk5")
@@ -32,6 +31,7 @@ shape = SubResource("ConcavePolygonShape3D_ervk5")
 mesh = SubResource("QuadMesh_vu2fb")
 
 [node name="SliderKnob3D" parent="." instance=ExtResource("2_qyodx")]
+collision_layer = 0
 
 [connection signal="mouse_entered" from="StaticBackground" to="." method="_on_static_background_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBackground" to="." method="_on_static_background_mouse_exited"]

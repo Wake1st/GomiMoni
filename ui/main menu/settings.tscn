@@ -13,7 +13,6 @@ orientation = 1
 script = ExtResource("1_pcnwc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("QuadMesh_4u22a")
 
 [node name="CancelOption" parent="." instance=ExtResource("1_7kwmf")]
@@ -28,7 +27,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.281)
 
 [node name="SFXSlider" parent="." instance=ExtResource("3_h36qy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.797)
+initialValue = 0.8
 
-[node name="SFXExample" type="AudioStreamPlayer" parent="."]
+[node name="SFXSample" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_osbej")
 bus = &"SFX"
+
+[node name="SampleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SampleTimer" to="." method="_on_sample_timer_timeout"]
