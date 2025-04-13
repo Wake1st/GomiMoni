@@ -1,18 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2gnke7wsxplx"]
+[gd_scene load_steps=16 format=3 uid="uid://d2gnke7wsxplx"]
 
 [ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="1_7kwmf"]
 [ext_resource type="Script" uid="uid://o2mg2ulntf1t" path="res://ui/main menu/settings.gd" id="1_pcnwc"]
+[ext_resource type="Material" uid="uid://cldctws136eal" path="res://assets/materials/deep.tres" id="2_fbd85"]
 [ext_resource type="PackedScene" uid="uid://cbobjnevufop" path="res://ui/components/slider_3d.tscn" id="3_h36qy"]
+[ext_resource type="Texture2D" uid="uid://bfxan8353m0dk" path="res://assets/images/menu icons/Music.png" id="3_pi6o8"]
+[ext_resource type="Texture2D" uid="uid://b6bj72cgkqust" path="res://assets/images/menu icons/Sfx.png" id="4_61vdd"]
 [ext_resource type="AudioStream" uid="uid://g1hr24mksww3" path="res://assets/sfx/Whoosh.wav" id="4_osbej"]
+[ext_resource type="Texture2D" uid="uid://gcgjw0uyqwsg" path="res://assets/images/menu icons/Master.png" id="5_pi6o8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4u22a"]
+material = ExtResource("2_fbd85")
 size = Vector2(2, 2)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61vdd"]
+albedo_texture = ExtResource("5_pi6o8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_04kkc"]
+material = SubResource("StandardMaterial3D_61vdd")
+size = Vector2(1, 0.2)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04kkc"]
+albedo_texture = ExtResource("3_pi6o8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dqdvw"]
+material = SubResource("StandardMaterial3D_04kkc")
+size = Vector2(1, 0.2)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2mna"]
+albedo_texture = ExtResource("4_61vdd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1hpwt"]
+material = SubResource("StandardMaterial3D_b2mna")
+size = Vector2(1, 0.2)
 orientation = 1
 
 [node name="Settings" type="Node3D"]
 script = ExtResource("1_pcnwc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Background" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_4u22a")
 
 [node name="CancelOption" parent="." instance=ExtResource("1_7kwmf")]
@@ -22,12 +51,27 @@ transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.400001, 0, -0.400001, -1.7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.234251)
 initialValue = 0.8
 
+[node name="MasterLabel" type="MeshInstance3D" parent="MasterSlider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46, 0, -0.23)
+mesh = SubResource("QuadMesh_04kkc")
+skeleton = NodePath("../..")
+
 [node name="MusicSlider" parent="." instance=ExtResource("3_h36qy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.281)
+
+[node name="MusicLabel" type="MeshInstance3D" parent="MusicSlider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46, 0, -0.23)
+mesh = SubResource("QuadMesh_dqdvw")
+skeleton = NodePath("../..")
 
 [node name="SFXSlider" parent="." instance=ExtResource("3_h36qy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.797)
 initialValue = 0.8
+
+[node name="SFXLabel" type="MeshInstance3D" parent="SFXSlider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46, 0, -0.23)
+mesh = SubResource("QuadMesh_1hpwt")
+skeleton = NodePath("../..")
 
 [node name="SFXSample" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_osbej")

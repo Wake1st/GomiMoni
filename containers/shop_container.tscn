@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=18 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://containers/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
 [ext_resource type="PackedScene" uid="uid://cj2o4yxu4n0fa" path="res://systems/cinema/shop_camera.tscn" id="3_3lbrx"]
+[ext_resource type="Texture2D" uid="uid://rf03xjxst22l" path="res://assets/images/shop icons/Cost.png" id="3_5qo54"]
+[ext_resource type="Texture2D" uid="uid://dv3o2pcdymiv8" path="res://assets/images/shop icons/Moni.png" id="4_46jwu"]
 [ext_resource type="PackedScene" uid="uid://dn2yu3j7ummxe" path="res://ui/shop/shop_option.tscn" id="4_aot4u"]
 [ext_resource type="Texture2D" uid="uid://bvidioliq7y01" path="res://assets/images/shop icons/Main_Menu.png" id="5_1fphk"]
 [ext_resource type="Texture2D" uid="uid://kvgajfdovndp" path="res://assets/images/shop icons/Next_Level.png" id="6_cyou0"]
@@ -12,14 +14,38 @@
 [ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="10_4nkmx"]
 [ext_resource type="AudioStream" uid="uid://g1hr24mksww3" path="res://assets/sfx/Whoosh.wav" id="11_rjrgk"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2erh"]
+albedo_texture = ExtResource("3_5qo54")
+
+[sub_resource type="QuadMesh" id="QuadMesh_40bf0"]
+material = SubResource("StandardMaterial3D_o2erh")
+size = Vector2(2, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k07wu"]
+albedo_texture = ExtResource("4_46jwu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uj6db"]
+material = SubResource("StandardMaterial3D_k07wu")
+size = Vector2(2, 0.6)
+
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
 
 [node name="CostBoard" parent="." instance=ExtResource("7_ml1eq")]
-transform = Transform3D(0.6, 0, 0, 0, 0.579556, -0.155291, 0, 0.155291, 0.579556, 2.2226, 10, -14)
+transform = Transform3D(0.6, 0, 0, 0, 0.579556, -0.155291, 0, 0.155291, 0.579556, 1.13113, 10, -14)
+
+[node name="CostLabel" type="MeshInstance3D" parent="CostBoard"]
+transform = Transform3D(1.66667, 0, 0, 0, 1.66667, -1.49012e-07, 0, 1.49012e-07, 1.66667, -5.57511, 0, 0)
+mesh = SubResource("QuadMesh_40bf0")
+skeleton = NodePath("../..")
 
 [node name="MoniBoard" parent="." instance=ExtResource("7_ml1eq")]
-transform = Transform3D(0.6, 0, 0, 0, 0.579556, -0.155291, 0, 0.155291, 0.579556, 2.2226, 10.6751, -14)
+transform = Transform3D(0.6, 0, 0, 0, 0.579556, -0.155291, 0, 0.155291, 0.579556, 1.13113, 10.6751, -14)
+
+[node name="MoniLabel" type="MeshInstance3D" parent="MoniBoard"]
+transform = Transform3D(1.66667, 0, 0, 0, 1.66667, -8.9407e-08, 0, 8.9407e-08, 1.66667, -5.57511, 0, 0)
+mesh = SubResource("QuadMesh_uj6db")
+skeleton = NodePath("../..")
 
 [node name="Shop" parent="." instance=ExtResource("2_nf1p8")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -12.0754)
