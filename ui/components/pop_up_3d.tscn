@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://con3olo1fcitq"]
+
+[ext_resource type="Script" uid="uid://davrxwjayx4c4" path="res://ui/components/pop_up_3d.gd" id="1_u32b5"]
+
+[node name="PopUp3D" type="MeshInstance3D"]
+script = ExtResource("1_u32b5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

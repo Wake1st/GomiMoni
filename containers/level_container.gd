@@ -18,7 +18,7 @@ const MUSIC_FADE_DURATION: float = 1.0
 @onready var exitSFX: AudioStreamPlayer = $ExitSFX
 
 var level: Level
-var passedLevel: bool = false
+var hasPassedLevel: bool = false
 
 
 func _ready() -> void:
@@ -42,7 +42,7 @@ func setup(levelNumber: int = -1) -> void:
 
 func open() -> void:
 	# reset passing check
-	passedLevel = false
+	hasPassedLevel = false
 	
 	# say hello
 	camera.open_transition()
@@ -51,10 +51,17 @@ func open() -> void:
 
 
 func run() -> void:
+	# let user play
 	level.run()
 	
 	# set the state
 	StageState.currentState = StageState.STAGES.LEVEL
+	
+	# let user know about the instructions for specific levels
+	if LevelList.current_level_index() == 0:
+		instructions.popup_instruction(Instructions.POPUP.MOVEMENT)
+	elif LevelList.current_level_index() == 2:
+		instructions.popup_instruction(Instructions.POPUP.SWAPPING)
 
 
 func exit() -> void:
@@ -66,7 +73,7 @@ func exit() -> void:
 
 func success(moni: float) -> void:
 	# marked for success
-	passedLevel = true
+	hasPassedLevel = true
 	
 	# increment level number
 	LevelList.increment_level()
@@ -116,4 +123,4 @@ func handle_camera_transition_finished(isOpen: bool) -> void:
 	if isOpen:
 		run()
 	else:
-		emit_signal("level_closed", passedLevel)
+		emit_signal("level_closed", hasPassedLevel)

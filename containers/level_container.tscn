@@ -21,7 +21,7 @@ script = ExtResource("1_4etl1")
 transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, 0, 8, 26)
 
 [node name="Instructions" parent="." instance=ExtResource("4_o6702")]
-transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -20, 10, 8)
+transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -22, 10, 8)
 
 [node name="MusicPlayer" parent="." instance=ExtResource("5_euts4")]
 songs = Array[AudioStreamMP3]([ExtResource("6_gmgi7"), ExtResource("7_dpcti"), ExtResource("8_xpksn")])

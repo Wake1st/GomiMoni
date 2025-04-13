@@ -2,16 +2,17 @@ class_name Instructions
 extends Node3D
 
 
-const CLOSED_POSITION_X: float = -24
-const OPENED_POSITION_X: float = -9
-const TWEEN_DURATION: float = 0.2
+enum POPUP {
+	MOVEMENT,
+	SWAPPING
+}
+
+const POPUP_DURATION: float = 4.0
+
+@onready var movement: PopUp3D = $Movement
+@onready var swapping: PopUp3D = $Swapping
 
 var isOpen: bool = false
-var tween: Tween
-
-
-func _ready() -> void:
-	position.x = CLOSED_POSITION_X
 
 
 func _input(event: InputEvent) -> void:
@@ -24,29 +25,34 @@ func toggle_menu() -> void:
 	if StageState.currentState != StageState.STAGES.LEVEL:
 		return
 	
-	tween = create_tween()
 	if isOpen:
 		# turn off the vehicle controls
 		UIController.isActive = false
 		
 		# animate the pause menu
-		tween.tween_property(self, "position:x", CLOSED_POSITION_X, TWEEN_DURATION)
-		tween.tween_callback(handle_transition_ended.bind(false))
+		movement.off()
+		swapping.off()
 	else:
 		# turn off the vehicle controls
 		VehicleController.isActive = false
 		
 		# animate the pause menu
-		tween.tween_property(self, "position:x", OPENED_POSITION_X, TWEEN_DURATION)
-		tween.tween_callback(handle_transition_ended.bind(true))
-
-
-func handle_transition_ended(toOpen) -> void:
+		movement.on()
+		swapping.on()
+	
 	# update state
-	isOpen = toOpen
+	isOpen = !isOpen
 	
 	# ensure controls are working
-	if toOpen:
+	if isOpen:
 		UIController.isActive = true
 	else:
 		VehicleController.isActive = true
+
+
+func popup_instruction(popup: POPUP) -> void:
+	match popup:
+		POPUP.MOVEMENT:
+			movement.on(POPUP_DURATION)
+		POPUP.SWAPPING:
+			swapping.on(POPUP_DURATION)

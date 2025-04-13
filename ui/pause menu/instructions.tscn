@@ -1,30 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://n5kbe7mrhuy6"]
+[gd_scene load_steps=9 format=3 uid="uid://n5kbe7mrhuy6"]
 
 [ext_resource type="Script" uid="uid://c5oqwykofpo00" path="res://ui/pause menu/instructions.gd" id="1_q4e6u"]
 [ext_resource type="Texture2D" uid="uid://1430chshepbk" path="res://assets/images/pause icons/Instructions-movement_.png" id="2_byy8q"]
+[ext_resource type="PackedScene" uid="uid://con3olo1fcitq" path="res://ui/components/pop_up_3d.tscn" id="2_surt7"]
 [ext_resource type="Texture2D" uid="uid://gwc8sagi3kqg" path="res://assets/images/pause icons/Instructions-swapping_.png" id="3_22tfe"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrofa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_surt7"]
 albedo_texture = ExtResource("2_byy8q")
 
-[sub_resource type="QuadMesh" id="QuadMesh_h0dwk"]
-material = SubResource("StandardMaterial3D_jrofa")
-size = Vector2(2, 2)
+[sub_resource type="QuadMesh" id="QuadMesh_cj2h6"]
+material = SubResource("StandardMaterial3D_surt7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soo13"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cj2h6"]
 albedo_texture = ExtResource("3_22tfe")
 
-[sub_resource type="QuadMesh" id="QuadMesh_vvihy"]
-material = SubResource("StandardMaterial3D_soo13")
-size = Vector2(2, 2)
+[sub_resource type="QuadMesh" id="QuadMesh_vwv0d"]
+material = SubResource("StandardMaterial3D_cj2h6")
 
 [node name="Instructions" type="Node3D"]
 script = ExtResource("1_q4e6u")
 
-[node name="Movement" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-mesh = SubResource("QuadMesh_h0dwk")
+[node name="Movement" parent="." instance=ExtResource("2_surt7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2, 0)
+mesh = SubResource("QuadMesh_cj2h6")
+position_shift = Vector3(4.6, 0, 0)
+tween_duration = 0.2
 
-[node name="Swapping" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-mesh = SubResource("QuadMesh_vvihy")
+[node name="Swapping" parent="." instance=ExtResource("2_surt7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.2, 0)
+mesh = SubResource("QuadMesh_vwv0d")
+position_shift = Vector3(4.6, 0, 0)
+tween_duration = 0.2

@@ -30,5 +30,9 @@ static func size() -> int:
 	return items.size()
 
 
+static func current_level_index() -> int:
+	return highestLevel + 1
+
+
 static func all_levels_complete() -> bool:
 	return items.size() - 1 == highestLevel
