@@ -4,7 +4,7 @@ A trash game, about trash, for the [Society of Play](https://societyofplay.itch.
 
 ## Description
 
-Gomi in the **HOLE**.
+Gomi in the hole.
 Moni in the pocket.
 Moni buys trash.
 
