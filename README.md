@@ -4,10 +4,20 @@ A trash game, about trash, for the [Society of Play](https://societyofplay.itch.
 
 ## Description
 
-Role the **GOMI** (trash) into the **HOLE** to receive **MONI**; buy **SHIT** with **MONI** from the **SHIT SHOP**.
+Gomi in the hole.
+Moni in the pocket.
+Moni buys trash.
+
+## Known Issues
+- [ ] fix: previously selected option buttons are still on hover when reloaded
+
+## Stretch Goals
+
+- [ ] add more songs and sfx
+- [ ] add more levels, with more variety
+- [ ] mechanics: connect light to keys to show user when key is active
 
 ## Credits
 
-- Joel Wakefield
-- Eli Wakefield
-  
+- Eli Wakefield - Music/SFX
+- Joel Wakefield - Design/Programming/Art

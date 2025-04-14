@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://clbveyc1v2uaa"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_qrdcr"]
+
+[resource]
+script = ExtResource("1_qrdcr")
+name = "Salt Man"
+cost = 89.65
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://dv0sjpltc3oun"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_b8qe3"]
+
+[resource]
+script = ExtResource("1_b8qe3")
+name = "Grombit"
+cost = 37.02
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"

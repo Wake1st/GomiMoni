@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnu5ytsuwulu1"]
+
+[ext_resource type="PackedScene" uid="uid://cbobjnevufop" path="res://ui/components/slider_3d.tscn" id="1_x0c2d"]
+
+[sub_resource type="Environment" id="Environment_f2fml"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestSlider3D" type="Node3D"]
+
+[node name="Slider3D" parent="." instance=ExtResource("1_x0c2d")]
+transform = Transform3D(1, 0, 0, 0, 0.93171, -0.363202, 0, 0.363202, 0.93171, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f2fml")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.368903, 0.929468, 0, -0.929468, 0.368903, 0, 2.995, 1.29442)
+fov = 83.2
+size = 2.25709

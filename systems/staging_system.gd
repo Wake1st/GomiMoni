@@ -36,20 +36,35 @@ func handle_main_closed() -> void:
 	check_to_launch_level()
 
 
-func handle_level_closed() -> void:
-	# run the shop
-	shopContainer.open()
-	
-	# while shop is running, swap for next level
-	levelContainer.swap()
+func handle_level_closed(passed: bool) -> void:
+	if passed:
+		# run the shop
+		shopContainer.open()
+		
+		# while shop is running, swap for next level
+		# unless we have beaten all levels
+		if !LevelList.all_levels_complete():
+			levelContainer.swap()
+	else:
+		# return to menu if not passed
+		mainContainer.open()
+		
+		# remove the current level
+		levelContainer.teardown()
+
 
 
 func handle_shop_closed(option: ShopOption.OPTIONS) -> void:
 	match option:
 		ShopOption.OPTIONS.NEXT:
+			# move onto the next level
 			levelContainer.open()
 		ShopOption.OPTIONS.MAIN:
+			# return to the main area
 			mainContainer.open()
+			
+			# deconstruct the last played level
+			levelContainer.teardown()
 
 
 func check_to_launch_level() -> void:

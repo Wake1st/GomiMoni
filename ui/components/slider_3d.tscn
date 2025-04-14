@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbobjnevufop"]
+
+[ext_resource type="Script" uid="uid://dx41hao0ulb4f" path="res://ui/components/slider_3d.gd" id="1_ervk5"]
+[ext_resource type="Shader" uid="uid://dp7ppqyc3w448" path="res://ui/components/slider_3d.gdshader" id="1_qyodx"]
+[ext_resource type="PackedScene" uid="uid://b0elgr2ooxw86" path="res://ui/components/slider_knob_3d.tscn" id="2_qyodx"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ervk5"]
+data = PackedVector3Array(1, 0, 0.1, -1, 0, 0.1, 1, 0, -0.1, -1, 0, 0.1, -1, 0, -0.1, 1, 0, -0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ervk5"]
+render_priority = 0
+shader = ExtResource("1_qyodx")
+shader_parameter/background_color = Color(0.109804, 0.121569, 0.168627, 1)
+shader_parameter/foreground_color = Color(0.87451, 0.803922, 0.427451, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vu2fb"]
+material = SubResource("ShaderMaterial_ervk5")
+size = Vector2(2, 0.2)
+orientation = 1
+
+[node name="Slider3D" type="Node3D"]
+script = ExtResource("1_ervk5")
+
+[node name="StaticBackground" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBackground"]
+shape = SubResource("ConcavePolygonShape3D_ervk5")
+
+[node name="ProgressMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_vu2fb")
+
+[node name="SliderKnob3D" parent="." instance=ExtResource("2_qyodx")]
+collision_layer = 0
+
+[connection signal="mouse_entered" from="StaticBackground" to="." method="_on_static_background_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBackground" to="." method="_on_static_background_mouse_exited"]
+[connection signal="mouse_entered" from="SliderKnob3D" to="." method="_on_slider_knob_3d_mouse_entered"]
+[connection signal="mouse_exited" from="SliderKnob3D" to="." method="_on_slider_knob_3d_mouse_exited"]

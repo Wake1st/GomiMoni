@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://caxcp0un455y1"]
+
+[ext_resource type="Script" uid="uid://cp3shqatg4oqj" path="res://ui/level menu/pause selection/pause_selector.gd" id="1_vxhcq"]
+[ext_resource type="PackedScene" uid="uid://bv4wm7c4ycjm2" path="res://ui/level menu/pause selection/pause_option.tscn" id="2_ff2pr"]
+[ext_resource type="Texture2D" uid="uid://d2ergqkhugxv5" path="res://assets/images/pause icons/Return.png" id="3_2x342"]
+[ext_resource type="Texture2D" uid="uid://cphxdldsmwaxy" path="res://assets/images/pause icons/Reset.png" id="4_kh4pm"]
+[ext_resource type="Texture2D" uid="uid://bnshsqij7rqfb" path="res://assets/images/pause icons/Leave.png" id="5_ugapf"]
+
+[node name="PauseSelector" type="Node3D"]
+script = ExtResource("1_vxhcq")
+
+[node name="ReturnOption" parent="." instance=ExtResource("2_ff2pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+image = ExtResource("3_2x342")
+
+[node name="ResetOption" parent="." instance=ExtResource("2_ff2pr")]
+option = 1
+image = ExtResource("4_kh4pm")
+
+[node name="LeaveOption" parent="." instance=ExtResource("2_ff2pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+option = 2
+image = ExtResource("5_ugapf")

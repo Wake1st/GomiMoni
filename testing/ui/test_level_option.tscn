@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://1a36gbabmj4d"]
 
-[ext_resource type="PackedScene" uid="uid://uf1d7buxy3qx" path="res://ui/level selection/level_option.tscn" id="1_khxm3"]
+[ext_resource type="PackedScene" uid="uid://uf1d7buxy3qx" path="res://ui/main menu/level selection/level_option.tscn" id="1_khxm3"]
 [ext_resource type="Script" uid="uid://bgdtpp843y3k3" path="res://testing/ui/test_level_option.gd" id="1_vnyn7"]
 [ext_resource type="Texture2D" uid="uid://d33fj5tgq18vl" path="res://assets/images/level icons/Gomi_To_Hole.png" id="3_4xjpd"]
 

@@ -26,12 +26,15 @@ func spawn() -> Vehicle:
 	match type:
 		Vehicle.VEHICLE_TYPE.GOMI: 
 			vehicle = gomiScene.instantiate()
+			vehicle.currentType = Vehicle.VEHICLE_TYPE.GOMI
 			spawn_height = GOMI_HEIGHT
 		Vehicle.VEHICLE_TYPE.HEAVY: 
 			vehicle = heavyScene.instantiate()
+			vehicle.currentType = Vehicle.VEHICLE_TYPE.HEAVY
 			spawn_height = HEAVY_HEIGHT
 		Vehicle.VEHICLE_TYPE.FLYER: 
 			vehicle = flyerScene.instantiate()
+			vehicle.currentType = Vehicle.VEHICLE_TYPE.FLYER
 			spawn_height = FLYER_HEIGHT
 	
 	add_child(vehicle)

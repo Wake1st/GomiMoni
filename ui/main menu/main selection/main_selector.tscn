@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ocnr7g6di37"]
+
+[ext_resource type="PackedScene" uid="uid://qbltk6w84prr" path="res://ui/main menu/main selection/main_option.tscn" id="1_4w2md"]
+[ext_resource type="Script" uid="uid://bdie6kvjlu6e7" path="res://ui/main menu/main selection/main_selector.gd" id="1_f44kl"]
+[ext_resource type="Texture2D" uid="uid://cs2ku1sva3qdc" path="res://assets/images/menu icons/Levels.png" id="3_p7wst"]
+[ext_resource type="Texture2D" uid="uid://c78mcasbkp6n0" path="res://assets/images/menu icons/Settings.png" id="4_rm0ac"]
+[ext_resource type="Texture2D" uid="uid://7yh768kxni6b" path="res://assets/images/menu icons/Credits.png" id="5_s6vg7"]
+
+[node name="MainSelector" type="Node3D"]
+script = ExtResource("1_f44kl")
+
+[node name="LevelsOption" parent="." instance=ExtResource("1_4w2md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+image = ExtResource("3_p7wst")
+
+[node name="SettingsOption" parent="." instance=ExtResource("1_4w2md")]
+option = 1
+image = ExtResource("4_rm0ac")
+
+[node name="CreditsOption" parent="." instance=ExtResource("1_4w2md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+option = 2
+image = ExtResource("5_s6vg7")

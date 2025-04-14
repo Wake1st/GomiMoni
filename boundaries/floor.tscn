@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://blqjs6prqtn6s"]
+
+[ext_resource type="Material" uid="uid://br2vy14cw0nw1" path="res://assets/materials/floor.tres" id="1_cc2nj"]
+[ext_resource type="PackedScene" uid="uid://xbue1n4rtifu" path="res://boundaries/wall.tscn" id="2_xe8b4"]
+[ext_resource type="PackedScene" uid="uid://debpqxjf74ekm" path="res://boundaries/ceiling.tscn" id="3_301fb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cc2nj"]
+size = Vector3(40, 0.5, 40)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xe8b4"]
+top_radius = 1.2
+bottom_radius = 1.2
+radial_segments = 10
+
+[node name="Floor" type="StaticBody3D"]
+
+[node name="FloorMesh" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.263468, 0)
+mesh = SubResource("BoxMesh_cc2nj")
+material = ExtResource("1_cc2nj")
+
+[node name="HoleMesh" type="CSGMesh3D" parent="FloorMesh"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+operation = 2
+mesh = SubResource("CylinderMesh_xe8b4")
+
+[node name="Wall" parent="." instance=ExtResource("2_xe8b4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Wall2" parent="." instance=ExtResource("2_xe8b4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, 0)
+
+[node name="Wall3" parent="." instance=ExtResource("2_xe8b4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="Wall4" parent="." instance=ExtResource("2_xe8b4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, 0)
+
+[node name="Ceiling" parent="." instance=ExtResource("3_301fb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)

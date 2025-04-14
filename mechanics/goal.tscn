@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyelose74sdkh"]
+[gd_scene load_steps=5 format=3 uid="uid://cyelose74sdkh"]
 
 [ext_resource type="Script" uid="uid://hqw8qj3s5g1c" path="res://mechanics/goal.gd" id="1_3e4cq"]
 [ext_resource type="PackedScene" uid="uid://c3thm4xfrmd68" path="res://assets/models/hole/hole.glb" id="1_h5jhh"]
@@ -7,6 +7,9 @@
 height = 1.0
 radius = 0.6
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e4cq"]
+size = Vector3(2, 0.2, 2)
+
 [node name="Goal" type="Node3D"]
 script = ExtResource("1_3e4cq")
 
@@ -14,9 +17,17 @@ script = ExtResource("1_3e4cq")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.92137, 0)
 
 [node name="Trigger" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41874, 0)
 shape = SubResource("CylinderShape3D_h5jhh")
+
+[node name="BouncePad" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BouncePad"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -2.73188, -0.148949)
+shape = SubResource("BoxShape3D_3e4cq")
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

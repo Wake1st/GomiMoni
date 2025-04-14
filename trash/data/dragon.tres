@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Trash" load_steps=2 format=3 uid="uid://dq1c2wyjvh4rf"]
+
+[ext_resource type="Script" uid="uid://cay2hydn0lbvr" path="res://trash/data/trash.gd" id="1_spht2"]
+
+[resource]
+script = ExtResource("1_spht2")
+name = "Dragon"
+cost = 28.58
+metadata/_custom_type_script = "uid://cay2hydn0lbvr"

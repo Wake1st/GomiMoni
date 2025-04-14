@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://8ydm7yfgrfcp" path="res://testing/vehicles/test_heavy.gd" id="1_5or4q"]
 [ext_resource type="PackedScene" uid="uid://bgytpimcoomse" path="res://vehicles/heavy.tscn" id="1_t4ej8"]
-[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://common/floor.tscn" id="2_pb2jq"]
-[ext_resource type="PackedScene" uid="uid://bpsc4lrchqsyh" path="res://common/fake_cover.tscn" id="4_5or4q"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="2_pb2jq"]
+[ext_resource type="PackedScene" uid="uid://bpsc4lrchqsyh" path="res://boundaries/fake_cover.tscn" id="4_5or4q"]
 
 [sub_resource type="Environment" id="Environment_t4ej8"]
 ambient_light_source = 2

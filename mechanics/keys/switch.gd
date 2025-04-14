@@ -3,6 +3,7 @@ extends Key
 
 
 @onready var animation_player: AnimationPlayer = $model/AnimationPlayer
+@onready var switchSFX = $SwitchSFX
 
 var isThrown: bool = false
 var isSwitching: bool = false
@@ -29,7 +30,11 @@ func throw() -> void:
 	else:
 		animation_player.play("flip-switch")
 	
+	# ensures no interferance
 	isSwitching = true
+	
+	# play sound for feedback
+	switchSFX.play()
 
 
 func _on_animation_player_animation_finished(anim_name):

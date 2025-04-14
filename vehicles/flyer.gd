@@ -2,10 +2,15 @@ class_name Flyer
 extends Vehicle
 
 
-@export var updraft_strength: float = 2
-@export var updraft_rate: float = 5
+@export var updraft_strength: float = 0.4
+@export var updraft_rate: float = 2.0
 
 var draft_time: float
+
+
+func _physics_process(delta):
+	super._physics_process(delta)
+	draft_time += delta
 
 
 func move(normal_force: Vector3) -> void:

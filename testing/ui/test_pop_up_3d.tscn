@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmbg8v5mejxc0"]
+
+[ext_resource type="Script" uid="uid://wxx1y1eyx751" path="res://testing/ui/test_pop_up_3d.gd" id="1_12on3"]
+[ext_resource type="PackedScene" uid="uid://con3olo1fcitq" path="res://ui/components/pop_up_3d.tscn" id="1_qybhr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_12on3"]
+
+[sub_resource type="Environment" id="Environment_3afy2"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestPopUp3D" type="Node3D"]
+script = ExtResource("1_12on3")
+
+[node name="PopUp3D" parent="." instance=ExtResource("1_qybhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("QuadMesh_12on3")
+position_shift = Vector3(2, 0, 0)
+tween_duration = 0.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3afy2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.993276, -0.115769, 0, 0.115769, 0.993276, 0, -0.00500011, 2.29442)
+fov = 83.2
+size = 2.25709

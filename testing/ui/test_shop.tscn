@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8j38u4mokv17"]
+[gd_scene load_steps=4 format=3 uid="uid://b8j38u4mokv17"]
 
+[ext_resource type="Script" uid="uid://bdb5hoxjg33vg" path="res://testing/ui/test_shop.gd" id="1_2da0l"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="1_6525u"]
 
 [sub_resource type="Environment" id="Environment_6525u"]
@@ -8,6 +9,7 @@ ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
 ambient_light_energy = 1.32
 
 [node name="TestShop" type="Node3D"]
+script = ExtResource("1_2da0l")
 
 [node name="Shop" parent="." instance=ExtResource("1_6525u")]
 

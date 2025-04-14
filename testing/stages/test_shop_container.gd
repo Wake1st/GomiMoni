@@ -4,7 +4,9 @@ extends Node3D
 
 
 func _ready() -> void:
+	TrashData.moni = 152.41
 	shopContainer.shop_closed.connect(handle_shop_closed)
+	shopContainer.open()
 
 
 func _input(_event) -> void:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://br7v3tvyyrjmv"
+path="res://.godot/imported/Trash Silly Song.mp3-c1adb0e5462cf5654d21b0a4d94848a4.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Trash Silly Song.mp3"
+dest_files=["res://.godot/imported/Trash Silly Song.mp3-c1adb0e5462cf5654d21b0a4d94848a4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

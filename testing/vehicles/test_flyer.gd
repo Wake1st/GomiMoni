@@ -5,4 +5,5 @@ extends Node3D
 
 
 func _ready() -> void:
+	VehicleController.isActive = true
 	flyer.isActive = true

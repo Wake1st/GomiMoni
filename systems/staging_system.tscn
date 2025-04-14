@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2hl4snhbybv0"]
+[gd_scene load_steps=10 format=3 uid="uid://c2hl4snhbybv0"]
 
 [ext_resource type="Script" uid="uid://cu4omvjf0ib8i" path="res://systems/staging_system.gd" id="1_6eqpc"]
-[ext_resource type="PackedScene" uid="uid://cihrsgpa8npn3" path="res://common/level_container.tscn" id="2_q865c"]
-[ext_resource type="PackedScene" uid="uid://dayffnlewvx3w" path="res://common/shop_container.tscn" id="3_6sjan"]
-[ext_resource type="PackedScene" uid="uid://bm3368pcaul5a" path="res://common/main_container.tscn" id="4_6sjan"]
+[ext_resource type="PackedScene" uid="uid://cihrsgpa8npn3" path="res://containers/level_container.tscn" id="2_q865c"]
+[ext_resource type="PackedScene" uid="uid://dayffnlewvx3w" path="res://containers/shop_container.tscn" id="3_6sjan"]
+[ext_resource type="PackedScene" uid="uid://bm3368pcaul5a" path="res://containers/main_container.tscn" id="4_6sjan"]
+[ext_resource type="Texture2D" uid="uid://cxqbqecjqoy62" path="res://assets/images/menu icons/Gomi_Moni.png" id="5_v7v7m"]
+[ext_resource type="Material" uid="uid://cldctws136eal" path="res://assets/materials/deep.tres" id="6_yq73r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tl7nk"]
+albedo_texture = ExtResource("5_v7v7m")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5qj48"]
+material = SubResource("StandardMaterial3D_tl7nk")
+size = Vector2(44, 32)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lgtxt"]
+material = ExtResource("6_yq73r")
+size = Vector2(44, 44)
+orientation = 1
 
 [node name="StagingSystem" type="Node3D"]
 script = ExtResource("1_6eqpc")
@@ -11,7 +25,40 @@ script = ExtResource("1_6eqpc")
 [node name="LevelContainer" parent="." instance=ExtResource("2_q865c")]
 
 [node name="ShopContainer" parent="." instance=ExtResource("3_6sjan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -4.26171)
 
 [node name="MainContainer" parent="." instance=ExtResource("4_6sjan")]
-transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 0, -14, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -10, 0)
+
+[node name="Boundaries" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.2655, 0)
+
+[node name="TitleCard" type="MeshInstance3D" parent="Boundaries"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -22, 0, 0)
+mesh = SubResource("QuadMesh_5qj48")
+skeleton = NodePath("../..")
+
+[node name="TitleCard2" type="MeshInstance3D" parent="Boundaries"]
+transform = Transform3D(1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 0, 0, -22)
+mesh = SubResource("QuadMesh_5qj48")
+skeleton = NodePath("../..")
+
+[node name="TitleCard3" type="MeshInstance3D" parent="Boundaries"]
+transform = Transform3D(-8.74228e-08, 0, -1, 0, 1, 0, 1, 0, -8.74228e-08, 22, 0, 0)
+mesh = SubResource("QuadMesh_5qj48")
+skeleton = NodePath("../..")
+
+[node name="TitleCard4" type="MeshInstance3D" parent="Boundaries"]
+transform = Transform3D(-1, 0, 1.31134e-07, 0, 1, 0, -1.31134e-07, 0, -1, 0, 0, 22)
+mesh = SubResource("QuadMesh_5qj48")
+skeleton = NodePath("../..")
+
+[node name="FloorBackground" type="MeshInstance3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+mesh = SubResource("QuadMesh_lgtxt")
+skeleton = NodePath("../..")
+
+[node name="CeilingBackground" type="MeshInstance3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 16, 0)
+mesh = SubResource("QuadMesh_lgtxt")
+skeleton = NodePath("../..")

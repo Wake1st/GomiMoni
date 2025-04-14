@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dod87nk4i1c6t"]
 
-[ext_resource type="PackedScene" uid="uid://qbltk6w84prr" path="res://ui/main selection/main_option.tscn" id="1_p2dby"]
+[ext_resource type="PackedScene" uid="uid://qbltk6w84prr" path="res://ui/main menu/main selection/main_option.tscn" id="1_p2dby"]
 [ext_resource type="Script" uid="uid://d4mxf6ri7xvbm" path="res://testing/ui/test_menu_option.gd" id="1_q2ncm"]
 
 [sub_resource type="Environment" id="Environment_q2ncm"]

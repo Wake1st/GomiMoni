@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv4wm7c4ycjm2"]
+
+[ext_resource type="Script" uid="uid://d3b6cn3emrqoq" path="res://ui/level menu/pause selection/pause_option.gd" id="1_wv1a8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7xaef"]
+size = Vector2(3, 1)
+orientation = 2
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7xaef"]
+data = PackedVector3Array(1.5, -0.5, 0, -1.5, -0.5, 0, 1.5, 0.5, 0, -1.5, -0.5, 0, -1.5, 0.5, 0, 1.5, 0.5, 0)
+
+[node name="PauseOption" type="StaticBody3D"]
+script = ExtResource("1_wv1a8")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7xaef")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_7xaef")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,3 +1,108 @@
-[gd_scene format=3 uid="uid://dtxybv3frk2rl"]
+[gd_scene load_steps=8 format=3 uid="uid://dtxybv3frk2rl"]
 
-[node name="SBend" type="Node3D"]
+[ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_csear"]
+[ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="1_w8rw6"]
+[ext_resource type="PackedScene" uid="uid://cyelose74sdkh" path="res://mechanics/goal.tscn" id="2_joess"]
+[ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_csear"]
+[ext_resource type="PackedScene" uid="uid://bfchsfb8lw0dr" path="res://systems/vehicle_swap_system.tscn" id="4_01n0r"]
+[ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="5_joess"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_csear"]
+data = PackedVector3Array(20, 0.25, 20, 20, -0.25, 20, -20, -0.25, 20, -20, 0.25, 20, 20, 0.25, 20, -20, -0.25, 20, -20, 0.25, 20, -0.97082, 0.25, 0.705343, -0.37082, 0.25, 1.14127, -20, 0.25, 20, -0.37082, 0.25, 1.14127, 0.370821, 0.25, 1.14127, -20, -0.25, 20, -0.97082, -0.25, -0.705342, -20, -0.25, -20, 20, -0.25, -20, 0.37082, -0.25, -1.14127, 0.97082, -0.25, -0.705342, 20, -0.25, -20, 0.97082, -0.25, -0.705342, 1.2, -0.25, -5.24537e-08, 20, -0.25, -20, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, 0.25, -20, 20, -0.25, -20, 20, -0.25, 20, 0.370821, -0.25, 1.14127, -0.37082, -0.25, 1.14127, 20, -0.25, 20, 0.97082, -0.25, 0.705342, 0.370821, -0.25, 1.14127, -20, -0.25, -20, 0.37082, -0.25, -1.14127, 20, -0.25, -20, 20, -0.25, -20, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, -0.25, -20, 20, 0.25, -20, -20, 0.25, -20, 20, 0.25, -20, 0.37082, 0.25, -1.14127, -0.370821, 0.25, -1.14127, 20, 0.25, -20, 0.97082, 0.25, -0.705342, 0.37082, 0.25, -1.14127, 20, 0.25, 20, 0.97082, 0.25, -0.705342, 20, 0.25, -20, 20, 0.25, 20, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, -0.705342, 20, 0.25, 20, 0.370821, 0.25, 1.14127, 0.97082, 0.25, 0.705342, 20, 0.25, 20, 0.97082, 0.25, 0.705342, 1.2, 0.25, -5.24537e-08, -20, 0.25, 20, 0.370821, 0.25, 1.14127, 20, 0.25, 20, 20, 0.25, 20, 20, 0.25, -20, 20, -0.25, 20, -20, -0.25, -20, -0.97082, -0.25, -0.705342, -0.370821, -0.25, -1.14127, -20, -0.25, 20, -0.37082, -0.25, 1.14127, -0.97082, -0.25, 0.705343, 20, -0.25, 20, -0.37082, -0.25, 1.14127, -20, -0.25, 20, -20, 0.25, -20, -0.97082, 0.25, 0.705343, -20, 0.25, 20, -20, -0.25, 20, -0.97082, -0.25, 0.705343, -1.2, -0.25, 5.24537e-08, -20, -0.25, 20, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, -0.705342, -20, -0.25, -20, -20, 0.25, 20, -20, -0.25, 20, -20, 0.25, -20, -20, 0.25, 20, -20, -0.25, -20, -20, 0.25, -20, -20, -0.25, -20, 20, -0.25, -20, 20, 0.25, -20, -0.370821, 0.25, -1.14127, -20, 0.25, -20, -20, 0.25, -20, -0.97082, 0.25, -0.705342, -1.2, 0.25, 5.24537e-08, -20, 0.25, -20, -0.370821, 0.25, -1.14127, -0.97082, 0.25, -0.705342, -20, 0.25, -20, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, 0.705343, -20, -0.25, -20, -0.370821, -0.25, -1.14127, 0.37082, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -0.370821, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.370821, 0.25, -1.14127, 0.97082, -0.25, 0.705342, 0.97082, 0.25, 0.705342, 0.370821, 0.25, 1.14127, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.370821, 0.25, 1.14127, -0.37082, 0.25, 1.14127, 0.370821, -0.25, 1.14127, 0.97082, 0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.97082, -0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 0.37082, 0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, 0.705343, -1.2, 0.25, 5.24537e-08, 0.370821, -0.25, 1.14127, 0.97082, -0.25, 0.705342, 0.370821, 0.25, 1.14127, -0.97082, -0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, 0.370821, -0.25, 1.14127, -0.37082, 0.25, 1.14127, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.37082, -0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -0.370821, -0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.97082, 0.25, -0.705342, -0.370821, 0.25, -1.14127, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.370821, 0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.370821, -0.25, -1.14127, -0.37082, 0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -1.2, 0.25, 5.24537e-08, -0.97082, -0.25, 0.705343)
+
+[node name="SBend" type="Node3D" node_paths=PackedStringArray("swapSystem", "goal")]
+script = ExtResource("1_csear")
+moni = 21.43
+cameraSize = 20.0
+swapSystem = NodePath("VehicleSwapSystem")
+goal = NodePath("Goal")
+
+[node name="Floor" parent="." instance=ExtResource("1_w8rw6")]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.263468, 0)
+shape = SubResource("ConcavePolygonShape3D_csear")
+
+[node name="Goal" parent="." instance=ExtResource("2_joess")]
+
+[node name="VehicleSwapSystem" parent="." node_paths=PackedStringArray("spawners") instance=ExtResource("4_01n0r")]
+spawners = [NodePath("GomiSpawner")]
+
+[node name="GomiSpawner" parent="VehicleSwapSystem" instance=ExtResource("3_csear")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15372, 0, 6.89592)
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="trash-bag" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.43773, -0.567698, 2.35674)
+
+[node name="trash-bag2" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(2.80903, -1.05327, 0, 0.996858, 2.65858, -0.968631, 0.340077, 0.906969, 2.83932, -1.34757, -0.567698, 8.74122)
+
+[node name="trash-bag3" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(2.95219, 0.533285, -0.014067, 0, -0.0791066, -2.99896, -0.53347, 2.95116, -0.0778459, -3.20228, 0.968364, -0.0173974)
+
+[node name="trash-bag4" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(1.97785, 0.0431282, -2.25527, 1.80921, 1.76105, 1.62033, 1.34718, -2.42834, 1.13502, -2.12814, -0.0733781, 5.55475)
+
+[node name="trash-bag23" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(1.97785, 0.0431282, -2.25527, 1.80921, 1.76105, 1.62033, 1.34718, -2.42834, 1.13502, 11.0027, -0.0733781, 7.60149)
+
+[node name="trash-bag5" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-0.697842, -0.768837, 2.81459, 1.22589, 2.54888, 1.0002, -2.64768, 1.38279, -0.278736, 0.753216, -0.567698, 2.96503)
+
+[node name="trash-bag6" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(2.53276, 0, -1.60783, 0, 3, 0, 1.60783, 0, 2.53276, 2.9148, -0.567698, -2.96673)
+
+[node name="trash-bag7" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(0.389881, -1.98945, -2.21136, 2.90481, 0.734795, -0.148917, 0.640385, -2.12183, 2.02182, 7.41639, 0.140107, 1.01514)
+
+[node name="trash-bag8" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(1.99433, -2.16427, -0.581858, 1.1909, 1.68323, -2.1791, 1.89852, 1.21764, 1.97812, 6.0358, 0.201862, 5.65699)
+
+[node name="trash-bag9" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(1.97785, 0.0431281, -2.25527, 0.59384, 2.88369, 0.575937, 2.17611, -0.826129, 1.89263, 7.13628, -0.567698, 4.67533)
+
+[node name="trash-bag10" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(1.7462, -1.4558, -1.9574, 0.660968, 2.59953, -1.34373, 2.34817, 0.350874, 1.83384, 5.86967, -0.220257, 11.2276)
+
+[node name="trash-bag11" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-1.29277e-07, -0.503094, -2.95752, 2.6419, 1.40126, -0.238364, 1.42139, -2.60449, 0.443042, -1.66269, -0.00483012, -1.99535)
+
+[node name="trash-bag12" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-2.55699, 0.406643, -1.5154, 0.996858, 2.65858, -0.968631, 1.21164, -1.32914, -2.40111, 4.8365, -0.53066, -1.28296)
+
+[node name="trash-bag21" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(0.831709, 0.647696, -2.80869, -1.09305, 2.77581, 0.316443, 2.66712, 0.935619, 1.00554, 7.48175, -0.530659, 10.0603)
+
+[node name="trash-bag13" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(0.730032, -2.61137, -1.28366, -0.368574, 1.2298, -2.71141, 2.88638, 0.817514, -0.0215644, -2.36852, 0.138213, -1.20423)
+
+[node name="trash-bag14" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-1.77263, 1.88464, -1.51853, 1.39496, 2.33373, 1.26799, 1.97785, 0.0431283, -2.25527, -2.88747, -0.567698, 6.9037)
+
+[node name="trash-bag15" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-0.407529, 1.25351, -2.69493, 1.22589, 2.54888, 1.0002, 2.7076, -0.965359, -0.85847, 0.25519, -0.567698, -3.07118)
+
+[node name="trash-bag16" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-0.300989, 0.821488, 2.86959, 0.194472, 2.88341, -0.805047, -2.97852, 0.105248, -0.342544, 2.49791, -0.206481, 11.6376)
+
+[node name="trash-bag17" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(2.75849, -1.14181, -0.295016, 0.834293, 2.41985, -1.5647, 0.833493, 1.3567, 2.54257, 2.78018, -0.567698, 2.19538)
+
+[node name="trash-bag22" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-0.48146, -2.00496, 2.17907, -2.24148, 1.68938, 1.05915, -1.93494, -1.45813, -1.76914, 10.4809, -0.111903, 4.98828)
+
+[node name="trash-bag18" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(0.537083, 2.40552, 1.71027, -0.478889, 1.78634, -2.36213, -2.91243, 0.149876, 0.703797, -0.810217, 0.375256, 10.8175)
+
+[node name="trash-bag19" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(2.17962, -1.77529, 1.04766, 1.3215, 2.37356, 1.27273, -1.58205, -0.463196, 2.5065, -0.979893, -0.567698, 3.06071)
+
+[node name="trash-bag20" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(1.53175, 1.57233, -2.04488, -0.353549, 2.48377, 1.64496, 2.55514, -0.598902, 1.45346, 2.76889, 0.127231, 7.08142)
+
+[node name="trash-bag24" parent="Walls" instance=ExtResource("5_joess")]
+transform = Transform3D(-0.517781, -2.14308, 2.03448, 2.76625, 0.374788, 1.09881, -1.03912, 2.06561, 1.91141, 10.6706, 0.678393, 8.29907)
+
+[editable path="Floor"]

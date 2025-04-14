@@ -1,0 +1,40 @@
+[gd_scene load_steps=11 format=3 uid="uid://80v0dhnw44xo"]
+
+[ext_resource type="Script" uid="uid://c00jc8pbqiorj" path="res://ui/level menu/vehicle_ui.gd" id="1_3eayc"]
+[ext_resource type="Texture2D" uid="uid://u6gicg3jfggf" path="res://assets/images/level icons/Gomi.png" id="2_i7heq"]
+[ext_resource type="Texture2D" uid="uid://by7a1nodfhw0r" path="res://assets/images/level icons/Heavy.png" id="3_h1gj7"]
+[ext_resource type="Texture2D" uid="uid://bva1hxdqtgk78" path="res://assets/images/level icons/Flyer.png" id="4_cni05"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1gj7"]
+albedo_texture = ExtResource("2_i7heq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3eayc"]
+material = SubResource("StandardMaterial3D_h1gj7")
+size = Vector2(0.9, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cni05"]
+albedo_texture = ExtResource("3_h1gj7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i7heq"]
+material = SubResource("StandardMaterial3D_cni05")
+size = Vector2(0.9, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3223"]
+albedo_texture = ExtResource("4_cni05")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h1gj7"]
+material = SubResource("StandardMaterial3D_q3223")
+size = Vector2(0.9, 0.3)
+
+[node name="VehicleUI" type="Node3D"]
+script = ExtResource("1_3eayc")
+
+[node name="Gomi" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_3eayc")
+
+[node name="Heavy" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_i7heq")
+
+[node name="Flyer" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_h1gj7")

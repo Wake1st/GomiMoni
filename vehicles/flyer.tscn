@@ -13,11 +13,12 @@ orientation = 1
 size = Vector3(1, 0.1, 1.2)
 
 [node name="Flyer" type="RigidBody3D"]
+collision_layer = 32
+collision_mask = 65
 mass = 0.2
 gravity_scale = 0.1
 can_sleep = false
 script = ExtResource("1_fgsca")
-currentType = 2
 
 [node name="TopMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_o44sm")
