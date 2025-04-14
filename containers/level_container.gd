@@ -11,6 +11,7 @@ const MUSIC_FADE_DURATION: float = 1.0
 
 @onready var pauseSelector: PauseSelector = $PauseSelector
 @onready var instructions: Instructions = $Instructions
+@onready var vehicleUI: VehicleUI = $VehicleUI
 
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
 @onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
@@ -33,6 +34,7 @@ func setup(levelNumber: int = -1) -> void:
 	# setup the level
 	level = scene.instantiate()
 	add_child(level)
+	level.setup(handle_vehicle_activation)
 	level.completed.connect(success)
 	camera.opened_size = level.cameraSize
 	
@@ -97,6 +99,10 @@ func swap() -> void:
 	
 	# setup the next level
 	setup()
+
+
+func handle_vehicle_activation(vehicle: Vehicle.VEHICLE_TYPE) -> void:
+	vehicleUI.display(vehicle)
 
 
 func handle_pause_selection(option: PauseOption.OPTIONS) -> void:

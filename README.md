@@ -4,16 +4,20 @@ A trash game, about trash, for the [Society of Play](https://societyofplay.itch.
 
 ## Description
 
-Role the **GOMI** (trash) into the **HOLE** to receive **MONI**; buy **TRASH** with **MONI** from the **TRASH SHOP**.
+Gomi in the **HOLE**.
+Moni in the pocket.
+Moni buys trash.
 
-## Game Jam Wrapup Notes
+## Known Issues
+- [ ] fix: previously selected option buttons are still on hover when reloaded
 
-- SFX: made a purchase
-- pop-ups: vehicle activation, instructions
-- mechanics: connect light to keys
-- buttons: bug - previously selected options are still on hover when reloaded
+## Stretch Goals
+
+- [ ] add more songs and sfx
+- [ ] add more levels, with more variety
+- [ ] mechanics: connect light to keys to show user when key is active
 
 ## Credits
 
-- Eli Wakefield
-- Joel Wakefield
+- Eli Wakefield - Music/SFX
+- Joel Wakefield - Design/Programming/Art

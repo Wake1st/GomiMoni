@@ -9,7 +9,6 @@ extends Node3D
 func _ready():
 	levelContainer.level_ready.connect(handle_level_ready)
 	levelContainer.level_closed.connect(handle_level_closed)
-	
 	levelContainer.setup(testingLevel)
 
 

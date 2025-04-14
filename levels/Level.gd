@@ -18,7 +18,10 @@ var isActive: bool = false
 
 func _ready() -> void:
 	goal.goal_entered.connect(handle_goal_entered)
-	swapSystem.vehicle_activated.connect(handle_vehicle_activated)
+
+
+func setup(vehicleActivationCallback: Callable) -> void:
+	swapSystem.vehicle_activated.connect(vehicleActivationCallback)
 
 
 func run() -> void:
@@ -36,10 +39,6 @@ func run() -> void:
 func reset() -> void:
 	# re-run
 	run()
-
-
-func handle_vehicle_activated(vehicle: Vehicle) -> void:
-	print("vehicle activated: %s" % vehicle.name)
 
 
 func handle_goal_entered() -> void:

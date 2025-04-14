@@ -2,7 +2,7 @@ class_name VehicleSwapSystem
 extends Node
 
 
-signal vehicle_activated(vehicle: Vehicle)
+signal vehicle_activated(vehicle: Vehicle.VEHICLE_TYPE)
 
 @export var spawners: Array[Spawner]
 
@@ -29,7 +29,7 @@ func _process(_delta) -> void:
 	if vehicles.size() == 0:
 		return
 	
-	var swap = VehicleController.get_character_swap()
+	var swap: int = VehicleController.get_character_swap()
 	if swap != 0:
 		var nextIndex = currentIndex + swap
 		
@@ -50,7 +50,8 @@ func _process(_delta) -> void:
 			currentVehicle = vehicles[currentIndex]
 			currentVehicle.isActive = true
 			
-			emit_signal("vehicle_activated", currentVehicle)
+			# notify change and pass the direction
+			emit_signal("vehicle_activated", currentVehicle.currentType)
 
 
 func handle_vehicle_spawned(spawner: Spawner) -> void:
@@ -68,5 +69,3 @@ func handle_vehicle_spawned(spawner: Spawner) -> void:
 		currentIndex = spawnedVehicles[spawner]
 		currentVehicle = vehicle
 		currentVehicle.isActive = true
-		
-		emit_signal("vehicle_activated", vehicle)
