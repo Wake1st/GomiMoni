@@ -8,8 +8,9 @@ enum ANIMATION {
 	SELECT
 }
 
-@export_category("Appearance")
-@export var image: Texture2D
+
+@export_category("Button")
+@export var enabled: bool = true
 
 @export_category("Animations")
 @export_group("Focus", "")
@@ -21,11 +22,10 @@ enum ANIMATION {
 @export var onSelectDownAnimationDuration: float
 @export var onSelectUpAnimationDuration: float
 
-@export_category("Button")
-@export var enabled: bool = true
+@export_category("Appearance")
+@export var image: Texture2D
 
 var hasFocus: bool = false
-var isEnabled: bool = true
 var isSelecting: bool = false
 
 var basePosition: Vector3
@@ -35,18 +35,18 @@ var tween: Tween
 
 
 func _ready() -> void:
-	# create collision shape
+	# create a static body child
 	create_trimesh_collision()
+	
+	# connect collision shape
+	var staticBody: StaticBody3D = get_child(0)
+	staticBody.mouse_entered.connect(_on_mouse_entered)
+	staticBody.mouse_exited.connect(_on_mouse_exited)
 	
 	# set the level image
 	var material: StandardMaterial3D = StandardMaterial3D.new()
 	material.albedo_texture = image
 	set_surface_override_material(0, material)
-	
-	# connect the collisions
-	var staticBody: StaticBody3D = get_child(0)
-	staticBody.mouse_entered.connect(_on_mouse_entered)
-	staticBody.mouse_exited.connect(_on_mouse_exited)
 	
 	# set animation values
 	basePosition = position
@@ -97,17 +97,17 @@ func animate_button(animation: ANIMATION, doesBounceBack: bool = false) -> void:
 
 
 func _input(event) -> void:
-	if isEnabled && hasFocus && event.is_action_pressed("ui_accept"):
+	if enabled && hasFocus && event.is_action_pressed("ui_accept"):
 		select()
 
 func _on_mouse_entered():
-	if isEnabled:
+	if enabled:
 		hasFocus = true
 		animate_button(ANIMATION.FOCUS_GAIN)
 
 
 func _on_mouse_exited():
-	if isEnabled:
+	if enabled:
 		hasFocus = false
 		
 		# only animate if selection is finished

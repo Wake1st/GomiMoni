@@ -15,13 +15,13 @@ ambient_light_energy = 1.32
 
 [node name="Button3D" parent="." instance=ExtResource("1_d4ion")]
 mesh = SubResource("QuadMesh_bddlx")
-image = ExtResource("2_bddlx")
 onFocusDepthChange = 0.1
 gainedFocusAnimationDuration = 0.1
 lostFocusAnimationDuration = 0.12
 onSelectDepthChange = -0.15
 onSelectDownAnimationDuration = 0.04
 onSelectUpAnimationDuration = 0.06
+image = ExtResource("2_bddlx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bddlx")

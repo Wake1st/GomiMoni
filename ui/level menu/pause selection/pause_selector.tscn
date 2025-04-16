@@ -21,33 +21,33 @@ script = ExtResource("1_vxhcq")
 [node name="ReturnOption" parent="." instance=ExtResource("2_ff2pr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 mesh = SubResource("QuadMesh_5l045")
-image = ExtResource("3_2x342")
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
+image = ExtResource("3_2x342")
 
 [node name="ResetOption" parent="." instance=ExtResource("2_ff2pr")]
 mesh = SubResource("QuadMesh_j86rv")
 option = 1
-image = ExtResource("4_kh4pm")
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.3
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
+image = ExtResource("4_kh4pm")
 
 [node name="LeaveOption" parent="." instance=ExtResource("2_ff2pr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 mesh = SubResource("QuadMesh_3giyc")
 option = 2
-image = ExtResource("5_ugapf")
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
+image = ExtResource("5_ugapf")

@@ -12,4 +12,4 @@ func send_select_signal() -> void:
 
 
 func enable(value: bool) -> void:
-	isEnabled = value
+	enabled = value

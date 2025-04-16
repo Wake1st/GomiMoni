@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=20 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://containers/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
@@ -28,6 +28,12 @@ albedo_texture = ExtResource("4_46jwu")
 material = SubResource("StandardMaterial3D_k07wu")
 size = Vector2(2, 0.6)
 
+[sub_resource type="QuadMesh" id="QuadMesh_5qo54"]
+size = Vector2(3, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_46jwu"]
+size = Vector2(3, 1)
+
 [node name="ShopContainer" type="Node3D"]
 script = ExtResource("1_0wdwb")
 
@@ -52,11 +58,25 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -12.0754)
 
 [node name="MainOption" parent="." instance=ExtResource("4_aot4u")]
 transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, -2, 3.292, -8.567)
+mesh = SubResource("QuadMesh_5qo54")
 option = 1
+onFocusDepthChange = 0.1
+gainedFocusAnimationDuration = 0.1
+lostFocusAnimationDuration = 0.1
+onSelectDepthChange = -0.1
+onSelectDownAnimationDuration = 0.1
+onSelectUpAnimationDuration = 0.1
 image = ExtResource("5_1fphk")
 
 [node name="NextOption" parent="." instance=ExtResource("4_aot4u")]
 transform = Transform3D(1, 0, 0, 0, 0.953423, 0.301638, 0, -0.301638, 0.953423, 2, 3.292, -8.567)
+mesh = SubResource("QuadMesh_46jwu")
+onFocusDepthChange = 0.1
+gainedFocusAnimationDuration = 0.1
+lostFocusAnimationDuration = 0.1
+onSelectDepthChange = -0.1
+onSelectDownAnimationDuration = 0.1
+onSelectUpAnimationDuration = 0.1
 image = ExtResource("6_cyou0")
 
 [node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]

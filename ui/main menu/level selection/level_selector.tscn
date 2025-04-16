@@ -23,6 +23,7 @@
 [sub_resource type="QuadMesh" id="QuadMesh_dtaam"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jcnav"]
+size = Vector2(0.4, 0.4)
 
 [node name="LevelSelector" type="Node3D"]
 script = ExtResource("1_2wc8b")
@@ -32,78 +33,78 @@ script = ExtResource("1_2wc8b")
 [node name="LevelOption0" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.6, 0)
 mesh = SubResource("QuadMesh_qh7wr")
-image = ExtResource("2_haerq")
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
+image = ExtResource("2_haerq")
 
 [node name="LevelOption1" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("QuadMesh_gbjde")
 number = 1
-image = ExtResource("3_2wc8b")
+enabled = false
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
-enabled = false
+image = ExtResource("3_2wc8b")
 
 [node name="LevelOption2" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.6, 0)
 mesh = SubResource("QuadMesh_kgyth")
 number = 2
-image = ExtResource("4_hcqhj")
+enabled = false
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
-enabled = false
+image = ExtResource("4_hcqhj")
 
 [node name="LevelOption3" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.6, 0)
 mesh = SubResource("QuadMesh_hlacs")
 number = 3
-image = ExtResource("5_stmv7")
+enabled = false
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
-enabled = false
+image = ExtResource("5_stmv7")
 
 [node name="LevelOption4" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 mesh = SubResource("QuadMesh_akwvd")
 number = 4
-image = ExtResource("6_iwjpe")
+enabled = false
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
-enabled = false
+image = ExtResource("6_iwjpe")
 
 [node name="LevelOption5" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.6, 0)
 mesh = SubResource("QuadMesh_dtaam")
 number = 5
-image = ExtResource("7_0i8kk")
+enabled = false
 onFocusDepthChange = 0.2
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.3
 onSelectDepthChange = -0.3
 onSelectDownAnimationDuration = 0.4
 onSelectUpAnimationDuration = 0.6
-enabled = false
+image = ExtResource("7_0i8kk")
 
 [node name="CancelOption" parent="." instance=ExtResource("9_hcqhj")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.96463, -1.12112, 0)
