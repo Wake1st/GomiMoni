@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvujojtkpsavj"]
+
+[ext_resource type="Script" uid="uid://bb6dcv31nyffy" path="res://ui/components/button_3d/button_3d.gd" id="1_eheds"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p4kov"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eheds"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[node name="Button3D" type="StaticBody3D"]
+script = ExtResource("1_eheds")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_p4kov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_eheds")

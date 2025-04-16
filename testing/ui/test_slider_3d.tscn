@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnu5ytsuwulu1"]
 
-[ext_resource type="PackedScene" uid="uid://cbobjnevufop" path="res://ui/components/slider_3d.tscn" id="1_x0c2d"]
+[ext_resource type="PackedScene" uid="uid://cbobjnevufop" path="res://ui/components/slider_3d/slider_3d.tscn" id="1_x0c2d"]
 
 [sub_resource type="Environment" id="Environment_f2fml"]
 ambient_light_source = 2

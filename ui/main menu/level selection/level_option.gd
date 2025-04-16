@@ -27,12 +27,6 @@ func _ready() -> void:
 	material.albedo_texture = image
 	mesh.set_surface_override_material(0, material)
 	
-	# set up a disabled mask
-	#var mask: StandardMaterial3D = StandardMaterial3D.new()
-	#mask.albedo_color = MASK_COLOR
-	#mask.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	#mesh.material_override = mask
-	
 	# set animation values
 	basePosition = position
 	hoverPosition = position + basis.z * HOVER_SHIFT
@@ -44,14 +38,6 @@ func setup(camera_position: Vector3) -> void:
 
 func enable(value: bool) -> void:
 	isEnabled = value
-	
-	#var mask: StandardMaterial3D = mesh.material_override
-	#if isEnabled:
-		## set a mask on
-		#mask.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
-	#else:
-		#mask.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	#mesh.material_override = mask
 
 
 func _input(event) -> void:
