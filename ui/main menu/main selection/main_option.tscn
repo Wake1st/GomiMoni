@@ -1,21 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://qbltk6w84prr"]
+[gd_scene load_steps=2 format=3 uid="uid://qbltk6w84prr"]
 
 [ext_resource type="Script" uid="uid://4f6n6utwcue3" path="res://ui/main menu/main selection/main_option.gd" id="1_em5am"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_mughp"]
-size = Vector2(3, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_em5am"]
-data = PackedVector3Array(1.5, -0.5, 0, -1.5, -0.5, 0, 1.5, 0.5, 0, -1.5, -0.5, 0, -1.5, 0.5, 0, 1.5, 0.5, 0)
-
-[node name="MainOption" type="StaticBody3D"]
+[node name="MainOption" type="MeshInstance3D"]
 script = ExtResource("1_em5am")
-
-[node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("QuadMesh_mughp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConcavePolygonShape3D_em5am")
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+metadata/_custom_type_script = "uid://bb6dcv31nyffy"

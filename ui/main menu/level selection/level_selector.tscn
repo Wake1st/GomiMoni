@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kg0m54kenbg3"]
+[gd_scene load_steps=17 format=3 uid="uid://kg0m54kenbg3"]
 
 [ext_resource type="Script" uid="uid://bivwgpsywg3wk" path="res://ui/main menu/level selection/level_selector.gd" id="1_2wc8b"]
 [ext_resource type="PackedScene" uid="uid://uf1d7buxy3qx" path="res://ui/main menu/level selection/level_option.tscn" id="1_s73au"]
@@ -10,6 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://cj6r27rrdnblh" path="res://assets/images/level icons/Which_Switch.png" id="7_0i8kk"]
 [ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="9_hcqhj"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_qh7wr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gbjde"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kgyth"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hlacs"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_akwvd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dtaam"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jcnav"]
+
 [node name="LevelSelector" type="Node3D"]
 script = ExtResource("1_2wc8b")
 
@@ -17,32 +31,85 @@ script = ExtResource("1_2wc8b")
 
 [node name="LevelOption0" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.6, 0)
+mesh = SubResource("QuadMesh_qh7wr")
 image = ExtResource("2_haerq")
+onFocusDepthChange = 0.2
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.3
+onSelectDepthChange = -0.3
+onSelectDownAnimationDuration = 0.4
+onSelectUpAnimationDuration = 0.6
 
 [node name="LevelOption1" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("QuadMesh_gbjde")
 number = 1
 image = ExtResource("3_2wc8b")
+onFocusDepthChange = 0.2
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.3
+onSelectDepthChange = -0.3
+onSelectDownAnimationDuration = 0.4
+onSelectUpAnimationDuration = 0.6
+enabled = false
 
 [node name="LevelOption2" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.6, 0)
+mesh = SubResource("QuadMesh_kgyth")
 number = 2
 image = ExtResource("4_hcqhj")
+onFocusDepthChange = 0.2
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.3
+onSelectDepthChange = -0.3
+onSelectDownAnimationDuration = 0.4
+onSelectUpAnimationDuration = 0.6
+enabled = false
 
 [node name="LevelOption3" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.6, 0)
+mesh = SubResource("QuadMesh_hlacs")
 number = 3
 image = ExtResource("5_stmv7")
+onFocusDepthChange = 0.2
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.3
+onSelectDepthChange = -0.3
+onSelectDownAnimationDuration = 0.4
+onSelectUpAnimationDuration = 0.6
+enabled = false
 
 [node name="LevelOption4" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+mesh = SubResource("QuadMesh_akwvd")
 number = 4
 image = ExtResource("6_iwjpe")
+onFocusDepthChange = 0.2
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.3
+onSelectDepthChange = -0.3
+onSelectDownAnimationDuration = 0.4
+onSelectUpAnimationDuration = 0.6
+enabled = false
 
 [node name="LevelOption5" parent="Options" instance=ExtResource("1_s73au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.6, 0)
+mesh = SubResource("QuadMesh_dtaam")
 number = 5
 image = ExtResource("7_0i8kk")
+onFocusDepthChange = 0.2
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.3
+onSelectDepthChange = -0.3
+onSelectDownAnimationDuration = 0.4
+onSelectUpAnimationDuration = 0.6
+enabled = false
 
 [node name="CancelOption" parent="." instance=ExtResource("9_hcqhj")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.96463, -1.12112, 0)
+mesh = SubResource("QuadMesh_jcnav")
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.2
+onSelectDepthChange = 0.2
+onSelectDownAnimationDuration = 0.2
+onSelectUpAnimationDuration = 0.3

@@ -12,12 +12,30 @@ script = ExtResource("1_f44kl")
 [node name="LevelsOption" parent="." instance=ExtResource("1_4w2md")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 image = ExtResource("3_p7wst")
+onFocusDepthChange = 0.1
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.2
+onSelectDepthChange = -0.2
+onSelectDownAnimationDuration = 0.2
+onSelectUpAnimationDuration = 0.2
 
 [node name="SettingsOption" parent="." instance=ExtResource("1_4w2md")]
 option = 1
 image = ExtResource("4_rm0ac")
+onFocusDepthChange = 0.1
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.2
+onSelectDepthChange = -0.2
+onSelectDownAnimationDuration = 0.2
+onSelectUpAnimationDuration = 0.2
 
 [node name="CreditsOption" parent="." instance=ExtResource("1_4w2md")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
 option = 2
 image = ExtResource("5_s6vg7")
+onFocusDepthChange = 0.1
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.2
+onSelectDepthChange = -0.2
+onSelectDownAnimationDuration = 0.2
+onSelectUpAnimationDuration = 0.2
