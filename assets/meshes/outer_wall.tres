@@ -1,0 +1,21 @@
+[gd_resource type="CylinderMesh" load_steps=3 format=3 uid="uid://63qdsbrbn5td"]
+
+[ext_resource type="Shader" uid="uid://6jgfngocy28b" path="res://boundaries/outer_walls.gdshader" id="1_4yaao"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhpn0"]
+render_priority = 0
+shader = ExtResource("1_4yaao")
+shader_parameter/color = Color(0.109804, 0.121569, 0.168627, 1)
+shader_parameter/amplitude = 1.6
+shader_parameter/wave_length = 0.4
+
+[resource]
+material = SubResource("ShaderMaterial_nhpn0")
+flip_faces = true
+top_radius = 14.0
+bottom_radius = 5.85
+height = 8.0
+radial_segments = 48
+rings = 12
+cap_top = false
+cap_bottom = false

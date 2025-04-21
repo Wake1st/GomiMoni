@@ -16,10 +16,10 @@ Moni buys trash.
 ## Stretch Goals
 
 - [x] mechanics: connect light to keys to show user when key is active
+- [x] add level walls (big piles of trash) for each level to fill up the space
 - [ ] fun voice lines for starting and finishing level
 - [ ] camera: should follow vehicle?
 - [ ] `flyer`: implement a consistent bobbing motion to stay afloat 
-- [ ] add level walls (big piles of trash) for each level to fill up the space
 - [ ] lighting: just better
 - [ ] add settings to pause menu
 - [ ] add music selector
@@ -27,6 +27,8 @@ Moni buys trash.
 - [ ] add more levels, with more variety
 - [ ] add exit game option
 - [ ] allow controller
+- [ ] auto save/load game data
+
 
 ## Credits
 

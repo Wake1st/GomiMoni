@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b70ltqiivtxqg"]
+
+[ext_resource type="CylinderMesh" uid="uid://63qdsbrbn5td" path="res://assets/meshes/outer_wall.tres" id="1_mvn3v"]
+
+[node name="OuterWall" type="MeshInstance3D"]
+mesh = ExtResource("1_mvn3v")
