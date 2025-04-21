@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvujojtkpsavj"]
+
+[ext_resource type="Script" uid="uid://bb6dcv31nyffy" path="res://ui/components/button_3d/button_3d.gd" id="1_eheds"]
+
+[node name="Button3D" type="MeshInstance3D"]
+script = ExtResource("1_eheds")

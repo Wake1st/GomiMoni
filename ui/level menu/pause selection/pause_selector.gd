@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func setup(callback: Callable) -> void:
 	for child: PauseOption in get_children():
+		child.setup()
 		child.selected.connect(callback)
 
 

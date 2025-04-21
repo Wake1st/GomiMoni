@@ -15,6 +15,7 @@ const SAMPLE_COOLDOWN: float = 0.6
 func setup(cancelCallback: Callable) -> void:
 	# connect cancel callback
 	cancelOption.selected.connect(cancelCallback)
+	cancelOption.setup()
 	
 	# connect audio settings
 	masterSlider.value_changed.connect(handle_master_changed)

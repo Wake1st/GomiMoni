@@ -10,7 +10,7 @@ const PROGRESS_SIZE: float = 2.0
 
 @export_range(0,1) var initialValue = 0.5
 
-@onready var shader: Shader = preload("res://ui/components/slider_3d.gdshader")
+@onready var shader: Shader = preload("res://ui/components/slider_3d/slider_3d.gdshader")
 @onready var progressMesh: MeshInstance3D = $ProgressMesh
 @onready var knob: StaticBody3D = $SliderKnob3D
 

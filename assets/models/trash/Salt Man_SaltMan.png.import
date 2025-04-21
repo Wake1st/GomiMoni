@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnhhq44r66jp0"
+uid="uid://bo2uhsq6qa7l"
 path.s3tc="res://.godot/imported/Salt Man_SaltMan.png-6f6691c40c1f20dac154c6a5a8cbb651.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "0efbb324bf45daff54c9d10911fa0c11"
 }
 
 [deps]

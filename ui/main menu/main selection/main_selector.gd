@@ -4,4 +4,5 @@ extends Node3D
 
 func setup(callback: Callable) -> void:
 	for child: MainOption in get_children():
+		child.setup()
 		child.selected.connect(callback)

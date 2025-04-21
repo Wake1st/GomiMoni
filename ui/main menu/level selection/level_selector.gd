@@ -9,15 +9,17 @@ extends Node3D
 func setup(cancelCallback: Callable, levelCallback: Callable) -> void:
 	# connect cancel callback
 	cancelOption.selected.connect(cancelCallback)
+	cancelOption.setup()
 	
 	# connect level selection callback
 	for child: LevelOption in options.get_children():
+		child.setup()
 		child.selected.connect(levelCallback)
 
 
 ## Enables all beaten levels plus the next
 func check_available_options() -> void:
-	var highestAllowedLevel = LevelList.highestLevel + 1
+	var highestAllowedLevel = LevelList.current_level_index()
 	for child: LevelOption in options.get_children():
 		# ensure only allowed levels are clickable
 		if child.number <= highestAllowedLevel:

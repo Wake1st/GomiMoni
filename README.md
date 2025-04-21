@@ -9,13 +9,24 @@ Moni in the pocket.
 Moni buys trash.
 
 ## Known Issues
-- [ ] fix: previously selected option buttons are still on hover when reloaded
+- [x] fix: previously selected option buttons are still on hover when reloaded
+- [ ] fix: texture import issue with some models (I need help with this)
+- [ ] fix: alpha channel for textures (should be transparent)
 
 ## Stretch Goals
 
+- [ ] mechanics: connect light to keys to show user when key is active
+- [ ] fun voice lines for starting and finishing level
+- [ ] camera: should follow vehicle?
+- [ ] `flyer`: implement a consistent bobbing motion to stay afloat 
+- [ ] add level walls (big piles of trash) for each level to fill up the space
+- [ ] lighting: just better
+- [ ] add settings to pause menu
+- [ ] add music selector
 - [ ] add more songs and sfx
 - [ ] add more levels, with more variety
-- [ ] mechanics: connect light to keys to show user when key is active
+- [ ] add exit game option
+- [ ] allow controller
 
 ## Credits
 

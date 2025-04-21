@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://xho4is50ay4u"]
+
+[ext_resource type="PackedScene" uid="uid://dvujojtkpsavj" path="res://ui/components/button_3d/button_3d.tscn" id="1_d4ion"]
+[ext_resource type="Texture2D" uid="uid://bwuujdai1wi4m" path="res://assets/images/icon.svg" id="2_bddlx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bddlx"]
+size = Vector2(2, 1)
+
+[sub_resource type="Environment" id="Environment_bddlx"]
+ambient_light_source = 2
+ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
+ambient_light_energy = 1.32
+
+[node name="TestButton3D" type="Node3D"]
+
+[node name="Button3D" parent="." instance=ExtResource("1_d4ion")]
+mesh = SubResource("QuadMesh_bddlx")
+onFocusDepthChange = 0.1
+gainedFocusAnimationDuration = 0.1
+lostFocusAnimationDuration = 0.12
+onSelectDepthChange = -0.15
+onSelectDownAnimationDuration = 0.04
+onSelectUpAnimationDuration = 0.06
+image = ExtResource("2_bddlx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bddlx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.56565)
+fov = 40.0
+size = 2.25709
