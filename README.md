@@ -11,7 +11,7 @@ Moni buys trash.
 ## Known Issues
 - [x] fix: previously selected option buttons are still on hover when reloaded
 - [ ] fix: texture import issue with some models (I need help with this)
-- [ ] set alpha channel for textures
+- [ ] fix: alpha channel for textures (should be transparent)
 
 ## Stretch Goals
 
@@ -25,6 +25,8 @@ Moni buys trash.
 - [ ] add music selector
 - [ ] add more songs and sfx
 - [ ] add more levels, with more variety
+- [ ] add exit game option
+- [ ] allow controller
 
 ## Credits
 
