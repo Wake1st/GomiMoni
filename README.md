@@ -10,8 +10,8 @@ Moni buys trash.
 
 ## Known Issues
 - [x] fix: previously selected option buttons are still on hover when reloaded
+- [x] fix: alpha channel for textures (should be transparent)
 - [ ] fix: texture import issue with some models (I need help with this)
-- [ ] fix: alpha channel for textures (should be transparent)
 
 ## Stretch Goals
 

@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="3_1bagf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orljq"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_ed0b0")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_06xqq"]

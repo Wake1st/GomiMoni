@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bwd5lpjlxicxh" path="res://trash/items/peter_pumpkin.tscn" id="11_7nuxp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ln5ss"]
+material = ExtResource("4_n5hkn")
 size = Vector3(3, 1, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5wpfl"]
@@ -27,7 +28,6 @@ script = ExtResource("1_mno6o")
 [node name="Dumpster" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 1, 0)
 mesh = SubResource("BoxMesh_ln5ss")
-surface_material_override/0 = ExtResource("4_n5hkn")
 
 [node name="ShopSlots" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0421079, 0)
