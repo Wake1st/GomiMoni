@@ -10,6 +10,7 @@ ambient_light_energy = 1.32
 
 [node name="TestLevelContainer" type="Node3D"]
 script = ExtResource("1_vuvwv")
+testingLevel = 5
 
 [node name="LevelContainer" parent="." instance=ExtResource("2_wkitb")]
 

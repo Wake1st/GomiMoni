@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://whl5x37uv6b7"]
+[gd_scene load_steps=6 format=3 uid="uid://whl5x37uv6b7"]
 
 [ext_resource type="PackedScene" uid="uid://3bbbx17m4iuh" path="res://mechanics/keys/basket.tscn" id="1_5i643"]
 [ext_resource type="Script" uid="uid://3uvqw36xgt2t" path="res://testing/mechanics/test_basket.gd" id="1_l43p0"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="2_l43p0"]
+[ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="3_a65b1"]
 
 [sub_resource type="Environment" id="Environment_l43p0"]
 ambient_light_source = 2
@@ -12,7 +13,11 @@ ambient_light_energy = 1.32
 [node name="TestBasket" type="Node3D"]
 script = ExtResource("1_l43p0")
 
-[node name="Basket" parent="." instance=ExtResource("1_5i643")]
+[node name="Basket" parent="." node_paths=PackedStringArray("light") instance=ExtResource("1_5i643")]
+light = NodePath("Light")
+
+[node name="Light" parent="Basket" instance=ExtResource("3_a65b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="Spawner" parent="." instance=ExtResource("2_l43p0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23798, 0, -1.31044)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl7jwxvg4qljc"]
+[gd_scene load_steps=13 format=3 uid="uid://bl7jwxvg4qljc"]
 
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_48p10"]
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="2_8vyoi"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://3bbbx17m4iuh" path="res://mechanics/keys/basket.tscn" id="7_vkxr1"]
 [ext_resource type="PackedScene" uid="uid://bahvg5kmwr68v" path="res://systems/puzzle_system.tscn" id="8_knpra"]
 [ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="9_3wl6h"]
+[ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="9_k5q28"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_knpra"]
 size = Vector3(3.74, 2, 3.74)
@@ -53,8 +54,12 @@ type = 1
 lock = NodePath("../Goal/Cover")
 keys = [NodePath("Basket")]
 
-[node name="Basket" parent="PuzzleSystem" instance=ExtResource("7_vkxr1")]
+[node name="Basket" parent="PuzzleSystem" node_paths=PackedStringArray("light") instance=ExtResource("7_vkxr1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+light = NodePath("Light")
+
+[node name="Light" parent="PuzzleSystem/Basket" instance=ExtResource("9_k5q28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09669, 0, 1.7083)

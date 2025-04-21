@@ -3,7 +3,7 @@ extends Node3D
 
 @export var flyer_strength: float = 10
 
-@onready var switch = $Switch
+@onready var switch: Switch = $Switch
 @onready var on_spawner = $OnSpawner
 @onready var off_spawner = $OffSpawner
 

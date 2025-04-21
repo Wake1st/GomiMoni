@@ -23,22 +23,27 @@ func reset() -> void:
 	isTriggered = false
 	tween = null
 	basket.position.y = BASKET_HEIGHT
+	light.flip(false)
 
 
 func toggleOn() -> void:
 	# this key is solved
 	isTriggered = true
 	
+	# notify user with sound
+	basketSFX.play()
+	
 	# show the mechanism changing
 	tween = create_tween()
 	tween.tween_property(basket, "position:y", -DROP_DISTANCE, drop_duration)
 	tween.tween_callback(handle_drop_callback)
-	
-	# notify user with sound
-	basketSFX.play()
 
 
 func handle_drop_callback() -> void:
+	# display visual cue for the light
+	light.flip(true)
+	
+	# notify listeners
 	emit_signal("triggered")
 
 

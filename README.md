@@ -15,7 +15,7 @@ Moni buys trash.
 
 ## Stretch Goals
 
-- [ ] mechanics: connect light to keys to show user when key is active
+- [x] mechanics: connect light to keys to show user when key is active
 - [ ] fun voice lines for starting and finishing level
 - [ ] camera: should follow vehicle?
 - [ ] `flyer`: implement a consistent bobbing motion to stay afloat 

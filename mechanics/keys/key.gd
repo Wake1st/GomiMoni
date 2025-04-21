@@ -4,6 +4,8 @@ extends Node3D
 
 signal triggered
 
+@export var light: Light
+
 
 func reset() -> void:
 	print("WARNING: unimplemented function 'reset' in class 'Key'")
