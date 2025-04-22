@@ -20,7 +20,7 @@ Moni buys trash.
 - [ ] fun voice lines for starting and finishing level
 - [ ] camera: should follow vehicle?
 - [ ] `flyer`: implement a consistent bobbing motion to stay afloat 
-- [ ] lighting: just better
+- [ ] lighting: just better (spotlights, in order or solution)
 - [ ] add settings to pause menu
 - [ ] add music selector
 - [ ] add more songs and sfx
@@ -28,7 +28,6 @@ Moni buys trash.
 - [ ] add exit game option
 - [ ] allow controller
 - [ ] auto save/load game data
-
 
 ## Credits
 

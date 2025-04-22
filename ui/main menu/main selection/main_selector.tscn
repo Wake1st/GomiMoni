@@ -51,3 +51,10 @@ onSelectDepthChange = -0.5
 onSelectDownAnimationDuration = 0.1
 onSelectUpAnimationDuration = 0.3
 image = ExtResource("5_s6vg7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.848048, -0.185582, -0.496361, 0, 0.936672, -0.350207, 0.529919, 0.296993, 0.794343, -2.17018, -1.35679, 1.6637)
+spot_range = 6.937
+spot_attenuation = -0.47
+spot_angle = 48.46
+spot_angle_attenuation = 0.353553

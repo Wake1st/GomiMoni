@@ -23,3 +23,10 @@ mesh = SubResource("PlaneMesh_06xqq")
 
 [node name="CancelOption" parent="." instance=ExtResource("3_1bagf")]
 transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0.025, -1.37816, 1.89348)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.678015, 0.313468, 0.664855, 0.0918807, 0.933555, -0.346457, -0.729283, -0.173816, -0.661767, 2.66111, -1.95041, -4.21651)
+spot_range = 11.7215
+spot_attenuation = -0.41
+spot_angle = 30.83
+spot_angle_attenuation = 0.466516

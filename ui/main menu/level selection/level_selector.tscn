@@ -114,3 +114,9 @@ lostFocusAnimationDuration = 0.2
 onSelectDepthChange = 0.2
 onSelectDownAnimationDuration = 0.2
 onSelectUpAnimationDuration = 0.3
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.946548, 0.322563, 0, -0.322563, 0.946548, 0, 0.836197, 2.6535)
+spot_attenuation = -0.26
+spot_angle = 53.5
+spot_angle_attenuation = 0.189465

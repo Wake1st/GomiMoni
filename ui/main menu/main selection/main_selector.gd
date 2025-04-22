@@ -3,6 +3,7 @@ extends Node3D
 
 
 func setup(callback: Callable) -> void:
-	for child: MainOption in get_children():
-		child.setup()
-		child.selected.connect(callback)
+	for child in get_children():
+		if child is MainOption:
+			child.setup()
+			child.selected.connect(callback)

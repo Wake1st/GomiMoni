@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://brnh2sw5gythu"]
+
+[ext_resource type="Script" uid="uid://dnv2s7e2hp2hg" path="res://mechanics/focus_light.gd" id="1_owim0"]
+
+[node name="FocusLight" type="SpotLight3D"]
+shadow_enabled = true
+spot_range = 5.2192
+spot_attenuation = -1.2
+spot_angle = 32.1524
+spot_angle_attenuation = 2.21914
+script = ExtResource("1_owim0")
