@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg0cnufwnly1s" path="res://base/main.gd" id="1_f47da"]
 [ext_resource type="PackedScene" uid="uid://c2hl4snhbybv0" path="res://systems/staging_system.tscn" id="1_wbdts"]
-
-[sub_resource type="Environment" id="Environment_wbdts"]
-background_energy_multiplier = 0.2
+[ext_resource type="Environment" uid="uid://bk70cvmrni8tw" path="res://assets/env/main.tres" id="3_3xxnu"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_f47da")
@@ -12,4 +10,4 @@ script = ExtResource("1_f47da")
 [node name="StagingSystem" parent="." instance=ExtResource("1_wbdts")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wbdts")
+environment = ExtResource("3_3xxnu")

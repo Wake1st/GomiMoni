@@ -8,6 +8,7 @@ shader = ExtResource("1_4yaao")
 shader_parameter/color = Color(0.109804, 0.121569, 0.168627, 1)
 shader_parameter/amplitude = 1.6
 shader_parameter/wave_length = 0.4
+shader_parameter/messiness = 1.0
 
 [resource]
 material = SubResource("ShaderMaterial_nhpn0")
