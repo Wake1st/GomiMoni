@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dordo0jkdjls2"]
+[gd_scene load_steps=18 format=3 uid="uid://dordo0jkdjls2"]
 
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="1_1yd0v"]
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_wag6n"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/keys/switch.tscn" id="8_dmpbc"]
 [ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="9_afhbg"]
 [ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="9_dmpbc"]
+[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/focus_system.tscn" id="10_0qs7m"]
 [ext_resource type="PackedScene" uid="uid://b70ltqiivtxqg" path="res://boundaries/outer_wall.tscn" id="11_0sbtx"]
+[ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="11_yigyk"]
 [ext_resource type="Shader" uid="uid://6jgfngocy28b" path="res://boundaries/outer_walls.gdshader" id="12_y6c21"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1yd0v"]
@@ -22,6 +24,7 @@ shader = ExtResource("12_y6c21")
 shader_parameter/color = Color(0.109804, 0.121569, 0.168627, 1)
 shader_parameter/amplitude = 3.4
 shader_parameter/wave_length = 0.4
+shader_parameter/messiness = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y6c21"]
 material = SubResource("ShaderMaterial_0sbtx")
@@ -34,12 +37,13 @@ rings = 12
 cap_top = false
 cap_bottom = false
 
-[node name="WhichSwitch" type="Node3D" node_paths=PackedStringArray("swapSystem", "puzzleSystem", "goal")]
+[node name="WhichSwitch" type="Node3D" node_paths=PackedStringArray("swapSystem", "puzzleSystem", "lightingSystem", "goal")]
 script = ExtResource("1_wag6n")
 moni = 64.87
 cameraSize = 18.0
 swapSystem = NodePath("VehicleSwapSystem")
 puzzleSystem = NodePath("PuzzleSystem")
+lightingSystem = NodePath("FocusSystem")
 goal = NodePath("Goal")
 
 [node name="Floor" parent="." instance=ExtResource("1_1yd0v")]
@@ -79,6 +83,70 @@ light = NodePath("Light")
 
 [node name="Light" parent="PuzzleSystem/Switch2" instance=ExtResource("9_afhbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41421, 0, 0)
+
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("lights") instance=ExtResource("10_0qs7m")]
+pulseTime = 0.6
+focusTime = 1.0
+lights = [NodePath("FlyerLight"), NodePath("SwitchLight"), NodePath("SwitchLight2"), NodePath("GomiLight"), NodePath("HoleLight")]
+
+[node name="FlyerLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+transform = Transform3D(1, 0, 0, 0, 0.496959, 0.867774, 0, -0.867774, 0.496959, 0, 5.03203, 6.01345)
+light_energy = 2.0
+shadow_bias = 0.3
+spot_range = 80.0
+spot_attenuation = 0.1
+spot_angle = 14.0
+spot_angle_attenuation = 1.62451
+focusAngle = 14.0
+openAngle = 52.0
+openAngleAttenuation = 1.6
+openDuration = 0.6
+
+[node name="SwitchLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+transform = Transform3D(0.886276, -0.401106, -0.231578, -5.73766e-08, -0.5, 0.866025, -0.463157, -0.767538, -0.443138, -4.4, 5, -6.04199)
+light_energy = 2.0
+shadow_bias = 0.3
+spot_range = 80.0
+spot_attenuation = 0.1
+spot_angle = 18.0
+spot_angle_attenuation = 1.62451
+focusAngle = 18.0
+openAngle = 50.0
+openAngleAttenuation = 1.6
+
+[node name="SwitchLight2" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+transform = Transform3D(0.939693, 0.296198, 0.17101, -4.37114e-08, -0.5, 0.866025, 0.34202, -0.813798, -0.469846, 4.4, 5, -6.04199)
+light_energy = 2.0
+shadow_bias = 0.3
+spot_range = 80.0
+spot_attenuation = 0.1
+spot_angle = 18.0
+spot_angle_attenuation = 1.62451
+focusAngle = 18.0
+openAngle = 50.0
+openAngleAttenuation = 1.6
+
+[node name="GomiLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+transform = Transform3D(1, 0, 0, 0, -0.459068, 0.888401, 0, -0.888401, -0.459068, 0, 6, -6)
+light_energy = 2.0
+shadow_bias = 0.24
+spot_range = 80.0
+spot_attenuation = 0.2
+spot_angle = 12.0
+focusAngle = 12.0
+openAngle = 50.0
+openDuration = 1.0
+
+[node name="HoleLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+transform = Transform3D(1, 0, 0, 0, 0.303584, 0.952805, 0, -0.952805, 0.303584, 0, 6, 2)
+light_energy = 2.0
+shadow_bias = 0.24
+spot_range = 80.0
+spot_attenuation = 0.2
+spot_angle = 18.0
+focusAngle = 18.0
+openAngle = 56.0
+openDuration = 1.2
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09669, 0, 1.7083)

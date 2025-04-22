@@ -9,11 +9,11 @@ enum MODE {
 	OPENED,
 }
 
-const FOCUS_ANGLE: float = 8.0
-const OPEN_ANGLE: float = 36.0
-const FOCUS_ANGLE_ATTENUATION: float = 0.2
-const OPEN_ANGLE_ATTENUATION: float = 2.0
-const TWEEN_DURATION: float = 0.8
+@export var focusAngle: float = 8.0
+@export var openAngle: float = 36.0
+@export var focusAngleAttenuation: float = 0.2
+@export var openAngleAttenuation: float = 2.0
+@export var openDuration: float = 0.8
 
 var tween: Tween
 
@@ -38,11 +38,11 @@ func set_mode(m: MODE) -> void:
 	# set directly according to mode
 	match m:
 		MODE.FOCUSED:
-			spot_angle = FOCUS_ANGLE
-			spot_angle_attenuation = FOCUS_ANGLE_ATTENUATION
+			spot_angle = focusAngle
+			spot_angle_attenuation = focusAngleAttenuation
 		MODE.OPENED:
-			spot_angle = OPEN_ANGLE
-			spot_angle_attenuation = OPEN_ANGLE_ATTENUATION
+			spot_angle = openAngle
+			spot_angle_attenuation = openAngleAttenuation
 
 
 func to_mode(m: MODE) -> void:
@@ -51,17 +51,17 @@ func to_mode(m: MODE) -> void:
 	var angle_attenuation
 	match m:
 		MODE.FOCUSED:
-			angle = FOCUS_ANGLE
-			angle_attenuation = FOCUS_ANGLE_ATTENUATION
+			angle = focusAngle
+			angle_attenuation = focusAngleAttenuation
 		MODE.OPENED:
-			angle = OPEN_ANGLE
-			angle_attenuation = OPEN_ANGLE_ATTENUATION
+			angle = openAngle
+			angle_attenuation = openAngleAttenuation
 	
 	# transition between modes
 	tween = create_tween()
-	tween.tween_property(self, "spot_angle", angle, TWEEN_DURATION)
+	tween.tween_property(self, "spot_angle", angle, openDuration)
 	tween.parallel()
-	tween.tween_property(self, "spot_angle_attenuation", angle_attenuation, TWEEN_DURATION)
+	tween.tween_property(self, "spot_angle_attenuation", angle_attenuation, openDuration)
 	tween.tween_callback(handle_tween_finished)
 
 

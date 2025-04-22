@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl7jwxvg4qljc"]
+[gd_scene load_steps=19 format=3 uid="uid://bl7jwxvg4qljc"]
 
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_48p10"]
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="2_8vyoi"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bahvg5kmwr68v" path="res://systems/puzzle_system.tscn" id="8_knpra"]
 [ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="9_3wl6h"]
 [ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="9_k5q28"]
+[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/focus_system.tscn" id="10_yafvn"]
 [ext_resource type="PackedScene" uid="uid://b70ltqiivtxqg" path="res://boundaries/outer_wall.tscn" id="11_cbya2"]
+[ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="11_tr2sq"]
 [ext_resource type="Shader" uid="uid://6jgfngocy28b" path="res://boundaries/outer_walls.gdshader" id="12_p5pwe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_knpra"]
@@ -25,6 +27,7 @@ shader = ExtResource("12_p5pwe")
 shader_parameter/color = Color(0.109804, 0.121569, 0.168627, 1)
 shader_parameter/amplitude = 2.8
 shader_parameter/wave_length = 0.48
+shader_parameter/messiness = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rso22"]
 material = SubResource("ShaderMaterial_nhpn0")
@@ -37,12 +40,13 @@ rings = 12
 cap_top = false
 cap_bottom = false
 
-[node name="HeavyToBasket" type="Node3D" node_paths=PackedStringArray("swapSystem", "puzzleSystem", "goal")]
+[node name="HeavyToBasket" type="Node3D" node_paths=PackedStringArray("swapSystem", "puzzleSystem", "lightingSystem", "goal")]
 script = ExtResource("1_48p10")
 moni = 27.19
 cameraSize = 14.0
 swapSystem = NodePath("VehicleSwapSystem")
 puzzleSystem = NodePath("PuzzleSystem")
+lightingSystem = NodePath("FocusSystem")
 goal = NodePath("Goal")
 
 [node name="Floor" parent="." instance=ExtResource("2_8vyoi")]
@@ -80,6 +84,57 @@ light = NodePath("Light")
 
 [node name="Light" parent="PuzzleSystem/Basket" instance=ExtResource("9_k5q28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("lights") instance=ExtResource("10_yafvn")]
+lights = [NodePath("HeavyLight"), NodePath("BasketLight"), NodePath("GomiLight"), NodePath("HoleLight")]
+
+[node name="HeavyLight" parent="FocusSystem" instance=ExtResource("11_tr2sq")]
+transform = Transform3D(-4.37114e-08, 0.915663, -0.401948, 0, 0.401948, 0.915663, 1, 4.00249e-08, -1.75697e-08, -9.71011, 6, 0)
+light_energy = 2.2
+shadow_bias = 0.8
+spot_range = 40.0
+spot_attenuation = 0.1
+spot_angle = 60.0
+spot_angle_attenuation = 1.56917
+focusAngle = 18.0
+openAngle = 60.0
+openAngleAttenuation = 1.6
+openDuration = 0.6
+
+[node name="BasketLight" parent="FocusSystem" instance=ExtResource("11_tr2sq")]
+transform = Transform3D(0.861912, -2.21642e-08, 0.507057, -0.507057, -3.76754e-08, 0.861912, 0, -1, -4.37114e-08, 13.602, 11.1493, 0)
+light_energy = 1.8
+shadow_bias = 0.4
+spot_range = 240.0
+spot_attenuation = 0.1
+spot_angle = 40.0
+spot_angle_attenuation = 1.62451
+focusAngle = 10.0
+openAngle = 40.0
+openAngleAttenuation = 1.6
+
+[node name="GomiLight" parent="FocusSystem" instance=ExtResource("11_tr2sq")]
+transform = Transform3D(1, 0, 0, 0, 0.490326, 0.871539, 0, -0.871539, 0.490326, 0, 4, 8.47488)
+light_energy = 2.0
+shadow_bias = 0.3
+spot_range = 40.0
+spot_attenuation = 0.2
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
+openAngle = 60.0
+openDuration = 1.2
+
+[node name="HoleLight" parent="FocusSystem" instance=ExtResource("11_tr2sq")]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 3.70012, -1.10397)
+light_energy = 2.0
+shadow_bias = 0.2
+spot_range = 30.0
+spot_attenuation = 0.1
+spot_angle = 74.58
+spot_angle_attenuation = 2.0
+focusAngle = 24.0
+openAngle = 74.0
+openDuration = 1.4
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09669, 0, 1.7083)

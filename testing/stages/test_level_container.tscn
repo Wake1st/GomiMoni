@@ -2,21 +2,13 @@
 
 [ext_resource type="Script" uid="uid://6e2p21mcmsqk" path="res://testing/stages/test_level_container.gd" id="1_vuvwv"]
 [ext_resource type="PackedScene" uid="uid://cihrsgpa8npn3" path="res://containers/level_container.tscn" id="2_wkitb"]
-
-[sub_resource type="Environment" id="Environment_22hfd"]
-ambient_light_source = 2
-ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
-ambient_light_energy = 1.32
+[ext_resource type="Environment" uid="uid://bk70cvmrni8tw" path="res://assets/env/main.tres" id="3_22hfd"]
 
 [node name="TestLevelContainer" type="Node3D"]
 script = ExtResource("1_vuvwv")
-testingLevel = 1
+testingLevel = 5
 
 [node name="LevelContainer" parent="." instance=ExtResource("2_wkitb")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_22hfd")
-
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.554438, 0.417571, 0.719884, -0.628912, -0.356284, 0.691037, 0.54504, -0.835881, 0.0650781, 0, 0, 0)
-light_energy = 3.0
+environment = ExtResource("3_22hfd")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csjei1aub058f" path="res://systems/focus_system.gd" id="1_f70d1"]
 
-[node name="FocusSystem" type="Node3D"]
+[node name="FocusSystem" type="Node"]
 script = ExtResource("1_f70d1")
 
 [node name="Timer" type="Timer" parent="."]

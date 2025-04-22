@@ -1,5 +1,5 @@
 class_name FocusSystem
-extends Node3D
+extends Node
 
 
 signal all_open

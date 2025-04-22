@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtxybv3frk2rl"]
+[gd_scene load_steps=14 format=3 uid="uid://dtxybv3frk2rl"]
 
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_csear"]
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="1_w8rw6"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="5_joess"]
 [ext_resource type="PackedScene" uid="uid://b70ltqiivtxqg" path="res://boundaries/outer_wall.tscn" id="7_sd7we"]
 [ext_resource type="Shader" uid="uid://6jgfngocy28b" path="res://boundaries/outer_walls.gdshader" id="8_d7r7p"]
+[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/focus_system.tscn" id="9_f6883"]
+[ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="10_6x50f"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_csear"]
 data = PackedVector3Array(20, 0.25, 20, 20, -0.25, 20, -20, -0.25, 20, -20, 0.25, 20, 20, 0.25, 20, -20, -0.25, 20, -20, 0.25, 20, -0.97082, 0.25, 0.705343, -0.37082, 0.25, 1.14127, -20, 0.25, 20, -0.37082, 0.25, 1.14127, 0.370821, 0.25, 1.14127, -20, -0.25, 20, -0.97082, -0.25, -0.705342, -20, -0.25, -20, 20, -0.25, -20, 0.37082, -0.25, -1.14127, 0.97082, -0.25, -0.705342, 20, -0.25, -20, 0.97082, -0.25, -0.705342, 1.2, -0.25, -5.24537e-08, 20, -0.25, -20, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, 0.25, -20, 20, -0.25, -20, 20, -0.25, 20, 0.370821, -0.25, 1.14127, -0.37082, -0.25, 1.14127, 20, -0.25, 20, 0.97082, -0.25, 0.705342, 0.370821, -0.25, 1.14127, -20, -0.25, -20, 0.37082, -0.25, -1.14127, 20, -0.25, -20, 20, -0.25, -20, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, -0.25, -20, 20, 0.25, -20, -20, 0.25, -20, 20, 0.25, -20, 0.37082, 0.25, -1.14127, -0.370821, 0.25, -1.14127, 20, 0.25, -20, 0.97082, 0.25, -0.705342, 0.37082, 0.25, -1.14127, 20, 0.25, 20, 0.97082, 0.25, -0.705342, 20, 0.25, -20, 20, 0.25, 20, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, -0.705342, 20, 0.25, 20, 0.370821, 0.25, 1.14127, 0.97082, 0.25, 0.705342, 20, 0.25, 20, 0.97082, 0.25, 0.705342, 1.2, 0.25, -5.24537e-08, -20, 0.25, 20, 0.370821, 0.25, 1.14127, 20, 0.25, 20, 20, 0.25, 20, 20, 0.25, -20, 20, -0.25, 20, -20, -0.25, -20, -0.97082, -0.25, -0.705342, -0.370821, -0.25, -1.14127, -20, -0.25, 20, -0.37082, -0.25, 1.14127, -0.97082, -0.25, 0.705343, 20, -0.25, 20, -0.37082, -0.25, 1.14127, -20, -0.25, 20, -20, 0.25, -20, -0.97082, 0.25, 0.705343, -20, 0.25, 20, -20, -0.25, 20, -0.97082, -0.25, 0.705343, -1.2, -0.25, 5.24537e-08, -20, -0.25, 20, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, -0.705342, -20, -0.25, -20, -20, 0.25, 20, -20, -0.25, 20, -20, 0.25, -20, -20, 0.25, 20, -20, -0.25, -20, -20, 0.25, -20, -20, -0.25, -20, 20, -0.25, -20, 20, 0.25, -20, -0.370821, 0.25, -1.14127, -20, 0.25, -20, -20, 0.25, -20, -0.97082, 0.25, -0.705342, -1.2, 0.25, 5.24537e-08, -20, 0.25, -20, -0.370821, 0.25, -1.14127, -0.97082, 0.25, -0.705342, -20, 0.25, -20, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, 0.705343, -20, -0.25, -20, -0.370821, -0.25, -1.14127, 0.37082, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -0.370821, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.370821, 0.25, -1.14127, 0.97082, -0.25, 0.705342, 0.97082, 0.25, 0.705342, 0.370821, 0.25, 1.14127, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.370821, 0.25, 1.14127, -0.37082, 0.25, 1.14127, 0.370821, -0.25, 1.14127, 0.97082, 0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.97082, -0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 0.37082, 0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, 0.705343, -1.2, 0.25, 5.24537e-08, 0.370821, -0.25, 1.14127, 0.97082, -0.25, 0.705342, 0.370821, 0.25, 1.14127, -0.97082, -0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, 0.370821, -0.25, 1.14127, -0.37082, 0.25, 1.14127, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.37082, -0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -0.370821, -0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.97082, 0.25, -0.705342, -0.370821, 0.25, -1.14127, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.370821, 0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.370821, -0.25, -1.14127, -0.37082, 0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -1.2, 0.25, 5.24537e-08, -0.97082, -0.25, 0.705343)
@@ -31,11 +33,12 @@ rings = 12
 cap_top = false
 cap_bottom = false
 
-[node name="SBend" type="Node3D" node_paths=PackedStringArray("swapSystem", "goal")]
+[node name="SBend" type="Node3D" node_paths=PackedStringArray("swapSystem", "lightingSystem", "goal")]
 script = ExtResource("1_csear")
 moni = 21.43
 cameraSize = 20.0
 swapSystem = NodePath("VehicleSwapSystem")
+lightingSystem = NodePath("FocusSystem")
 goal = NodePath("Goal")
 
 [node name="Floor" parent="." instance=ExtResource("1_w8rw6")]
@@ -51,6 +54,44 @@ spawners = [NodePath("GomiSpawner")]
 
 [node name="GomiSpawner" parent="VehicleSwapSystem" instance=ExtResource("3_csear")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15372, 0, 6.89592)
+
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("lights") instance=ExtResource("9_f6883")]
+lights = [NodePath("GomiLight"), NodePath("MidLight"), NodePath("HoleLight")]
+
+[node name="GomiLight" parent="FocusSystem" instance=ExtResource("10_6x50f")]
+transform = Transform3D(-0.683274, -0.584664, 0.437384, 0, 0.599024, 0.800731, -0.730162, 0.547119, -0.409297, 11.2001, 5.8703, 4.06959)
+light_energy = 2.6
+spot_range = 240.0
+spot_attenuation = 0.2
+spot_angle = 44.0
+focusAngle = 10.0
+openAngle = 44.0
+openDuration = 0.6
+
+[node name="MidLight" parent="FocusSystem" instance=ExtResource("10_6x50f")]
+transform = Transform3D(1, 0, 0, 0, 0.0416315, 0.999133, 0, -0.999133, 0.0416315, 2.40895, 7.50861, 5.31238)
+light_energy = 2.0
+shadow_bias = 0.1
+spot_range = 30.0
+spot_attenuation = 0.6
+spot_angle = 20.0
+spot_angle_attenuation = 0.999999
+focusAngle = 20.0
+openAngle = 60.0
+openAngleAttenuation = 0.8
+
+[node name="HoleLight" parent="FocusSystem" instance=ExtResource("10_6x50f")]
+transform = Transform3D(-0.345298, 0.670528, -0.656629, 0, 0.699663, 0.714473, 0.938493, 0.246706, -0.241593, -4.21965, 4.6745, -1.47315)
+light_energy = 3.0
+light_specular = 0.0
+shadow_bias = 0.3
+spot_range = 40.0
+spot_attenuation = 0.2
+spot_angle = 39.44
+spot_angle_attenuation = 0.5
+focusAngle = 12.0
+openAngle = 40.0
+openDuration = 1.0
 
 [node name="Walls" type="Node3D" parent="."]
 
