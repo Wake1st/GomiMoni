@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmejih00x7yx4"]
+
+[ext_resource type="Script" uid="uid://cyxkiiplpo3tw" path="res://base/title_screen.gd" id="1_xgi86"]
+[ext_resource type="Texture2D" uid="uid://cxqbqecjqoy62" path="res://assets/images/menu icons/Gomi_Moni.png" id="2_rkk1i"]
+[ext_resource type="PackedScene" uid="uid://b08yrrpn7b00s" path="res://audio/voice_box.tscn" id="3_bmmju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x05lg"]
+albedo_texture = ExtResource("2_rkk1i")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8i6dg"]
+material = SubResource("StandardMaterial3D_x05lg")
+
+[node name="TitleScreen" type="Node3D"]
+script = ExtResource("1_xgi86")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_8i6dg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.389084)
+fov = 102.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.17622)
+light_energy = 1.4
+spot_attenuation = 1.2
+spot_angle = 0.0
+spot_angle_attenuation = 0.500001
+
+[node name="VoiceBox" parent="." instance=ExtResource("3_bmmju")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="finished" from="VoiceBox" to="." method="_on_voice_box_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

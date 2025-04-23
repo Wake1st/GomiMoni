@@ -20,13 +20,14 @@ Moni buys trash.
 - [x] lighting: just better (spotlights, in order or solution)
 - [x] fun voice lines for starting and finishing level
 - [x] add more songs and sfx
-- [ ] add settings to pause menu
-- [ ] add music selector
 - [ ] add more levels, with more variety
 - [ ] add exit game option
-- [ ] allow controller
+- [ ] add title screen
 - [ ] auto save/load game data
+- [ ] allow controller
 
+- [ ] ~add music selector~ too few songs
+- [ ] ~add settings to pause menu~ problems with camera
 - [ ] ~camera: should follow vehicle?~ too many probs (outer-wall clipping, shaddows)
 - [ ] ~`flyer`: implement a consistent bobbing motion to stay afloat~ people liked it
 
