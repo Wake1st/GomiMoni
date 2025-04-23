@@ -30,6 +30,10 @@ func _ready() -> void:
 	camera.transition_finished.connect(handle_camera_transition_finished)
 
 
+func setup() -> void:
+	shop.setup()
+
+
 func open() -> void:
 	# start hello
 	camera.open_transition()

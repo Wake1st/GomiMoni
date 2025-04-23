@@ -12,6 +12,7 @@ Moni buys trash.
 - [x] fix: previously selected option buttons are still on hover when reloaded
 - [x] fix: alpha channel for textures (should be transparent)
 - [x] fix: texture import issue with some models (I need help with this)
+- [ ] fix: level selection (highest level vs current level)
 
 ## Stretch Goals
 
@@ -20,10 +21,10 @@ Moni buys trash.
 - [x] lighting: just better (spotlights, in order or solution)
 - [x] fun voice lines for starting and finishing level
 - [x] add more songs and sfx
-- [ ] add more levels, with more variety
+- [x] add title screen
+- [x] auto save/load game data
 - [ ] add exit game option
-- [ ] add title screen
-- [ ] auto save/load game data
+- [ ] add more levels, with more variety
 - [ ] allow controller
 
 - [ ] ~add music selector~ too few songs

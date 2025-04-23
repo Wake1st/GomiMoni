@@ -22,12 +22,6 @@ var itemCount: int
 var isSoldOut: bool = false
 
 
-func run() -> void:
-	# set initial focus
-	focusedSlot = shopSlots[focusedIndex]
-	emit_signal("item_focused", focusedSlot.item.data)
-
-
 func _ready():
 	# setup the slots for ui control
 	for child in slotsParent.get_children():
@@ -46,6 +40,33 @@ func _ready():
 	
 	# set number of items for sale
 	itemCount = shopSlots.size()
+
+
+func setup() -> void:
+	# based on load data, set the purchased items to the bought slot
+	for id in TrashData.purchasedItems:
+		# get the correct slot
+		for slotIndex in shopSlots.size():
+			var slotItem = shopSlots[slotIndex].item
+			if slotItem == null:
+				continue
+			
+			if slotItem.data.id == id:
+				# send to the bought slot
+				move_purchase(slotIndex)
+				break
+
+
+func run() -> void:
+	# ensure we aren't sold out
+	if isSoldOut:
+		return
+	
+	# set initial focus
+	if shopSlots[focusedIndex].item == null:
+		set_next_valid_index(Vector2(1,0))
+	focusedSlot = shopSlots[focusedIndex]
+	emit_signal("item_focused", focusedSlot.item.data)
 
 
 func _process(delta):
@@ -87,19 +108,25 @@ func handle_attempt_purchase(cost: float) -> void:
 		TrashData.moni -= cost
 		
 		# move the bought item
-		var boughtSlot = boughtSlots[focusedIndex]
-		var relativePosition = focusedSlot.get_trash_position() - boughtSlot.global_position
-		var purchasedItem = focusedSlot.remove_item()
-		boughtSlot.store_item(purchasedItem, relativePosition)
+		var purchasedItem = move_purchase(focusedIndex)
 		
 		# store a record of purchased items
-		TrashData.purchased_items.push_back(purchasedItem.data)
+		TrashData.purchasedItems.push_back(purchasedItem.data.id)
 		
 		# notify container of purchase
 		emit_signal("item_purchased")
 		
 		# shift to a new focus
 		refocus(Vector2(1,0), true)
+
+
+func move_purchase(index: int) -> TrashItem:
+	var purchaseSlot = shopSlots[index]
+	var boughtSlot = boughtSlots[index]
+	var relativePosition = purchaseSlot.get_trash_position() - boughtSlot.global_position
+	var purchasedItem = purchaseSlot.remove_item()
+	boughtSlot.store_item(purchasedItem, relativePosition)
+	return purchasedItem
 
 
 func refocus(direction: Vector2, isPurchased: bool = false) -> void:

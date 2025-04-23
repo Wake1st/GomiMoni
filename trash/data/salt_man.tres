@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_qrdcr")
+id = 6
 name = "Salt Man"
 cost = 89.65
 metadata/_custom_type_script = "uid://cay2hydn0lbvr"

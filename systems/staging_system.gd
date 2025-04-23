@@ -19,6 +19,7 @@ func _ready() -> void:
 
 
 func setup() -> void:
+	shopContainer.setup()
 	mainContainer.open()
 
 
@@ -37,7 +38,11 @@ func handle_main_closed() -> void:
 
 
 func handle_level_closed(passed: bool) -> void:
+	# run the next stage
 	if passed:
+		# save the data since we beat a level
+		TrashData.save()
+		
 		# run the shop
 		shopContainer.open()
 		
@@ -55,6 +60,10 @@ func handle_level_closed(passed: bool) -> void:
 
 
 func handle_shop_closed(option: ShopOption.OPTIONS) -> void:
+	# first, save the game
+	TrashData.save()
+	
+	# run the next stage
 	match option:
 		ShopOption.OPTIONS.NEXT:
 			# move onto the next level
