@@ -19,13 +19,21 @@ script = ExtResource("1_4etl1")
 [node name="LevelCamera" parent="." instance=ExtResource("3_m56ld")]
 
 [node name="PauseSelector" parent="." instance=ExtResource("3_12sx8")]
-transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, 0, 8, 26)
+transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, 0, 10.387, 10.8654)
 
 [node name="Instructions" parent="." instance=ExtResource("4_o6702")]
-transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -22, 10, 8)
+transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -22, 13.2258, 10.1179)
 
 [node name="VehicleUI" parent="." instance=ExtResource("5_xpdeg")]
-transform = Transform3D(6, 0, 0, 0, 2.12085, 5.61266, 0, -5.61266, 2.12085, 9.426, 15.171, 4.155)
+transform = Transform3D(6, 0, 0, 0, 2.12085, 5.61266, 0, -5.61266, 2.12085, 9.426, 15.6598, 4.48084)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.218416, 0.975856, 0, -0.975856, 0.218416, 0, 27.3565, 14.124)
+light_energy = 1.8
+spot_range = 28.0
+spot_attenuation = 0.2
+spot_angle = 56.0
+spot_angle_attenuation = 0.31864
 
 [node name="MusicPlayer" parent="." instance=ExtResource("5_euts4")]
 songs = Array[AudioStreamMP3]([ExtResource("6_gmgi7"), ExtResource("7_dpcti"), ExtResource("8_xpksn")])
