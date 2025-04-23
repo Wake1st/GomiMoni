@@ -17,15 +17,17 @@ script = ExtResource("1_xgi86")
 mesh = SubResource("QuadMesh_8i6dg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.389084)
-fov = 102.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.24284)
+current = true
+fov = 41.5
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.17622)
-light_energy = 1.4
-spot_attenuation = 1.2
-spot_angle = 0.0
-spot_angle_attenuation = 0.500001
+transform = Transform3D(1, 0, 0, 0, 0.990307, 0.138897, 0, -0.138897, 0.990307, 0, 0.164211, 1.17622)
+light_energy = 1.8
+spot_range = 6.0
+spot_attenuation = 0.8
+spot_angle = 32.0
+spot_angle_attenuation = 0.840898
 
 [node name="VoiceBox" parent="." instance=ExtResource("3_bmmju")]
 

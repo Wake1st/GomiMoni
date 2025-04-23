@@ -18,8 +18,9 @@ const TWEEN_DURATION: float = 0.6
 
 const PRE_TIME: float = 0.4
 const MID_TIME: float = 0.4
-const POST_TIME: float = 0.8
+const POST_TIME: float = 0.6
 
+@onready var camera: Camera3D = $Camera3D
 @onready var light: SpotLight3D = $SpotLight3D
 @onready var voiceBox: VoiceBox = $VoiceBox
 @onready var timer: Timer = $Timer
@@ -31,6 +32,7 @@ var stage: STAGE
 func _ready() -> void:
 	stage = STAGE.PRE
 	light.spot_angle = CLOSED_ANGLE
+	camera.current = true
 
 
 func run() -> void:
@@ -49,7 +51,7 @@ func open() -> void:
 func close() -> void:
 	# open the spotlight
 	tween = create_tween()
-	tween.tween_property(light, "spot_angle", OPEN_ANGLE, TWEEN_DURATION)
+	tween.tween_property(light, "spot_angle", CLOSED_ANGLE, TWEEN_DURATION)
 	tween.tween_callback(handle_closed)
 
 
