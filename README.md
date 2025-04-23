@@ -19,15 +19,16 @@ Moni buys trash.
 - [x] add level walls (big piles of trash) for each level to fill up the space
 - [x] lighting: just better (spotlights, in order or solution)
 - [x] fun voice lines for starting and finishing level
-- [ ] ~camera: should follow vehicle?~ no, too many probs (outer-wall clipping, shaddows)
-- [ ] `flyer`: implement a consistent bobbing motion to stay afloat 
+- [x] add more songs and sfx
 - [ ] add settings to pause menu
 - [ ] add music selector
-- [ ] add more songs and sfx
 - [ ] add more levels, with more variety
 - [ ] add exit game option
 - [ ] allow controller
 - [ ] auto save/load game data
+
+- [ ] ~camera: should follow vehicle?~ too many probs (outer-wall clipping, shaddows)
+- [ ] ~`flyer`: implement a consistent bobbing motion to stay afloat~ people liked it
 
 ## Credits
 
