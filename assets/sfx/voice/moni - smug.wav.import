@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bww5y4xi1e6g3"
+path="res://.godot/imported/moni - smug.wav-409cfc7de6f61d553be5619a2bbe7ea7.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice/moni - smug.wav"
+dest_files=["res://.godot/imported/moni - smug.wav-409cfc7de6f61d553be5619a2bbe7ea7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

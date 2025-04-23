@@ -2,6 +2,7 @@ class_name Level
 extends Node3D
 
 
+signal active
 signal completed(m: float)
 
 @export_category("Values")
@@ -13,8 +14,6 @@ signal completed(m: float)
 @export var puzzleSystem: PuzzleSystem
 @export var lightingSystem: FocusSystem
 @export var goal: Goal
-
-var isActive: bool = false
 
 
 func _ready() -> void:
@@ -46,6 +45,9 @@ func reset() -> void:
 func handle_lighting_finished() -> void:
 	# allow vehicle controls
 	VehicleController.isActive = true
+	
+	# notify listeners
+	emit_signal("active")
 
 
 func handle_goal_entered() -> void:

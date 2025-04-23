@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b08yrrpn7b00s"]
+
+[ext_resource type="Script" uid="uid://c76nki4eql2fj" path="res://audio/voice_box.gd" id="1_gpduh"]
+[ext_resource type="AudioStream" uid="uid://ywqaux04jc8h" path="res://assets/sfx/Enter Level.wav" id="1_wxb6d"]
+
+[node name="VoiceBox" type="AudioStreamPlayer"]
+stream = ExtResource("1_wxb6d")
+bus = &"SFX"
+script = ExtResource("1_gpduh")

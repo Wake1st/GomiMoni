@@ -11,16 +11,16 @@ Moni buys trash.
 ## Known Issues
 - [x] fix: previously selected option buttons are still on hover when reloaded
 - [x] fix: alpha channel for textures (should be transparent)
-- [ ] fix: texture import issue with some models (I need help with this)
+- [x] fix: texture import issue with some models (I need help with this)
 
 ## Stretch Goals
 
 - [x] mechanics: connect light to keys to show user when key is active
 - [x] add level walls (big piles of trash) for each level to fill up the space
-- [ ] fun voice lines for starting and finishing level
-- [ ] camera: should follow vehicle?
+- [x] lighting: just better (spotlights, in order or solution)
+- [x] fun voice lines for starting and finishing level
+- [ ] ~camera: should follow vehicle?~ no, too many probs (outer-wall clipping, shaddows)
 - [ ] `flyer`: implement a consistent bobbing motion to stay afloat 
-- [ ] lighting: just better (spotlights, in order or solution)
 - [ ] add settings to pause menu
 - [ ] add music selector
 - [ ] add more songs and sfx
@@ -31,5 +31,9 @@ Moni buys trash.
 
 ## Credits
 
-- Eli Wakefield - Music/SFX
-- Joel Wakefield - Design/Programming/Art
+- Eli Wakefield: Music/SFX
+- Joel Wakefield: Design/Programming/Art
+
+## Special Thanks
+
+- Lucas Hendricks: help with importing model textures

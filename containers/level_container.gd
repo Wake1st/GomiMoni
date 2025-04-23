@@ -17,6 +17,7 @@ const MUSIC_FADE_DURATION: float = 1.0
 @onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
 @onready var enterSFX: AudioStreamPlayer = $EnterSFX
 @onready var exitSFX: AudioStreamPlayer = $ExitSFX
+@onready var voiceBox: VoiceBox = $VoiceBox
 
 var level: Level
 var hasPassedLevel: bool = false
@@ -36,6 +37,7 @@ func setup(levelNumber: int = -1) -> void:
 	add_child(level)
 	level.setup(handle_vehicle_activation)
 	level.completed.connect(success)
+	level.active.connect(handle_level_active)
 	camera.opened_size = level.cameraSize
 	
 	# the level is ready to play
@@ -83,12 +85,16 @@ func success(moni: float) -> void:
 	# give the player moni
 	TrashData.moni += moni
 	
+	# congratulate the player
+	voiceBox.run(VoiceList.WORD.MONI)
+	
 	# leave level
 	exit()
 
 
 func teardown() -> void:
 	level.completed.disconnect(success)
+	level.active.disconnect(handle_level_active)
 	remove_child(level)
 	level.queue_free()
 
@@ -99,6 +105,10 @@ func swap() -> void:
 	
 	# setup the next level
 	setup()
+
+
+func handle_level_active() -> void:
+	voiceBox.run(VoiceList.WORD.GOMI)
 
 
 func handle_vehicle_activation(vehicle: Vehicle.VEHICLE_TYPE) -> void:

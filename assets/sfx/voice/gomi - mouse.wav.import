@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7c4siyny5vef"
+path="res://.godot/imported/gomi - mouse.wav-2ed3339709306b1e15339e57597b6d1a.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice/gomi - mouse.wav"
+dest_files=["res://.godot/imported/gomi - mouse.wav-2ed3339709306b1e15339e57597b6d1a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

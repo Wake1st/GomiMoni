@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgfbdylx7tyqx"
+path="res://.godot/imported/gomi - skeleton.wav-735b82e4d9a577346735986fe48f9ad0.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice/gomi - skeleton.wav"
+dest_files=["res://.godot/imported/gomi - skeleton.wav-735b82e4d9a577346735986fe48f9ad0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

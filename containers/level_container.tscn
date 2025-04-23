@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cihrsgpa8npn3"]
+[gd_scene load_steps=14 format=3 uid="uid://cihrsgpa8npn3"]
 
 [ext_resource type="Script" uid="uid://clp47c1fgusu1" path="res://containers/level_container.gd" id="1_4etl1"]
 [ext_resource type="PackedScene" uid="uid://caxcp0un455y1" path="res://ui/level menu/pause selection/pause_selector.tscn" id="3_12sx8"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="9_gmgi7"]
 [ext_resource type="AudioStream" uid="uid://ywqaux04jc8h" path="res://assets/sfx/Enter Level.wav" id="10_xpksn"]
 [ext_resource type="AudioStream" uid="uid://ce2kmn31ygn02" path="res://assets/sfx/Hole.wav" id="11_xpdeg"]
+[ext_resource type="PackedScene" uid="uid://b08yrrpn7b00s" path="res://audio/voice_box.tscn" id="13_gtg7q"]
 
 [node name="LevelContainer" type="Node3D"]
 script = ExtResource("1_4etl1")
@@ -52,3 +53,5 @@ stream = ExtResource("11_xpdeg")
 volume_db = 1.0
 pitch_scale = 0.74
 bus = &"SFX"
+
+[node name="VoiceBox" parent="." instance=ExtResource("13_gtg7q")]
