@@ -7,9 +7,11 @@ signal item_purchased
 
 const SLOTS_PER_ROW: int = 4
 const FOCUS_TIME: float = 0.2
+const COOLDOWN: float = 0.1
 
 @onready var slotsParent: Node = $ShopSlots
 @onready var boughtParent = $BoughtSlots
+@onready var purchaseCooldown = $PurchaseCooldown
 
 var shopSlots: Array[ShopSlot] = []
 var boughtSlots: Array[BoughtSlot] = []
@@ -19,6 +21,7 @@ var focusedSlot: ShopSlot
 var focusTimer: float = FOCUS_TIME
 
 var itemCount: int
+var onCooldown: bool = false
 var isSoldOut: bool = false
 
 
@@ -102,8 +105,15 @@ func handle_mouse_focused(slot: ShopSlot) -> void:
 
 
 func handle_attempt_purchase(cost: float) -> void:
+	# first, make sure we aren't buying two items at once
+	if onCooldown:
+		return
+	
 	# validate Moni before purchase
 	if cost < TrashData.moni:
+		# ensure no other items are purchased during this cycle
+		onCooldown = true
+		
 		# charge user
 		TrashData.moni -= cost
 		
@@ -118,6 +128,9 @@ func handle_attempt_purchase(cost: float) -> void:
 		
 		# shift to a new focus
 		refocus(Vector2(1,0), true)
+		
+		# start cooldown timer
+		purchaseCooldown.start(COOLDOWN)
 
 
 func move_purchase(index: int) -> TrashItem:
@@ -162,3 +175,7 @@ func swap_index(isPurchased: bool) -> void:
 	
 	# notify container of focused item
 	emit_signal("item_focused", focusedSlot.item.data)
+
+
+func _on_purchase_cooldown_timeout():
+	onCooldown = false

@@ -94,3 +94,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478064, 2.05842, -0.795254)
 
 [node name="BoughtSlot8" parent="BoughtSlots" instance=ExtResource("5_fre4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20774, 2.24174, -0.795254)
+
+[node name="PurchaseCooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="PurchaseCooldown" to="." method="_on_purchase_cooldown_timeout"]

@@ -13,7 +13,7 @@ Moni buys trash.
 - [x] fix: alpha channel for textures (should be transparent)
 - [x] fix: texture import issue with some models (I need help with this)
 - [x] fix: level selection (highest level vs current level)
-- [ ] fix: boughts first trash when buying last
+- [x] fix: boughts first trash when buying last
 
 ## Stretch Goals
 
