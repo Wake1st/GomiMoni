@@ -38,15 +38,14 @@ func open() -> void:
 	# start hello
 	camera.open_transition()
 	musicPlayer.fade_in(MUSIC_FADE_DURATION)
+	
+	# if there are no more levels, disable the next button
+	nextOption.visible = !LevelList.past_final_level()
 
 
 func run() -> void:
 	# set the starting moni
 	moniBoard.set_cost(TrashData.moni)
-	
-	# if there are no more levels, disable the next button
-	if LevelList.all_levels_complete():
-		nextOption.visible = false
 	
 	# allow user to buy stuff
 	UIController.isActive = true

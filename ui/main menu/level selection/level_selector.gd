@@ -19,7 +19,7 @@ func setup(cancelCallback: Callable, levelCallback: Callable) -> void:
 
 ## Enables all beaten levels plus the next
 func check_available_options() -> void:
-	var highestAllowedLevel = LevelList.current_level_index()
+	var highestAllowedLevel = LevelList.highest_allowed_index()
 	for child: LevelOption in options.get_children():
 		# ensure only allowed levels are clickable
 		if child.number <= highestAllowedLevel:

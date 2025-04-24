@@ -28,7 +28,7 @@ func _ready() -> void:
 	pauseSelector.setup(handle_pause_selection)
 
 
-func setup(levelNumber: int = -1) -> void:
+func setup(levelNumber) -> void:
 	# if no number is given, it plays the next level
 	var scene: PackedScene = LevelList.get_level(levelNumber)
 	
@@ -104,7 +104,7 @@ func swap() -> void:
 	teardown()
 	
 	# setup the next level
-	setup()
+	setup(LevelList.current_level_index())
 
 
 func handle_level_active() -> void:

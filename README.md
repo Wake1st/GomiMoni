@@ -12,7 +12,8 @@ Moni buys trash.
 - [x] fix: previously selected option buttons are still on hover when reloaded
 - [x] fix: alpha channel for textures (should be transparent)
 - [x] fix: texture import issue with some models (I need help with this)
-- [ ] fix: level selection (highest level vs current level)
+- [x] fix: level selection (highest level vs current level)
+- [ ] fix: boughts first trash when buying last
 
 ## Stretch Goals
 
@@ -24,13 +25,15 @@ Moni buys trash.
 - [x] add title screen
 - [x] auto save/load game data
 - [x] add exit game option
-- [ ] add more levels, with more variety
 - [ ] allow controller
 
+### Reassessed
+
+- [ ] ~add more levels, with more variety~ nah, move on for now
 - [ ] ~add music selector~ too few songs
 - [ ] ~add settings to pause menu~ problems with camera
 - [ ] ~camera: should follow vehicle?~ too many probs (outer-wall clipping, shaddows)
-- [ ] ~`flyer`: implement a consistent bobbing motion to stay afloat~ people liked it
+- [ ] ~`flyer`: implement a consistent bobbing motion to stay afloat~ people like bad controls
 
 ## Credits
 
