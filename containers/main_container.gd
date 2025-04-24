@@ -78,6 +78,8 @@ func handle_main_selection(option: MainOption.OPTIONS) -> void:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.SETTINGS)
 		MainOption.OPTIONS.CREDITS:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.CREDITS)
+		MainOption.OPTIONS.EXIT:
+			get_tree().quit()
 	
 	# play the button sfx
 	buttonSFX.play()

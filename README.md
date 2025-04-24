@@ -23,7 +23,7 @@ Moni buys trash.
 - [x] add more songs and sfx
 - [x] add title screen
 - [x] auto save/load game data
-- [ ] add exit game option
+- [x] add exit game option
 - [ ] add more levels, with more variety
 - [ ] allow controller
 
