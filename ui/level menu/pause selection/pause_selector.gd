@@ -3,7 +3,7 @@ extends Node3D
 
 
 const CLOSED_POSITION_Z: float = 26
-const OPENED_POSITION_Z: float = 6
+const OPENED_POSITION_Z: float = 7.8
 const TWEEN_DURATION: float = 0.2
 
 var isOpen: bool = false

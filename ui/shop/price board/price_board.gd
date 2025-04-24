@@ -2,6 +2,8 @@ class_name PriceBoard
 extends Node3D
 
 
+const MONI_CAP: float = 999.99
+
 @onready var hundredsDisplay: NumberDisplay = $HundredsDisplay
 @onready var tensDisplay: NumberDisplay = $TensDisplay
 @onready var onesDisplay: NumberDisplay = $OnesDisplay
@@ -10,6 +12,10 @@ extends Node3D
 
 
 func set_cost(cost: float) -> void:
+	# Im not covering 4 digits
+	if cost > MONI_CAP:
+		cost = MONI_CAP
+	
 	# first, we must calculate each digit
 	var hundreds: int = floori(cost / 100)
 	var tens: int = floori((cost - 100 * hundreds) / 10)

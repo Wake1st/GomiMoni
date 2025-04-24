@@ -33,11 +33,6 @@ func _ready():
 	liveCamera.transition_finished.connect(handle_transition_ended)
 
 
-func _input(_event: InputEvent) -> void:
-	if atSubMenu && Input.is_action_just_pressed("ui_cancel"):
-		return_to_root()
-
-
 func open() -> void:
 	# reset camera position to start of cinema-graph
 	cinemaGraph.send_camera(CinemaGraph.STILLS.ROOT, true)
@@ -86,7 +81,6 @@ func handle_main_selection(option: MainOption.OPTIONS) -> void:
 
 
 func handle_cancel_selection() -> void:
-	
 	return_to_root()
 
 
