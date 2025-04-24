@@ -1,4 +1,4 @@
-class_name FocusSystem
+class_name LightingSystem
 extends Node
 
 

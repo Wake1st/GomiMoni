@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsv0wune3a1wn"]
 
 [ext_resource type="Script" uid="uid://cuvmdcbiflb65" path="res://testing/systems/test_focus_system.gd" id="1_p8760"]
-[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/focus_system.tscn" id="1_yapox"]
+[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/lighting_system.tscn" id="1_yapox"]
 [ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="2_p8760"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_etv0k"]

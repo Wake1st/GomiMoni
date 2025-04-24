@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/keys/switch.tscn" id="8_dmpbc"]
 [ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="9_afhbg"]
 [ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="9_dmpbc"]
-[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/focus_system.tscn" id="10_0qs7m"]
+[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/lighting_system.tscn" id="10_0qs7m"]
 [ext_resource type="PackedScene" uid="uid://b70ltqiivtxqg" path="res://boundaries/outer_wall.tscn" id="11_0sbtx"]
 [ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="11_yigyk"]
 [ext_resource type="Shader" uid="uid://6jgfngocy28b" path="res://boundaries/outer_walls.gdshader" id="12_y6c21"]
@@ -43,7 +43,7 @@ moni = 64.87
 cameraSize = 18.0
 swapSystem = NodePath("VehicleSwapSystem")
 puzzleSystem = NodePath("PuzzleSystem")
-lightingSystem = NodePath("FocusSystem")
+lightingSystem = NodePath("LightingSystem")
 goal = NodePath("Goal")
 
 [node name="Floor" parent="." instance=ExtResource("1_1yd0v")]
@@ -84,12 +84,12 @@ light = NodePath("Light")
 [node name="Light" parent="PuzzleSystem/Switch2" instance=ExtResource("9_afhbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41421, 0, 0)
 
-[node name="FocusSystem" parent="." node_paths=PackedStringArray("lights") instance=ExtResource("10_0qs7m")]
+[node name="LightingSystem" parent="." node_paths=PackedStringArray("lights") instance=ExtResource("10_0qs7m")]
 pulseTime = 0.6
 focusTime = 1.0
 lights = [NodePath("FlyerLight"), NodePath("SwitchLight"), NodePath("SwitchLight2"), NodePath("GomiLight"), NodePath("HoleLight")]
 
-[node name="FlyerLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+[node name="FlyerLight" parent="LightingSystem" instance=ExtResource("11_yigyk")]
 transform = Transform3D(1, 0, 0, 0, 0.496959, 0.867774, 0, -0.867774, 0.496959, 0, 5.03203, 6.01345)
 light_energy = 1.8
 shadow_bias = 0.3
@@ -102,7 +102,7 @@ openAngle = 52.0
 openAngleAttenuation = 1.6
 openDuration = 0.6
 
-[node name="SwitchLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+[node name="SwitchLight" parent="LightingSystem" instance=ExtResource("11_yigyk")]
 transform = Transform3D(0.886276, -0.401106, -0.231578, -5.73766e-08, -0.5, 0.866025, -0.463157, -0.767538, -0.443138, -4.4, 5, -6.04199)
 light_energy = 1.8
 shadow_bias = 0.3
@@ -114,7 +114,7 @@ focusAngle = 18.0
 openAngle = 50.0
 openAngleAttenuation = 1.6
 
-[node name="SwitchLight2" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+[node name="SwitchLight2" parent="LightingSystem" instance=ExtResource("11_yigyk")]
 transform = Transform3D(0.939693, 0.296198, 0.17101, -4.37114e-08, -0.5, 0.866025, 0.34202, -0.813798, -0.469846, 4.4, 5, -6.04199)
 light_energy = 1.8
 shadow_bias = 0.3
@@ -126,7 +126,7 @@ focusAngle = 18.0
 openAngle = 50.0
 openAngleAttenuation = 1.6
 
-[node name="GomiLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+[node name="GomiLight" parent="LightingSystem" instance=ExtResource("11_yigyk")]
 transform = Transform3D(1, 0, 0, 0, -0.459068, 0.888401, 0, -0.888401, -0.459068, 0, 6, -6)
 light_energy = 1.8
 shadow_bias = 0.24
@@ -137,7 +137,7 @@ focusAngle = 12.0
 openAngle = 50.0
 openDuration = 1.0
 
-[node name="HoleLight" parent="FocusSystem" instance=ExtResource("11_yigyk")]
+[node name="HoleLight" parent="LightingSystem" instance=ExtResource("11_yigyk")]
 transform = Transform3D(1, 0, 0, 0, 0.303584, 0.952805, 0, -0.952805, 0.303584, 0, 6, 2)
 light_energy = 1.6
 shadow_bias = 0.24
