@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cihrsgpa8npn3"]
+[gd_scene load_steps=17 format=3 uid="uid://cihrsgpa8npn3"]
 
 [ext_resource type="Script" uid="uid://clp47c1fgusu1" path="res://containers/level_container.gd" id="1_4etl1"]
 [ext_resource type="PackedScene" uid="uid://caxcp0un455y1" path="res://ui/level menu/pause selection/pause_selector.tscn" id="3_12sx8"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://n5kbe7mrhuy6" path="res://ui/level menu/instructions.tscn" id="4_o6702"]
 [ext_resource type="PackedScene" uid="uid://caxkta5pw6l7l" path="res://audio/music_player.tscn" id="5_euts4"]
 [ext_resource type="PackedScene" uid="uid://80v0dhnw44xo" path="res://ui/level menu/vehicle_ui.tscn" id="5_xpdeg"]
+[ext_resource type="PackedScene" uid="uid://dsjv447tp8js4" path="res://systems/focus/focus_system.tscn" id="6_bg4rd"]
 [ext_resource type="AudioStream" uid="uid://dtbdt2jibyy0c" path="res://assets/music/Rap.mp3" id="6_gmgi7"]
 [ext_resource type="AudioStream" uid="uid://cct1bdoh8j8tu" path="res://assets/music/Trash.mp3" id="7_dpcti"]
+[ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="7_jwft7"]
 [ext_resource type="AudioStream" uid="uid://dyb631h5je4gw" path="res://assets/music/Random.mp3" id="8_xpksn"]
 [ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="9_gmgi7"]
 [ext_resource type="AudioStream" uid="uid://ywqaux04jc8h" path="res://assets/sfx/Enter Level.wav" id="10_xpksn"]
@@ -28,6 +30,18 @@ transform = Transform3D(3, 0, 0, 0, 1.02606, 2.81908, 0, -2.81908, 1.02606, -22,
 
 [node name="VehicleUI" parent="." instance=ExtResource("5_xpdeg")]
 transform = Transform3D(6, 0, 0, 0, 2.12085, 5.61266, 0, -5.61266, 2.12085, 9.426, 15.6598, 4.48084)
+
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("rows") instance=ExtResource("6_bg4rd")]
+rows = [NodePath("FocusRow"), NodePath("FocusRow2"), NodePath("FocusRow3")]
+
+[node name="FocusRow" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("7_jwft7")]
+elements = [NodePath("../../PauseSelector/ReturnOption")]
+
+[node name="FocusRow2" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("7_jwft7")]
+elements = [NodePath("../../PauseSelector/ResetOption")]
+
+[node name="FocusRow3" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("7_jwft7")]
+elements = [NodePath("../../PauseSelector/LeaveOption")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.218416, 0.975856, 0, -0.975856, 0.218416, 0, 27.3565, 14.124)
@@ -56,3 +70,5 @@ pitch_scale = 0.74
 bus = &"SFX"
 
 [node name="VoiceBox" parent="." instance=ExtResource("13_gtg7q")]
+
+[editable path="PauseSelector"]

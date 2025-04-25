@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=22 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://containers/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://caxkta5pw6l7l" path="res://audio/music_player.tscn" id="8_3opd5"]
 [ext_resource type="AudioStream" uid="uid://x4nsc0daclsl" path="res://assets/music/Trash Shop Music.mp3" id="8_h650p"]
 [ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="10_4nkmx"]
+[ext_resource type="PackedScene" uid="uid://dsjv447tp8js4" path="res://systems/focus/focus_system.tscn" id="10_46jwu"]
+[ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="11_o2erh"]
 [ext_resource type="AudioStream" uid="uid://g1hr24mksww3" path="res://assets/sfx/Whoosh.wav" id="11_rjrgk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2erh"]
@@ -87,6 +89,14 @@ image = ExtResource("6_cyou0")
 
 [node name="ShopCamera" parent="." instance=ExtResource("3_3lbrx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95643)
+
+[node name="FocusSystem" parent="." instance=ExtResource("10_46jwu")]
+
+[node name="FocusRow" parent="FocusSystem" instance=ExtResource("11_o2erh")]
+
+[node name="FocusRow2" parent="FocusSystem" instance=ExtResource("11_o2erh")]
+
+[node name="FocusRow3" parent="FocusSystem" instance=ExtResource("11_o2erh")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.864213, 0.503126, 0, -0.503126, 0.864213, 0, 12.1521, -0.884088)

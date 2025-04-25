@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmeeknxpiv6rp"]
+
+[ext_resource type="Script" uid="uid://dnxbg6kmqa3mj" path="res://systems/focus/focus_row.gd" id="1_d8pfp"]
+
+[node name="FocusRow" type="Node"]
+script = ExtResource("1_d8pfp")

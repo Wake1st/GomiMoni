@@ -12,6 +12,7 @@ const MUSIC_FADE_DURATION: float = 1.0
 @onready var pauseSelector: PauseSelector = $PauseSelector
 @onready var instructions: Instructions = $Instructions
 @onready var vehicleUI: VehicleUI = $VehicleUI
+@onready var focusSystem: FocusSystem = $FocusSystem
 
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
 @onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
@@ -26,6 +27,7 @@ var hasPassedLevel: bool = false
 func _ready() -> void:
 	camera.transition_finished.connect(handle_camera_transition_finished)
 	pauseSelector.setup(handle_pause_selection)
+	focusSystem.cancel_selected.connect(handle_menu_exit)
 
 
 func setup(levelNumber) -> void:
@@ -55,6 +57,9 @@ func open() -> void:
 
 
 func run() -> void:
+	# enable ui navigation
+	focusSystem.activate()
+	
 	# let user play
 	level.run()
 	
@@ -88,6 +93,9 @@ func success(moni: float) -> void:
 	# congratulate the player
 	voiceBox.run(VoiceList.WORD.MONI)
 	
+	# disable ui navigation
+	focusSystem.activate(false)
+	
 	# leave level
 	exit()
 
@@ -113,6 +121,12 @@ func handle_level_active() -> void:
 
 func handle_vehicle_activation(vehicle: Vehicle.VEHICLE_TYPE) -> void:
 	vehicleUI.display(vehicle)
+
+
+func handle_menu_exit() -> void:
+	# exit the menu
+	pauseSelector.toggle_menu()
+	instructions.toggle_menu()
 
 
 func handle_pause_selection(option: PauseOption.OPTIONS) -> void:

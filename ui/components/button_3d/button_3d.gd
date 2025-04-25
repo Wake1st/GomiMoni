@@ -73,6 +73,14 @@ func send_select_signal() -> void:
 	print("WARNING: non-implemented function 'send_select_signal' in class 'Button3D'")
 
 
+func focus(value: bool = true) -> void:
+	hasFocus = value
+	if hasFocus:
+		animate_button(ANIMATION.FOCUS_GAIN)
+	else:
+		animate_button(ANIMATION.FOCUS_LOST)
+
+
 func animate_button(animation: ANIMATION, doesBounceBack: bool = false) -> void:
 	match animation:
 		ANIMATION.FOCUS_GAIN:
@@ -101,6 +109,7 @@ func _input(event) -> void:
 	if enabled && hasFocus && event.is_action_pressed("ui_accept"):
 		select()
 
+
 func _on_mouse_entered():
 	if enabled:
 		hasFocus = true
@@ -123,4 +132,3 @@ func _handle_selection_animation_finished() -> void:
 	# ensure we return to normal
 	if !hasFocus:
 		animate_button(ANIMATION.FOCUS_LOST)
-		

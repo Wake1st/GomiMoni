@@ -23,15 +23,13 @@ var nextSelection: ShopOption.OPTIONS
 
 func _ready() -> void:
 	# connect signals
-	shop.item_focused.connect(handle_item_focused)
-	shop.item_purchased.connect(handle_item_purchased)
 	mainOption.selected.connect(handle_option_selection)
 	nextOption.selected.connect(handle_option_selection)
 	camera.transition_finished.connect(handle_camera_transition_finished)
 
 
 func setup() -> void:
-	shop.setup()
+	shop.setup(handle_item_focused, handle_item_purchased)
 
 
 func open() -> void:
@@ -71,7 +69,7 @@ func handle_item_focused(item: Trash) -> void:
 	costBoard.set_cost(item.cost)
 
 
-func handle_item_purchased() -> void:
+func handle_item_purchased(_index: int) -> void:
 	moniBoard.set_cost(TrashData.moni)
 	purchaseSFX.play()
 

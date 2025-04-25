@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsknet41108fj"]
+[gd_scene load_steps=19 format=3 uid="uid://dsknet41108fj"]
 
 [ext_resource type="Script" uid="uid://djpfr82erssm1" path="res://ui/shop/shop.gd" id="1_mno6o"]
 [ext_resource type="Material" uid="uid://br2vy14cw0nw1" path="res://assets/materials/floor.tres" id="1_recjj"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cx3yu23oqakck" path="res://trash/items/dragon.tscn" id="9_sl1tc"]
 [ext_resource type="PackedScene" uid="uid://ciedw4sq3ypyc" path="res://trash/items/tower_toppler.tscn" id="10_kl7pl"]
 [ext_resource type="PackedScene" uid="uid://bwd5lpjlxicxh" path="res://trash/items/peter_pumpkin.tscn" id="11_7nuxp"]
+[ext_resource type="PackedScene" uid="uid://b3m7m1j7oou3t" path="res://systems/focus/shop_focus_system.tscn" id="14_5dmvb"]
+[ext_resource type="PackedScene" uid="uid://byvide0jrp1d" path="res://systems/focus/shop_row.tscn" id="15_2usvx"]
+[ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="16_sl1tc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ln5ss"]
 material = ExtResource("4_n5hkn")
@@ -95,8 +98,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478064, 2.05842, -0.795254)
 [node name="BoughtSlot8" parent="BoughtSlots" instance=ExtResource("5_fre4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20774, 2.24174, -0.795254)
 
-[node name="PurchaseCooldown" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
+[node name="ShopFocusSystem" parent="." node_paths=PackedStringArray("buttonRow") instance=ExtResource("14_5dmvb")]
+buttonRow = NodePath("FocusRow")
 
-[connection signal="timeout" from="PurchaseCooldown" to="." method="_on_purchase_cooldown_timeout"]
+[node name="ShopRow" parent="ShopFocusSystem" instance=ExtResource("15_2usvx")]
+
+[node name="ShopRow2" parent="ShopFocusSystem" instance=ExtResource("15_2usvx")]
+
+[node name="FocusRow" parent="ShopFocusSystem" instance=ExtResource("16_sl1tc")]

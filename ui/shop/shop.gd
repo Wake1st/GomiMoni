@@ -2,27 +2,16 @@ class_name Shop
 extends Node3D
 
 
-signal item_focused(trash: Trash)
-signal item_purchased
-
 const SLOTS_PER_ROW: int = 4
-const FOCUS_TIME: float = 0.2
-const COOLDOWN: float = 0.1
 
 @onready var slotsParent: Node = $ShopSlots
 @onready var boughtParent = $BoughtSlots
-@onready var purchaseCooldown = $PurchaseCooldown
+@onready var focusSystem: ShopFocusSystem = $ShopFocusSystem
 
 var shopSlots: Array[ShopSlot] = []
 var boughtSlots: Array[BoughtSlot] = []
 
-var focusedIndex: int = 0
 var focusedSlot: ShopSlot
-var focusTimer: float = FOCUS_TIME
-
-var itemCount: int
-var onCooldown: bool = false
-var isSoldOut: bool = false
 
 
 func _ready():
@@ -31,21 +20,16 @@ func _ready():
 		shopSlots.push_back(child)
 	for child in boughtParent.get_children():
 		boughtSlots.push_back(child)
-	
-	# fill the slots with trash
-	for slot in shopSlots:
-		slot.mouse_focused.connect(handle_mouse_focused)
-		slot.attempt_purchase.connect(handle_attempt_purchase)
-	
-	# set initial focus
-	focusedSlot = shopSlots[0]
-	focusedSlot.focus()
-	
-	# set number of items for sale
-	itemCount = shopSlots.size()
 
 
-func setup() -> void:
+func setup(item_focused_callable: Callable, item_purchased_callable: Callable) -> void:
+	# connect the focus signal
+	focusSystem.item_focused.connect(item_focused_callable)
+	
+	# connect purchases
+	focusSystem.item_purchased.connect(handle_purchase_made)
+	focusSystem.item_purchased.connect(item_purchased_callable)
+	
 	# based on load data, set the purchased items to the bought slot
 	for id in TrashData.purchasedItems:
 		# get the correct slot
@@ -62,75 +46,19 @@ func setup() -> void:
 
 func run() -> void:
 	# ensure we aren't sold out
-	if isSoldOut:
+	if focusSystem.isSoldOut:
 		return
-	
-	# set initial focus
-	if shopSlots[focusedIndex].item == null:
-		set_next_valid_index(Vector2(1,0))
-	focusedSlot = shopSlots[focusedIndex]
-	emit_signal("item_focused", focusedSlot.item.data)
 
 
-func _process(delta):
-	# ensure the player cannot interact when inactive
-	# or if all items are sold out
-	if !UIController.isActive || isSoldOut:
-		return
+func handle_purchase_made(index: int) -> void:
+	# convert indecies
+	var slotIndex: int = floori(index / SLOTS_PER_ROW)
 	
-	# reduce focus timer
-	if focusTimer > 0.0:
-		focusTimer -= delta
+	# move the bought item
+	var purchasedItem = move_purchase(slotIndex)
 	
-	# attempt to focus on new trash
-	var uiDirection = UIController.get_direction()
-	if uiDirection != Vector2.ZERO and focusTimer < 0.0:
-		refocus(uiDirection)
-		
-		# reset the focus timer
-		focusTimer = FOCUS_TIME
-
-
-func handle_mouse_focused(slot: ShopSlot) -> void:
-	# swap focus
-	focusedSlot.unfocus()
-	focusedSlot = slot
-	focusedSlot.focus()
-	
-	# set new index
-	focusedIndex = shopSlots.find(slot)
-	
-	# notify container of focused item
-	emit_signal("item_focused", slot.item.data)
-
-
-func handle_attempt_purchase(cost: float) -> void:
-	# first, make sure we aren't buying two items at once
-	if onCooldown:
-		return
-	
-	# validate Moni before purchase
-	if cost < TrashData.moni:
-		# ensure no other items are purchased during this cycle
-		onCooldown = true
-		
-		# charge user
-		TrashData.moni -= cost
-		
-		# move the bought item
-		var purchasedItem = move_purchase(focusedIndex)
-		
-		# store a record of purchased items
-		TrashData.purchasedItems.push_back(purchasedItem.data.id)
-		
-		# notify container of purchase
-		emit_signal("item_purchased")
-		
-		# shift to a new focus
-		refocus(Vector2(1,0), true)
-		
-		# start cooldown timer
-		purchaseCooldown.start(COOLDOWN)
+	# store a record of purchased items
+	TrashData.purchasedItems.push_back(purchasedItem.data.id)
 
 
 func move_purchase(index: int) -> TrashItem:
@@ -140,42 +68,3 @@ func move_purchase(index: int) -> TrashItem:
 	var purchasedItem = purchaseSlot.remove_item()
 	boughtSlot.store_item(purchasedItem, relativePosition)
 	return purchasedItem
-
-
-func refocus(direction: Vector2, isPurchased: bool = false) -> void:
-	# iterate index
-	set_next_valid_index(direction)
-	
-	# swap focus
-	swap_index(isPurchased)
-
-
-func set_next_valid_index(direction: Vector2) -> void:
-	var slotsChecked: int = 0
-	while(true):
-		if slotsChecked < itemCount:
-			slotsChecked += 1
-		else:
-			isSoldOut = true
-			return
-		
-		focusedIndex += (direction.x as int)
-		focusedIndex -= (direction.y as int) * SLOTS_PER_ROW
-		focusedIndex %= shopSlots.size()
-		
-		if !shopSlots[focusedIndex].is_empty():
-			break
-
-
-func swap_index(isPurchased: bool) -> void:
-	if !isPurchased:
-		focusedSlot.unfocus()
-	focusedSlot = shopSlots[focusedIndex]
-	focusedSlot.focus()
-	
-	# notify container of focused item
-	emit_signal("item_focused", focusedSlot.item.data)
-
-
-func _on_purchase_cooldown_timeout():
-	onCooldown = false

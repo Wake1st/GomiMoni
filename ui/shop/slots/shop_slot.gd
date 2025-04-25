@@ -53,10 +53,14 @@ func unfocus() -> void:
 	tween.tween_property(item, "position:y", 0.0, liftDuration)
 
 
+func select() -> void:
+	emit_signal("attempt_purchase", item.data.cost)
+
+
 func _input(_event) -> void:
 	var allowedToPurchase = UIController.isActive && StageState.currentState == StageState.STAGES.SHOP
 	if allowedToPurchase && isFocused && Input.is_action_just_pressed("ui_accept"):
-		emit_signal("attempt_purchase", item.data.cost)
+		select()
 
 
 func _on_mouse_collider_mouse_entered():
