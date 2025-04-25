@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dayffnlewvx3w"]
+[gd_scene load_steps=23 format=3 uid="uid://dayffnlewvx3w"]
 
 [ext_resource type="Script" uid="uid://dy05sro2ws5n3" path="res://containers/shop_container.gd" id="1_0wdwb"]
 [ext_resource type="PackedScene" uid="uid://dsknet41108fj" path="res://ui/shop/shop.tscn" id="2_nf1p8"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://x4nsc0daclsl" path="res://assets/music/Trash Shop Music.mp3" id="8_h650p"]
 [ext_resource type="AudioStream" uid="uid://d0vt85tpcyt3e" path="res://assets/sfx/Button Selection.wav" id="10_4nkmx"]
 [ext_resource type="PackedScene" uid="uid://dsjv447tp8js4" path="res://systems/focus/focus_system.tscn" id="10_46jwu"]
+[ext_resource type="PackedScene" uid="uid://byvide0jrp1d" path="res://systems/focus/shop_row.tscn" id="11_40bf0"]
 [ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="11_o2erh"]
 [ext_resource type="AudioStream" uid="uid://g1hr24mksww3" path="res://assets/sfx/Whoosh.wav" id="11_rjrgk"]
 
@@ -91,12 +92,16 @@ image = ExtResource("6_cyou0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95643)
 
 [node name="FocusSystem" parent="." instance=ExtResource("10_46jwu")]
+rows = [null, null, null]
 
-[node name="FocusRow" parent="FocusSystem" instance=ExtResource("11_o2erh")]
+[node name="ShopRow" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("11_40bf0")]
+elements = [NodePath("../../Shop/ShopSlots/BagelManSlot"), NodePath("../../Shop/ShopSlots/GrombitSlot"), NodePath("../../Shop/ShopSlots/SaltManSlot"), NodePath("../../Shop/ShopSlots/CircuitManSlot")]
 
-[node name="FocusRow2" parent="FocusSystem" instance=ExtResource("11_o2erh")]
+[node name="ShopRow2" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("11_40bf0")]
+elements = [NodePath("../../Shop/ShopSlots/CraigSlot"), NodePath("../../Shop/ShopSlots/DragonSlot"), NodePath("../../Shop/ShopSlots/TowerTopplerSlot"), NodePath("../../Shop/ShopSlots/PeterPumpkinSlot")]
 
-[node name="FocusRow3" parent="FocusSystem" instance=ExtResource("11_o2erh")]
+[node name="ButtonRow" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("11_o2erh")]
+elements = [NodePath("../../MainOption"), NodePath("../../NextOption")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.864213, 0.503126, 0, -0.503126, 0.864213, 0, 12.1521, -0.884088)
@@ -119,3 +124,5 @@ stream = ExtResource("11_rjrgk")
 volume_db = 1.0
 pitch_scale = 1.9
 bus = &"SFX"
+
+[editable path="Shop"]

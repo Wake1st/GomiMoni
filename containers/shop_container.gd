@@ -14,6 +14,7 @@ const MUSIC_FADE_DURATION: float = 0.6
 @onready var costBoard: PriceBoard = $CostBoard
 @onready var moniBoard: PriceBoard = $MoniBoard
 
+@onready var focusSystem: ShopFocusSystem = $ShopFocusSystem
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
 @onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
 @onready var purchaseSFX: AudioStreamPlayer = $PurchaseSFX
