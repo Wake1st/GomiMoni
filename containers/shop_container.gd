@@ -27,10 +27,12 @@ func _ready() -> void:
 	mainOption.selected.connect(handle_option_selection)
 	nextOption.selected.connect(handle_option_selection)
 	camera.transition_finished.connect(handle_camera_transition_finished)
+	focusSystem.item_focused.connect(handle_item_focused)
+	focusSystem.item_purchased.connect(handle_item_purchased)
 
 
 func setup() -> void:
-	shop.setup(handle_item_focused, handle_item_purchased)
+	shop.setup()
 
 
 func open() -> void:
@@ -56,7 +58,6 @@ func run() -> void:
 	shop.run()
 
 
-
 func close() -> void:
 	# dont allow user to buy
 	UIController.isActive = false
@@ -70,9 +71,14 @@ func handle_item_focused(item: Trash) -> void:
 	costBoard.set_cost(item.cost)
 
 
-func handle_item_purchased(_index: int) -> void:
+func handle_item_purchased(index: int) -> void:
+	# purchase effects
+	shop.make_purchase(index)
 	moniBoard.set_cost(TrashData.moni)
 	purchaseSFX.play()
+	
+	# check for sold out
+	focusSystem.isSoldOut = shop.check_sold_out()
 
 
 func handle_option_selection(option: ShopOption.OPTIONS) -> void:
