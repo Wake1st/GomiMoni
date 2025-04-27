@@ -3,6 +3,7 @@ extends Node3D
 
 
 @onready var exitOption = $ExitOption
+@onready var focusSystem: FocusSystem = $FocusSystem
 
 
 func _ready() -> void:

@@ -7,6 +7,8 @@ const SAMPLE_COOLDOWN: float = 0.6
 @onready var cancelOption: CancelOption = $CancelOption
 @onready var masterSlider: Slider3D = $MasterSlider
 @onready var musicSlider: Slider3D = $MusicSlider
+
+@onready var focusSystem: SettingsFocusSystem = $SettingsFocusSystem
 @onready var sfxSlider: Slider3D = $SFXSlider
 @onready var sfxSample: AudioStreamPlayer = $SFXSample
 @onready var sampleTimer: Timer = $SampleTimer

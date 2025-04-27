@@ -4,10 +4,12 @@ extends Node3D
 
 @onready var options = $Options
 @onready var cancelOption: CancelOption = $CancelOption
+@onready var focusSystem: FocusSystem = $FocusSystem
 
 
 func setup(cancelCallback: Callable, levelCallback: Callable) -> void:
 	# connect cancel callback
+	focusSystem.cancel_selected.connect(cancelCallback)
 	cancelOption.selected.connect(cancelCallback)
 	cancelOption.setup()
 	

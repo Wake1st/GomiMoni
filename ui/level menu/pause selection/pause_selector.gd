@@ -2,6 +2,8 @@ class_name PauseSelector
 extends Node3D
 
 
+signal menu_opened
+
 const CLOSED_POSITION_Z: float = 26
 const OPENED_POSITION_Z: float = 7.8
 const TWEEN_DURATION: float = 0.2
@@ -38,6 +40,9 @@ func toggle_menu() -> void:
 		# animate the pause menu
 		tween.tween_property(self, "position:z", CLOSED_POSITION_Z, TWEEN_DURATION)
 		tween.tween_callback(handle_transition_ended.bind(false))
+		
+		# opening menu
+		emit_signal("menu_opened")
 	else:
 		# turn off the vehicle controls
 		VehicleController.isActive = false

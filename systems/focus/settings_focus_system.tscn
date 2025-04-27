@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5v01jyuvfrxn"]
+
+[ext_resource type="Script" uid="uid://7a6me13br4gq" path="res://systems/focus/settings_focus_system.gd" id="1_n0gob"]
+
+[node name="SettingsFocusSystem" type="Node"]
+script = ExtResource("1_n0gob")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kg0m54kenbg3"]
+[gd_scene load_steps=19 format=3 uid="uid://kg0m54kenbg3"]
 
 [ext_resource type="Script" uid="uid://bivwgpsywg3wk" path="res://ui/main menu/level selection/level_selector.gd" id="1_2wc8b"]
 [ext_resource type="PackedScene" uid="uid://uf1d7buxy3qx" path="res://ui/main menu/level selection/level_option.tscn" id="1_s73au"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ds428pr708pph" path="res://assets/images/level icons/Flyer_To_Switch.png" id="6_iwjpe"]
 [ext_resource type="Texture2D" uid="uid://cj6r27rrdnblh" path="res://assets/images/level icons/Which_Switch.png" id="7_0i8kk"]
 [ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="9_hcqhj"]
+[ext_resource type="PackedScene" uid="uid://dsjv447tp8js4" path="res://systems/focus/focus_system.tscn" id="10_kgyth"]
+[ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="11_hlacs"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_qh7wr"]
 
@@ -107,7 +109,7 @@ onSelectUpAnimationDuration = 0.6
 image = ExtResource("7_0i8kk")
 
 [node name="CancelOption" parent="." instance=ExtResource("9_hcqhj")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.96463, -1.12112, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96463, -1.42815, 0)
 mesh = SubResource("QuadMesh_jcnav")
 gainedFocusAnimationDuration = 0.2
 lostFocusAnimationDuration = 0.2
@@ -115,8 +117,21 @@ onSelectDepthChange = 0.2
 onSelectDownAnimationDuration = 0.2
 onSelectUpAnimationDuration = 0.3
 
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("rows") instance=ExtResource("10_kgyth")]
+rows = [NodePath("FocusRow"), NodePath("FocusRow2"), NodePath("FocusRow3")]
+
+[node name="FocusRow" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("11_hlacs")]
+elements = [NodePath("../../Options/LevelOption0"), NodePath("../../Options/LevelOption1"), NodePath("../../Options/LevelOption2")]
+
+[node name="FocusRow2" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("11_hlacs")]
+elements = [NodePath("../../Options/LevelOption3"), NodePath("../../Options/LevelOption4"), NodePath("../../Options/LevelOption5")]
+
+[node name="FocusRow3" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("11_hlacs")]
+elements = [NodePath("../../CancelOption")]
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.946548, 0.322563, 0, -0.322563, 0.946548, 0, 0.836197, 2.6535)
+spot_range = 6.68452
 spot_attenuation = -0.26
-spot_angle = 53.5
+spot_angle = 41.3748
 spot_angle_attenuation = 0.189465

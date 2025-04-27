@@ -51,6 +51,10 @@ func _physics_process(_delta) -> void:
 			emit_signal("value_changed", weight)
 
 
+func adjust(value: float) -> void:
+	knob.position.x += value
+
+
 #region MouseHover
 
 func _on_slider_knob_3d_mouse_entered():

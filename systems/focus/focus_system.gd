@@ -4,16 +4,22 @@ extends Node
 
 signal cancel_selected
 
-@export var rows: Array
+const COOLDOWN_TIME: float = 0.1
+
+@export var rows: Array[FocusRow]
+@onready var cooldown:Timer = $Cooldown
 
 var isActive: bool = false
 var rowIndex: int = 0
 var focusedRow: FocusRow
-var focusedElement: Node3D
+var focusedElement: Button3D
 
 
 func activate(value: bool = true) -> void:
 	isActive = value
+	focusedRow = rows[rowIndex]
+	focusedElement = focusedRow.set_focus(0)
+	focusedElement.focus()
 
 
 func _input(_event) -> void:
@@ -28,8 +34,11 @@ func _input(_event) -> void:
 		focusedElement.select()
 	elif selection == UIController.SELECTION.CANCEL:
 		emit_signal("cancel_selected")
-	elif direction != Vector2.ZERO:
+	elif direction != Vector2.ZERO && cooldown.is_stopped():
 		refocus(direction)
+		
+		# ensure focus doesn't move too fast
+		cooldown.start(COOLDOWN_TIME)
 
 
 func refocus(direction: Vector2) -> void:
@@ -56,9 +65,9 @@ func row_up() -> void:
 	# loop until we find an enabled row
 	while(true):
 		# ensure index does not exceed bounds
-		rowIndex += 1
-		if rowIndex == rows.size():
-			rowIndex = 0
+		rowIndex -= 1
+		if rowIndex < 0:
+			rowIndex = rows.size() - 1
 		
 		# check availability
 		if swap_row_focus():
@@ -66,12 +75,12 @@ func row_up() -> void:
 
 
 func row_down() -> void:
-		# loop until we find an enabled row
+	# loop until we find an enabled row
 	while(true):
 		# ensure index does not exceed bounds
-		rowIndex -= 1
-		if rowIndex < 0:
-			rowIndex = rows.size() - 1
+		rowIndex += 1
+		if rowIndex == rows.size():
+			rowIndex = 0
 		
 		# check availability
 		if swap_row_focus():
