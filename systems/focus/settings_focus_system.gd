@@ -4,17 +4,25 @@ extends Node
 
 signal cancel_selected
 
+const COOLDOWN_TIME: float = 0.1
+
 @export var rows: Array[Slider3D]
 @export var cancelButton: CancelOption
 
+@onready var cooldown:Timer = $Cooldown
+
 var isActive: bool = false
 var rowIndex: int = 0
-var focusedElement: Slider3D
+var focusedElement: Node3D
 var cancelFocused: bool = false
 
 
 func activate(value: bool = true) -> void:
 	isActive = value
+	
+	# set initial focus
+	focusedElement = rows[rowIndex]
+	focusedElement.focus()
 
 
 func _input(_event) -> void:
@@ -27,17 +35,45 @@ func _input(_event) -> void:
 	var direction = UIController.get_direction()
 	if selection == UIController.SELECTION.ACCEPT && focusedElement != null:
 		if cancelFocused:
+			# select and unfocus
 			cancelButton.select()
+			cancelButton.focus(false)
 	elif selection == UIController.SELECTION.CANCEL:
 		emit_signal("cancel_selected")
-	elif direction != Vector2.ZERO:
+	elif direction != Vector2.ZERO && cooldown.is_stopped():
 		refocus(direction)
+		
+		# ensure focus doesn't move too fast
+		cooldown.start(COOLDOWN_TIME)
+
+
+func focus_on(element: Node3D) -> void:
+	# ensure this system is what we want
+	if !isActive:
+		return
+	
+	# unfocus the current element
+	focusedElement.focus(false)
+	
+	# the cancel button won't be found in our rows
+	if element == cancelButton:
+		focusedElement = cancelButton
+		cancelFocused = true
+		rowIndex = -1
+	else:
+		# find the row and set indecies
+		for slider in rows:
+			if slider == element:
+				rowIndex = rows.find(element)
+		
+		# set the new focus
+		focusedElement = element
+		cancelFocused = false
 
 
 func refocus(direction: Vector2) -> void:
 	# first, unfocus current element
-	if cancelFocused:
-		cancelButton.focus(false)
+	focusedElement.focus(false)
 	
 	# swap rows
 	if direction.y > 0:
@@ -46,12 +82,11 @@ func refocus(direction: Vector2) -> void:
 		row_down()
 	
 	# move along rows
-	if direction.x != 0:
+	if direction.x != 0 && !cancelFocused:
 		focusedElement.adjust(direction.x)
 	
 	# finally, focus on element
-	if cancelFocused:
-		cancelButton.focus()
+	focusedElement.focus()
 
 
 func row_up() -> void:
@@ -62,7 +97,7 @@ func row_up() -> void:
 		focusedElement = rows[rowIndex]
 		cancelFocused = false
 	elif rowIndex < 0:
-		focusedElement = null
+		focusedElement = cancelButton
 		cancelFocused = true
 	else:
 		focusedElement = rows[rowIndex]
@@ -73,7 +108,7 @@ func row_down() -> void:
 	rowIndex += 1
 	if rowIndex == rows.size():
 		rowIndex = -1
-		focusedElement = null
+		focusedElement = cancelButton
 		cancelFocused = true
 	else:
 		focusedElement = rows[rowIndex]

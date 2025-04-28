@@ -7,16 +7,18 @@ extends Node3D
 @onready var focusSystem: FocusSystem = $FocusSystem
 
 
-func setup(cancelCallback: Callable, levelCallback: Callable) -> void:
+func setup(cancelCallable: Callable, levelCallable: Callable) -> void:
 	# connect cancel callback
-	focusSystem.cancel_selected.connect(cancelCallback)
-	cancelOption.selected.connect(cancelCallback)
+	focusSystem.cancel_selected.connect(cancelCallable)
+	cancelOption.focused.connect(focusSystem.focus_on)
+	cancelOption.selected.connect(cancelCallable)
 	cancelOption.setup()
 	
 	# connect level selection callback
 	for child: LevelOption in options.get_children():
 		child.setup()
-		child.selected.connect(levelCallback)
+		child.focused.connect(focusSystem.focus_on)
+		child.selected.connect(levelCallable)
 
 
 ## Enables all beaten levels plus the next

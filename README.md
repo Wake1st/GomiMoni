@@ -25,7 +25,7 @@ Moni buys trash.
 - [x] add title screen
 - [x] auto save/load game data
 - [x] add exit game option
-- [ ] allow controller
+- [ ] allow controller (inadequate - take time and refactor)
 
 ### Reassessed
 

@@ -60,7 +60,9 @@ func _input(_event) -> void:
 	var selection = UIController.get_selection()
 	var direction = UIController.get_direction()
 	if selection == UIController.SELECTION.ACCEPT && focusedElement != null:
+		# select and unfocus
 		focusedElement.select()
+		focusedElement.focus(false)
 	elif direction != Vector2.ZERO:
 		refocus(direction)
 

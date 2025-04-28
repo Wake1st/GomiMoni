@@ -2,21 +2,23 @@ class_name Slider3D
 extends Node3D
 
 
+signal focused(slider: Slider3D)
 signal value_changed(value: float)
 
 const RAY_LENGTH := 1000
 const UI_COLLISION_LAYER: int = 0b00000000_00000000_00000000_00000111
 const PROGRESS_SIZE: float = 2.0
+const SHIFT_AMOUNT: float = 0.1
 
 @export_range(0,1) var initialValue = 0.5
 
 @onready var shader: Shader = preload("res://ui/components/slider_3d/slider_3d.gdshader")
 @onready var progressMesh: MeshInstance3D = $ProgressMesh
-@onready var knob: StaticBody3D = $SliderKnob3D
+@onready var knob: SliderKnob3D = $SliderKnob3D
 
-var material: ShaderMaterial
+#var material: ShaderMaterial
 var isSelectable: bool = false
-var isSelected: bool = false
+#var isSelected: bool = false
 var progressStart: Vector3
 var progressEnd: Vector3
 
@@ -40,31 +42,47 @@ func _physics_process(_delta) -> void:
 		else:
 			# set the shader color relative to the mouse position
 			var relativeMouse = (mousePos - global_position) * global_basis
-			var clamped = clamp(relativeMouse, progressStart, progressEnd)
-			var weight = inverse_lerp(progressStart.x, progressEnd.x, clamped.x)
-			progressMesh.set_instance_shader_parameter("weight", weight)
-			
-			# slide the knob
-			knob.position.x = (weight - 0.5) * PROGRESS_SIZE
-			
-			# notify listener
-			emit_signal("value_changed", weight)
+			set_slider(relativeMouse.x)
 
 
 func adjust(value: float) -> void:
-	knob.position.x += value
+	var adjustment = knob.position.x + value * SHIFT_AMOUNT
+	set_slider(adjustment)
+
+
+func focus(value: bool = true) -> void:
+	knob.highlight(value)
+
+
+func set_slider(value: float) -> void:
+	# calculate visual information
+	var clamped = clamp(value, progressStart.x, progressEnd.x)
+	var weight = inverse_lerp(progressStart.x, progressEnd.x, clamped)
+	
+	# display changes
+	progressMesh.set_instance_shader_parameter("weight", weight)
+	knob.position.x = (weight - 0.5) * PROGRESS_SIZE
+	
+	# notify listener
+	emit_signal("value_changed", weight)
 
 
 #region MouseHover
 
 func _on_slider_knob_3d_mouse_entered():
 	isSelectable = true
+	focus()
+	emit_signal("focused", self)
+
 
 func _on_slider_knob_3d_mouse_exited():
 	isSelectable = false
 
 func _on_static_background_mouse_entered():
 	isSelectable = true
+	focus()
+	emit_signal("focused", self)
+
 
 func _on_static_background_mouse_exited():
 	isSelectable = false

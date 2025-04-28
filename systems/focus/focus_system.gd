@@ -17,6 +17,8 @@ var focusedElement: Button3D
 
 func activate(value: bool = true) -> void:
 	isActive = value
+	
+	# set initial focus
 	focusedRow = rows[rowIndex]
 	focusedElement = focusedRow.set_focus(0)
 	focusedElement.focus()
@@ -31,7 +33,9 @@ func _input(_event) -> void:
 	var selection = UIController.get_selection()
 	var direction = UIController.get_direction()
 	if selection == UIController.SELECTION.ACCEPT && focusedElement != null:
+		# select nd unfocus
 		focusedElement.select()
+		focusedElement.focus(false)
 	elif selection == UIController.SELECTION.CANCEL:
 		emit_signal("cancel_selected")
 	elif direction != Vector2.ZERO && cooldown.is_stopped():
@@ -39,6 +43,25 @@ func _input(_event) -> void:
 		
 		# ensure focus doesn't move too fast
 		cooldown.start(COOLDOWN_TIME)
+
+
+func focus_on(element: Button3D) -> void:
+		# ensure this system is what we want
+	if !isActive:
+		return
+	
+	# unfocus the current element
+	focusedElement.focus(false)
+	
+	# find the row and set indecies
+	for row in rows:
+		var index = row.find(element)
+		if index >= 0:
+			focusedRow = row
+			rowIndex = rows.find(row)
+	
+	# set the new focus
+	focusedElement = element
 
 
 func refocus(direction: Vector2) -> void:

@@ -8,6 +8,7 @@ enum ANIMATION {
 	SELECT
 }
 
+signal focused(button: Button3D)
 
 @export_category("Button")
 @export var enabled: bool = true
@@ -77,6 +78,7 @@ func focus(value: bool = true) -> void:
 	hasFocus = value
 	if hasFocus:
 		animate_button(ANIMATION.FOCUS_GAIN)
+		emit_signal("focused", self)
 	else:
 		animate_button(ANIMATION.FOCUS_LOST)
 
@@ -114,6 +116,7 @@ func _on_mouse_entered():
 	if enabled:
 		hasFocus = true
 		animate_button(ANIMATION.FOCUS_GAIN)
+		emit_signal("focused", self)
 
 
 func _on_mouse_exited():

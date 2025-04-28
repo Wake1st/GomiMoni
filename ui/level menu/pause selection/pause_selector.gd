@@ -16,10 +16,11 @@ func _ready() -> void:
 	position.z = CLOSED_POSITION_Z
 
 
-func setup(callback: Callable) -> void:
+func setup(focusedCallable: Callable, selectedCallable: Callable) -> void:
 	for child: PauseOption in get_children():
 		child.setup()
-		child.selected.connect(callback)
+		child.focused.connect(focusedCallable)
+		child.selected.connect(selectedCallable)
 
 
 func _input(event: InputEvent) -> void:

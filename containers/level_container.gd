@@ -26,7 +26,7 @@ var hasPassedLevel: bool = false
 
 func _ready() -> void:
 	camera.transition_finished.connect(handle_camera_transition_finished)
-	pauseSelector.setup(handle_pause_selection)
+	pauseSelector.setup(focusSystem.focus_on, handle_pause_selection)
 	focusSystem.cancel_selected.connect(handle_menu_exit)
 	pauseSelector.menu_opened.connect(handle_menu_open)
 

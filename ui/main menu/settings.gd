@@ -16,8 +16,14 @@ const SAMPLE_COOLDOWN: float = 0.6
 
 func setup(cancelCallback: Callable) -> void:
 	# connect cancel callback
+	cancelOption.focused.connect(focusSystem.focus_on)
 	cancelOption.selected.connect(cancelCallback)
 	cancelOption.setup()
+	
+	# connect focus callbacks
+	masterSlider.focused.connect(focusSystem.focus_on)
+	musicSlider.focused.connect(focusSystem.focus_on)
+	sfxSlider.focused.connect(focusSystem.focus_on)
 	
 	# connect audio settings
 	masterSlider.value_changed.connect(handle_master_changed)

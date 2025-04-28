@@ -22,6 +22,7 @@ const MUSIC_FADE_DURATION: float = 0.4
 
 var atSubMenu: bool = false
 var currentFocus: Node
+var navigating: bool = false
 
 
 func _ready():
@@ -32,6 +33,7 @@ func _ready():
 	
 	liveCamera.setup(rootCamera)
 	liveCamera.transition_finished.connect(handle_transition_ended)
+	cinemaGraph.transition_finished.connect(handle_cinemagraph_finished)
 
 
 func open() -> void:
@@ -56,10 +58,15 @@ func run() -> void:
 
 
 func return_to_root() -> void:
+	# don't send commands until at new menu
+	if navigating:
+		return
+	else:
+		navigating = true
+	
 	# swap focus
 	currentFocus.activate(false)
 	currentFocus = mainSelector.focusSystem
-	currentFocus.activate()
 	
 	# send camera back to start
 	cinemaGraph.send_camera(CinemaGraph.STILLS.ROOT)
@@ -69,6 +76,12 @@ func return_to_root() -> void:
 
 
 func handle_main_selection(option: MainOption.OPTIONS) -> void:
+	# don't send commands until at new menu
+	if navigating:
+		return
+	else:
+		navigating = true
+	
 	# first, ensure we know we're away from the main menu
 	atSubMenu = true
 	mainSelector.focusSystem.activate(false)
@@ -86,9 +99,6 @@ func handle_main_selection(option: MainOption.OPTIONS) -> void:
 			currentFocus = credits.focusSystem
 		MainOption.OPTIONS.EXIT:
 			get_tree().quit()
-	
-	# activate the next system
-	currentFocus.activate()
 	
 	# play the button sfx
 	buttonSFX.play()
@@ -112,6 +122,12 @@ func handle_level_selected(number: int) -> void:
 	
 	# play the button sfx
 	buttonSFX.play()
+
+
+func handle_cinemagraph_finished() -> void:
+	# activate the menu we arrive at
+	currentFocus.activate()
+	navigating = false
 
 
 func handle_transition_ended(isOpen: bool) -> void:

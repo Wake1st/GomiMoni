@@ -59,3 +59,7 @@ func get_prev() -> Button3D:
 	
 	# if we can access a row, then we won't reach this point
 	return null
+
+
+func find(element: Button3D) -> int:
+	return elements.find(element)

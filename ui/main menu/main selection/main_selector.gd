@@ -12,8 +12,9 @@ func _ready() -> void:
 		exitOption.enabled = false
 
 
-func setup(callback: Callable) -> void:
+func setup(selectedCallable: Callable) -> void:
 	for child in get_children():
 		if child is MainOption:
 			child.setup()
-			child.selected.connect(callback)
+			child.focused.connect(focusSystem.focus_on)
+			child.selected.connect(selectedCallable)

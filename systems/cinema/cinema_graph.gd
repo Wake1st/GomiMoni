@@ -9,6 +9,8 @@ enum STILLS {
 	SELECTION
 }
 
+signal transition_finished
+
 const CURVE_MAGNITUDE: float = 2.9
 
 @export var transitionDuration = 1.4
@@ -136,3 +138,10 @@ func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null, instant: 
 		
 		# reset to series
 		tween.set_parallel(false)
+		
+		# ensure we know when we've arrived
+		tween.tween_callback(handle_tween_finished)
+
+
+func handle_tween_finished() -> void:
+	emit_signal("transition_finished")
