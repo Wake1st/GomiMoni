@@ -4,7 +4,7 @@ extends Node
 
 signal cancel_selected
 
-const COOLDOWN_TIME: float = 0.1
+const COOLDOWN_TIME: float = 0.2
 
 @export var rows: Array[FocusRow]
 @onready var cooldown:Timer = $Cooldown
@@ -48,6 +48,10 @@ func _input(_event) -> void:
 func focus_on(element: Button3D) -> void:
 		# ensure this system is what we want
 	if !isActive:
+		return
+	
+	# check is already focused
+	if element == focusedElement:
 		return
 	
 	# unfocus the current element

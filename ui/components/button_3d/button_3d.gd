@@ -75,6 +75,11 @@ func send_select_signal() -> void:
 
 
 func focus(value: bool = true) -> void:
+	# try not to refocus
+	if hasFocus && value:
+		return
+	print("%s focused" % name)
+	
 	hasFocus = value
 	if hasFocus:
 		animate_button(ANIMATION.FOCUS_GAIN)
