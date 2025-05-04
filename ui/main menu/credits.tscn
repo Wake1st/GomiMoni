@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://nlfc3hq02dvq"]
+[gd_scene load_steps=8 format=3 uid="uid://nlfc3hq02dvq"]
 
 [ext_resource type="Script" uid="uid://bqf1tj2hdo23j" path="res://ui/main menu/credits.gd" id="1_74u3g"]
 [ext_resource type="Texture2D" uid="uid://c107wdelhmsbv" path="res://assets/images/menu icons/Credit_Billboard.png" id="1_ed0b0"]
 [ext_resource type="PackedScene" uid="uid://ej1hoit338ih" path="res://ui/main menu/cancel_option.tscn" id="3_1bagf"]
+[ext_resource type="PackedScene" uid="uid://dsjv447tp8js4" path="res://systems/focus/focus_system.tscn" id="4_r76gm"]
+[ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="5_iayeo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orljq"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_ed0b0")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_06xqq"]
@@ -19,4 +24,17 @@ script = ExtResource("1_74u3g")
 mesh = SubResource("PlaneMesh_06xqq")
 
 [node name="CancelOption" parent="." instance=ExtResource("3_1bagf")]
-transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0.025, -1.37816, 1.89348)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.025, -1.37816, -1.88175)
+
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("rows") instance=ExtResource("4_r76gm")]
+rows = [NodePath("FocusRow")]
+
+[node name="FocusRow" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("5_iayeo")]
+elements = [NodePath("../../CancelOption")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.678015, 0.313468, 0.664855, 0.0918807, 0.933555, -0.346457, -0.729283, -0.173816, -0.661767, 2.66111, -1.95041, -4.21651)
+spot_range = 11.7215
+spot_attenuation = -0.41
+spot_angle = 30.83
+spot_angle_attenuation = 0.466516

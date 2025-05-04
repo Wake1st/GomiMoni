@@ -8,6 +8,7 @@ enum ANIMATION {
 	SELECT
 }
 
+signal focused(button: Button3D)
 
 @export_category("Button")
 @export var enabled: bool = true
@@ -46,6 +47,7 @@ func _ready() -> void:
 	# set the level image
 	var material: StandardMaterial3D = StandardMaterial3D.new()
 	material.albedo_texture = image
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
 	set_surface_override_material(0, material)
 	
 	# set animation values
@@ -70,6 +72,19 @@ func select() -> void:
 
 func send_select_signal() -> void:
 	print("WARNING: non-implemented function 'send_select_signal' in class 'Button3D'")
+
+
+func focus(value: bool = true) -> void:
+	# try not to refocus
+	if hasFocus && value:
+		return
+	
+	hasFocus = value
+	if hasFocus:
+		animate_button(ANIMATION.FOCUS_GAIN)
+		emit_signal("focused", self)
+	else:
+		animate_button(ANIMATION.FOCUS_LOST)
 
 
 func animate_button(animation: ANIMATION, doesBounceBack: bool = false) -> void:
@@ -100,10 +115,12 @@ func _input(event) -> void:
 	if enabled && hasFocus && event.is_action_pressed("ui_accept"):
 		select()
 
+
 func _on_mouse_entered():
 	if enabled:
 		hasFocus = true
 		animate_button(ANIMATION.FOCUS_GAIN)
+		emit_signal("focused", self)
 
 
 func _on_mouse_exited():
@@ -122,4 +139,3 @@ func _handle_selection_animation_finished() -> void:
 	# ensure we return to normal
 	if !hasFocus:
 		animate_button(ANIMATION.FOCUS_LOST)
-		

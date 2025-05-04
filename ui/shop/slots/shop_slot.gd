@@ -39,24 +39,29 @@ func is_empty() -> bool:
 	return item == null
 
 
-func focus() -> void:
-	isFocused = true
+func focus(value: bool = true) -> void:
+	isFocused = value
 	
-	tween = create_tween()
-	tween.tween_property(item, "position:y", liftDistance, liftDuration)
-
-
-func unfocus() -> void:
-	isFocused = false
+	# nothing to move if we don't possess the item
+	if isPurchased:
+		return
 	
-	tween = create_tween()
-	tween.tween_property(item, "position:y", 0.0, liftDuration)
+	if isFocused:
+		tween = create_tween()
+		tween.tween_property(item, "position:y", liftDistance, liftDuration)
+	else:
+		tween = create_tween()
+		tween.tween_property(item, "position:y", 0.0, liftDuration)
 
 
-func _input(event) -> void:
+func select() -> void:
+	emit_signal("attempt_purchase", item.data.cost)
+
+
+func _input(_event) -> void:
 	var allowedToPurchase = UIController.isActive && StageState.currentState == StageState.STAGES.SHOP
-	if allowedToPurchase && isFocused && event.is_action_pressed("ui_accept"):
-		emit_signal("attempt_purchase", item.data.cost)
+	if allowedToPurchase && isFocused && Input.is_action_just_pressed("ui_accept"):
+		select()
 
 
 func _on_mouse_collider_mouse_entered():

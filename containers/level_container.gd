@@ -12,22 +12,31 @@ const MUSIC_FADE_DURATION: float = 1.0
 @onready var pauseSelector: PauseSelector = $PauseSelector
 @onready var instructions: Instructions = $Instructions
 @onready var vehicleUI: VehicleUI = $VehicleUI
+@onready var focusSystem: FocusSystem = $FocusSystem
 
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
 @onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
 @onready var enterSFX: AudioStreamPlayer = $EnterSFX
 @onready var exitSFX: AudioStreamPlayer = $ExitSFX
+@onready var voiceBox: VoiceBox = $VoiceBox
 
 var level: Level
 var hasPassedLevel: bool = false
+var menuOpened: bool = false
 
 
 func _ready() -> void:
 	camera.transition_finished.connect(handle_camera_transition_finished)
-	pauseSelector.setup(handle_pause_selection)
+	pauseSelector.setup(focusSystem.focus_on, handle_pause_selection)
+	focusSystem.cancel_selected.connect(handle_menu_exit)
 
 
-func setup(levelNumber: int = -1) -> void:
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_menu"):
+		toggle_menu()
+
+
+func setup(levelNumber) -> void:
 	# if no number is given, it plays the next level
 	var scene: PackedScene = LevelList.get_level(levelNumber)
 	
@@ -36,6 +45,7 @@ func setup(levelNumber: int = -1) -> void:
 	add_child(level)
 	level.setup(handle_vehicle_activation)
 	level.completed.connect(success)
+	level.active.connect(handle_level_active)
 	camera.opened_size = level.cameraSize
 	
 	# the level is ready to play
@@ -53,11 +63,14 @@ func open() -> void:
 
 
 func run() -> void:
-	# let user play
-	level.run()
+	# enable ui navigation
+	focusSystem.activate()
 	
 	# set the state
 	StageState.currentState = StageState.STAGES.LEVEL
+	
+	# let user play
+	level.run()
 	
 	# let user know about the instructions for specific levels
 	if LevelList.current_level_index() == 0:
@@ -71,6 +84,9 @@ func exit() -> void:
 	camera.close_transition()
 	musicPlayer.fade_out(MUSIC_FADE_DURATION)
 	exitSFX.play()
+	
+	# ensure the levels are inactive
+	focusSystem.activate(false)
 
 
 func success(moni: float) -> void:
@@ -83,12 +99,16 @@ func success(moni: float) -> void:
 	# give the player moni
 	TrashData.moni += moni
 	
+	# congratulate the player
+	voiceBox.run(VoiceList.WORD.MONI)
+	
 	# leave level
 	exit()
 
 
 func teardown() -> void:
 	level.completed.disconnect(success)
+	level.active.disconnect(handle_level_active)
 	remove_child(level)
 	level.queue_free()
 
@@ -98,22 +118,48 @@ func swap() -> void:
 	teardown()
 	
 	# setup the next level
-	setup()
+	setup(LevelList.current_level_index())
+
+
+func handle_level_active() -> void:
+	voiceBox.run(VoiceList.WORD.GOMI)
 
 
 func handle_vehicle_activation(vehicle: Vehicle.VEHICLE_TYPE) -> void:
 	vehicleUI.display(vehicle)
 
 
+func toggle_menu() -> void:
+	menuOpened = !menuOpened
+	pauseSelector.toggle_menu(menuOpened)
+	instructions.toggle_menu(menuOpened)
+	focusSystem.activate(menuOpened)
+
+
+func handle_menu_exit() -> void:
+	# exit the menu
+	pauseSelector.toggle_menu(false)
+	instructions.toggle_menu(false)
+	
+	# disable ui navigation
+	focusSystem.activate(false)
+	
+	# update state
+	menuOpened = false
+
+
 func handle_pause_selection(option: PauseOption.OPTIONS) -> void:
+	# only run if active
+	if !focusSystem.isActive:
+		return
+	
 	# regardless of what we choose, we must close the menu
-	pauseSelector.toggle_menu()
-	instructions.toggle_menu()
+	handle_menu_exit()
 	
 	# choose what to do based on the selected option
 	match option:
 		PauseOption.OPTIONS.RETURN:
-			# play sfx?
+			# simply return
 			pass
 		PauseOption.OPTIONS.RESET:
 			level.reset()

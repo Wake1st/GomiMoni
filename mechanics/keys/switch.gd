@@ -18,6 +18,7 @@ func reset() -> void:
 	if isThrown:
 		animation_player.stop()
 		isThrown = false
+		light.flip(false)
 
 
 func throw() -> void:
@@ -37,11 +38,16 @@ func throw() -> void:
 	switchSFX.play()
 
 
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "flip-switch":
-		isThrown = !isThrown
-		isSwitching = false
-		emit_signal("triggered")
+func _on_animation_player_animation_finished(_anim_name):
+	# update settings
+	isThrown = !isThrown
+	isSwitching = false
+	
+	# toggle light
+	light.flip(isThrown)
+	
+	# notify listeners
+	emit_signal("triggered")
 
 
 ## Used to connect the flyer to this switch

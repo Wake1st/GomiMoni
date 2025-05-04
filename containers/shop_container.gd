@@ -14,6 +14,7 @@ const MUSIC_FADE_DURATION: float = 0.6
 @onready var costBoard: PriceBoard = $CostBoard
 @onready var moniBoard: PriceBoard = $MoniBoard
 
+@onready var focusSystem: ShopFocusSystem = $ShopFocusSystem
 @onready var musicPlayer: MusicPlayer = $MusicPlayer
 @onready var buttonSFX: AudioStreamPlayer = $ButtonSFX
 @onready var purchaseSFX: AudioStreamPlayer = $PurchaseSFX
@@ -23,26 +24,30 @@ var nextSelection: ShopOption.OPTIONS
 
 func _ready() -> void:
 	# connect signals
-	shop.item_focused.connect(handle_item_focused)
-	shop.item_purchased.connect(handle_item_purchased)
 	mainOption.selected.connect(handle_option_selection)
 	nextOption.selected.connect(handle_option_selection)
 	camera.transition_finished.connect(handle_camera_transition_finished)
+	focusSystem.item_focused.connect(handle_item_focused)
+	focusSystem.item_purchased.connect(handle_item_purchased)
+
+
+func setup() -> void:
+	shop.setup()
+	focusSystem.setup()
 
 
 func open() -> void:
 	# start hello
 	camera.open_transition()
 	musicPlayer.fade_in(MUSIC_FADE_DURATION)
+	
+	# if there are no more levels, disable the next button
+	nextOption.visible = !LevelList.past_final_level()
 
 
 func run() -> void:
 	# set the starting moni
 	moniBoard.set_cost(TrashData.moni)
-	
-	# if there are no more levels, disable the next button
-	if LevelList.all_levels_complete():
-		nextOption.visible = false
 	
 	# allow user to buy stuff
 	UIController.isActive = true
@@ -50,9 +55,8 @@ func run() -> void:
 	# set the state
 	StageState.currentState = StageState.STAGES.SHOP
 	
-	# run the shop
-	shop.run()
-
+	# activate the focus
+	focusSystem.activate()
 
 
 func close() -> void:
@@ -62,18 +66,30 @@ func close() -> void:
 	# start goodbye
 	camera.close_transition()
 	musicPlayer.fade_out(MUSIC_FADE_DURATION)
+	
+	# ensure the focus system is off
+	focusSystem.activate(false)
 
 
 func handle_item_focused(item: Trash) -> void:
 	costBoard.set_cost(item.cost)
 
 
-func handle_item_purchased() -> void:
+func handle_item_purchased(index: int) -> void:
+	# purchase effects
+	shop.make_purchase(index)
 	moniBoard.set_cost(TrashData.moni)
 	purchaseSFX.play()
+	
+	# check for sold out
+	focusSystem.isSoldOut = shop.check_sold_out()
 
 
 func handle_option_selection(option: ShopOption.OPTIONS) -> void:
+	# only allow if active
+	if !focusSystem.isActive:
+		return
+	
 	# store option
 	nextSelection = option
 	

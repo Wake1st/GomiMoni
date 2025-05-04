@@ -5,7 +5,8 @@ extends Button3D
 enum OPTIONS {
 	LEVELS,
 	SETTINGS,
-	CREDITS
+	CREDITS,
+	EXIT
 }
 
 signal selected(option: OPTIONS)

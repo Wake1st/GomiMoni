@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_b8qe3")
+id = 4
 name = "Grombit"
 cost = 37.02
 metadata/_custom_type_script = "uid://cay2hydn0lbvr"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpsf7r3yx0eyw"
+path="res://.godot/imported/moni - tim.wav-8a37ac19b783fe494a3a725b4dd1c025.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice/moni - tim.wav"
+dest_files=["res://.godot/imported/moni - tim.wav-8a37ac19b783fe494a3a725b4dd1c025.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

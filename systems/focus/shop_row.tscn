@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byvide0jrp1d"]
+
+[ext_resource type="Script" uid="uid://xl4s5ekqw4jq" path="res://systems/focus/shop_row.gd" id="1_scg5g"]
+
+[node name="ShopRow" type="Node"]
+script = ExtResource("1_scg5g")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3aej3plvarfx"]
+
+[ext_resource type="Script" uid="uid://bivd35u6x0e36" path="res://testing/mechanics/test_focus_light.gd" id="1_hcqqv"]
+[ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="1_nej6x"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hcqqv"]
+orientation = 2
+
+[node name="TestFocusLight" type="Node3D"]
+script = ExtResource("1_hcqqv")
+
+[node name="FocusLight" parent="." instance=ExtResource("1_nej6x")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5076)
+mesh = SubResource("PlaneMesh_hcqqv")
+
+[node name="Camera3D" type="Camera3D" parent="."]

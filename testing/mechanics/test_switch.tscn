@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://2gssydqo1e3"]
+[gd_scene load_steps=6 format=3 uid="uid://2gssydqo1e3"]
 
 [ext_resource type="Script" uid="uid://bo2bvjalg140d" path="res://testing/mechanics/test_switch.gd" id="1_3nvtv"]
 [ext_resource type="PackedScene" uid="uid://dxhx1ok7qr7ke" path="res://mechanics/keys/switch.tscn" id="1_3xme3"]
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="2_3nvtv"]
+[ext_resource type="PackedScene" uid="uid://2bvpfjq28i71" path="res://mechanics/light.tscn" id="3_6dm4v"]
 
 [sub_resource type="Environment" id="Environment_6dm4v"]
 ambient_light_source = 2
@@ -12,8 +13,12 @@ ambient_light_energy = 1.32
 [node name="TestSwitch" type="Node3D"]
 script = ExtResource("1_3nvtv")
 
-[node name="Switch" parent="." instance=ExtResource("1_3xme3")]
+[node name="Switch" parent="." node_paths=PackedStringArray("light") instance=ExtResource("1_3xme3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+light = NodePath("Light")
+
+[node name="Light" parent="Switch" instance=ExtResource("3_6dm4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8.74228e-08)
 
 [node name="OnSpawner" parent="." instance=ExtResource("2_3nvtv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)

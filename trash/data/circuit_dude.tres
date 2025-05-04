@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_6mxfh")
+id = 1
 name = "Circuit Dude"
 cost = 13.58
 metadata/_custom_type_script = "uid://cay2hydn0lbvr"

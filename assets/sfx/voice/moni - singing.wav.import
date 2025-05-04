@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cy6md7xfnc6pc"
+path="res://.godot/imported/moni - singing.wav-55fbac8110d1b0c94fcb082895191fdb.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice/moni - singing.wav"
+dest_files=["res://.godot/imported/moni - singing.wav-55fbac8110d1b0c94fcb082895191fdb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_ntxo7")
+id = 5
 name = "Peter Pumpkin"
 cost = 22.16
 metadata/_custom_type_script = "uid://cay2hydn0lbvr"

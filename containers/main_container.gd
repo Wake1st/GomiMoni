@@ -21,6 +21,8 @@ const MUSIC_FADE_DURATION: float = 0.4
 @onready var cancelSFX = $CancelSFX
 
 var atSubMenu: bool = false
+var currentFocus: Node
+var navigating: bool = false
 
 
 func _ready():
@@ -31,11 +33,7 @@ func _ready():
 	
 	liveCamera.setup(rootCamera)
 	liveCamera.transition_finished.connect(handle_transition_ended)
-
-
-func _input(_event: InputEvent) -> void:
-	if atSubMenu && Input.is_action_just_pressed("ui_cancel"):
-		return_to_root()
+	cinemaGraph.transition_finished.connect(handle_cinemagraph_finished)
 
 
 func open() -> void:
@@ -53,12 +51,23 @@ func open() -> void:
 func run() -> void:
 	# enable controls
 	UIController.isActive = true
+	mainSelector.focusSystem.activate()
 	
 	# set the state
 	StageState.currentState = StageState.STAGES.MAIN
 
 
 func return_to_root() -> void:
+	# don't send commands until at new menu
+	if navigating:
+		return
+	else:
+		navigating = true
+	
+	# swap focus
+	currentFocus.activate(false)
+	currentFocus = mainSelector.focusSystem
+	
 	# send camera back to start
 	cinemaGraph.send_camera(CinemaGraph.STILLS.ROOT)
 	
@@ -67,24 +76,35 @@ func return_to_root() -> void:
 
 
 func handle_main_selection(option: MainOption.OPTIONS) -> void:
+	# don't send commands until at new menu
+	if navigating:
+		return
+	else:
+		navigating = true
+	
 	# first, ensure we know we're away from the main menu
 	atSubMenu = true
-
+	mainSelector.focusSystem.activate(false)
+	
 	# next, send the camera to the sub menu
 	match option:
 		MainOption.OPTIONS.LEVELS:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.SELECTION)
+			currentFocus = levelSelector.focusSystem
 		MainOption.OPTIONS.SETTINGS:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.SETTINGS)
+			currentFocus = settings.focusSystem
 		MainOption.OPTIONS.CREDITS:
 			cinemaGraph.send_camera(CinemaGraph.STILLS.CREDITS)
+			currentFocus = credits.focusSystem
+		MainOption.OPTIONS.EXIT:
+			get_tree().quit()
 	
 	# play the button sfx
 	buttonSFX.play()
 
 
 func handle_cancel_selection() -> void:
-	
 	return_to_root()
 
 
@@ -95,12 +115,19 @@ func handle_level_selected(number: int) -> void:
 	
 	# turn off the ui controls
 	UIController.isActive = false
+	currentFocus.activate(false)
 	
 	# notify staging system for level loading
 	emit_signal("level_selection", number)
 	
 	# play the button sfx
 	buttonSFX.play()
+
+
+func handle_cinemagraph_finished() -> void:
+	# activate the menu we arrive at
+	currentFocus.activate()
+	navigating = false
 
 
 func handle_transition_ended(isOpen: bool) -> void:

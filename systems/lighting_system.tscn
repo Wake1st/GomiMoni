@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtfnurfw41uw7"]
+
+[ext_resource type="Script" uid="uid://csjei1aub058f" path="res://systems/lighting_system.gd" id="1_f70d1"]
+
+[node name="LightingSystem" type="Node"]
+script = ExtResource("1_f70d1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

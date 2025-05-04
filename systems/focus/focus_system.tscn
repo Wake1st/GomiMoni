@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsjv447tp8js4"]
+
+[ext_resource type="Script" uid="uid://booit8v70086s" path="res://systems/focus/focus_system.gd" id="1_f70d1"]
+
+[node name="FocusSystem" type="Node"]
+script = ExtResource("1_f70d1")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true

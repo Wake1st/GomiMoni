@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_1v7bo")
+id = 7
 name = "Tower Toppler"
 cost = 54.27
 metadata/_custom_type_script = "uid://cay2hydn0lbvr"

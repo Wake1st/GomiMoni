@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1ralg8ig4c6n"]
+[gd_scene load_steps=14 format=3 uid="uid://b1ralg8ig4c6n"]
 
 [ext_resource type="PackedScene" uid="uid://blqjs6prqtn6s" path="res://boundaries/floor.tscn" id="1_0jpbx"]
 [ext_resource type="Script" uid="uid://uoco4c1rotxc" path="res://levels/Level.gd" id="1_yso5g"]
@@ -6,14 +6,38 @@
 [ext_resource type="PackedScene" uid="uid://bph4np0kwwltn" path="res://mechanics/spawner.tscn" id="3_auof0"]
 [ext_resource type="PackedScene" uid="uid://bfchsfb8lw0dr" path="res://systems/vehicle_swap_system.tscn" id="5_auof0"]
 [ext_resource type="PackedScene" uid="uid://tf6g4raesm3t" path="res://assets/models/trash-bag/trash-bag.glb" id="6_fhmyb"]
+[ext_resource type="PackedScene" uid="uid://b70ltqiivtxqg" path="res://boundaries/outer_wall.tscn" id="7_80u8n"]
+[ext_resource type="Shader" uid="uid://6jgfngocy28b" path="res://boundaries/outer_walls.gdshader" id="8_p3faf"]
+[ext_resource type="PackedScene" uid="uid://dtfnurfw41uw7" path="res://systems/lighting_system.tscn" id="9_iuney"]
+[ext_resource type="PackedScene" uid="uid://brnh2sw5gythu" path="res://mechanics/focus_light.tscn" id="10_4ciq4"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fhmyb"]
 data = PackedVector3Array(20, 0.25, 20, 20, -0.25, 20, -20, -0.25, 20, -20, 0.25, 20, 20, 0.25, 20, -20, -0.25, 20, -20, 0.25, 20, -0.97082, 0.25, 0.705343, -0.37082, 0.25, 1.14127, -20, 0.25, 20, -0.37082, 0.25, 1.14127, 0.370821, 0.25, 1.14127, -20, -0.25, 20, -0.97082, -0.25, -0.705342, -20, -0.25, -20, 20, -0.25, -20, 0.37082, -0.25, -1.14127, 0.97082, -0.25, -0.705342, 20, -0.25, -20, 0.97082, -0.25, -0.705342, 1.2, -0.25, -5.24537e-08, 20, -0.25, -20, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, 0.25, -20, 20, -0.25, -20, 20, -0.25, 20, 0.370821, -0.25, 1.14127, -0.37082, -0.25, 1.14127, 20, -0.25, 20, 0.97082, -0.25, 0.705342, 0.370821, -0.25, 1.14127, -20, -0.25, -20, 0.37082, -0.25, -1.14127, 20, -0.25, -20, 20, -0.25, -20, 0.97082, -0.25, 0.705342, 20, -0.25, 20, 20, -0.25, -20, 20, 0.25, -20, -20, 0.25, -20, 20, 0.25, -20, 0.37082, 0.25, -1.14127, -0.370821, 0.25, -1.14127, 20, 0.25, -20, 0.97082, 0.25, -0.705342, 0.37082, 0.25, -1.14127, 20, 0.25, 20, 0.97082, 0.25, -0.705342, 20, 0.25, -20, 20, 0.25, 20, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, -0.705342, 20, 0.25, 20, 0.370821, 0.25, 1.14127, 0.97082, 0.25, 0.705342, 20, 0.25, 20, 0.97082, 0.25, 0.705342, 1.2, 0.25, -5.24537e-08, -20, 0.25, 20, 0.370821, 0.25, 1.14127, 20, 0.25, 20, 20, 0.25, 20, 20, 0.25, -20, 20, -0.25, 20, -20, -0.25, -20, -0.97082, -0.25, -0.705342, -0.370821, -0.25, -1.14127, -20, -0.25, 20, -0.37082, -0.25, 1.14127, -0.97082, -0.25, 0.705343, 20, -0.25, 20, -0.37082, -0.25, 1.14127, -20, -0.25, 20, -20, 0.25, -20, -0.97082, 0.25, 0.705343, -20, 0.25, 20, -20, -0.25, 20, -0.97082, -0.25, 0.705343, -1.2, -0.25, 5.24537e-08, -20, -0.25, 20, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, -0.705342, -20, -0.25, -20, -20, 0.25, 20, -20, -0.25, 20, -20, 0.25, -20, -20, 0.25, 20, -20, -0.25, -20, -20, 0.25, -20, -20, -0.25, -20, 20, -0.25, -20, 20, 0.25, -20, -0.370821, 0.25, -1.14127, -20, 0.25, -20, -20, 0.25, -20, -0.97082, 0.25, -0.705342, -1.2, 0.25, 5.24537e-08, -20, 0.25, -20, -0.370821, 0.25, -1.14127, -0.97082, 0.25, -0.705342, -20, 0.25, -20, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, 0.705343, -20, -0.25, -20, -0.370821, -0.25, -1.14127, 0.37082, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -0.370821, -0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.370821, 0.25, -1.14127, 0.97082, -0.25, 0.705342, 0.97082, 0.25, 0.705342, 0.370821, 0.25, 1.14127, 1.2, 0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.370821, 0.25, 1.14127, -0.37082, 0.25, 1.14127, 0.370821, -0.25, 1.14127, 0.97082, 0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.97082, -0.25, 0.705342, 1.2, -0.25, -5.24537e-08, 0.97082, 0.25, 0.705342, 0.37082, 0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -1.2, -0.25, 5.24537e-08, -0.97082, -0.25, 0.705343, -1.2, 0.25, 5.24537e-08, 0.370821, -0.25, 1.14127, 0.97082, -0.25, 0.705342, 0.370821, 0.25, 1.14127, -0.97082, -0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, 0.370821, -0.25, 1.14127, -0.37082, 0.25, 1.14127, 1.2, -0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 1.2, 0.25, -5.24537e-08, 0.97082, -0.25, -0.705342, 0.37082, -0.25, -1.14127, 0.97082, 0.25, -0.705342, 0.37082, -0.25, -1.14127, -0.370821, -0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.97082, -0.25, -0.705342, -0.97082, 0.25, -0.705342, -0.370821, 0.25, -1.14127, -1.2, 0.25, 5.24537e-08, -0.97082, 0.25, -0.705342, -1.2, -0.25, 5.24537e-08, -0.370821, 0.25, -1.14127, 0.37082, 0.25, -1.14127, -0.370821, -0.25, -1.14127, -0.37082, 0.25, 1.14127, -0.97082, 0.25, 0.705343, -0.37082, -0.25, 1.14127, -0.97082, 0.25, 0.705343, -1.2, 0.25, 5.24537e-08, -0.97082, -0.25, 0.705343)
 
-[node name="GomiToHole" type="Node3D" node_paths=PackedStringArray("swapSystem", "goal")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuney"]
+render_priority = 0
+shader = ExtResource("8_p3faf")
+shader_parameter/color = Color(0.109804, 0.121569, 0.168627, 1)
+shader_parameter/amplitude = 3.2
+shader_parameter/wave_length = 0.16
+shader_parameter/messiness = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ciq4"]
+material = SubResource("ShaderMaterial_iuney")
+flip_faces = true
+top_radius = 20.504
+bottom_radius = 5.037
+height = 13.691
+radial_segments = 48
+rings = 12
+cap_top = false
+cap_bottom = false
+
+[node name="GomiToHole" type="Node3D" node_paths=PackedStringArray("swapSystem", "lightingSystem", "goal")]
 script = ExtResource("1_yso5g")
 moni = 13.84
 swapSystem = NodePath("VehicleSwapSystem")
+lightingSystem = NodePath("LightingSystem")
 goal = NodePath("Goal")
 
 [node name="Floor" parent="." instance=ExtResource("1_0jpbx")]
@@ -29,6 +53,34 @@ spawners = [NodePath("GomiSpawner")]
 
 [node name="GomiSpawner" parent="VehicleSwapSystem" instance=ExtResource("3_auof0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23035, 0, 3.05497)
+
+[node name="LightingSystem" parent="." node_paths=PackedStringArray("lights") instance=ExtResource("9_iuney")]
+focusTime = 0.8
+lights = [NodePath("GomiLight"), NodePath("HoleLight")]
+
+[node name="GomiLight" parent="LightingSystem" instance=ExtResource("10_4ciq4")]
+transform = Transform3D(0.536608, 0.732636, -0.418685, 0, 0.496171, 0.868225, 0.843832, -0.465896, 0.266249, -7.38225, 4.50576, 4.58841)
+light_energy = 2.4
+shadow_bias = 0.2
+spot_range = 140.0
+spot_attenuation = 0.6
+spot_angle = 55.0
+spot_angle_attenuation = 2.0
+focusAngle = 12.0
+openAngle = 55.0
+openDuration = 0.5
+
+[node name="HoleLight" parent="LightingSystem" instance=ExtResource("10_4ciq4")]
+transform = Transform3D(-0.579281, -0.703059, 0.412482, 0, 0.506034, 0.862514, -0.815128, 0.499638, -0.293136, 2.64136, 4.7455, -1.77294)
+light_energy = 1.6
+shadow_bias = 0.4
+spot_range = 400.0
+spot_attenuation = 0.2
+spot_angle = 60.0
+spot_angle_attenuation = 1.36604
+focusAngle = 18.0
+openAngle = 60.0
+openDuration = 0.9
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09669, 0, 1.7083)
@@ -79,18 +131,22 @@ transform = Transform3D(-1.77263, 1.88464, -1.51853, 1.39496, 2.33373, 1.26799, 
 transform = Transform3D(-0.407529, 1.25351, -2.69493, 1.22589, 2.54888, 1.0002, 2.7076, -0.965359, -0.85847, -2.80686, -0.567698, -6.68624)
 
 [node name="trash-bag16" parent="Walls" instance=ExtResource("6_fhmyb")]
-transform = Transform3D(-0.300989, 0.821488, 2.86959, 0.194472, 2.88341, -0.805047, -2.97852, 0.105248, -0.342544, -0.141588, -0.206481, 7.64173)
+transform = Transform3D(-0.233798, 1.60252, 2.52532, 0.271574, 2.53393, -1.58285, -2.97852, 0.105248, -0.342544, -0.410265, -0.206481, 7.5617)
 
 [node name="trash-bag17" parent="Walls" instance=ExtResource("6_fhmyb")]
 transform = Transform3D(2.75849, -1.14181, -0.295016, 0.996858, 2.65858, -0.968631, 0.630103, 0.792622, 2.82395, -1.94948, -0.567698, 6.63451)
 
 [node name="trash-bag18" parent="Walls" instance=ExtResource("6_fhmyb")]
-transform = Transform3D(-0.580526, 2.28977, 1.84931, -0.478889, 1.78634, -2.36213, -2.90408, -0.752298, 0.0198441, 3.81178, 0.375256, 6.57327)
+transform = Transform3D(-0.742607, 2.56574, 1.36585, -0.359621, 1.31779, -2.67098, -2.88431, -0.824892, -0.0186336, 4.01558, 0.375256, 6.53772)
 
 [node name="trash-bag19" parent="Walls" instance=ExtResource("6_fhmyb")]
 transform = Transform3D(2.17962, -1.77529, 1.04766, 1.3215, 2.37356, 1.27273, -1.58205, -0.463196, 2.5065, -4.04194, -0.567698, 6.39993)
 
 [node name="trash-bag20" parent="Walls" instance=ExtResource("6_fhmyb")]
 transform = Transform3D(1.61128, -1.23388, 2.20937, -0.353549, 2.48377, 1.64496, -2.50575, -1.14387, 1.1886, 2.90337, 0.127231, 7.36429)
+
+[node name="OuterWall" parent="." instance=ExtResource("7_80u8n")]
+transform = Transform3D(0.98996, 0, 0.14135, 0, 1, 0, -0.14135, 0, 0.98996, -2.17828, 2.45862, 1.5436)
+mesh = SubResource("CylinderMesh_4ciq4")
 
 [editable path="Floor"]

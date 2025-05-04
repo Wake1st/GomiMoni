@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3ocnr7g6di37"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ocnr7g6di37"]
 
 [ext_resource type="PackedScene" uid="uid://qbltk6w84prr" path="res://ui/main menu/main selection/main_option.tscn" id="1_4w2md"]
 [ext_resource type="Script" uid="uid://bdie6kvjlu6e7" path="res://ui/main menu/main selection/main_selector.gd" id="1_f44kl"]
 [ext_resource type="Texture2D" uid="uid://cs2ku1sva3qdc" path="res://assets/images/menu icons/Levels.png" id="3_p7wst"]
 [ext_resource type="Texture2D" uid="uid://c78mcasbkp6n0" path="res://assets/images/menu icons/Settings.png" id="4_rm0ac"]
 [ext_resource type="Texture2D" uid="uid://7yh768kxni6b" path="res://assets/images/menu icons/Credits.png" id="5_s6vg7"]
+[ext_resource type="Texture2D" uid="uid://brptsv2d10uln" path="res://assets/images/menu icons/Exit.png" id="6_ctjir"]
+[ext_resource type="PackedScene" uid="uid://dsjv447tp8js4" path="res://systems/focus/focus_system.tscn" id="7_dfj50"]
+[ext_resource type="PackedScene" uid="uid://bmeeknxpiv6rp" path="res://systems/focus/focus_row.tscn" id="8_jhdov"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_vexi8"]
 size = Vector2(3, 1)
@@ -15,11 +18,14 @@ size = Vector2(3, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_oaokh"]
 size = Vector2(3, 1)
 
+[sub_resource type="QuadMesh" id="QuadMesh_dfj50"]
+size = Vector2(3, 1)
+
 [node name="MainSelector" type="Node3D"]
 script = ExtResource("1_f44kl")
 
 [node name="LevelsOption" parent="." instance=ExtResource("1_4w2md")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 mesh = SubResource("QuadMesh_vexi8")
 onFocusDepthChange = 0.4
 gainedFocusAnimationDuration = 0.2
@@ -30,6 +36,7 @@ onSelectUpAnimationDuration = 0.3
 image = ExtResource("3_p7wst")
 
 [node name="SettingsOption" parent="." instance=ExtResource("1_4w2md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("QuadMesh_ctjir")
 option = 1
 onFocusDepthChange = 0.4
@@ -41,7 +48,7 @@ onSelectUpAnimationDuration = 0.3
 image = ExtResource("4_rm0ac")
 
 [node name="CreditsOption" parent="." instance=ExtResource("1_4w2md")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 mesh = SubResource("QuadMesh_oaokh")
 option = 2
 onFocusDepthChange = 0.4
@@ -51,3 +58,37 @@ onSelectDepthChange = -0.5
 onSelectDownAnimationDuration = 0.1
 onSelectUpAnimationDuration = 0.3
 image = ExtResource("5_s6vg7")
+
+[node name="ExitOption" parent="." instance=ExtResource("1_4w2md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, 0)
+mesh = SubResource("QuadMesh_dfj50")
+option = 3
+onFocusDepthChange = 0.4
+gainedFocusAnimationDuration = 0.2
+lostFocusAnimationDuration = 0.2
+onSelectDepthChange = -0.5
+onSelectDownAnimationDuration = 0.1
+onSelectUpAnimationDuration = 0.3
+image = ExtResource("6_ctjir")
+
+[node name="FocusSystem" parent="." node_paths=PackedStringArray("rows") instance=ExtResource("7_dfj50")]
+rows = [NodePath("FocusRow"), NodePath("FocusRow2"), NodePath("FocusRow3"), NodePath("FocusRow4")]
+
+[node name="FocusRow" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("8_jhdov")]
+elements = [NodePath("../../LevelsOption")]
+
+[node name="FocusRow2" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("8_jhdov")]
+elements = [NodePath("../../SettingsOption")]
+
+[node name="FocusRow3" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("8_jhdov")]
+elements = [NodePath("../../CreditsOption")]
+
+[node name="FocusRow4" parent="FocusSystem" node_paths=PackedStringArray("elements") instance=ExtResource("8_jhdov")]
+elements = [NodePath("../../ExitOption")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.848048, -0.185582, -0.49636, 0, 0.936672, -0.350208, 0.529919, 0.296993, 0.794343, -2.17018, -0.97416, 2.8961)
+spot_range = 6.937
+spot_attenuation = -0.47
+spot_angle = 48.46
+spot_angle_attenuation = 0.353553

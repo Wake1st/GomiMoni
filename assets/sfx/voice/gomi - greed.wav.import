@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjw3wyhi6hxc7"
+path="res://.godot/imported/gomi - greed.wav-bf343db2c5456540b0455875b999daae.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice/gomi - greed.wav"
+dest_files=["res://.godot/imported/gomi - greed.wav-bf343db2c5456540b0455875b999daae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

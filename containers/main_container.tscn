@@ -37,10 +37,10 @@ point_count = 2
 script = ExtResource("1_qk1cq")
 
 [node name="MainSelector" parent="." instance=ExtResource("4_xjbkh")]
-transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -0.810041, -0.0276219, 0.585721, -3.7813, 2.24657, -2.10447)
+transform = Transform3D(0.586372, -0.0381582, 0.809142, 0, 0.99889, 0.0471064, -0.810041, -0.0276219, 0.585721, -4.25231, 2.08786, -2.41185)
 
 [node name="LevelSelector" parent="." instance=ExtResource("2_p1hlh")]
-transform = Transform3D(-0.247405, -0.250773, 0.935897, 9.93977e-09, 0.965926, 0.258819, -0.968912, 0.0640331, -0.238975, -11.042, 1.35486, 4.93904)
+transform = Transform3D(-0.247405, -0.250773, 0.935897, 9.93977e-09, 0.965926, 0.258819, -0.968912, 0.0640331, -0.238975, -11.6519, 1.35486, 4.93904)
 
 [node name="Settings" parent="." instance=ExtResource("4_vvqpg")]
 transform = Transform3D(0.870356, -0.137382, -0.472871, 0, 0.960294, -0.278991, 0.492424, 0.242821, 0.835797, 1.30817, 2.38419e-07, -9.916)
@@ -88,7 +88,6 @@ transform = Transform3D(0.426722, 0.229965, 0.874654, -2.98022e-08, 0.967128, -0
 
 [node name="LiveCamera" parent="CinemaGraph/RootCreditPath/CameraBase" instance=ExtResource("5_xjbkh")]
 unique_name_in_owner = true
-current = true
 fov = 40.0
 
 [node name="RootSettingsPath" type="Path3D" parent="CinemaGraph"]

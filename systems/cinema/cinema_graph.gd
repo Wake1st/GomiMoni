@@ -9,6 +9,8 @@ enum STILLS {
 	SELECTION
 }
 
+signal transition_finished
+
 const CURVE_MAGNITUDE: float = 2.9
 
 @export var transitionDuration = 1.4
@@ -98,17 +100,20 @@ func send_camera(shot: STILLS, instant: bool = false) -> void:
 
 
 func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null, instant: bool = false) -> void:
+	# ensure the camera is live
+	liveCamera.current = true
+	
+	# set parent if none provided
 	if parent == null:
 		parent = cameraBase.get_parent()
 	
+	# swap owners
 	if forward and parent != cameraBase.get_parent():
-		# swap owners
 		cameraBase.get_parent().remove_child(cameraBase)
 		parent.add_child(cameraBase)
 	
 	# precalculate shared values
 	var endRatio = 1.0 if forward else 0.0
-	
 	var currentLook = liveCamera.position + liveCamera.global_basis.z
 	var finalLook = endShot.position + endShot.basis.z
 	
@@ -133,3 +138,10 @@ func traverse(endShot: Camera3D, forward: bool, parent: Path3D = null, instant: 
 		
 		# reset to series
 		tween.set_parallel(false)
+		
+		# ensure we know when we've arrived
+		tween.tween_callback(handle_tween_finished)
+
+
+func handle_tween_finished() -> void:
+	emit_signal("transition_finished")

@@ -1,21 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds01t03ojo7cf"]
+[gd_scene load_steps=5 format=3 uid="uid://ds01t03ojo7cf"]
 
 [ext_resource type="Script" uid="uid://cg0cnufwnly1s" path="res://base/main.gd" id="1_f47da"]
 [ext_resource type="PackedScene" uid="uid://c2hl4snhbybv0" path="res://systems/staging_system.tscn" id="1_wbdts"]
-
-[sub_resource type="Environment" id="Environment_wbdts"]
-ambient_light_source = 2
-ambient_light_color = Color(0.243137, 0.556863, 0.572549, 1)
-ambient_light_energy = 1.32
+[ext_resource type="PackedScene" uid="uid://dmejih00x7yx4" path="res://base/title_screen.tscn" id="2_gwsun"]
+[ext_resource type="Environment" uid="uid://bk70cvmrni8tw" path="res://assets/env/main.tres" id="3_3xxnu"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_f47da")
 
+[node name="TitleScreen" parent="." instance=ExtResource("2_gwsun")]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, -0.275455, 0)
+
 [node name="StagingSystem" parent="." instance=ExtResource("1_wbdts")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wbdts")
+environment = ExtResource("3_3xxnu")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, 0.5, 0.5, 0, -0.707107, 0.707107, 0.707107, -0.5, -0.5, 0, 0, 0)
-light_energy = 3.0
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
