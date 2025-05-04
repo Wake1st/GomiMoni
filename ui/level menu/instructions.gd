@@ -15,39 +15,22 @@ const POPUP_DURATION: float = 4.0
 var isOpen: bool = false
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_menu"):
-		toggle_menu()
-
-
-func toggle_menu() -> void:
+func toggle_menu(value: bool) -> void:
 		# only allow if in the level
 	if StageState.currentState != StageState.STAGES.LEVEL:
 		return
 	
+	# update state
+	isOpen = value
+	
 	if isOpen:
-		# turn off the vehicle controls
-		UIController.isActive = false
-		
-		# animate the pause menu
-		movement.off()
-		swapping.off()
-	else:
-		# turn off the vehicle controls
-		VehicleController.isActive = false
-		
 		# animate the pause menu
 		movement.on()
 		swapping.on()
-	
-	# update state
-	isOpen = !isOpen
-	
-	# ensure controls are working
-	if isOpen:
-		UIController.isActive = true
 	else:
-		VehicleController.isActive = true
+		# animate the pause menu
+		movement.off()
+		swapping.off()
 
 
 func popup_instruction(popup: POPUP) -> void:

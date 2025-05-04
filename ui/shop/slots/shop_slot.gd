@@ -39,18 +39,19 @@ func is_empty() -> bool:
 	return item == null
 
 
-func focus() -> void:
-	isFocused = true
+func focus(value: bool = true) -> void:
+	isFocused = value
 	
-	tween = create_tween()
-	tween.tween_property(item, "position:y", liftDistance, liftDuration)
-
-
-func unfocus() -> void:
-	isFocused = false
+	# nothing to move if we don't possess the item
+	if isPurchased:
+		return
 	
-	tween = create_tween()
-	tween.tween_property(item, "position:y", 0.0, liftDuration)
+	if isFocused:
+		tween = create_tween()
+		tween.tween_property(item, "position:y", liftDistance, liftDuration)
+	else:
+		tween = create_tween()
+		tween.tween_property(item, "position:y", 0.0, liftDuration)
 
 
 func select() -> void:

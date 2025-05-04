@@ -5,8 +5,7 @@
 [node name="ShopFocusSystem" type="Node"]
 script = ExtResource("1_cfwf3")
 
-[node name="PurchaseCooldown" type="Timer" parent="."]
-wait_time = 0.1
+[node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="PurchaseCooldown" to="." method="_on_purchase_cooldown_timeout"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_purchase_cooldown_timeout"]

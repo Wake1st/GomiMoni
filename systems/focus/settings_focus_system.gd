@@ -4,7 +4,7 @@ extends Node
 
 signal cancel_selected
 
-const COOLDOWN_TIME: float = 0.1
+const COOLDOWN_TIME: float = 0.2
 
 @export var rows: Array[Slider3D]
 @export var cancelButton: CancelOption
@@ -21,8 +21,10 @@ func activate(value: bool = true) -> void:
 	isActive = value
 	
 	# set initial focus
+	if focusedElement != null:
+		focusedElement.focus(false)
 	focusedElement = rows[rowIndex]
-	focusedElement.focus()
+	focusedElement.focus(isActive)
 
 
 func _input(_event) -> void:
@@ -50,6 +52,10 @@ func _input(_event) -> void:
 func focus_on(element: Node3D) -> void:
 	# ensure this system is what we want
 	if !isActive:
+		return
+	
+	# check is already focused
+	if element == focusedElement:
 		return
 	
 	# unfocus the current element

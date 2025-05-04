@@ -12,7 +12,7 @@ signal completed(m: float)
 @export_category("Systems")
 @export var swapSystem: VehicleSwapSystem
 @export var puzzleSystem: PuzzleSystem
-@export var lightingSystem: FocusSystem
+@export var lightingSystem: LightingSystem
 @export var goal: Goal
 
 
@@ -38,6 +38,9 @@ func run() -> void:
 
 
 func reset() -> void:
+	# reset the lighting too
+	lightingSystem.reset()
+	
 	# re-run
 	run()
 

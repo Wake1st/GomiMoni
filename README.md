@@ -2,18 +2,23 @@
 
 A trash game, about trash, for the [Society of Play](https://societyofplay.itch.io/) [Pompous Trash Jam 2025](https://itch.io/jam/pompous-trash-2025).
 
+
 ## Description
 
 Gomi in the hole.
 Moni in the pocket.
 Moni buys trash.
 
+
 ## Known Issues
-- [x] fix: previously selected option buttons are still on hover when reloaded
-- [x] fix: alpha channel for textures (should be transparent)
-- [x] fix: texture import issue with some models (I need help with this)
-- [x] fix: level selection (highest level vs current level)
-- [x] fix: boughts first trash when buying last
+
+- [x] previously selected option buttons are still on hover when reloaded
+- [x] alpha channel for textures (should be transparent)
+- [x] texture import issue with some models (I need help with this)
+- [x] level selection (highest level vs current level)
+- [x] boughts first trash when buying last
+- [ ] instructions and pause menu are not in sync
+
 
 ## Stretch Goals
 
@@ -27,6 +32,7 @@ Moni buys trash.
 - [x] add exit game option
 - [ ] allow controller (inadequate - take time and refactor)
 
+
 ### Reassessed
 
 - [ ] ~add more levels, with more variety~ nah, move on for now
@@ -35,10 +41,12 @@ Moni buys trash.
 - [ ] ~camera: should follow vehicle?~ too many probs (outer-wall clipping, shaddows)
 - [ ] ~`flyer`: implement a consistent bobbing motion to stay afloat~ people like bad controls
 
+
 ## Credits
 
 - Eli Wakefield: Music/SFX
 - Joel Wakefield: Design/Programming/Art
+
 
 ## Special Thanks
 

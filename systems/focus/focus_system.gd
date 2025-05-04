@@ -19,9 +19,11 @@ func activate(value: bool = true) -> void:
 	isActive = value
 	
 	# set initial focus
+	if focusedElement != null:
+		focusedElement.focus(false)
 	focusedRow = rows[rowIndex]
 	focusedElement = focusedRow.set_focus(0)
-	focusedElement.focus()
+	focusedElement.focus(isActive)
 
 
 func _input(_event) -> void:
@@ -46,7 +48,7 @@ func _input(_event) -> void:
 
 
 func focus_on(element: Button3D) -> void:
-		# ensure this system is what we want
+	# ensure this system is what we want
 	if !isActive:
 		return
 	

@@ -37,11 +37,8 @@ func setup() -> void:
 
 
 func make_purchase(index: int) -> void:
-	# convert indecies
-	var slotIndex: int = floori(index as float / SLOTS_PER_ROW)
-	
 	# move the bought item
-	var purchasedItem = move_purchase(slotIndex)
+	var purchasedItem = move_purchase(index)
 	
 	# store a record of purchased items
 	TrashData.purchasedItems.push_back(purchasedItem.data.id)

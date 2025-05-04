@@ -21,7 +21,8 @@ func _ready() -> void:
 
 
 func run() -> void:
-	timer.start(pulseTime)
+	if !allOn:
+		timer.start(pulseTime)
 
 
 func reset() -> void:

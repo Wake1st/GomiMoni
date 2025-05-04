@@ -78,7 +78,6 @@ func focus(value: bool = true) -> void:
 	# try not to refocus
 	if hasFocus && value:
 		return
-	print("%s focused" % name)
 	
 	hasFocus = value
 	if hasFocus:

@@ -33,6 +33,7 @@ func _ready() -> void:
 
 func setup() -> void:
 	shop.setup()
+	focusSystem.setup()
 
 
 func open() -> void:
@@ -54,8 +55,8 @@ func run() -> void:
 	# set the state
 	StageState.currentState = StageState.STAGES.SHOP
 	
-	# run the shop
-	shop.run()
+	# activate the focus
+	focusSystem.activate()
 
 
 func close() -> void:
@@ -65,6 +66,9 @@ func close() -> void:
 	# start goodbye
 	camera.close_transition()
 	musicPlayer.fade_out(MUSIC_FADE_DURATION)
+	
+	# ensure the focus system is off
+	focusSystem.activate(false)
 
 
 func handle_item_focused(item: Trash) -> void:
@@ -82,6 +86,10 @@ func handle_item_purchased(index: int) -> void:
 
 
 func handle_option_selection(option: ShopOption.OPTIONS) -> void:
+	# only allow if active
+	if !focusSystem.isActive:
+		return
+	
 	# store option
 	nextSelection = option
 	

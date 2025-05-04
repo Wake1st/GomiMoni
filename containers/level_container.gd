@@ -22,13 +22,18 @@ const MUSIC_FADE_DURATION: float = 1.0
 
 var level: Level
 var hasPassedLevel: bool = false
+var menuOpened: bool = false
 
 
 func _ready() -> void:
 	camera.transition_finished.connect(handle_camera_transition_finished)
 	pauseSelector.setup(focusSystem.focus_on, handle_pause_selection)
 	focusSystem.cancel_selected.connect(handle_menu_exit)
-	pauseSelector.menu_opened.connect(handle_menu_open)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_menu"):
+		toggle_menu()
 
 
 func setup(levelNumber) -> void:
@@ -61,11 +66,11 @@ func run() -> void:
 	# enable ui navigation
 	focusSystem.activate()
 	
-	# let user play
-	level.run()
-	
 	# set the state
 	StageState.currentState = StageState.STAGES.LEVEL
+	
+	# let user play
+	level.run()
 	
 	# let user know about the instructions for specific levels
 	if LevelList.current_level_index() == 0:
@@ -79,6 +84,9 @@ func exit() -> void:
 	camera.close_transition()
 	musicPlayer.fade_out(MUSIC_FADE_DURATION)
 	exitSFX.play()
+	
+	# ensure the levels are inactive
+	focusSystem.activate(false)
 
 
 func success(moni: float) -> void:
@@ -121,28 +129,37 @@ func handle_vehicle_activation(vehicle: Vehicle.VEHICLE_TYPE) -> void:
 	vehicleUI.display(vehicle)
 
 
-func handle_menu_open() -> void:
-	focusSystem.activate()
+func toggle_menu() -> void:
+	menuOpened = !menuOpened
+	pauseSelector.toggle_menu(menuOpened)
+	instructions.toggle_menu(menuOpened)
+	focusSystem.activate(menuOpened)
 
 
 func handle_menu_exit() -> void:
 	# exit the menu
-	pauseSelector.toggle_menu()
-	instructions.toggle_menu()
+	pauseSelector.toggle_menu(false)
+	instructions.toggle_menu(false)
 	
 	# disable ui navigation
 	focusSystem.activate(false)
+	
+	# update state
+	menuOpened = false
 
 
 func handle_pause_selection(option: PauseOption.OPTIONS) -> void:
+	# only run if active
+	if !focusSystem.isActive:
+		return
+	
 	# regardless of what we choose, we must close the menu
-	pauseSelector.toggle_menu()
-	instructions.toggle_menu()
+	handle_menu_exit()
 	
 	# choose what to do based on the selected option
 	match option:
 		PauseOption.OPTIONS.RETURN:
-			# play sfx?
+			# simply return
 			pass
 		PauseOption.OPTIONS.RESET:
 			level.reset()

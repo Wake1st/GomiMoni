@@ -30,8 +30,9 @@ func element_enabled(index: int) -> bool:
 
 
 func get_next() -> ShopSlot:
-	# do not pass disabled elements
-	while (true):
+	# only loop till we cycle back
+	var leftToCheck = elements.size()
+	while (leftToCheck > 0):
 		# loop index, if needed
 		focusedIndex += 1
 		if focusedIndex == elements.size():
@@ -40,14 +41,17 @@ func get_next() -> ShopSlot:
 		# check availability
 		if !elements[focusedIndex].isPurchased:
 			return elements[focusedIndex]
+		else:
+			leftToCheck -= 1
 	
 	# if we can access a row, then we won't reach this point
 	return null
 
 
 func get_prev() -> ShopSlot:
-		# do not pass disabled elements
-	while (true):
+	# only loop till we cycle back
+	var leftToCheck = elements.size()
+	while (leftToCheck > 0):
 		# loop index, if needed
 		focusedIndex -= 1
 		if focusedIndex < 0:
@@ -56,6 +60,12 @@ func get_prev() -> ShopSlot:
 		# check availability
 		if !elements[focusedIndex].isPurchased:
 			return elements[focusedIndex]
+		else:
+			leftToCheck -= 1
 	
 	# if we can access a row, then we won't reach this point
 	return null
+
+
+func find(element: ShopSlot) -> int:
+	return elements.find(element)
