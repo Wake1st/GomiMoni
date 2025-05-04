@@ -17,7 +17,7 @@ Moni buys trash.
 - [x] texture import issue with some models (I need help with this)
 - [x] level selection (highest level vs current level)
 - [x] boughts first trash when buying last
-- [ ] instructions and pause menu are not in sync
+- [x] instructions and pause menu are not in sync
 
 
 ## Stretch Goals
@@ -30,7 +30,7 @@ Moni buys trash.
 - [x] add title screen
 - [x] auto save/load game data
 - [x] add exit game option
-- [ ] allow controller (inadequate - take time and refactor)
+- [x] allow controller (inadequate - take time and refactor)
 
 
 ### Reassessed
